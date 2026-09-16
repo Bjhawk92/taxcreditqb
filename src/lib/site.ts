@@ -41,6 +41,7 @@ export const SITE = {
 
 export const NAV = [
   { label: "Playbook", to: "/playbook" },
+  { label: "Film Room", to: "/videos" },
   { label: "Huddle", to: "/access" },
   { label: "Sideline", to: "/desk" },
   { label: "Advisory", to: "/advisory" },
@@ -53,7 +54,7 @@ export const FOOTER_NAV = [
   { label: "Sideline", to: "/desk" },
   { label: "Advisory", to: "/advisory" },
   { label: "About", to: "/about" },
-  { label: "Game film", to: "/videos" },
+  { label: "Film Room", to: "/videos" },
   { label: "For Partners", to: "/for-partners" },
   { label: "Call in the play", to: "/inquiry" },
   { label: "Contact", to: "/contact" },

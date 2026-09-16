@@ -19,7 +19,7 @@ function Videos() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Game film"
+        eyebrow="Film Room"
         title="Short clips. Not a course dump."
         sub="Playbook members get the film room. Until Stripe is live, these are labeled placeholders."
       />
