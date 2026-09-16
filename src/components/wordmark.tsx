@@ -20,7 +20,7 @@ export function Wordmark({
       aria-label="Tax Credit QB home"
     >
       <img
-        src="/brand/tax-credit-qb-logo.png"
+        src="/brand/tax-credit-qb-shield.png"
         alt="Tax Credit QB"
         className={cn(
           "h-28 w-auto md:h-32",
