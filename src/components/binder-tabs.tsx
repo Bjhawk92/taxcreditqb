@@ -9,6 +9,7 @@ const TAB = {
   green: "binder-tab-green",
   burgundy: "binder-tab-burgundy",
   slate: "binder-tab-slate",
+  hq: "binder-tab-hq",
 } as const;
 
 export function BinderTabs() {

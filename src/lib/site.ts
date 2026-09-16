@@ -77,6 +77,12 @@ export const NAV = [
     blurb: "Meet Brett Johnson and the experience behind Tax Credit QB.",
     tab: "slate",
   },
+  {
+    label: "Team HQ",
+    to: "/hq",
+    blurb: "Your private client portal.",
+    tab: "hq",
+  },
 ] as const;
 
 export const FOOTER_NAV = [
@@ -85,6 +91,7 @@ export const FOOTER_NAV = [
   { label: "Sideline", to: "/desk" },
   { label: "Advisory", to: "/advisory" },
   { label: "About", to: "/about" },
+  { label: "Team HQ", to: "/hq" },
   { label: "Film Room", to: "/videos" },
   { label: "For Partners", to: "/for-partners" },
   { label: "Call in the play", to: "/inquiry" },

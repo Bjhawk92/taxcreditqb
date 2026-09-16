@@ -21,9 +21,11 @@
   --color-tab-green: #2d6a4f;
   --color-tab-burgundy: #8b3a3a;
   --color-tab-slate: #5a6270;
+  --color-tab-hq: #17304f;
   --color-desk: #151e32;
   --color-ring: #c5c8ce;
   --color-ring-dark: #7c818c;
+  --color-rule: #d4cdc0;
 
   --text-hero: clamp(2.55rem, 8.6vw, 6.6rem);
   --text-display: clamp(2.05rem, 5vw, 4.15rem);
@@ -113,6 +115,7 @@
   .binder-tab-green { background: var(--color-tab-green); color: #f3efe6; }
   .binder-tab-burgundy { background: var(--color-tab-burgundy); color: #f3efe6; }
   .binder-tab-slate { background: var(--color-tab-slate); color: #f3efe6; }
+  .binder-tab-hq { background: var(--color-tab-hq); color: #f3efe6; }
 
   .page-turn-stage {
     position: relative;

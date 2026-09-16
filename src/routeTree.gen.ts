@@ -16,16 +16,30 @@ import { Route as AdvisoryRouteImport } from './routes/advisory'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeskRouteImport } from './routes/desk'
 import { Route as ForPartnersRouteImport } from './routes/for-partners'
+import { Route as HqRouteImport } from './routes/hq'
 import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as PlaybookRouteImport } from './routes/playbook'
 import { Route as VideosRouteImport } from './routes/videos'
 import { Route as DeskIndexRouteImport } from './routes/desk.index'
 import { Route as DeskModelingRouteImport } from './routes/desk.modeling'
+import { Route as HqIndexRouteImport } from './routes/hq.index'
+import { Route as HqAdminRouteImport } from './routes/hq.admin'
+import { Route as HqBillingRouteImport } from './routes/hq.billing'
+import { Route as HqFilesRouteImport } from './routes/hq.files'
+import { Route as HqFilmRouteImport } from './routes/hq.film'
+import { Route as HqHuddleRouteImport } from './routes/hq.huddle'
+import { Route as HqMeetingsRouteImport } from './routes/hq.meetings'
+import { Route as HqMembershipRouteImport } from './routes/hq.membership'
+import { Route as HqMessagesRouteImport } from './routes/hq.messages'
+import { Route as HqPlaybookRouteImport } from './routes/hq.playbook'
+import { Route as HqProjectsRouteImport } from './routes/hq.projects'
 import { Route as PlaybookIndexRouteImport } from './routes/playbook.index'
 import { Route as PlaybookHearingRouteImport } from './routes/playbook.hearing'
 import { Route as PlaybookNeighborhoodRouteImport } from './routes/playbook.neighborhood'
 import { Route as PlaybookPrivateIntroRouteImport } from './routes/playbook.private-intro'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -62,6 +76,11 @@ const ForPartnersRoute = ForPartnersRouteImport.update({
   path: '/for-partners',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HqRoute = HqRouteImport.update({
+  id: '/hq',
+  path: '/hq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InquiryRoute = InquiryRouteImport.update({
   id: '/inquiry',
   path: '/inquiry',
@@ -70,6 +89,11 @@ const InquiryRoute = InquiryRouteImport.update({
 const LegalRoute = LegalRouteImport.update({
   id: '/legal',
   path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlaybookRoute = PlaybookRouteImport.update({
@@ -92,6 +116,61 @@ const DeskModelingRoute = DeskModelingRouteImport.update({
   path: '/modeling',
   getParentRoute: () => DeskRoute,
 } as any)
+const HqIndexRoute = HqIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqAdminRoute = HqAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqBillingRoute = HqBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqFilesRoute = HqFilesRouteImport.update({
+  id: '/files',
+  path: '/files',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqFilmRoute = HqFilmRouteImport.update({
+  id: '/film',
+  path: '/film',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqHuddleRoute = HqHuddleRouteImport.update({
+  id: '/huddle',
+  path: '/huddle',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqMeetingsRoute = HqMeetingsRouteImport.update({
+  id: '/meetings',
+  path: '/meetings',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqMembershipRoute = HqMembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqMessagesRoute = HqMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqPlaybookRoute = HqPlaybookRouteImport.update({
+  id: '/playbook',
+  path: '/playbook',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqProjectsRoute = HqProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => HqRoute,
+} as any)
 const PlaybookIndexRoute = PlaybookIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -112,6 +191,11 @@ const PlaybookPrivateIntroRoute = PlaybookPrivateIntroRouteImport.update({
   path: '/private-intro',
   getParentRoute: () => PlaybookRoute,
 } as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -121,16 +205,30 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/desk': typeof DeskRouteWithChildren
   '/for-partners': typeof ForPartnersRoute
+  '/hq': typeof HqRouteWithChildren
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
+  '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
+  '/hq/admin': typeof HqAdminRoute
+  '/hq/billing': typeof HqBillingRoute
+  '/hq/files': typeof HqFilesRoute
+  '/hq/film': typeof HqFilmRoute
+  '/hq/huddle': typeof HqHuddleRoute
+  '/hq/meetings': typeof HqMeetingsRoute
+  '/hq/membership': typeof HqMembershipRoute
+  '/hq/messages': typeof HqMessagesRoute
+  '/hq/playbook': typeof HqPlaybookRoute
+  '/hq/projects': typeof HqProjectsRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
   '/desk/': typeof DeskIndexRoute
+  '/hq/': typeof HqIndexRoute
   '/playbook/': typeof PlaybookIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -141,13 +239,26 @@ export interface FileRoutesByTo {
   '/for-partners': typeof ForPartnersRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
+  '/login': typeof LoginRoute
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
+  '/hq/admin': typeof HqAdminRoute
+  '/hq/billing': typeof HqBillingRoute
+  '/hq/files': typeof HqFilesRoute
+  '/hq/film': typeof HqFilmRoute
+  '/hq/huddle': typeof HqHuddleRoute
+  '/hq/meetings': typeof HqMeetingsRoute
+  '/hq/membership': typeof HqMembershipRoute
+  '/hq/messages': typeof HqMessagesRoute
+  '/hq/playbook': typeof HqPlaybookRoute
+  '/hq/projects': typeof HqProjectsRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
   '/desk': typeof DeskIndexRoute
+  '/hq': typeof HqIndexRoute
   '/playbook': typeof PlaybookIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -158,16 +269,30 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/desk': typeof DeskRouteWithChildren
   '/for-partners': typeof ForPartnersRoute
+  '/hq': typeof HqRouteWithChildren
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
+  '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
+  '/hq/admin': typeof HqAdminRoute
+  '/hq/billing': typeof HqBillingRoute
+  '/hq/files': typeof HqFilesRoute
+  '/hq/film': typeof HqFilmRoute
+  '/hq/huddle': typeof HqHuddleRoute
+  '/hq/meetings': typeof HqMeetingsRoute
+  '/hq/membership': typeof HqMembershipRoute
+  '/hq/messages': typeof HqMessagesRoute
+  '/hq/playbook': typeof HqPlaybookRoute
+  '/hq/projects': typeof HqProjectsRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
   '/desk/': typeof DeskIndexRoute
+  '/hq/': typeof HqIndexRoute
   '/playbook/': typeof PlaybookIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -179,16 +304,30 @@ export interface FileRouteTypes {
     | '/contact'
     | '/desk'
     | '/for-partners'
+    | '/hq'
     | '/inquiry'
     | '/legal'
+    | '/login'
     | '/playbook'
     | '/videos'
     | '/desk/modeling'
+    | '/hq/admin'
+    | '/hq/billing'
+    | '/hq/files'
+    | '/hq/film'
+    | '/hq/huddle'
+    | '/hq/meetings'
+    | '/hq/membership'
+    | '/hq/messages'
+    | '/hq/playbook'
+    | '/hq/projects'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
     | '/playbook/private-intro'
     | '/desk/'
+    | '/hq/'
     | '/playbook/'
+    | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -199,13 +338,26 @@ export interface FileRouteTypes {
     | '/for-partners'
     | '/inquiry'
     | '/legal'
+    | '/login'
     | '/videos'
     | '/desk/modeling'
+    | '/hq/admin'
+    | '/hq/billing'
+    | '/hq/files'
+    | '/hq/film'
+    | '/hq/huddle'
+    | '/hq/meetings'
+    | '/hq/membership'
+    | '/hq/messages'
+    | '/hq/playbook'
+    | '/hq/projects'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
     | '/playbook/private-intro'
     | '/desk'
+    | '/hq'
     | '/playbook'
+    | '/api/auth/$'
   id:
     | '__root__'
     | '/'
@@ -215,16 +367,30 @@ export interface FileRouteTypes {
     | '/contact'
     | '/desk'
     | '/for-partners'
+    | '/hq'
     | '/inquiry'
     | '/legal'
+    | '/login'
     | '/playbook'
     | '/videos'
     | '/desk/modeling'
+    | '/hq/admin'
+    | '/hq/billing'
+    | '/hq/files'
+    | '/hq/film'
+    | '/hq/huddle'
+    | '/hq/meetings'
+    | '/hq/membership'
+    | '/hq/messages'
+    | '/hq/playbook'
+    | '/hq/projects'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
     | '/playbook/private-intro'
     | '/desk/'
+    | '/hq/'
     | '/playbook/'
+    | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -235,10 +401,13 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DeskRoute: typeof DeskRouteWithChildren
   ForPartnersRoute: typeof ForPartnersRoute
+  HqRoute: typeof HqRouteWithChildren
   InquiryRoute: typeof InquiryRoute
   LegalRoute: typeof LegalRoute
+  LoginRoute: typeof LoginRoute
   PlaybookRoute: typeof PlaybookRouteWithChildren
   VideosRoute: typeof VideosRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,6 +461,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForPartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hq': {
+      id: '/hq'
+      path: '/hq'
+      fullPath: '/hq'
+      preLoaderRoute: typeof HqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inquiry': {
       id: '/inquiry'
       path: '/inquiry'
@@ -304,6 +480,13 @@ declare module '@tanstack/react-router' {
       path: '/legal'
       fullPath: '/legal'
       preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/playbook': {
@@ -334,6 +517,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DeskModelingRouteImport
       parentRoute: typeof DeskRoute
     }
+    '/hq/': {
+      id: '/hq/'
+      path: '/'
+      fullPath: '/hq/'
+      preLoaderRoute: typeof HqIndexRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/admin': {
+      id: '/hq/admin'
+      path: '/admin'
+      fullPath: '/hq/admin'
+      preLoaderRoute: typeof HqAdminRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/billing': {
+      id: '/hq/billing'
+      path: '/billing'
+      fullPath: '/hq/billing'
+      preLoaderRoute: typeof HqBillingRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/files': {
+      id: '/hq/files'
+      path: '/files'
+      fullPath: '/hq/files'
+      preLoaderRoute: typeof HqFilesRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/film': {
+      id: '/hq/film'
+      path: '/film'
+      fullPath: '/hq/film'
+      preLoaderRoute: typeof HqFilmRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/huddle': {
+      id: '/hq/huddle'
+      path: '/huddle'
+      fullPath: '/hq/huddle'
+      preLoaderRoute: typeof HqHuddleRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/meetings': {
+      id: '/hq/meetings'
+      path: '/meetings'
+      fullPath: '/hq/meetings'
+      preLoaderRoute: typeof HqMeetingsRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/membership': {
+      id: '/hq/membership'
+      path: '/membership'
+      fullPath: '/hq/membership'
+      preLoaderRoute: typeof HqMembershipRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/messages': {
+      id: '/hq/messages'
+      path: '/messages'
+      fullPath: '/hq/messages'
+      preLoaderRoute: typeof HqMessagesRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/playbook': {
+      id: '/hq/playbook'
+      path: '/playbook'
+      fullPath: '/hq/playbook'
+      preLoaderRoute: typeof HqPlaybookRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/projects': {
+      id: '/hq/projects'
+      path: '/projects'
+      fullPath: '/hq/projects'
+      preLoaderRoute: typeof HqProjectsRouteImport
+      parentRoute: typeof HqRoute
+    }
     '/playbook/': {
       id: '/playbook/'
       path: '/'
@@ -362,6 +622,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybookPrivateIntroRouteImport
       parentRoute: typeof PlaybookRoute
     }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -376,6 +643,36 @@ const DeskRouteChildren: DeskRouteChildren = {
 }
 
 const DeskRouteWithChildren = DeskRoute._addFileChildren(DeskRouteChildren)
+
+interface HqRouteChildren {
+  HqAdminRoute: typeof HqAdminRoute
+  HqBillingRoute: typeof HqBillingRoute
+  HqFilesRoute: typeof HqFilesRoute
+  HqFilmRoute: typeof HqFilmRoute
+  HqHuddleRoute: typeof HqHuddleRoute
+  HqMeetingsRoute: typeof HqMeetingsRoute
+  HqMembershipRoute: typeof HqMembershipRoute
+  HqMessagesRoute: typeof HqMessagesRoute
+  HqPlaybookRoute: typeof HqPlaybookRoute
+  HqProjectsRoute: typeof HqProjectsRoute
+  HqIndexRoute: typeof HqIndexRoute
+}
+
+const HqRouteChildren: HqRouteChildren = {
+  HqAdminRoute: HqAdminRoute,
+  HqBillingRoute: HqBillingRoute,
+  HqFilesRoute: HqFilesRoute,
+  HqFilmRoute: HqFilmRoute,
+  HqHuddleRoute: HqHuddleRoute,
+  HqMeetingsRoute: HqMeetingsRoute,
+  HqMembershipRoute: HqMembershipRoute,
+  HqMessagesRoute: HqMessagesRoute,
+  HqPlaybookRoute: HqPlaybookRoute,
+  HqProjectsRoute: HqProjectsRoute,
+  HqIndexRoute: HqIndexRoute,
+}
+
+const HqRouteWithChildren = HqRoute._addFileChildren(HqRouteChildren)
 
 interface PlaybookRouteChildren {
   PlaybookHearingRoute: typeof PlaybookHearingRoute
@@ -403,10 +700,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DeskRoute: DeskRouteWithChildren,
   ForPartnersRoute: ForPartnersRoute,
+  HqRoute: HqRouteWithChildren,
   InquiryRoute: InquiryRoute,
   LegalRoute: LegalRoute,
+  LoginRoute: LoginRoute,
   PlaybookRoute: PlaybookRouteWithChildren,
   VideosRoute: VideosRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
