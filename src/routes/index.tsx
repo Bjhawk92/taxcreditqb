@@ -167,8 +167,6 @@ function Home() {
           </figure>
         </div>
       </section>
-        </div>
-      </section>
 
       <section className="border-y border-line bg-paper-dim">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
