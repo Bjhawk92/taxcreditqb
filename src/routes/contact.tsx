@@ -9,6 +9,10 @@ import { SITE } from "@/lib/site";
 import { submitForm } from "@/lib/submit-form";
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    state: typeof search.state === "string" ? search.state : undefined,
+    url: typeof search.url === "string" ? search.url : undefined,
+  }),
   head: () =>
     seo({
       title: "Contact Tax Credit QB",
@@ -18,10 +22,24 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+function brokenLinkMessage(state?: string, url?: string) {
+  if (!state && !url) return "";
+  return [
+    "Report a broken link in the QAP directory.",
+    state ? `State: ${state}` : "",
+    url ? `URL: ${url}` : "",
+    "",
+  ]
+    .filter((line, i, arr) => line !== "" || i === arr.length - 1)
+    .join("\n");
+}
+
 function Contact() {
+  const search = Route.useSearch();
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
   );
+  const preset = brokenLinkMessage(search.state, search.url);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,7 +48,7 @@ function Contact() {
     try {
       await submitForm(
         Object.fromEntries(data.entries()) as Record<string, string>,
-        "Tax Credit QB contact",
+        search.state ? "QAP directory broken link" : "Tax Credit QB contact",
       );
       setStatus("success");
     } catch {
@@ -59,7 +77,13 @@ function Contact() {
               <Input id="email" name="email" type="email" required autoComplete="email" />
             </Field>
             <Field label="Message" htmlFor="message">
-              <Textarea id="message" name="message" required rows={6} />
+              <Textarea
+                id="message"
+                name="message"
+                required
+                rows={6}
+                defaultValue={preset}
+              />
             </Field>
             {status === "error" ? (
               <p className="text-sm text-muted">Couldn’t send. Email {SITE.emails.info}.</p>

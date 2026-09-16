@@ -54,6 +54,12 @@ export const NAV = [
     tab: "blue",
   },
   {
+    label: "Tools",
+    to: "/tools",
+    blurb: "State QAP links and housing-agency resources.",
+    tab: "tools",
+  },
+  {
     label: "Huddle",
     to: "/access",
     blurb: "One-on-one advice for your next decision.",
@@ -87,12 +93,13 @@ export const NAV = [
 
 export const FOOTER_NAV = [
   { label: "Playbook", to: "/playbook" },
+  { label: "Film Room", to: "/videos" },
+  { label: "Tools", to: "/tools" },
   { label: "Huddle", to: "/access" },
   { label: "Sideline", to: "/desk" },
   { label: "Advisory", to: "/advisory" },
   { label: "About", to: "/about" },
   { label: "Team HQ", to: "/hq" },
-  { label: "Film Room", to: "/videos" },
   { label: "For Partners", to: "/for-partners" },
   { label: "Call in the play", to: "/inquiry" },
   { label: "Contact", to: "/contact" },

@@ -10,22 +10,23 @@ const TAB = {
   burgundy: "binder-tab-burgundy",
   slate: "binder-tab-slate",
   hq: "binder-tab-hq",
+  tools: "binder-tab-tools",
 } as const;
 
 export function BinderTabs() {
   return (
     <nav
       aria-label="Playbook tabs"
-      className="fixed top-32 right-2 z-50 hidden w-28 lg:block xl:right-5"
+      className="fixed top-28 right-2 z-50 hidden w-28 lg:block xl:right-5"
     >
-      <ul className="flex flex-col gap-1">
+      <ul className="flex flex-col gap-0.5">
         {NAV.map((item) => (
           <li key={item.to}>
             <Link
               to={item.to}
               title={item.blurb}
               className={cn(
-                "flex h-9 w-full items-center justify-end rounded-r-md px-2.5 shadow-md transition-transform duration-150",
+                "flex h-8 w-full items-center justify-end rounded-r-md px-2.5 shadow-md transition-transform duration-150",
                 "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper",
                 TAB[item.tab],
                 "hover:translate-x-1 [&.active]:translate-x-1 [&.active]:brightness-110",

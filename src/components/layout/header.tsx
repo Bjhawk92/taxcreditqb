@@ -15,6 +15,7 @@ const TAB = {
   burgundy: "binder-tab-burgundy",
   slate: "binder-tab-slate",
   hq: "binder-tab-hq",
+  tools: "binder-tab-tools",
 } as const;
 
 export function Header() {
