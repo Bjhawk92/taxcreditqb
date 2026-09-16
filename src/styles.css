@@ -117,6 +117,7 @@
   .binder-tab-burgundy { background: var(--color-tab-burgundy); color: #f3efe6; }
   .binder-tab-slate { background: var(--color-tab-slate); color: #f3efe6; }
   .binder-tab-hq { background: var(--color-tab-hq); color: #f3efe6; }
+  .binder-tab-tools { background: var(--color-tab-tools); color: #f3efe6; }
 
   .page-turn-stage {
     position: relative;
