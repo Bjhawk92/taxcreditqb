@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
     seo({
       title: "Tax Credit QB | LIHTC Development Strategy + Execution",
       description:
-        "Your deal. A stronger game plan. Add proven development experience to your team — land, modeling, city meetings, public hearings. Explore the playbook or bring in the QB.",
+        "Your next play. Backed by experience. Tax Credit QB brings seasoned development experience to your team—from land negotiations and financial modeling to public hearings.",
     }),
   component: Home,
 });
@@ -56,25 +56,28 @@ function Home() {
             LIHTC development strategy + execution
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-hero font-semibold leading-display tracking-display text-ink">
-            <span className="block">Your deal.</span>
-            <span className="block text-steel">A stronger game plan.</span>
+            <span className="block">Your next play.</span>
+            <span className="block text-steel">Backed by experience.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lede text-ink/80">
-            Add proven development experience to your team, exactly where you
-            need it. From land negotiations and financial modeling to city
-            meetings and public hearings, Tax Credit QB helps shape the
-            strategy, make the right connections and move the deal forward.
+            Some deals need a second perspective. Others need someone who can
+            step into the room and help move things forward.
           </p>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Get the presentation tools and direct advice to lead
-            confidently—or bring an experienced QB into the room.
+            Tax Credit QB brings seasoned development experience to your
+            team—from land negotiations and financial modeling to building
+            local support and making your case at a public hearing.
+          </p>
+          <p className="mt-4 max-w-2xl text-lede text-ink/80">
+            Use our presentation playbook, get direct advice, or bring us in
+            for the assignment.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
               <Link to="/playbook">Explore the playbook</Link>
             </Button>
             <Button asChild variant="secondary" size="lg">
-              <Link to="/inquiry">Bring in the QB</Link>
+              <Link to="/inquiry">Talk about your deal</Link>
             </Button>
           </div>
         </div>
@@ -87,13 +90,23 @@ function Home() {
           The playbook
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          The deck is the meeting. The meeting is the deal.
+          Walk into the room prepared.
         </h2>
+        <p className="mt-5 max-w-2xl text-lede text-ink/80">
+          Your first city meeting, neighborhood introduction and public
+          hearing each call for a different approach. Get editable
+          presentation decks, speaking guidance and practical Q&A
+          strategies that help your team establish credibility, uncover
+          concerns and make a stronger case.
+        </p>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {DECKS.map((deck) => (
             <DeckCard key={deck.slug} deck={deck} />
           ))}
         </div>
+        <Button asChild className="mt-8">
+          <Link to="/playbook">See the three presentation tools</Link>
+        </Button>
       </section>
 
       <section className="border-y border-line bg-paper-dim">

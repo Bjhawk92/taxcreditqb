@@ -4,9 +4,14 @@ import { cn } from "@/lib/utils";
 export function ProofBar({ className }: { className?: string }) {
   return (
     <section
-      aria-label="Tax Credit QB proof"
+      aria-label="Experience behind Tax Credit QB"
       className={cn("border-y border-line bg-paper-dim", className)}
     >
+      <div className="mx-auto max-w-6xl px-5 pt-8 md:px-8">
+        <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+          Experience behind Tax Credit QB
+        </p>
+      </div>
       <div className="mx-auto grid max-w-6xl grid-cols-2 md:grid-cols-4">
         {SITE.proof.map((item, i) => (
           <div
@@ -18,7 +23,14 @@ export function ProofBar({ className }: { className?: string }) {
               (i === 2 || i === 3) && "md:border-l",
             )}
           >
-            <p className="font-display text-3xl font-semibold leading-display tracking-tight text-ink md:text-4xl">
+            <p
+              className={cn(
+                "font-display font-semibold leading-display tracking-tight text-ink",
+                item.value.length > 8
+                  ? "text-2xl md:text-3xl"
+                  : "text-3xl md:text-4xl",
+              )}
+            >
               {item.value}
             </p>
             <p className="mt-1 font-display text-sm font-semibold uppercase tracking-nav text-muted">
