@@ -44,31 +44,37 @@ export const NAV = [
     label: "Playbook",
     to: "/playbook",
     blurb: "Presentation templates and tools for the meetings that matter.",
+    tab: "navy",
   },
   {
     label: "Film Room",
     to: "/videos",
     blurb: "Practical video lessons from real development experience.",
+    tab: "blue",
   },
   {
     label: "Huddle",
     to: "/access",
     blurb: "One-on-one advice for your next decision.",
+    tab: "gold",
   },
   {
     label: "Sideline",
     to: "/desk",
     blurb: "Experienced support before, during and after your meeting.",
+    tab: "green",
   },
   {
     label: "Advisory",
     to: "/advisory",
     blurb: "Strategy and hands-on support across your development.",
+    tab: "burgundy",
   },
   {
     label: "About",
     to: "/about",
     blurb: "Meet Brett Johnson and the experience behind Tax Credit QB.",
+    tab: "slate",
   },
 ] as const;
 

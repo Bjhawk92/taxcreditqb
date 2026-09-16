@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { BinderShell } from "@/components/binder-shell";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { NotFound } from "@/components/not-found";
@@ -19,7 +20,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      { name: "theme-color", content: "#f3efe6" },
+      { name: "theme-color", content: "#151e32" },
       {
         name: "description",
         content:
@@ -53,7 +54,7 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-paper text-ink">
+      <body className="min-h-screen bg-desk text-ink">
         <PreviewHostBridge />
         <AuthProvider>
           <a
@@ -62,9 +63,11 @@ function RootDocument() {
           >
             Skip to content
           </a>
-          <Header />
-          <Outlet />
-          <Footer />
+          <BinderShell>
+            <Header />
+            <Outlet />
+            <Footer />
+          </BinderShell>
         </AuthProvider>
         <Scripts />
       </body>

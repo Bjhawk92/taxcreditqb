@@ -15,7 +15,15 @@
   --color-cobalt-deep: #12263f;
   --color-steel: #3a7ec4;
   --color-line: #d4cdc0;
-  --color-rule: #c4bdb0;
+  --color-tab-navy: #1e3356;
+  --color-tab-blue: #2f6fb8;
+  --color-tab-gold: #c49a3c;
+  --color-tab-green: #2d6a4f;
+  --color-tab-burgundy: #8b3a3a;
+  --color-tab-slate: #5a6270;
+  --color-desk: #151e32;
+  --color-ring: #c5c8ce;
+  --color-ring-dark: #7c818c;
 
   --text-hero: clamp(2.55rem, 8.6vw, 6.6rem);
   --text-display: clamp(2.05rem, 5vw, 4.15rem);
@@ -46,14 +54,14 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--color-paper);
+    background: var(--color-desk);
     color: var(--color-ink);
     scroll-behavior: smooth;
   }
 
   body {
     font-family: var(--font-sans);
-    background: var(--color-paper);
+    background: var(--color-desk);
     color: var(--color-ink);
     line-height: var(--leading-body);
   }
@@ -99,9 +107,21 @@
     box-shadow: var(--shadow-border);
   }
 
-  .prose-liht p + p {
-    margin-top: 1.15em;
+  .binder-tab-navy { background: var(--color-tab-navy); color: #f3efe6; }
+  .binder-tab-blue { background: var(--color-tab-blue); color: #f3efe6; }
+  .binder-tab-gold { background: var(--color-tab-gold); color: #1e3356; }
+  .binder-tab-green { background: var(--color-tab-green); color: #f3efe6; }
+  .binder-tab-burgundy { background: var(--color-tab-burgundy); color: #f3efe6; }
+  .binder-tab-slate { background: var(--color-tab-slate); color: #f3efe6; }
+
+  .binder-ring {
+    background:
+      radial-gradient(circle at 35% 35%, #f4f5f7 0%, var(--color-ring) 42%, var(--color-ring-dark) 100%);
+    box-shadow:
+      inset 1px 1px 1px rgb(255 255 255 / 0.55),
+      0 2px 4px rgb(0 0 0 / 0.35);
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
