@@ -28,7 +28,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-24 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-28 md:px-8">
+      <div className="mx-auto flex h-28 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-32 md:px-8">
         <Wordmark />
 
         <div className="hidden items-center gap-2 lg:flex">

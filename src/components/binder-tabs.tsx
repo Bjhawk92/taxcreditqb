@@ -15,7 +15,7 @@ export function BinderTabs() {
   return (
     <nav
       aria-label="Playbook tabs"
-      className="fixed top-28 right-2 z-50 hidden w-28 lg:block xl:right-5"
+      className="fixed top-32 right-2 z-50 hidden w-28 lg:block xl:right-5"
     >
       <ul className="flex flex-col gap-1">
         {NAV.map((item) => (
