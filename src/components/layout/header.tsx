@@ -28,10 +28,22 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-28 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-32 md:px-8">
-        <Wordmark />
+      <div className="relative mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-24 md:px-8">
+        <Wordmark compact />
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="pointer-events-none absolute inset-0 hidden items-center justify-center px-40 lg:flex">
+          <p className="max-w-xl text-center">
+            <span className="block font-display text-lg font-semibold uppercase leading-none tracking-nav xl:text-xl">
+              <span className="text-ink">Proven experience. </span>
+              <span className="text-steel">Your winning edge.</span>
+            </span>
+            <span className="mt-1.5 hidden font-display text-xs font-semibold uppercase tracking-mark text-ink/65 xl:block">
+              LIHTC Development Strategy + Execution
+            </span>
+          </p>
+        </div>
+
+        <div className="hidden shrink-0 items-center gap-2 lg:flex">
           <Button asChild variant="ghost" className="px-2">
             <Link to="/inquiry">Call in the play</Link>
           </Button>
