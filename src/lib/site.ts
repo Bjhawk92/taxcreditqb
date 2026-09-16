@@ -23,7 +23,6 @@ export const SITE = {
   proof: [
     { value: "70", label: "Communities" },
     { value: "Nine", label: "States" },
-    { value: "$40M", label: "Company exit" },
     { value: "Brett Johnson", label: "Founder" },
   ] as const,
   alkaline: {

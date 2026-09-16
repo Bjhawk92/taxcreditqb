@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
     seo({
       title: "About Brett Johnson | Tax Credit QB",
       description:
-        "Proven experience. Your winning edge. Brett Johnson’s development record—about 70 communities, nine states, a $40M company exit—behind Tax Credit QB.",
+        "Proven experience. Your winning edge. Brett Johnson’s development record—about 70 communities across nine states—behind Tax Credit QB.",
     }),
   component: About,
 });
@@ -27,8 +27,8 @@ function About() {
         <div className="md:col-span-7">
           <p className="text-lede text-ink/80">
             Experience building approximately 70 LIHTC communities across nine
-            states. A $40 million company exit. That record is what staff,
-            elected officials, neighbors, and capital already know how to read.
+            states. That record is what staff, elected officials, neighbors,
+            and capital already know how to read.
           </p>
           <p className="mt-5 text-ink/80">
             Brett does not take the developer’s project. He adds judgment,
