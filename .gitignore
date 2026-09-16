@@ -1,0 +1,17 @@
+node_modules
+.node_modules.lock
+.vercel
+.tanstack
+.grok
+artifacts
+attachments
+screenshots
+dist
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+TAXCREDITQB-BOT-PROMPT.md
+AGENTS.md
+startup.sh
