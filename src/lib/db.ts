@@ -230,8 +230,12 @@ export async function getPglite(): Promise<import("@electric-sql/pglite").PGlite
  * Vite `configureServer` awaits this at dev startup; production imports of this
  * module kick it off immediately (see bottom of file).
  */
+const onVercel = typeof process !== "undefined" && Boolean(process.env.VERCEL);
+
 export function ensureDbReady(): Promise<void> {
   if (dbSource !== "pglite") return Promise.resolve();
+  // Serverless has no writable FS. Never boot PGLite on Vercel — Neon or nothing.
+  if (onVercel) return Promise.resolve();
   return getSql().then(() => undefined);
 }
 
@@ -240,7 +244,7 @@ export function ensureDbReady(): Promise<void> {
 const globalBoot = globalThis as typeof globalThis & {
   __pgBootstrapPromise__?: Promise<void>;
 };
-if (typeof window === "undefined" && dbSource === "pglite") {
+if (typeof window === "undefined" && dbSource === "pglite" && !onVercel) {
   globalBoot.__pgBootstrapPromise__ ??= ensureDbReady().catch((err) => {
     globalBoot.__pgBootstrapPromise__ = undefined;
     console.error("[db] PGLite bootstrap failed:", err);
