@@ -32,13 +32,13 @@ export function Header() {
       <div className="relative mx-auto flex h-24 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-32 md:px-8">
         <Wordmark compact />
 
-        <div className="pointer-events-none absolute inset-0 hidden items-center justify-center px-40 lg:flex">
-          <p className="max-w-xl text-center">
-            <span className="block font-display text-lg font-semibold uppercase leading-none tracking-nav xl:text-xl">
+        <div className="pointer-events-none absolute inset-0 hidden items-center justify-center px-36 lg:flex xl:px-40">
+          <p className="max-w-3xl text-center">
+            <span className="block font-display text-[1.6875rem] font-semibold uppercase leading-none tracking-nav xl:text-[1.875rem]">
               <span className="text-ink">Proven experience. </span>
               <span className="text-steel">Your winning edge.</span>
             </span>
-            <span className="mt-1.5 hidden font-display text-xs font-semibold uppercase tracking-mark text-ink/65 xl:block">
+            <span className="mt-2 hidden font-display text-lg font-semibold uppercase tracking-mark text-ink/65 xl:block">
               LIHTC Development Strategy + Execution
             </span>
           </p>

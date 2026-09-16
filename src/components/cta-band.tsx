@@ -26,7 +26,7 @@ export function CtaBand({
   close?: string;
   tone?: "paper" | "ink";
   primary?: { label: string; to: To };
-  secondary?: { label: string; to: To };
+  secondary?: { label: string; to: To } | null;
 }) {
   const ink = tone === "ink";
   return (
@@ -59,18 +59,20 @@ export function CtaBand({
           <Button asChild variant={ink ? "paper" : "invert"} size="lg">
             <Link to={primary.to}>{primary.label}</Link>
           </Button>
-          <Button
-            asChild
-            variant="secondary"
-            size="lg"
-            className={
-              ink
-                ? "border-paper/30 text-paper hover:border-paper hover:bg-ink-2"
-                : undefined
-            }
-          >
-            <Link to={secondary.to}>{secondary.label}</Link>
-          </Button>
+          {secondary ? (
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className={
+                ink
+                  ? "border-paper/30 text-paper hover:border-paper hover:bg-ink-2"
+                  : undefined
+              }
+            >
+              <Link to={secondary.to}>{secondary.label}</Link>
+            </Button>
+          ) : null}
         </div>
         {close ? (
           <p

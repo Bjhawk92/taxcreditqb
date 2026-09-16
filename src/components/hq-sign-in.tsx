@@ -5,9 +5,48 @@ import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { GROK_PROVIDERS, authClient, authEnabled, signIn } from "@/lib/auth/client";
 import { SITE } from "@/lib/site";
+import { cn } from "@/lib/utils";
+
+const BEARER_KEY = "grok-auth.bearer-token";
+
+function persistSessionToken(token: string | null | undefined) {
+  if (!token || typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(BEARER_KEY, token);
+  } catch {
+    /* storage unavailable */
+  }
+}
+
+function explainAuthError(raw: string, mode: "in" | "up") {
+  const msg = raw.toLowerCase();
+  if (msg.includes("invalid origin")) {
+    return "This page cannot create a session from this address. Open taxcreditqb.com/hq in your browser (not www) and try again.";
+  }
+  if (
+    msg.includes("already exists") ||
+    msg.includes("user already") ||
+    msg.includes("unique")
+  ) {
+    return "An account with that email already exists. Switch to Sign in.";
+  }
+  if (msg.includes("password") && (msg.includes("8") || msg.includes("short") || msg.includes("least"))) {
+    return "Password must be at least 8 characters.";
+  }
+  if (
+    mode === "in" &&
+    (msg.includes("invalid") ||
+      msg.includes("not found") ||
+      msg.includes("credential") ||
+      msg.includes("incorrect"))
+  ) {
+    return "No account for that email, or the password is wrong. If this is your first visit, create an account first.";
+  }
+  return raw || "Could not complete that. Try again, or use Continue with Google.";
+}
 
 export function HqSignIn() {
-  const [mode, setMode] = useState<"in" | "up">("in");
+  const [mode, setMode] = useState<"in" | "up">("up");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
@@ -15,31 +54,35 @@ export function HqSignIn() {
   async function onEmail(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    const email = String(form.get("email") ?? "");
+    const email = String(form.get("email") ?? "").trim();
     const password = String(form.get("password") ?? "");
-    const name = String(form.get("name") ?? "");
+    const name = String(form.get("name") ?? "").trim();
     setBusy(true);
     setError(null);
     try {
       if (mode === "up") {
-        const { error: err } = await authClient.signUp.email({
+        const { data, error: err } = await authClient.signUp.email({
           email,
           password,
           name: name || email,
           callbackURL: "/hq",
         });
         if (err) throw new Error(err.message);
+        persistSessionToken(data?.token);
       } else {
-        const { error: err } = await authClient.signIn.email({
+        const { data, error: err } = await authClient.signIn.email({
           email,
           password,
           callbackURL: "/hq",
         });
         if (err) throw new Error(err.message);
+        persistSessionToken(data?.token);
       }
       window.location.href = "/hq";
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Sign-in failed.");
+      setError(
+        explainAuthError(err instanceof Error ? err.message : "", mode),
+      );
     } finally {
       setBusy(false);
     }
@@ -57,19 +100,40 @@ export function HqSignIn() {
           <p className="text-muted">Sign-in is not enabled on this environment.</p>
         ) : (
           <div className="space-y-6">
-            <div className="flex flex-col gap-2">
-              {GROK_PROVIDERS.map((p) => (
-                <Button
-                  key={p.providerId}
-                  type="button"
-                  variant="secondary"
-                  onClick={() => void signIn(p.providerId, { callbackURL: "/hq" })}
-                >
-                  Continue with {p.label}
-                </Button>
-              ))}
+            <div className="flex rounded-sm border border-line">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode("up");
+                  setError(null);
+                }}
+                className={cn(
+                  "min-h-11 flex-1 font-display text-sm font-semibold uppercase tracking-nav",
+                  mode === "up" ? "bg-ink text-paper" : "bg-paper text-ink hover:bg-paper-dim",
+                )}
+              >
+                Create account
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setMode("in");
+                  setError(null);
+                }}
+                className={cn(
+                  "min-h-11 flex-1 font-display text-sm font-semibold uppercase tracking-nav",
+                  mode === "in" ? "bg-ink text-paper" : "bg-paper text-ink hover:bg-paper-dim",
+                )}
+              >
+                Sign in
+              </button>
             </div>
-            <p className="text-center text-sm text-muted">or email</p>
+
+            <p className="text-sm text-ink/75">
+              Use any Gmail or personal email you already have. Nothing is sent
+              to that address — it is only your login.
+            </p>
+
             <form onSubmit={onEmail} className="space-y-4">
               {mode === "up" ? (
                 <Field label="Name" htmlFor="hq-name">
@@ -83,9 +147,14 @@ export function HqSignIn() {
                   type="email"
                   required
                   autoComplete="email"
+                  placeholder="you@gmail.com"
                 />
               </Field>
-              <Field label="Password" htmlFor="hq-password">
+              <Field
+                label="Password"
+                htmlFor="hq-password"
+                hint="At least 8 characters."
+              >
                 <Input
                   id="hq-password"
                   name="password"
@@ -95,20 +164,34 @@ export function HqSignIn() {
                   minLength={8}
                 />
               </Field>
-              {error ? <p className="text-sm text-ink">{error}</p> : null}
-              <Button type="submit" disabled={busy}>
-                {busy ? "Please wait…" : mode === "up" ? "Create account" : "Sign in"}
+              {error ? (
+                <p className="border border-ink bg-paper-dim px-4 py-3 text-sm text-ink">
+                  {error}
+                </p>
+              ) : null}
+              <Button type="submit" disabled={busy} className="w-full">
+                {busy
+                  ? "Please wait…"
+                  : mode === "up"
+                    ? "Create account"
+                    : "Sign in"}
               </Button>
             </form>
-            <button
-              type="button"
-              className="text-sm underline-offset-4 hover:underline"
-              onClick={() => setMode(mode === "in" ? "up" : "in")}
-            >
-              {mode === "in"
-                ? "Need portal access? Create an account"
-                : "Already have an account? Sign in"}
-            </button>
+
+            <p className="text-center text-sm text-muted">or</p>
+            <div className="flex flex-col gap-2">
+              {GROK_PROVIDERS.map((p) => (
+                <Button
+                  key={p.providerId}
+                  type="button"
+                  variant="secondary"
+                  onClick={() => void signIn(p.providerId, { callbackURL: "/hq" })}
+                >
+                  Continue with {p.label}
+                </Button>
+              ))}
+            </div>
+
             <div>
               <button
                 type="button"
@@ -119,12 +202,9 @@ export function HqSignIn() {
               </button>
               {resetOpen ? (
                 <p className="mt-3 text-sm text-muted">
-                  Password reset mail is not connected. Write{" "}
-                  <a className="underline" href={`mailto:${SITE.emails.info}`}>
-                    {SITE.emails.info}
-                  </a>{" "}
-                  from the account email and we will reset it. A reset will not
-                  be sent from this page.
+                  Password reset mail is not connected. Until the domain inbox
+                  is set up, create a new account with a different email, or
+                  use Continue with Google.
                 </p>
               ) : null}
             </div>

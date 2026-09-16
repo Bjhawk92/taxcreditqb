@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { FilmLibrary } from "@/components/film-card";
 import { HqEmpty, HqHeader, HqMain } from "@/components/hq-empty";
 import { Input } from "@/components/ui/field";
-import { VIDEO_GROUPS } from "@/lib/videos";
+import { FILM_CLIPS, type FilmTopic } from "@/lib/videos";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/hq/film")({
@@ -10,40 +11,37 @@ export const Route = createFileRoute("/hq/film")({
 });
 
 const TOPICS = [
-  { id: "all", label: "All topics", ids: [] as readonly string[] },
-  { id: "land", label: "Land and negotiations", ids: ["land", "contract"] },
-  { id: "muni", label: "Municipal introductions", ids: ["intro"] },
-  { id: "hearings", label: "Public hearings and neighborhood concerns", ids: ["opposition"] },
-  { id: "experience", label: "Presenting company experience", ids: ["rooms"] },
-  { id: "partners", label: "Development partners and execution", ids: ["partners", "leaseup"] },
+  { id: "all", label: "All clips" },
+  { id: "questions", label: "Tough questions" },
+  { id: "city", label: "City introductions" },
+  { id: "hearing", label: "Public hearings" },
+  { id: "marketing", label: "Marketing" },
+  { id: "site", label: "Site strategy" },
+  { id: "team", label: "The right people" },
 ] as const;
 
 function HqFilm() {
   const [q, setQ] = useState("");
   const [topic, setTopic] = useState<(typeof TOPICS)[number]["id"]>("all");
 
-  const groups = useMemo(() => {
+  const clips = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    const topicIds = topic === "all" ? null : TOPICS.find((t) => t.id === topic)?.ids;
-    return VIDEO_GROUPS.map((g) => ({
-      ...g,
-      items: g.items.filter((v) => {
-        if (topicIds && !(topicIds as readonly string[]).includes(v.id)) return false;
-        if (!needle) return true;
-        return (
-          v.title.toLowerCase().includes(needle) ||
-          v.body.toLowerCase().includes(needle) ||
-          g.heading.toLowerCase().includes(needle)
-        );
-      }),
-    })).filter((g) => g.items.length > 0);
+    return FILM_CLIPS.filter((clip) => {
+      if (topic !== "all" && clip.topic !== (topic as FilmTopic)) return false;
+      if (!needle) return true;
+      return (
+        clip.title.toLowerCase().includes(needle) ||
+        clip.description.toLowerCase().includes(needle) ||
+        clip.format.toLowerCase().includes(needle)
+      );
+    });
   }, [q, topic]);
 
   return (
     <main id="main">
       <HqHeader
         title="Film Room"
-        sub="Instructional clips included with membership. Only real titles are listed. Unpublished clips stay marked as not recorded."
+        sub="Short clips on the conversations, decks, and specialists around a LIHTC deal. Unpublished titles stay marked Coming Soon."
       />
       <HqMain>
         <label className="block max-w-md text-sm" htmlFor="film-search">
@@ -53,8 +51,8 @@ function HqFilm() {
           <Input
             id="film-search"
             value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Land, hearings, syndicators…"
+            onChange={(e) => setQ(e.currentTarget.value)}
+            placeholder="Hearings, city meetings, modeling…"
           />
         </label>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -74,33 +72,16 @@ function HqFilm() {
             </button>
           ))}
         </div>
-        {groups.length === 0 ? (
+        {clips.length === 0 ? (
           <div className="mt-10">
             <HqEmpty
               title="No matching clips"
-              body="Nothing in the current library matches that search. Only recorded and listed titles appear here."
+              body="Nothing in the current library matches that search. Only listed titles appear here."
             />
           </div>
         ) : (
-          <div className="mt-10 space-y-10">
-            {groups.map((g) => (
-              <section key={g.heading}>
-                <h2 className="font-display text-2xl font-semibold tracking-tight">
-                  {g.heading}
-                </h2>
-                <ul className="mt-4 grid gap-4 md:grid-cols-2">
-                  {g.items.map((v) => (
-                    <li key={v.id} className="border border-line p-5">
-                      <h3 className="font-display text-xl font-semibold">{v.title}</h3>
-                      <p className="mt-1 text-sm uppercase tracking-nav text-muted">
-                        {v.available ? `${v.duration} · Available` : "Not recorded yet"}
-                      </p>
-                      <p className="mt-2 text-ink/75">{v.body}</p>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
+          <div className="mt-10">
+            <FilmLibrary clips={clips} />
           </div>
         )}
       </HqMain>

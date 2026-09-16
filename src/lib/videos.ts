@@ -1,105 +1,161 @@
-export const VIDEO_GROUPS = [
+import { SITE } from "@/lib/site";
+
+/**
+ * Film Room library.
+ *
+ * To publish a clip:
+ * 1. Set `videoSrc` to the hosted mp4/webm URL (or `/film-room/your-clip.mp4`).
+ * 2. Set `captionsSrc` to a WebVTT file and keep `captionsLabel`.
+ * 3. Set `runtime` (e.g. "1:48") — it stays hidden until this is filled.
+ * 4. Swap `thumbnail.src` for a still from the recording.
+ *
+ * Leave `videoSrc` empty to keep the card in Coming Soon (no play button).
+ */
+export type FilmFormat =
+  | "QB Breakdown"
+  | "Deck Walkthrough"
+  | "Presentation Breakdown"
+  | "Marketing Demo"
+  | "Deal Breakdown";
+
+export type FilmTopic =
+  | "questions"
+  | "city"
+  | "hearing"
+  | "marketing"
+  | "site"
+  | "team";
+
+export type FilmClip = {
+  id: string;
+  topic: FilmTopic;
+  format: FilmFormat;
+  title: string;
+  description: string;
+  thumbnail: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
+  /** mm:ss. Empty until the clip is uploaded. */
+  runtime: string;
+  /** Public URL. Empty = Coming Soon. */
+  videoSrc: string;
+  /** WebVTT captions. Empty until captions are produced. */
+  captionsSrc: string;
+  captionsLabel: string;
+};
+
+export const FILM_CLIPS: FilmClip[] = [
   {
-    heading: "Land acquisition, site control and negotiations",
-    playbook: {
-      href: "/playbook/private-intro" as const,
-      label: "Municipal Introduction",
+    id: "tough-questions",
+    topic: "questions",
+    format: "QB Breakdown",
+    title: "Handling the Tough Questions",
+    description:
+      "Property values. Traffic. Who will live here? See how to address common neighborhood objections with clear answers and credible project information.",
+    thumbnail: {
+      src: "/film-room/tough-questions.jpg",
+      alt: "Brett Johnson beside the question: Will this hurt property values?",
+      caption:
+        "Photo: Brett on camera — replace with authentic clip still.",
     },
-    items: [
-      {
-        id: "land",
-        title: "Land acquisition",
-        duration: "12:00",
-        body: "How to walk a site and a seller before you are in love with the dirt.",
-        available: true,
-      },
-    ],
+    runtime: "",
+    videoSrc: "",
+    captionsSrc: "",
+    captionsLabel: "English captions",
   },
   {
-    heading: "Contract business terms and working effectively with legal counsel",
-    playbook: null,
-    items: [
-      {
-        id: "contract",
-        title: "Contract business terms",
-        duration: "14:00",
-        body: "What to fight for in the purchase agreement. Option versus close. The outs you will actually use. Counsel drafts. You set the business terms.",
-        available: true,
-      },
-    ],
-  },
-  {
-    heading: "Arranging meetings and identifying the right decision-makers",
-    playbook: {
-      href: "/playbook/private-intro" as const,
-      label: "Municipal Introduction",
+    id: "city-meeting",
+    topic: "city",
+    format: "Deck Walkthrough",
+    title: "Your First Meeting with the City",
+    description:
+      "Make your first introduction count. See how to present your track record, explore local housing needs, and gauge support before committing to a market or site.",
+    thumbnail: {
+      src: "/film-room/city-meeting.jpg",
+      alt: "Municipal Introduction deck cover with two supporting slides behind it.",
+      caption:
+        "Placeholder still: introductory deck cover — replace with recorded walkthrough.",
     },
-    items: [
-      {
-        id: "intro",
-        title: "Arranging the municipal introduction",
-        duration: "09:00",
-        body: "Who to call, in what order, and what to send ahead of a city manager meeting.",
-        available: true,
-      },
-    ],
+    runtime: "",
+    videoSrc: "",
+    captionsSrc: "",
+    captionsLabel: "English captions",
   },
   {
-    heading: "Presenting your company’s experience to different audiences",
-    playbook: {
-      href: "/playbook/hearing" as const,
-      label: "Public Hearing",
+    id: "public-hearing",
+    topic: "hearing",
+    format: "Presentation Breakdown",
+    title: "Before the Public Hearing",
+    description:
+      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and addresses the questions your audience is likely to bring.",
+    thumbnail: {
+      src: "/film-room/public-hearing.jpg",
+      alt: "Abstract site plan beside a neighborhood Q&A slide.",
+      caption:
+        "Placeholder still: site plan and neighborhood Q&A — replace with recorded walkthrough.",
     },
-    items: [
-      {
-        id: "rooms",
-        title: "The same résumé, three rooms",
-        duration: "16:00",
-        body: "Staff, elected officials, and neighbors. Same track record. Three different asks.",
-        available: true,
-      },
-    ],
+    runtime: "",
+    videoSrc: "",
+    captionsSrc: "",
+    captionsLabel: "English captions",
   },
   {
-    heading: "Preparing for public hearings and neighborhood opposition",
-    playbook: {
-      href: "/playbook/neighborhood" as const,
-      label: "Neighborhood Meeting",
+    id: "ai-story",
+    topic: "marketing",
+    format: "Marketing Demo",
+    title: "AI That Helps Tell Your Story",
+    description:
+      "See how we use AI alongside development experience to create clearer neighborhood flyers, brochures, and project information.",
+    thumbnail: {
+      src: "/film-room/ai-story.jpg",
+      alt: "Before-and-after: rough project notes next to a finished community flyer.",
+      caption:
+        "Placeholder still: project facts to community flyer — replace with recorded demo.",
     },
-    items: [
-      {
-        id: "opposition",
-        title: "Hearings and neighborhood opposition",
-        duration: "",
-        body: "How to prepare the record, run the Q&A, and answer the arguments that show up at approval.",
-        available: false,
-      },
-    ],
+    runtime: "",
+    videoSrc: "",
+    captionsSrc: "",
+    captionsLabel: "English captions",
   },
   {
-    heading: "Working with architects, contractors and syndicators",
-    playbook: null,
-    items: [
-      {
-        id: "partners",
-        title: "Architects, contractors and syndicators",
-        duration: "",
-        body: "When to bring each specialist in, what to ask, and how to keep the relationship yours.",
-        available: false,
-      },
-    ],
+    id: "site-strategy",
+    topic: "site",
+    format: "Deal Breakdown",
+    title: "From Site to Strategy",
+    description:
+      "A promising site is only the beginning. Learn what to ask about land terms, local approvals, and timing before moving further into a deal.",
+    thumbnail: {
+      src: "/film-room/site-strategy.jpg",
+      alt: "Marked-up parcel map with restrained annotations for site control, access, and zoning.",
+      caption:
+        "Placeholder still: annotated parcel — replace with recorded walkthrough.",
+    },
+    runtime: "",
+    videoSrc: "",
+    captionsSrc: "",
+    captionsLabel: "English captions",
   },
   {
-    heading: "Marketing, lease-up and development execution",
-    playbook: null,
-    items: [
-      {
-        id: "leaseup",
-        title: "Marketing, lease-up and execution",
-        duration: "",
-        body: "What to put in place after the vote so the project still performs.",
-        available: false,
-      },
-    ],
+    id: "right-people",
+    topic: "team",
+    format: "QB Breakdown",
+    title: "The Right People. The Right Play.",
+    description: `Some deals need another specialist at the table. See how we help connect the development strategy with the people who can execute it. When the work needs a model, ${SITE.alkaline.name} is the named modeling partner.`,
+    thumbnail: {
+      src: "/film-room/right-people.jpg",
+      alt: "Playbook diagram with Brett Johnson at the QB node, connected to architect, contractor, syndicator, and modeling.",
+      caption:
+        "Photo: Brett as the QB node — replace with authentic clip still.",
+    },
+    runtime: "",
+    videoSrc: "",
+    captionsSrc: "",
+    captionsLabel: "English captions",
   },
-] as const;
+];
+
+export function isFilmReady(clip: FilmClip) {
+  return Boolean(clip.videoSrc);
+}

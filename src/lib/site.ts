@@ -50,7 +50,7 @@ export const NAV = [
   {
     label: "Film Room",
     to: "/videos",
-    blurb: "Practical video lessons from real development experience.",
+    blurb: "Short clips. Real examples. Practical insight for the next deal.",
     tab: "blue",
   },
   {
