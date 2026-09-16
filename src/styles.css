@@ -130,10 +130,34 @@
     inset: 0;
     z-index: 4;
     transform-origin: left center;
-    background: var(--color-paper);
-    box-shadow: -12px 0 24px rgb(30 51 86 / 0.12);
+    transform-style: preserve-3d;
+    background:
+      linear-gradient(90deg, rgb(30 51 86 / 0.08) 0, transparent 28px),
+      linear-gradient(270deg, rgb(90 80 70 / 0.22) 0 3px, transparent 18px),
+      var(--color-paper);
+    border-right: 2px solid var(--color-rule);
+    box-shadow:
+      4px 0 0 rgb(140 132 120 / 0.55),
+      7px 0 0 rgb(90 84 74 / 0.35),
+      18px 10px 32px rgb(0 0 0 / 0.22);
     animation: page-turn 0.7s ease-in forwards;
     backface-visibility: hidden;
+  }
+
+  .page-turn-flip::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -4px;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(
+      180deg,
+      #cfc8bc 0%,
+      #8a8378 35%,
+      #d4cdc0 70%,
+      #6f6a62 100%
+    );
   }
 
   @keyframes page-turn {
@@ -141,7 +165,7 @@
       transform: rotateY(0deg);
       opacity: 1;
     }
-    70% {
+    78% {
       opacity: 1;
     }
     100% {

@@ -13,7 +13,7 @@ export function BinderShell({ children }: { children: ReactNode }) {
       <div className="relative mx-auto max-w-[92rem]">
         <div className="relative bg-paper shadow-[0_12px_40px_rgb(0_0_0_/_0.35)] lg:mr-24">
           <BinderRings />
-          <div className="relative lg:pl-14">
+          <div className="relative lg:pl-16">
             {header}
             <PageTurn>{rest}</PageTurn>
           </div>
