@@ -115,25 +115,38 @@
   .binder-tab-slate { background: var(--color-tab-slate); color: #f3efe6; }
 
   .page-turn-stage {
-    perspective: 1600px;
+    position: relative;
+    perspective: 1800px;
+    perspective-origin: left center;
   }
 
   .page-turn-leaf {
-    transform-origin: right center;
-    animation: page-turn 0.7s ease-out;
+    position: relative;
+  }
+
+  .page-turn-flip {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    transform-origin: left center;
+    background: var(--color-paper);
+    box-shadow: -12px 0 24px rgb(30 51 86 / 0.12);
+    animation: page-turn 0.7s ease-in forwards;
     backface-visibility: hidden;
   }
 
   @keyframes page-turn {
     0% {
-      transform: rotateY(78deg);
-      opacity: 0.55;
+      transform: rotateY(0deg);
+      opacity: 1;
     }
-    55% {
+    70% {
       opacity: 1;
     }
     100% {
-      transform: rotateY(0deg);
+      transform: rotateY(-95deg);
+      opacity: 0;
     }
   }
 
@@ -145,7 +158,8 @@
     scroll-behavior: auto;
   }
 
-  .page-turn-leaf {
+  .page-turn-leaf,
+  .page-turn-flip {
     animation: none;
   }
 
