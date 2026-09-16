@@ -3,9 +3,11 @@ import { authMiddleware } from "@/lib/auth/middleware";
 import { getSql } from "@/lib/db";
 import { SITE } from "@/lib/site";
 
-const ADMIN_EMAILS = [SITE.emails.brett, SITE.emails.info].map((e) =>
-  e.toLowerCase(),
-);
+const ADMIN_EMAILS = [
+  SITE.emails.brett,
+  SITE.emails.info,
+  "brett@caveblue.com",
+].map((e) => e.toLowerCase());
 
 const QUESTION_STATUSES = ["submitted", "awaiting information", "answered"] as const;
 const HUDDLE_STATUSES = ["submitted", "accepted", "completed", "declined"] as const;

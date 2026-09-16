@@ -18,10 +18,32 @@ function persistSessionToken(token: string | null | undefined) {
   }
 }
 
+function formatAuthFailure(
+  err: {
+    message?: string | null;
+    status?: number;
+    statusText?: string;
+    code?: string;
+  } | null,
+  thrown: unknown,
+) {
+  const bits = [
+    err?.message,
+    err?.code,
+    err?.statusText,
+    err?.status != null ? `HTTP ${err.status}` : "",
+  ]
+    .map((s) => String(s ?? "").trim())
+    .filter(Boolean);
+  if (bits.length) return bits.join(" · ");
+  if (thrown instanceof Error && thrown.message) return thrown.message;
+  return "";
+}
+
 function explainAuthError(raw: string, mode: "in" | "up") {
   const msg = raw.toLowerCase();
-  if (msg.includes("invalid origin")) {
-    return "This page cannot create a session from this address. Open taxcreditqb.com/hq in your browser (not www) and try again.";
+  if (msg.includes("invalid origin") || msg.includes("http 403")) {
+    return "This page cannot create a session from this address. Open taxcreditqb.com/hq (not www) and try again.";
   }
   if (
     msg.includes("already exists") ||
@@ -41,6 +63,9 @@ function explainAuthError(raw: string, mode: "in" | "up") {
       msg.includes("incorrect"))
   ) {
     return "No account for that email, or the password is wrong. If this is your first visit, create an account first.";
+  }
+  if (msg.includes("http 5") || msg.includes("database") || msg.includes("econnrefused") || msg.includes("pglite")) {
+    return "The portal database is not connected on the live site yet. Add a Neon database and the auth environment variables, then redeploy.";
   }
   return raw || "Could not complete that. Try again, or use Continue with Google.";
 }
@@ -67,7 +92,7 @@ export function HqSignIn() {
           name: name || email,
           callbackURL: "/hq",
         });
-        if (err) throw new Error(err.message);
+        if (err) throw new Error(formatAuthFailure(err, err));
         persistSessionToken(data?.token);
       } else {
         const { data, error: err } = await authClient.signIn.email({
@@ -75,7 +100,7 @@ export function HqSignIn() {
           password,
           callbackURL: "/hq",
         });
-        if (err) throw new Error(err.message);
+        if (err) throw new Error(formatAuthFailure(err, err));
         persistSessionToken(data?.token);
       }
       window.location.href = "/hq";
