@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
 import { getHqAuthStatus } from "@/lib/hq-auth-status";
-import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const BEARER_KEY = "grok-auth.bearer-token";
