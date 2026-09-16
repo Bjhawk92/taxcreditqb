@@ -31,7 +31,11 @@ function HqMessages() {
         body: String(form.get("body") ?? ""),
         projectName: String(form.get("projectName") ?? ""),
       },
-    });
+    }).catch(() => ({
+      ok: false as const,
+      error:
+        "The portal is in preview. Use Call in the Play to send a question.",
+    }));
     if (!res.ok) {
       setMsg(res.error);
       return;

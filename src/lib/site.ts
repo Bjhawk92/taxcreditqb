@@ -80,7 +80,7 @@ export const NAV = [
   {
     label: "Team HQ",
     to: "/hq",
-    blurb: "Your private client portal.",
+    blurb: "Client portal for membership, files and project work.",
     tab: "hq",
   },
 ] as const;

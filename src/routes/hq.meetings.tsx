@@ -34,7 +34,11 @@ function HqMeetings() {
         role: String(form.get("role") ?? ""),
         prep: String(form.get("prep") ?? ""),
       },
-    });
+    }).catch(() => ({
+      ok: false as const,
+      error:
+        "The portal is in preview. Use Call in the Play to request meeting support.",
+    }));
     if (!res.ok) {
       setMsg(res.error);
       return;

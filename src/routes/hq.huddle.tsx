@@ -32,7 +32,11 @@ function HqHuddle() {
         projectInfo: String(form.get("projectInfo") ?? ""),
         deadline: String(form.get("deadline") ?? ""),
       },
-    });
+    }).catch(() => ({
+      ok: false as const,
+      error:
+        "The portal is in preview. Use Call in the Play to send a huddle request.",
+    }));
     if (!res.ok) {
       setMsg(res.error);
       return;
