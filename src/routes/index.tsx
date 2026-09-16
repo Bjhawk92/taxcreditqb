@@ -145,9 +145,10 @@ function Home() {
             </h2>
             <p className="mt-5 text-lede text-ink/80">
               Brett Johnson helped build approximately 70 affordable-housing
-              communities across nine states. That experience brings
-              perspective to the numbers, the negotiations and the people who
-              influence a deal.
+              communities across nine states — over 5,000 units developed,
+              built and stabilized — with more than 20 years in the work.
+              That experience brings perspective to the numbers, the
+              negotiations and the people who influence a deal.
             </p>
             <p className="mt-4 text-lede text-ink/80">
               Bring him in for a second opinion, a difficult assignment or a

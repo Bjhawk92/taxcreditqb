@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
     seo({
       title: "About Brett Johnson | Tax Credit QB",
       description:
-        "Proven experience. Your winning edge. Brett Johnson’s development record—about 70 communities across nine states—behind Tax Credit QB.",
+        "Proven experience. Your winning edge. Brett Johnson — 20+ years, about 70 communities, over 5,000 units developed, built and stabilized across nine states.",
     }),
   component: About,
 });
@@ -26,9 +26,10 @@ function About() {
       <section className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-12 md:px-8 md:py-20">
         <div className="md:col-span-7">
           <p className="text-lede text-ink/80">
-            Experience building approximately 70 LIHTC communities across nine
-            states. That record is what staff, elected officials, neighbors,
-            and capital already know how to read.
+            More than 20 years in the work. Approximately 70 affordable-housing
+            communities across nine states. Over 5,000 units developed, built
+            and stabilized. That record is what staff, elected officials,
+            neighbors, and capital already know how to read.
           </p>
           <p className="mt-5 text-ink/80">
             Brett does not take the developer’s project. He adds judgment,

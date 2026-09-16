@@ -12,14 +12,15 @@ export function ProofBar({ className }: { className?: string }) {
           Experience behind Tax Credit QB
         </p>
       </div>
-      <div className="mx-auto grid max-w-6xl grid-cols-2 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 lg:grid-cols-5">
         {SITE.proof.map((item, i) => (
           <div
             key={item.label}
             className={cn(
-              "px-5 py-6 md:px-8 md:py-7",
+              "px-5 py-6 md:px-6 md:py-7",
               i % 2 === 1 && "border-l border-line",
-              i === 2 && "border-t border-line md:border-t-0 md:border-l",
+              i >= 2 && "border-t border-line lg:border-t-0",
+              i > 0 && "lg:border-l",
             )}
           >
             <p

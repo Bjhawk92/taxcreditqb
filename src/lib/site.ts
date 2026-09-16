@@ -22,7 +22,9 @@ export const SITE = {
   },
   proof: [
     { value: "70", label: "Communities" },
+    { value: "5,000+", label: "Units developed, built & stabilized" },
     { value: "Nine", label: "States" },
+    { value: "20+", label: "Years experience" },
     { value: "Brett Johnson", label: "Founder" },
   ] as const,
   alkaline: {
