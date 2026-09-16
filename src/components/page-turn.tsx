@@ -8,7 +8,10 @@ export function PageTurn({ children }: { children: ReactNode }) {
       <div key={pathname} className="page-turn-leaf">
         {children}
       </div>
-      <div key={`${pathname}-flip`} className="page-turn-flip" aria-hidden="true" />
+      <div key={`${pathname}-flip`} className="page-turn-flip" aria-hidden="true">
+        <span className="page-turn-curl" />
+        <span className="page-turn-fold" />
+      </div>
     </div>
   );
 }
