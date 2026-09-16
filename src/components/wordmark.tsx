@@ -20,10 +20,10 @@ export function Wordmark({
       aria-label="Tax Credit QB home"
     >
       <img
-        src="/brand/tax-credit-qb-chrome-header.png"
+        src="/brand/qb-lockup.png"
         alt="Tax Credit QB"
         className={cn(
-          "h-24 w-auto md:h-28",
+          "h-28 w-auto md:h-32",
           invert && "brightness-0 invert",
         )}
       />
