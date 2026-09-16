@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
-import { GROK_PROVIDERS, authClient, authEnabled, signIn } from "@/lib/auth/client";
+import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
+import { getHqAuthStatus } from "@/lib/hq-auth-status";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -18,26 +19,10 @@ function persistSessionToken(token: string | null | undefined) {
   }
 }
 
-function formatAuthFailure(
-  err: {
-    message?: string | null;
-    status?: number;
-    statusText?: string;
-    code?: string;
-  } | null,
-  thrown: unknown,
-) {
-  const bits = [
-    err?.message,
-    err?.code,
-    err?.statusText,
-    err?.status != null ? `HTTP ${err.status}` : "",
-  ]
-    .map((s) => String(s ?? "").trim())
-    .filter(Boolean);
-  if (bits.length) return bits.join(" · ");
-  if (thrown instanceof Error && thrown.message) return thrown.message;
-  return "";
+function isLiveHost() {
+  if (typeof window === "undefined") return false;
+  const host = window.location.hostname;
+  return host === "taxcreditqb.com" || host === "www.taxcreditqb.com" || host.endsWith(".vercel.app");
 }
 
 function explainAuthError(raw: string, mode: "in" | "up") {
@@ -64,10 +49,52 @@ function explainAuthError(raw: string, mode: "in" | "up") {
   ) {
     return "No account for that email, or the password is wrong. If this is your first visit, create an account first.";
   }
-  if (msg.includes("http 5") || msg.includes("database") || msg.includes("econnrefused") || msg.includes("pglite")) {
-    return "The portal database is not connected on the live site yet. Add a Neon database and the auth environment variables, then redeploy.";
+  if (
+    msg.includes("http 5") ||
+    msg.includes("database") ||
+    msg.includes("econnrefused") ||
+    msg.includes("pglite")
+  ) {
+    return "The portal database is not connected on the live site yet. In Vercel, add a Neon database, then add BETTER_AUTH_URL and BETTER_AUTH_SECRET, and Redeploy.";
   }
-  return raw || "Could not complete that. Try again, or use Continue with Google.";
+  return raw || "Could not create the account. The live site still needs a Neon database connected in Vercel.";
+}
+
+async function emailAuth(
+  mode: "in" | "up",
+  payload: { email: string; password: string; name?: string },
+) {
+  const path =
+    mode === "up" ? "/api/auth/sign-up/email" : "/api/auth/sign-in/email";
+  const res = await fetch(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ ...payload, callbackURL: "/hq" }),
+  });
+  const text = await res.text();
+  let body: Record<string, unknown> = {};
+  try {
+    body = JSON.parse(text) as Record<string, unknown>;
+  } catch {
+    /* HTML or empty */
+  }
+  if (!res.ok) {
+    const nested =
+      body.error && typeof body.error === "object"
+        ? (body.error as Record<string, unknown>)
+        : null;
+    const msg = String(
+      body.message ||
+        nested?.message ||
+        body.code ||
+        nested?.code ||
+        (text && !text.startsWith("<") ? text.slice(0, 240) : "") ||
+        `HTTP ${res.status}`,
+    );
+    throw new Error(`${msg} · HTTP ${res.status}`);
+  }
+  persistSessionToken(typeof body.token === "string" ? body.token : null);
 }
 
 export function HqSignIn() {
@@ -75,6 +102,19 @@ export function HqSignIn() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
+  const [status, setStatus] = useState<{
+    database: "neon" | "pglite";
+    social: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    void getHqAuthStatus()
+      .then(setStatus)
+      .catch(() => setStatus({ database: "pglite", social: false }));
+  }, []);
+
+  const dbMissing = isLiveHost() && status?.database === "pglite";
+  const showSocial = Boolean(status?.social);
 
   async function onEmail(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -85,24 +125,11 @@ export function HqSignIn() {
     setBusy(true);
     setError(null);
     try {
-      if (mode === "up") {
-        const { data, error: err } = await authClient.signUp.email({
-          email,
-          password,
-          name: name || email,
-          callbackURL: "/hq",
-        });
-        if (err) throw new Error(formatAuthFailure(err, err));
-        persistSessionToken(data?.token);
-      } else {
-        const { data, error: err } = await authClient.signIn.email({
-          email,
-          password,
-          callbackURL: "/hq",
-        });
-        if (err) throw new Error(formatAuthFailure(err, err));
-        persistSessionToken(data?.token);
-      }
+      await emailAuth(mode, {
+        email,
+        password,
+        name: name || email,
+      });
       window.location.href = "/hq";
     } catch (err) {
       setError(
@@ -125,6 +152,16 @@ export function HqSignIn() {
           <p className="text-muted">Sign-in is not enabled on this environment.</p>
         ) : (
           <div className="space-y-6">
+            {dbMissing ? (
+              <p className="border border-ink bg-paper-dim px-4 py-3 text-sm text-ink">
+                Team HQ cannot store accounts on this live site yet. In the
+                Vercel project, open Storage, create a Neon Postgres database,
+                add <span className="font-semibold">BETTER_AUTH_URL</span> and{" "}
+                <span className="font-semibold">BETTER_AUTH_SECRET</span>, then
+                Redeploy. Google sign-in is not connected here.
+              </p>
+            ) : null}
+
             <div className="flex rounded-sm border border-line">
               <button
                 type="button"
@@ -194,7 +231,7 @@ export function HqSignIn() {
                   {error}
                 </p>
               ) : null}
-              <Button type="submit" disabled={busy} className="w-full">
+              <Button type="submit" disabled={busy || dbMissing} className="w-full">
                 {busy
                   ? "Please wait…"
                   : mode === "up"
@@ -203,19 +240,37 @@ export function HqSignIn() {
               </Button>
             </form>
 
-            <p className="text-center text-sm text-muted">or</p>
-            <div className="flex flex-col gap-2">
-              {GROK_PROVIDERS.map((p) => (
-                <Button
-                  key={p.providerId}
-                  type="button"
-                  variant="secondary"
-                  onClick={() => void signIn(p.providerId, { callbackURL: "/hq" })}
-                >
-                  Continue with {p.label}
-                </Button>
-              ))}
-            </div>
+            {showSocial ? (
+              <>
+                <p className="text-center text-sm text-muted">or</p>
+                <div className="flex flex-col gap-2">
+                  {GROK_PROVIDERS.map((p) => (
+                    <Button
+                      key={p.providerId}
+                      type="button"
+                      variant="secondary"
+                      onClick={() =>
+                        void signIn(p.providerId, { callbackURL: "/hq" }).catch(
+                          (err: unknown) =>
+                            setError(
+                              err instanceof Error
+                                ? err.message
+                                : "Google sign-in did not start.",
+                            ),
+                        )
+                      }
+                    >
+                      Continue with {p.label}
+                    </Button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="text-sm text-muted">
+                Continue with Google is not connected on this domain. Use email
+                and password after the database is attached.
+              </p>
+            )}
 
             <div>
               <button
@@ -228,8 +283,7 @@ export function HqSignIn() {
               {resetOpen ? (
                 <p className="mt-3 text-sm text-muted">
                   Password reset mail is not connected. Until the domain inbox
-                  is set up, create a new account with a different email, or
-                  use Continue with Google.
+                  is set up, create a new account with a different email.
                 </p>
               ) : null}
             </div>

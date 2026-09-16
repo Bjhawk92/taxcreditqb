@@ -131,7 +131,11 @@ const trustedOrigins: string[] = explicitBaseURL
       ...LOCAL_DEV_ORIGINS,
     ];
 
-const databaseUrl = env("DATABASE_URL");
+const databaseUrl =
+  env("DATABASE_URL") ??
+  env("POSTGRES_URL") ??
+  env("POSTGRES_PRISMA_URL") ??
+  env("DATABASE_URL_UNPOOLED");
 
 // Static broker OAuth endpoints (skip OIDC discovery on every sign-in / callback).
 // Discovery would cost an extra network hop to the broker before the popup can
