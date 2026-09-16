@@ -1,7 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "buildCommand": "npm run build && node -e \"require('node:fs').accessSync('.vercel/output/config.json')\"",
-  "installCommand": "npm install",
-  "ignoreCommand": "exit 1"
+  "cleanUrls": true
 }
