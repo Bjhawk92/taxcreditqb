@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
+import shield from "@/assets/tax-credit-qb-shield.png";
 
 export function Wordmark({
   className,
@@ -22,11 +23,11 @@ export function Wordmark({
       aria-label="Tax Credit QB home"
     >
       <img
-        src="/brand/tax-credit-qb-shield.png"
+        src={shield}
         alt="Tax Credit QB"
         className={cn(
           "w-auto",
-          compact ? "h-[5.5rem] md:h-28" : "h-28 md:h-32",
+          compact ? "h-14 md:h-28" : "h-20 md:h-32",
           invert && "brightness-0 invert",
         )}
       />
