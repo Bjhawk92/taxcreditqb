@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CtaBand } from "@/components/cta-band";
 import { DeckCard } from "@/components/deck-card";
 import { EmailCapture } from "@/components/email-capture";
-import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { PlaybookBackdrop } from "@/components/playbook-backdrop";
 import { ProofBar } from "@/components/proof-bar";
 import { Quote } from "@/components/quote";
@@ -136,22 +135,38 @@ function Home() {
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
               The QB
             </p>
-            <h2 className="mt-3 font-display text-section font-semibold leading-section">
-              Brett Johnson does not take the deal. You own the ball.
+            <h2 className="mt-3 max-w-xl font-display text-section font-semibold leading-section">
+              <span className="block">A proven developer.</span>
+              <span className="block">A valuable addition to your team.</span>
             </h2>
             <p className="mt-5 text-lede text-ink/80">
-              He is under center for the rooms that decide whether the drive
-              lives. Résumé, pocket presence, judgment. You stay the sponsor.
+              Brett Johnson helped build approximately 70 affordable-housing
+              communities across nine states. That experience brings
+              perspective to the numbers, the negotiations and the people who
+              influence a deal.
+            </p>
+            <p className="mt-4 text-lede text-ink/80">
+              Bring him in for a second opinion, a difficult assignment or a
+              meeting that matters. You gain an experienced operator who can
+              assess the situation, make the right connections and help put
+              the plan into action.
             </p>
             <Quote className="mt-8">If we can’t run it, we know who can.</Quote>
             <Button asChild className="mt-8">
-              <Link to="/about">About the QB</Link>
+              <Link to="/about">Meet the QB</Link>
             </Button>
           </div>
-          <PhotoPlaceholder
-            aspect="photo"
-            caption="Photo: Brett on site — replace with authentic image."
-          />
+          <figure className="min-w-0">
+            <div className="relative aspect-[4/3] overflow-hidden border border-line bg-paper-dim plan-grid">
+              <img
+                src="/textures/site-plan.jpg"
+                alt=""
+                className="absolute inset-0 size-full object-cover opacity-50 mix-blend-multiply"
+              />
+            </div>
+          </figure>
+        </div>
+      </section>
         </div>
       </section>
 
