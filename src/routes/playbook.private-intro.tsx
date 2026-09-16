@@ -20,9 +20,9 @@ function PrivateIntro() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Fig. 01 · Opening drive"
-        title="Staff time is the scarce asset."
-        sub="This deck is not a vision book. It is who you are, what you have delivered, and why this city should take the next meeting."
+        eyebrow="Municipal Introduction"
+        title="Introduce the company. Read the market."
+        sub="Introduce your company, establish credibility and explore a new market with city managers, planning directors and council members. Present your track record while learning about local housing priorities, potential sites, governmental support and incentive opportunities."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-10 md:grid-cols-12">

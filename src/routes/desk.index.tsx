@@ -2,35 +2,37 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
-import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/desk/")({
   head: () =>
     seo({
-      title: "Deal Desk | Modeling, Renderings, Intros",
+      title: "Sideline | Meeting support | Tax Credit QB",
       description:
-        "If the QB does not do that piece, the QB knows who does. LIHTC modeling via Alkaline Advisors. Renderings, architects, GCs, syndicators.",
+        "Bring experience into the room. Preparation, a supporting voice, or an active presentation role—agreed in advance. Travel extra.",
     }),
   component: DeskIndex,
 });
 
-const ITEMS = [
+const ROOMS = [
+  "Municipal introductions",
+  "Neighborhood meetings",
+  "Public hearings",
+  "Landowner negotiations",
+  "Syndicator or lender discussions",
+];
+
+const ROLES = [
   {
-    title: "LIHTC modeling",
-    body: "Fulfilled by Alkaline Advisors. Tax Credit QB QBs the work. Alkaline builds the model. Not in-house.",
-    href: "/desk/modeling" as const,
+    title: "Behind-the-scenes preparation",
+    body: "Shape the approach, prep speakers, and work the Q&A before anyone sits down.",
   },
   {
-    title: "Renderings / architect",
-    body: "When the room needs to see the product, not hear about it. Introduction, not a studio on payroll.",
+    title: "A supporting voice",
+    body: "In the room with your team. You lead. Tax Credit QB backs the points that need a second voice.",
   },
   {
-    title: "Contractor relationships",
-    body: "GCs who have actually closed LIHTC. You still hold the contract.",
-  },
-  {
-    title: "Syndicator relationships",
-    body: "Introductions so equity can see a sponsor who can stand up in city hall.",
+    title: "An active presentation role",
+    body: "When the assignment is to present. The role is written down before the meeting.",
   },
 ];
 
@@ -39,34 +41,49 @@ function DeskIndex() {
     <main id="main">
       <PageHero
         eyebrow="Sideline"
-        title="If we can’t run it, we know who can."
-        sub="The sideline. The QB is the connector — not the syndicator, not the architect, not Alkaline."
-      />
+        title="Bring experience into the room."
+        sub="When the meeting calls for more than preparation, bring Tax Credit QB alongside your team. Brett can help shape the approach, prepare speakers, participate in the discussion and work through the next steps afterward."
+      >
+        <Button asChild className="mt-8" size="lg">
+          <Link to="/inquiry">Discuss meeting support</Link>
+        </Button>
+      </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
-        <div className="grid gap-4 md:grid-cols-2">
-          {ITEMS.map((item) => (
-            <div key={item.title} className="border border-line bg-paper p-6 md:p-8">
-              <h2 className="font-display text-2xl font-semibold tracking-tight">
-                {item.title}
-              </h2>
-              <p className="mt-3 text-ink/75">{item.body}</p>
-              {"href" in item && item.href ? (
-                <Button asChild variant="secondary" className="mt-6">
-                  <Link to={item.href}>Modeling with Alkaline</Link>
-                </Button>
-              ) : null}
+        <h2 className="font-display text-section font-semibold leading-section">
+          Meetings we support
+        </h2>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {ROOMS.map((item) => (
+            <li key={item} className="border border-line bg-paper px-5 py-4">
+              {item}
+            </li>
+          ))}
+        </ul>
+        <h2 className="mt-14 font-display text-section font-semibold leading-section">
+          The role is agreed in advance
+        </h2>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {ROLES.map((role) => (
+            <div key={role.title} className="border border-line bg-paper p-6">
+              <h3 className="font-display text-xl font-semibold tracking-tight">
+                {role.title}
+              </h3>
+              <p className="mt-3 text-ink/75">{role.body}</p>
             </div>
           ))}
         </div>
-        <p className="mt-8 text-sm text-muted">
-          Partner:{" "}
-          <a href={SITE.alkaline.href} className="underline" rel="noreferrer">
-            {SITE.alkaline.name}
-          </a>{" "}
-          — disclosed on every modeling mention.
-        </p>
-        <Button asChild className="mt-8">
-          <Link to="/inquiry">Call in the play</Link>
+        <div className="mt-10 max-w-2xl space-y-4 text-ink/80">
+          <p>
+            Premium members receive reduced professional attendance fees under
+            their membership terms. Attendance is subject to availability and a
+            separate scope.
+          </p>
+          <p>
+            Travel, lodging and related expenses are agreed separately.
+          </p>
+        </div>
+        <Button asChild className="mt-10" size="lg">
+          <Link to="/inquiry">Discuss meeting support</Link>
         </Button>
       </section>
     </main>

@@ -8,9 +8,9 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/playbook/")({
   head: () =>
     seo({
-      title: "Meeting Decks for LIHTC Developers | Tax Credit QB",
+      title: "Meeting Playbook | Tax Credit QB",
       description:
-        "Three rooms. Three decks. Private introduction, public hearing, neighborhood meeting. Template or custom. You own the deal. We QB it.",
+        "Walk into the room prepared. Editable decks, speaking notes and Q&A guidance for municipal introductions, public hearings and neighborhood meetings.",
     }),
   component: PlaybookIndex,
 });
@@ -20,47 +20,39 @@ function PlaybookIndex() {
     <main id="main">
       <PageHero
         eyebrow="Playbook"
-        title="The product is the meeting. The playbook is how you get there."
-        sub="Opening drive. Game day. Walkthrough. Same offense. Template for members. We script it when the site is live."
-      />
-      <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
-        <div className="overflow-x-auto border border-line">
-          <table className="w-full min-w-xl text-left text-sm">
-            <thead className="bg-paper-dim font-display text-xs font-semibold uppercase tracking-nav">
-              <tr>
-                <th className="px-4 py-3">Room</th>
-                <th className="px-4 py-3">Who is in it</th>
-                <th className="px-4 py-3">What they need to believe</th>
-                <th className="px-4 py-3">Play</th>
-              </tr>
-            </thead>
-            <tbody>
-              {DECKS.map((d) => (
-                <tr key={d.slug} className="border-t border-line">
-                  <td className="px-4 py-4 font-medium">{d.name}</td>
-                  <td className="px-4 py-4 text-ink/75">{d.room}</td>
-                  <td className="px-4 py-4 text-ink/75">{d.job}</td>
-                  <td className="px-4 py-4">
-                    <Link to={d.href} className="font-display font-semibold uppercase tracking-nav">
-                      Open
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        title="Walk into the room prepared."
+        sub="Build a stronger presentation with editable decks, speaking notes and practical Q&A guidance drawn from real development experience. Each tool serves a different audience and stage of your deal."
+      >
+        <Button asChild className="mt-8" size="lg">
+          <a href="#templates">Explore the templates</a>
+        </Button>
+      </PageHero>
+      <section
+        id="templates"
+        className="mx-auto max-w-6xl scroll-mt-40 px-5 py-14 md:px-8 md:py-20"
+      >
+        <div className="grid gap-4 md:grid-cols-3">
           {DECKS.map((deck) => (
             <DeckCard key={deck.slug} deck={deck} />
           ))}
         </div>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-12 max-w-2xl space-y-4 text-ink/80">
+          <p>
+            Complete templates require a subscription. Members get the three
+            presentation tools, speaking guidance and Q&A strategies for
+            the rooms that decide a deal.
+          </p>
+          <p>
+            Custom-built presentations are available separately, with hourly
+            or flat-fee pricing based on scope.
+          </p>
+        </div>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link to="/access">Ask the QB</Link>
+            <Link to="/access">Subscribe</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/inquiry">Call in the play</Link>
+            <Link to="/inquiry">Talk about a custom deck</Link>
           </Button>
         </div>
       </section>

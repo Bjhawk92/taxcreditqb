@@ -21,18 +21,6 @@ export function Header() {
       <div className="mx-auto flex h-28 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-32 md:px-8">
         <Wordmark />
 
-        <nav className="hidden items-center gap-4 xl:flex xl:gap-6" aria-label="Primary">
-          {NAV.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className="whitespace-nowrap font-display text-sm font-semibold uppercase tracking-nav text-muted transition-colors duration-150 hover:text-ink [&.active]:text-ink"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
         <div className="hidden items-center gap-2 xl:flex">
           <Button asChild variant="ghost" className="px-2">
             <Link to="/inquiry">Call in the play</Link>
@@ -59,6 +47,28 @@ export function Header() {
         </div>
       </div>
 
+      <nav
+        className="hidden border-t border-line xl:block"
+        aria-label="Primary"
+      >
+        <div className="mx-auto grid max-w-7xl grid-cols-6 px-5 md:px-8">
+          {NAV.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="group border-b-2 border-transparent px-2 py-3 transition-colors hover:bg-paper-dim [&.active]:border-ink"
+            >
+              <span className="block font-display text-sm font-semibold uppercase tracking-nav text-ink">
+                {item.label}
+              </span>
+              <span className="mt-1 block font-sans text-xs font-normal leading-snug text-muted group-hover:text-ink/70">
+                {item.blurb}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </nav>
+
       <div
         id="mobile-nav"
         className={cn(
@@ -72,9 +82,12 @@ export function Header() {
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="flex min-h-12 items-center border-b border-line font-display text-lg font-semibold uppercase tracking-nav text-ink"
+              className="flex flex-col justify-center border-b border-line py-3"
             >
-              {item.label}
+              <span className="font-display text-lg font-semibold uppercase tracking-nav text-ink">
+                {item.label}
+              </span>
+              <span className="mt-1 text-sm leading-snug text-muted">{item.blurb}</span>
             </Link>
           ))}
           <Link

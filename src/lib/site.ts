@@ -40,12 +40,36 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { label: "Playbook", to: "/playbook" },
-  { label: "Film Room", to: "/videos" },
-  { label: "Huddle", to: "/access" },
-  { label: "Sideline", to: "/desk" },
-  { label: "Advisory", to: "/advisory" },
-  { label: "About", to: "/about" },
+  {
+    label: "Playbook",
+    to: "/playbook",
+    blurb: "Presentation templates and tools for the meetings that matter.",
+  },
+  {
+    label: "Film Room",
+    to: "/videos",
+    blurb: "Practical video lessons from real development experience.",
+  },
+  {
+    label: "Huddle",
+    to: "/access",
+    blurb: "One-on-one advice for your next decision.",
+  },
+  {
+    label: "Sideline",
+    to: "/desk",
+    blurb: "Experienced support before, during and after your meeting.",
+  },
+  {
+    label: "Advisory",
+    to: "/advisory",
+    blurb: "Strategy and hands-on support across your development.",
+  },
+  {
+    label: "About",
+    to: "/about",
+    blurb: "Meet Brett Johnson and the experience behind Tax Credit QB.",
+  },
 ] as const;
 
 export const FOOTER_NAV = [

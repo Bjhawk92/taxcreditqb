@@ -19,9 +19,9 @@ function Neighborhood() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Fig. 03 · Walkthrough"
-        title="Know the questions before they are asked."
-        sub="Run the neighborhood meeting like a hearing you already won. Not a sales pitch. A rehearsal with the people who live there."
+        eyebrow="Neighborhood Meeting"
+        title="Uncover the concerns. Answer them."
+        sub="Introduce your team and comparable developments, then use a structured Q&A process to uncover the neighborhood’s concerns. Document objections, answer questions and identify the arguments likely to emerge at approval hearings."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="max-w-2xl text-lede text-ink/80">

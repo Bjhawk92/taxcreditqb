@@ -6,10 +6,10 @@ export const Route = createFileRoute("/playbook")({
 });
 
 const LINKS = [
-  { to: "/playbook", label: "All rooms", exact: true },
-  { to: "/playbook/private-intro", label: "Private intro", exact: false },
-  { to: "/playbook/hearing", label: "Hearing", exact: false },
-  { to: "/playbook/neighborhood", label: "Neighborhood", exact: false },
+  { to: "/playbook", label: "All templates", exact: true },
+  { to: "/playbook/private-intro", label: "Municipal Introduction", exact: false },
+  { to: "/playbook/hearing", label: "Public Hearing", exact: false },
+  { to: "/playbook/neighborhood", label: "Neighborhood Meeting", exact: false },
 ] as const;
 
 function PlaybookLayout() {

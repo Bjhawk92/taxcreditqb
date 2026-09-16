@@ -19,9 +19,9 @@ function Hearing() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Fig. 02 · Game day"
-        title="The record is the product."
-        sub="Municipal credibility plus site facts plus LIHTC in plain language. Do not coach destroying the opposition. Coach answering the objection before it lands."
+        eyebrow="Public Hearing"
+        title="Make the site-specific case."
+        sub="Make a clear, site-specific case for your development. Present the plans, explain how LIHTC works and address common misconceptions with evidence and project-specific information. Prepare for questions from officials and residents before taking the podium."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="max-w-2xl text-lede text-ink/80">
