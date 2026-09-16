@@ -15,22 +15,22 @@ export function BinderTabs() {
   return (
     <nav
       aria-label="Playbook tabs"
-      className="pointer-events-none absolute top-36 right-0 bottom-24 z-40 hidden w-12 lg:block"
+      className="fixed top-28 right-2 z-50 hidden w-28 lg:block xl:right-5"
     >
-      <ul className="flex h-full flex-col gap-1.5">
+      <ul className="flex flex-col gap-1">
         {NAV.map((item) => (
-          <li key={item.to} className="min-h-0 flex-1">
+          <li key={item.to}>
             <Link
               to={item.to}
               title={item.blurb}
               className={cn(
-                "pointer-events-auto flex h-full w-10 items-center justify-center rounded-r-md shadow-md transition-[width,filter] duration-150",
+                "flex h-9 w-full items-center justify-end rounded-r-md px-2.5 shadow-md transition-transform duration-150",
                 "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper",
                 TAB[item.tab],
-                "hover:w-12 [&.active]:w-12 [&.active]:brightness-110",
+                "hover:translate-x-1 [&.active]:translate-x-1 [&.active]:brightness-110",
               )}
             >
-              <span className="max-h-full rotate-180 font-display text-[11px] font-semibold uppercase tracking-nav [writing-mode:vertical-rl]">
+              <span className="font-display text-xs font-semibold uppercase tracking-nav">
                 {item.label}
               </span>
             </Link>

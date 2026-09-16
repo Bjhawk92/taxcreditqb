@@ -114,19 +114,39 @@
   .binder-tab-burgundy { background: var(--color-tab-burgundy); color: #f3efe6; }
   .binder-tab-slate { background: var(--color-tab-slate); color: #f3efe6; }
 
-  .binder-ring {
-    background:
-      radial-gradient(circle at 35% 35%, #f4f5f7 0%, var(--color-ring) 42%, var(--color-ring-dark) 100%);
-    box-shadow:
-      inset 1px 1px 1px rgb(255 255 255 / 0.55),
-      0 2px 4px rgb(0 0 0 / 0.35);
+  .page-turn-stage {
+    perspective: 1600px;
   }
+
+  .page-turn-leaf {
+    transform-origin: left center;
+    animation: page-turn 0.7s ease-out;
+    backface-visibility: hidden;
+  }
+
+  @keyframes page-turn {
+    0% {
+      transform: rotateY(-78deg);
+      opacity: 0.55;
+    }
+    55% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+
 
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .page-turn-leaf {
+    animation: none;
   }
 
   *,
