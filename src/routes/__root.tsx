@@ -24,7 +24,30 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "You own the deal. We QB it. Meeting decks and a quarterback for the rooms that decide LIHTC deals — private intro, public hearing, neighborhood.",
+          "LIHTC development strategy and execution. Presentation playbook, one-on-one advice, and meeting support for emerging and growing affordable-housing developers.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Tax Credit QB" },
+      {
+        property: "og:title",
+        content: "Tax Credit QB | LIHTC Development Strategy + Execution",
+      },
+      {
+        property: "og:description",
+        content:
+          "Your next play. Backed by experience. Meeting decks, advice, and an experienced operator for the rooms that decide LIHTC deals.",
+      },
+      { property: "og:url", content: "https://taxcreditqb.com" },
+      {
+        property: "og:image",
+        content: "https://taxcreditqb.com/og-tax-credit-qb.png",
+      },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:image",
+        content: "https://taxcreditqb.com/og-tax-credit-qb.png",
       },
     ],
     links: [
