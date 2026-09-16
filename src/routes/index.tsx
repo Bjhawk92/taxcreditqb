@@ -50,15 +50,27 @@ function Home() {
     <main id="main">
       <section className="relative overflow-hidden border-b border-line">
         <PlaybookBackdrop />
-        <div className="relative mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+        <div className="relative mx-auto max-w-6xl px-5 py-7 md:px-8 md:py-10">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
             LIHTC development strategy + execution
           </p>
-          <h1 className="mt-5 max-w-3xl font-display text-hero font-semibold leading-display tracking-display text-ink">
+          <h1 className="mt-3 max-w-3xl font-display text-[clamp(2.15rem,5.6vw,4.35rem)] font-semibold leading-[0.95] tracking-display text-ink">
             <span className="block">Your next play.</span>
             <span className="block text-steel">Backed by experience.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lede text-ink/80">
+          <p className="mt-4 max-w-2xl text-lede text-ink/80">
+            Proven development experience for your next decision, difficult
+            meeting or complex deal.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <Link to="/inquiry">Talk about your deal</Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg">
+              <Link to="/playbook">Explore the playbook</Link>
+            </Button>
+          </div>
+          <p className="mt-8 max-w-2xl text-lede text-ink/80">
             Some deals need a second perspective. Others need someone who can
             step into the room and help move things forward.
           </p>
@@ -71,14 +83,6 @@ function Home() {
             Use our presentation playbook, get direct advice, or bring us in
             for the assignment.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg">
-              <Link to="/playbook">Explore the playbook</Link>
-            </Button>
-            <Button asChild variant="secondary" size="lg">
-              <Link to="/inquiry">Talk about your deal</Link>
-            </Button>
-          </div>
         </div>
       </section>
 
