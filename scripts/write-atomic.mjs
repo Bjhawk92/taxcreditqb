@@ -79,7 +79,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   // below is defined against that same root.
   const staged = resolve(ROOT, args.staged);
   const target = resolve(ROOT, args.target);
-  const problem = stagingError({ staged, target, publicDir: join(ROOT, "public") });
+  const problem = stagingError({ staged, target, publicDir: join(ROOT, "static-assets") });
   if (problem) {
     console.error(`[write-atomic] ${problem}`);
     process.exit(1);
