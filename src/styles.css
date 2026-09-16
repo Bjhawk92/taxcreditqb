@@ -119,14 +119,14 @@
   }
 
   .page-turn-leaf {
-    transform-origin: left center;
+    transform-origin: right center;
     animation: page-turn 0.7s ease-out;
     backface-visibility: hidden;
   }
 
   @keyframes page-turn {
     0% {
-      transform: rotateY(-78deg);
+      transform: rotateY(78deg);
       opacity: 0.55;
     }
     55% {
