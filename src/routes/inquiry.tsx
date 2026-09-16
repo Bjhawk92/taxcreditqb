@@ -51,7 +51,7 @@ function Inquiry() {
     <main id="main">
       <PageHero
         eyebrow="Call in the play"
-        title="Tell us the down and the room."
+        title="What's the game situation?"
         sub="Scripted deck, game day in person, modeling, intro. Confidential. No pressure pitch."
       />
       <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
