@@ -22,7 +22,7 @@
   --color-tab-burgundy: #8b3a3a;
   --color-tab-slate: #5a6270;
   --color-tab-hq: #17304f;
-  --color-tab-tools: #4a6d7c;
+  --color-tab-tools: #ffffff;
   --color-desk: #151e32;
   --color-ring: #c5c8ce;
   --color-ring-dark: #7c818c;
@@ -117,7 +117,11 @@
   .binder-tab-burgundy { background: var(--color-tab-burgundy); color: #f3efe6; }
   .binder-tab-slate { background: var(--color-tab-slate); color: #f3efe6; }
   .binder-tab-hq { background: var(--color-tab-hq); color: #f3efe6; }
-  .binder-tab-tools { background: var(--color-tab-tools); color: #f3efe6; }
+  .binder-tab-tools {
+    background: #ffffff;
+    color: #2f6fb8;
+    box-shadow: 0 1px 2px rgb(30 51 86 / 0.18);
+  }
 
   .page-turn-stage {
     position: relative;
