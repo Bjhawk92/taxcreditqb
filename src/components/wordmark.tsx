@@ -26,7 +26,7 @@ export function Wordmark({
         alt="Tax Credit QB"
         className={cn(
           "w-auto",
-          compact ? "h-16 md:h-[4.75rem]" : "h-28 md:h-32",
+          compact ? "h-[5.5rem] md:h-28" : "h-28 md:h-32",
           invert && "brightness-0 invert",
         )}
       />
