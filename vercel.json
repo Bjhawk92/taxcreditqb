@@ -1,7 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "out",
   "cleanUrls": true,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
   "redirects": [
     {
       "source": "/pricing",
