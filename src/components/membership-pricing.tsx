@@ -212,7 +212,6 @@ export function MembershipPricing({
                           "h-14 w-auto object-contain",
                           plan.id === "film" ? "" : "brightness-110",
                         )}
-                        tmClassName={plan.id === "film" ? "text-ink/70" : "text-paper/75"}
                       />
                       <h3
                         className={cn(

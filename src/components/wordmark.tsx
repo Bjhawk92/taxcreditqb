@@ -29,7 +29,6 @@ export function Wordmark({
           compact ? "h-24 md:h-28" : "h-24 md:h-32",
           invert && "brightness-0 invert",
         )}
-        tmClassName={invert ? "text-paper/75" : "text-ink/70"}
       />
     </Link>
   );
