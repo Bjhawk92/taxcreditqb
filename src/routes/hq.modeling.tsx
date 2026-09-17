@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { DealPicker } from "@/components/deal-picker";
-import { HqHeader, HqMain } from "@/components/hq-empty";
+import { HqHeader, HqMain, LockedFeature } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { formatModelStatus } from "@/lib/deal-fields";
@@ -87,13 +87,31 @@ function ModelingIntake() {
   return (
     <main id="main">
       <HqHeader
-        title="Custom LIHTC Model"
-        sub="Built by Alkaline Advisors. Pricing, deliverables, and turnaround are confirmed in a separate engagement — this intake does not invent them."
+        title="Tools & Models"
+        sub="Calculators, scoring tools, feasibility tools, and financial models. Request a customized LIHTC model from Alkaline Advisors when the deal needs it."
       />
       <HqMain>
+        <div className="mb-10 grid gap-4 md:grid-cols-2">
+          <article className="border border-line p-6">
+            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Scoring worksheet
+            </p>
+            <p className="mt-3 text-ink/80">
+              Organized QAP scoring information for supported states, used against a Deal Profile.
+            </p>
+            <Button asChild className="mt-6" variant="secondary">
+              <Link to="/tools">Open Equipment scoring</Link>
+            </Button>
+          </article>
+          <LockedFeature
+            title="Feasibility calculator"
+            body="In-locker feasibility runs will sit here. Until that tool ships, use a Deal Profile and request a custom model."
+            plan="The Playbook"
+          />
+        </div>
         {existing.length ? (
           <section className="mb-10">
-            <h2 className="font-display text-xl font-semibold">Existing requests</h2>
+            <h2 className="font-display text-xl font-semibold">Custom model requests</h2>
             <ul className="mt-4 space-y-2">
               {existing.map((m) => (
                 <li key={m.id} className="border border-line px-4 py-3">
@@ -111,6 +129,14 @@ function ModelingIntake() {
           </section>
         ) : null}
 
+        <h2 className="mb-3 font-display text-2xl font-semibold tracking-tight">
+          Request a customized LIHTC model
+        </h2>
+        <p className="mb-8 max-w-2xl text-ink/75">
+          Built by {SITE.alkaline.name}. Pricing, deliverables, and turnaround
+          are confirmed in a separate engagement — this intake does not invent
+          them.
+        </p>
         <form
           key={dealId || "new"}
           className="max-w-3xl space-y-8"

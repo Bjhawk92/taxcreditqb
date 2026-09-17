@@ -70,6 +70,12 @@ export const NAV = [
     blurb: "Meet Brett Johnson and the experience behind Tax Credit QB.",
     tab: "slate",
   },
+  {
+    label: "Locker Room",
+    to: "/hq",
+    blurb: "Secure member dashboard for deals, Field Pass, Equipment, and billing.",
+    tab: "hq",
+  },
 ] as const;
 
 export const SIGN_SERVICES = [
@@ -133,7 +139,7 @@ export const FOOTER_NAV = [
   { label: "Game Plans", to: "/game-plans" },
   { label: "QB Access", to: "/access" },
   { label: "About", to: "/about" },
-  { label: "My Locker", to: "/hq" },
+  { label: "Locker Room", to: "/hq" },
   { label: "Film Room", to: "/videos" },
   { label: "Presentation Builder", to: "/playbook/builder" },
   { label: "Ask the QB", to: "/register" },

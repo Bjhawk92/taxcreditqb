@@ -11,8 +11,8 @@ function HqBilling() {
   return (
     <main id="main">
       <HqHeader
-        title="Billing and account"
-        sub="Subscription, invoices, receipts, and approved scopes. Card data stays with the payment provider — not on this site."
+        title="Billing"
+        sub="Invoices, receipts, payment method, and the membership on this locker. Card data stays with the payment provider."
       />
       <HqMain>
         <HqEmpty

@@ -30,8 +30,8 @@ function AccountPage() {
   return (
     <main id="main">
       <HqHeader
-        title="Account"
-        sub="Personal, company, membership, and security settings for this locker."
+        title="Company & Team"
+        sub="Update the company profile, invite teammates, manage permissions, and edit contact information."
       />
       <HqMain>
         <div className="grid gap-4 md:grid-cols-2">
@@ -76,13 +76,30 @@ function AccountPage() {
               </ul>
             ) : (
               <p className="mt-4 text-sm text-muted">
-                Company teams can share deals later. This account currently
-                shows the owner only.
+                You are the locker owner. Invite teammates below when you want
+                shared project access.
               </p>
             )}
             <Button asChild className="mt-6" variant="secondary">
               <Link to="/hq/onboarding">Update profile</Link>
             </Button>
+          </section>
+          <section className="border border-line p-6">
+            <h2 className="font-display text-xl font-semibold">Invite team members</h2>
+            <p className="mt-3 text-ink/75">
+              Each membership is for one named subscriber. Additional locker
+              seats can be discussed — this form captures who should be added.
+            </p>
+            <p className="mt-3 text-sm text-muted">
+              Permissions: Owner (this account) · Editor · Viewer. Role
+              controls will apply once team seats are active.
+            </p>
+            <a
+              href={`mailto:${SITE.emails.info}?subject=Locker%20Room%20team%20invite`}
+              className="mt-4 inline-block font-display text-sm font-semibold uppercase tracking-nav text-steel"
+            >
+              Request a team seat
+            </a>
           </section>
           <section className="border border-line p-6">
             <h2 className="font-display text-xl font-semibold">Game Plan / membership</h2>

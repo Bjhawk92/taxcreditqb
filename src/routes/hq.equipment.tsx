@@ -102,10 +102,30 @@ function MyEquipment() {
   return (
     <main id="main">
       <HqHeader
-        title="My Equipment"
-        sub="Use checklists and tools with a Deal Profile so progress is saved in this locker."
+        title="Equipment Room"
+        sub="Templates, document bundles, completed forms, uploads, and downloads — organized by project and document category."
       />
       <HqMain>
+        <div className="mb-8 grid gap-4 md:grid-cols-3">
+          <Link to="/hq/documents" className="border border-line p-5 hover:bg-paper-dim">
+            <p className="font-display text-sm font-semibold uppercase tracking-nav text-steel">
+              Documents
+            </p>
+            <p className="mt-2 text-sm text-ink/75">Saved letters, decks, uploads, and downloads.</p>
+          </Link>
+          <Link to="/hq/files" className="border border-line p-5 hover:bg-paper-dim">
+            <p className="font-display text-sm font-semibold uppercase tracking-nav text-steel">
+              Files
+            </p>
+            <p className="mt-2 text-sm text-ink/75">Deliverables and model files attached to this locker.</p>
+          </Link>
+          <Link to="/hq/playbook" className="border border-line p-5 hover:bg-paper-dim">
+            <p className="font-display text-sm font-semibold uppercase tracking-nav text-steel">
+              Templates
+            </p>
+            <p className="mt-2 text-sm text-ink/75">Playbook decks and reusable presentation shells.</p>
+          </Link>
+        </div>
         <div className="grid gap-4 md:grid-cols-3">
           {EQUIPMENT_PACKAGES.filter((p) => p.interactive).map((item) => {
             const allowed = equipmentAllowed(item.access, planId);

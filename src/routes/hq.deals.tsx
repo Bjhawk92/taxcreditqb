@@ -31,12 +31,12 @@ function DealsPage() {
   return (
     <main id="main">
       <HqHeader
-        title="My Deals"
-        sub="Deal Profiles are the connective tissue. Enter what you know. Leave the rest blank."
+        title="My Projects"
+        sub="Create and manage development profiles. Save site details and open project-specific documents, scoring work, and analysis."
       />
       <HqMain>
         <Button type="button" onClick={() => setOpen((v) => !v)}>
-          {open ? "Close form" : "Add a deal"}
+          {open ? "Close form" : "Add a project"}
         </Button>
         {open ? (
           <div className="mt-8">

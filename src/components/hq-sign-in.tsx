@@ -174,7 +174,16 @@ export function HqSignIn({
       />
       <div className="mx-auto max-w-lg px-5 py-12 md:px-8 md:py-16">
         {!authEnabled ? (
-          <p className="text-muted">Sign-in is not enabled on this environment.</p>
+          <div className="border border-line p-6">
+            <p className="text-ink/80">
+              Sign-in is not enabled in this preview environment. On taxcreditqb.com,
+              members create an account, verify email, and enter the Locker Room
+              from this page.
+            </p>
+            <Button asChild className="mt-6">
+              <Link to="/game-plans">View Game Plans</Link>
+            </Button>
+          </div>
         ) : (
           <div className="space-y-6">
             {playbook ? null : (

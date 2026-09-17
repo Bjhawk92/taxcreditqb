@@ -31,8 +31,8 @@ function HqMembership() {
   return (
     <main id="main">
       <HqHeader
-        title="My Game Plan"
-        sub="What is included, what is not, and how much consulting remains."
+        title="Membership & Billing"
+        sub="Current plan, included benefits, selected states, renewal, invoices, payment method, and upgrade options."
       />
       <HqMain>
         {!hasPlan ? (
@@ -151,6 +151,28 @@ function HqMembership() {
             Subscription changes go through the payment provider. For billing
             questions, write {SITE.emails.info}.
           </p>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <section className="border border-line p-6">
+            <h2 className="font-display text-xl font-semibold">Invoices</h2>
+            <p className="mt-3 text-ink/75">
+              Receipts and invoices appear here once the payment provider is
+              connected to this locker. Card data never sits on this site.
+            </p>
+            <Button asChild className="mt-6" variant="secondary">
+              <Link to="/hq/billing">Open billing</Link>
+            </Button>
+          </section>
+          <section className="border border-line p-6">
+            <h2 className="font-display text-xl font-semibold">Payment method</h2>
+            <p className="mt-3 text-ink/75">
+              Update the card on file through the billing portal. Until a
+              membership is active, no payment method is stored.
+            </p>
+            <Button asChild className="mt-6">
+              <Link to="/game-plans">Upgrade</Link>
+            </Button>
+          </section>
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild variant="secondary">

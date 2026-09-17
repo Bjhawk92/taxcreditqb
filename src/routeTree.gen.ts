@@ -33,6 +33,7 @@ import { Route as DeskModelingRouteImport } from './routes/desk.modeling'
 import { Route as HqIndexRouteImport } from './routes/hq.index'
 import { Route as HqAccountRouteImport } from './routes/hq.account'
 import { Route as HqAdminRouteImport } from './routes/hq.admin'
+import { Route as HqAlertsRouteImport } from './routes/hq.alerts'
 import { Route as HqBillingRouteImport } from './routes/hq.billing'
 import { Route as HqDealsRouteImport } from './routes/hq.deals'
 import { Route as HqDocumentsRouteImport } from './routes/hq.documents'
@@ -179,6 +180,11 @@ const HqAccountRoute = HqAccountRouteImport.update({
 const HqAdminRoute = HqAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqAlertsRoute = HqAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
   getParentRoute: () => HqRoute,
 } as any)
 const HqBillingRoute = HqBillingRouteImport.update({
@@ -340,6 +346,7 @@ export interface FileRoutesByFullPath {
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
+  '/hq/alerts': typeof HqAlertsRoute
   '/hq/billing': typeof HqBillingRoute
   '/hq/deals': typeof HqDealsRoute
   '/hq/documents': typeof HqDocumentsRoute
@@ -389,6 +396,7 @@ export interface FileRoutesByTo {
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
+  '/hq/alerts': typeof HqAlertsRoute
   '/hq/billing': typeof HqBillingRoute
   '/hq/deals': typeof HqDealsRoute
   '/hq/documents': typeof HqDocumentsRoute
@@ -443,6 +451,7 @@ export interface FileRoutesById {
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
+  '/hq/alerts': typeof HqAlertsRoute
   '/hq/billing': typeof HqBillingRoute
   '/hq/deals': typeof HqDealsRoute
   '/hq/documents': typeof HqDocumentsRoute
@@ -498,6 +507,7 @@ export interface FileRouteTypes {
     | '/desk/modeling'
     | '/hq/account'
     | '/hq/admin'
+    | '/hq/alerts'
     | '/hq/billing'
     | '/hq/deals'
     | '/hq/documents'
@@ -547,6 +557,7 @@ export interface FileRouteTypes {
     | '/desk/modeling'
     | '/hq/account'
     | '/hq/admin'
+    | '/hq/alerts'
     | '/hq/billing'
     | '/hq/deals'
     | '/hq/documents'
@@ -600,6 +611,7 @@ export interface FileRouteTypes {
     | '/desk/modeling'
     | '/hq/account'
     | '/hq/admin'
+    | '/hq/alerts'
     | '/hq/billing'
     | '/hq/deals'
     | '/hq/documents'
@@ -824,6 +836,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HqAdminRouteImport
       parentRoute: typeof HqRoute
     }
+    '/hq/alerts': {
+      id: '/hq/alerts'
+      path: '/alerts'
+      fullPath: '/hq/alerts'
+      preLoaderRoute: typeof HqAlertsRouteImport
+      parentRoute: typeof HqRoute
+    }
     '/hq/billing': {
       id: '/hq/billing'
       path: '/billing'
@@ -1031,6 +1050,7 @@ const DeskRouteWithChildren = DeskRoute._addFileChildren(DeskRouteChildren)
 interface HqRouteChildren {
   HqAccountRoute: typeof HqAccountRoute
   HqAdminRoute: typeof HqAdminRoute
+  HqAlertsRoute: typeof HqAlertsRoute
   HqBillingRoute: typeof HqBillingRoute
   HqDealsRoute: typeof HqDealsRoute
   HqDocumentsRoute: typeof HqDocumentsRoute
@@ -1055,6 +1075,7 @@ interface HqRouteChildren {
 const HqRouteChildren: HqRouteChildren = {
   HqAccountRoute: HqAccountRoute,
   HqAdminRoute: HqAdminRoute,
+  HqAlertsRoute: HqAlertsRoute,
   HqBillingRoute: HqBillingRoute,
   HqDealsRoute: HqDealsRoute,
   HqDocumentsRoute: HqDocumentsRoute,

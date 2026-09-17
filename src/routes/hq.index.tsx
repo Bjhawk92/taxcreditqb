@@ -21,26 +21,51 @@ function LockerHome() {
 
   const next = data?.nextPlay;
   const unread = data?.notifications.filter((n) => !n.read_at) ?? [];
+  const company =
+    data && "companyName" in data
+      ? String((data as { companyName?: string }).companyName || "")
+      : "";
 
   return (
     <main id="main">
       <header className="border-b border-line bg-paper">
-        <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-12">
+        <div className="mx-auto max-w-6xl px-5 py-8 md:px-8 md:py-10">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            My Locker
+            Locker Room
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-display font-semibold leading-display tracking-display">
             Welcome back, {data?.firstName ?? "there"}.
           </h1>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Your deals, Equipment, documents, Game Plan, and QB Access — all in
-            one place.
+            {data?.entitlements.planName}
+            {data?.entitlements.price ? ` · $${data.entitlements.price}/month` : ""}
+            {company ? ` · ${company}` : ""}. Projects, Field Pass, Equipment, and
+            the next play — all in one locker.
           </p>
         </div>
       </header>
       <HqMain>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild>
+            <Link to="/hq/deals" search={{ new: "1" }}>
+              Add a project
+            </Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link to="/hq/field-report">Open Field Pass</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link to="/hq/messages" search={{ deal: undefined }}>
+              Ask the QB
+            </Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link to="/hq/alerts">Alerts</Link>
+          </Button>
+        </div>
+
         {next ? (
-          <section className="border border-line bg-paper p-6 md:p-8">
+          <section className="mt-8 border border-line bg-paper p-6 md:p-8">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
               Next play
             </p>
@@ -48,10 +73,6 @@ function LockerHome() {
               {next.title}
             </h2>
             <p className="mt-2 max-w-2xl text-ink/75">{next.body}</p>
-            <p className="mt-3 text-sm text-muted">
-              Confirm current requirements against the applicable QAP, HFA
-              guidance, lender, investor, and counsel requirements.
-            </p>
             <Button asChild className="mt-6">
               <a href={next.to}>{next.cta}</a>
             </Button>
@@ -61,7 +82,7 @@ function LockerHome() {
         {unread.length ? (
           <section className="mt-8 border border-line p-6">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              Notices
+              Important alerts
             </p>
             <ul className="mt-4 space-y-3">
               {unread.slice(0, 4).map((n) => (
@@ -92,12 +113,25 @@ function LockerHome() {
               ))}
             </ul>
           </section>
-        ) : null}
+        ) : (
+          <section className="mt-8 border border-line p-6">
+            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Important alerts
+            </p>
+            <p className="mt-3 text-ink/75">
+              No unread locker notices. QAP, deadline, and award alerts for your
+              followed states will show here.
+            </p>
+            <Button asChild className="mt-6" variant="secondary">
+              <Link to="/hq/alerts">Open alerts</Link>
+            </Button>
+          </section>
+        )}
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <article className="flex flex-col border border-line p-6">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              My Deals
+              My Projects
             </p>
             {data?.deals.length ? (
               <ul className="mt-4 space-y-3">
@@ -120,19 +154,19 @@ function LockerHome() {
               </ul>
             ) : (
               <HqEmpty
-                title="No deals yet"
-                body="Create a Deal Profile once. Equipment, letters, and modeling can reuse it."
+                title="No projects yet"
+                body="Create a development profile to store site details, scoring work, documents, and analysis."
               />
             )}
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>
                 <Link to="/hq/deals" search={{ new: undefined }}>
-                  Open deals
+                  Open projects
                 </Link>
               </Button>
               <Button asChild variant="secondary">
                 <Link to="/hq/deals" search={{ new: "1" }}>
-                  Add a deal
+                  Add a project
                 </Link>
               </Button>
             </div>
@@ -140,7 +174,7 @@ function LockerHome() {
 
           <article className="flex flex-col border border-line p-6">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              My Game Plan
+              Membership
             </p>
             <p className="mt-3 font-display text-2xl font-semibold">
               {data?.entitlements.planName}
@@ -161,102 +195,45 @@ function LockerHome() {
                 : "."}
             </p>
             <Button asChild className="mt-6 self-start" variant="secondary">
-              <Link to="/hq/membership">Manage Game Plan</Link>
-            </Button>
-            <Button asChild className="mt-3 self-start" variant="secondary">
-              <Link to="/hq/field-report">The Field Report</Link>
+              <Link to="/hq/membership">Membership & billing</Link>
             </Button>
           </article>
 
           <article className="flex flex-col border border-line p-6">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              Ask the QB
+              Field Pass
             </p>
-            {data?.questions[0] ? (
-              <p className="mt-3 text-ink/80">
-                Latest: {data.questions[0].status} —{" "}
-                {data.questions[0].body.slice(0, 120)}
-              </p>
-            ) : (
-              <p className="mt-3 text-ink/75">No questions submitted this period.</p>
-            )}
-            <p className="mt-2 text-sm text-muted">
-              {data?.usage.questionsUsed ?? 0} used · {data?.usage.questionsRemaining ?? 0}{" "}
-              remaining of {data?.entitlements.askQuestionsPerMonth ?? 0} this month.
+            <p className="mt-3 text-ink/80">
+              {data?.followedStates?.length
+                ? `Watching ${data.followedStates.join(" · ")}.`
+                : "Choose up to three states to monitor QAP activity."}
             </p>
-            <Button asChild className="mt-6 self-start">
-              <Link to="/hq/messages" search={{ deal: undefined }}>
-                Ask the QB
-              </Link>
-            </Button>
-          </article>
-
-          <article className="flex flex-col border border-line p-6">
-            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              My Huddles
-            </p>
-            {data?.entitlements.huddleSessionsPerMonth ? (
-              data.huddles[0] ? (
-                <p className="mt-3 text-ink/80">
-                  {data.huddles[0].status}
-                  {data.huddles[0].scheduled_at
-                    ? ` · ${data.huddles[0].scheduled_at}`
-                    : ""}
-                </p>
-              ) : (
-                <p className="mt-3 text-ink/75">
-                  {data.usage.huddlesRemaining} included session
-                  {data.usage.huddlesRemaining === 1 ? "" : "s"} remaining this
-                  period.
-                </p>
-              )
-            ) : (
-              <p className="mt-3 text-ink/75">
-                Live huddles are included with The Playbook and The Huddle.
-              </p>
-            )}
             <Button asChild className="mt-6 self-start" variant="secondary">
-              <Link to="/hq/huddle" search={{ deal: undefined }}>
-                Schedule a huddle
-              </Link>
+              <Link to="/hq/field-report">Open Field Pass</Link>
             </Button>
           </article>
 
           <article className="flex flex-col border border-line p-6">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              My Equipment
+              Recent activity
             </p>
-            {data?.checklists[0] ? (
-              <p className="mt-3 text-ink/80">
-                {data.checklists[0].title} — {data.checklists[0].status.replace("_", " ")}
-              </p>
+            {data?.documents[0] || data?.questions[0] || data?.deals[0] ? (
+              <ul className="mt-3 space-y-2 text-ink/80">
+                {data.deals[0] ? <li>Project on file: {data.deals[0].name}</li> : null}
+                {data.questions[0] ? (
+                  <li>Ask the QB: {data.questions[0].status}</li>
+                ) : null}
+                {data.documents[0] ? <li>Document: {data.documents[0].name}</li> : null}
+              </ul>
             ) : (
               <p className="mt-3 text-ink/75">
-                No saved checklists yet. Open Equipment and attach it to a deal.
+                Activity from projects, Equipment, and Field Pass will collect here.
               </p>
             )}
             <Button asChild className="mt-6 self-start" variant="secondary">
               <Link to="/hq/equipment" search={{ deal: undefined, resource: undefined }}>
-                Open my Equipment
+                Equipment Room
               </Link>
-            </Button>
-          </article>
-
-          <article className="flex flex-col border border-line p-6">
-            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              My Documents
-            </p>
-            {data?.documents[0] ? (
-              <ul className="mt-3 space-y-2 text-ink/80">
-                {data.documents.slice(0, 3).map((doc) => (
-                  <li key={doc.id}>{doc.name}</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="mt-3 text-ink/75">No saved documents yet.</p>
-            )}
-            <Button asChild className="mt-6 self-start" variant="secondary">
-              <Link to="/hq/documents">Open documents</Link>
             </Button>
           </article>
         </div>
