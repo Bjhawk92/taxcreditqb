@@ -57,7 +57,7 @@ function QbAccess() {
         title="Need the QB on the field?"
         line="Tell us what you are facing, what the deal needs, and where you want additional experience on the field. We will help identify the right service and next play."
         primary={{ label: "Call the next play", to: "/inquiry" }}
-        secondary={{ label: "Get the Playbook", to: "/register" }}
+        secondary={{ label: "View Game Plans", to: "/game-plans" }}
       />
     </main>
   );

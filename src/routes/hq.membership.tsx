@@ -35,7 +35,7 @@ function HqMembership() {
               body="This account does not have an active membership. Choose a plan to add Film Room, Playbook, or Huddle access."
             />
             <Button asChild className="mt-6">
-              <Link to="/access">Inquire about membership</Link>
+              <Link to="/game-plans">View Game Plans</Link>
             </Button>
           </div>
         ) : (

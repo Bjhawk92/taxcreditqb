@@ -32,7 +32,7 @@ function Videos() {
       <CtaBand
         title="Bring the question. Call the next play."
         line="Submit a focused question about the development, strategy, obstacle, or decision in front of you. Tax Credit QB will review the situation and provide practical guidance grounded in real development experience."
-        primary={{ label: "Get the Playbook", to: "/register" }}
+        primary={{ label: "View Game Plans", to: "/game-plans" }}
         secondary={{ label: "Call the next play", to: "/inquiry" }}
       />
     </main>

@@ -64,7 +64,7 @@ export function OutreachCatalog({
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
-            <Link to="/register">Get the Playbook</Link>
+            <Link to="/game-plans">Get the Playbook</Link>
           </Button>
           <Button asChild variant="secondary" size="lg">
             <Link to="/inquiry">Call the next play</Link>

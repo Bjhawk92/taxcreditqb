@@ -32,7 +32,7 @@ export function PricingCard() {
       </ul>
       <div className="mt-8 flex flex-col gap-3">
         <Button asChild>
-          <Link to="/register">Get the Playbook</Link>
+          <Link to="/game-plans">Get the Playbook</Link>
         </Button>
         <Button asChild variant="secondary">
           <Link to="/inquiry">Call the next play</Link>

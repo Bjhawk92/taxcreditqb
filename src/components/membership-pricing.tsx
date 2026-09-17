@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import {
   MEMBERSHIP_DETAILS,
+  MEMBERSHIP_TERMS,
   MEMBERSHIPS,
   formatUsd,
   stripeFor,
@@ -32,35 +33,46 @@ function PlanCta({
     );
   }
 
-  const to = plan.id === "huddle" ? "/inquiry" : "/register";
   return (
     <Button asChild variant={variant} className={className}>
-      <Link to={to}>{label}</Link>
+      <Link to="/register" search={{ plan: plan.id }}>
+        {label}
+      </Link>
     </Button>
   );
 }
 
-export function MembershipPricing() {
+export function MembershipPricing({
+  showIntro = true,
+}: {
+  showIntro?: boolean;
+}) {
   return (
     <section id="pricing" className="border-y border-line bg-paper">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-        <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-          Membership
-        </p>
-        <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          Choose the game plan that fits.
-        </h2>
-        <p className="mt-5 max-w-2xl text-lede text-ink/80">
-          Three monthly options. Different levels of resources, access, and
-          experienced development strategy.
-        </p>
+        {showIntro ? (
+          <>
+            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Game Plans
+            </p>
+            <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
+              Choose your game plan.
+            </h2>
+            <p className="mt-5 max-w-2xl text-lede text-ink/80">
+              Different deals need different levels of support. Start with the
+              Film Room, add the Playbook and monthly strategy, or put an
+              experienced QB in the Huddle with your team.
+            </p>
+          </>
+        ) : null}
 
-        <div className="mt-12 grid items-stretch gap-4 lg:grid-cols-3 lg:gap-5">
+        <div className={cn("grid items-stretch gap-4 lg:grid-cols-3 lg:gap-5", showIntro ? "mt-12" : "mt-0")}>
           {MEMBERSHIPS.map((plan) => {
             const featured = plan.id === "playbook";
             return (
               <article
                 key={plan.id}
+                id={`plan-${plan.id}`}
                 className={cn(
                   "relative flex flex-col border bg-paper p-6 md:p-8",
                   featured
@@ -75,6 +87,9 @@ export function MembershipPricing() {
                 ) : null}
                 <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
                   {plan.name}
+                </p>
+                <p className="mt-2 font-display text-lg font-semibold tracking-tight text-ink">
+                  {plan.positioning}
                 </p>
                 <p className="mt-4 font-display text-5xl font-semibold leading-none tracking-tight text-ink">
                   {formatUsd(plan.price)}
@@ -107,20 +122,61 @@ export function MembershipPricing() {
           <p className="mt-3 text-sm leading-relaxed text-ink/70">
             {MEMBERSHIP_DETAILS}
           </p>
+          <ul className="mt-5 space-y-2 text-sm text-ink/70">
+            {MEMBERSHIP_TERMS.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="mt-2 size-1 shrink-0 bg-steel" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-14 max-w-2xl">
-          <h3 className="font-display text-3xl font-semibold tracking-tight text-ink">
-            Not sure which game plan fits?
-          </h3>
-          <p className="mt-3 text-lede text-ink/80">
-            Tell us where your deal stands, and we’ll help you choose the right
-            level of support.
-          </p>
-          <Button asChild className="mt-6" size="lg">
-            <Link to="/inquiry">Call the next play</Link>
-          </Button>
+export function GamePlanTeaser() {
+  return (
+    <section id="game-plans" className="border-y border-line bg-paper">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+        <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+          Game Plans
+        </p>
+        <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
+          How much QB do you need?
+        </h2>
+        <p className="mt-5 max-w-2xl text-lede text-ink/80">
+          Choose the level of resources, strategy, and direct access that fits
+          where your deal is today.
+        </p>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {MEMBERSHIPS.map((plan) => (
+            <article
+              key={plan.id}
+              className={cn(
+                "flex flex-col border bg-paper p-6",
+                plan.id === "playbook" ? "border-steel" : "border-line",
+              )}
+            >
+              <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+                {plan.name}
+              </p>
+              <p className="mt-2 font-display text-lg font-semibold tracking-tight text-ink">
+                {plan.positioning}
+              </p>
+              <p className="mt-4 font-display text-4xl font-semibold leading-none tracking-tight text-ink">
+                {formatUsd(plan.price)}
+                <span className="text-base font-semibold text-muted">
+                  {plan.period}
+                </span>
+              </p>
+            </article>
+          ))}
         </div>
+        <Button asChild className="mt-8" size="lg" variant="cta">
+          <Link to="/game-plans">Compare Game Plans</Link>
+        </Button>
       </div>
     </section>
   );

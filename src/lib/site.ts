@@ -43,14 +43,8 @@ export const NAV = [
   {
     label: "Playbook",
     to: "/playbook",
-    blurb: "Game plans, outreach resources, and the Presentation Builder.",
+    blurb: "Templates, presentations, outreach resources, and practical guidance.",
     tab: "navy",
-  },
-  {
-    label: "Film Room",
-    to: "/videos",
-    blurb: "Study the field. Read the defense.",
-    tab: "blue",
   },
   {
     label: "Equipment",
@@ -59,10 +53,16 @@ export const NAV = [
     tab: "tools",
   },
   {
+    label: "Game Plans",
+    to: "/game-plans",
+    blurb: "Compare memberships, pricing, benefits, and access.",
+    tab: "gold",
+  },
+  {
     label: WORK_LABEL,
     to: "/access",
     blurb: "Ask the QB, huddles, presentations, meeting support, and advisory.",
-    tab: "gold",
+    tab: "burgundy",
   },
   {
     label: "About",
@@ -129,17 +129,17 @@ export const WORK_NAV = [
 
 export const FOOTER_NAV = [
   { label: "Playbook", to: "/playbook" },
-  { label: "Presentation Builder", to: "/playbook/builder" },
-  { label: "Film Room", to: "/videos" },
   { label: "Equipment", to: "/tools" },
+  { label: "Game Plans", to: "/game-plans" },
   { label: "QB Access", to: "/access" },
+  { label: "About", to: "/about" },
+  { label: "Film Room", to: "/videos" },
+  { label: "Presentation Builder", to: "/playbook/builder" },
   { label: "Ask the QB", to: "/register" },
   { label: "Schedule a Huddle", to: "/huddle" },
   { label: "Meeting Support", to: "/desk" },
   { label: "Project Advisory", to: "/advisory" },
   { label: "Partner Support", to: "/for-partners" },
-  { label: "About", to: "/about" },
-  { label: "Get the Playbook", to: "/register" },
   { label: "Call the next play", to: "/inquiry" },
   { label: "Contact", to: "/contact" },
   { label: "Legal", to: "/legal" },

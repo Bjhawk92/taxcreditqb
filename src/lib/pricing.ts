@@ -29,6 +29,7 @@ export type MembershipPlan = {
   name: string;
   price: number;
   period: string;
+  positioning: string;
   tagline: string;
   description: string;
   includes: readonly string[];
@@ -45,18 +46,19 @@ export const MEMBERSHIPS: readonly MembershipPlan[] = [
     name: "Film Room + Ask the QB",
     price: 29,
     period: "/month",
+    positioning: "Study the field.",
     tagline:
-      "Designed for developers who want practical guidance without scheduled consulting calls.",
+      "For developers who want practical LIHTC education and the ability to ask focused development questions without scheduled consulting sessions.",
     description:
-      "Designed for developers who want practical guidance without scheduled consulting calls.",
+      "For developers who want practical LIHTC education and the ability to ask focused development questions without scheduled consulting sessions.",
     includes: [
       "Full Film Room access",
-      "Educational walkthroughs and real-world samples",
+      "Educational walkthroughs and real-world development examples",
       "Up to three private deal questions per month",
       "Brief written or recorded responses within three business days",
       "No live consultation sessions",
     ],
-    cta: "Enter the Film Room",
+    cta: "Get started",
     intent: "membership-film",
     stripeKey: "film",
   },
@@ -65,13 +67,16 @@ export const MEMBERSHIPS: readonly MembershipPlan[] = [
     name: "The Playbook",
     price: 295,
     period: "/month",
+    positioning: "Prepare the game plan.",
     tagline:
-      "Designed for developers who want proven resources plus direct monthly access to an experienced quarterback.",
+      "For developers who want proven development resources plus direct monthly access to experienced LIHTC strategy.",
     description:
-      "Designed for developers who want proven resources plus direct monthly access to an experienced quarterback.",
+      "For developers who want proven development resources plus direct monthly access to experienced LIHTC strategy.",
     includes: [
-      "Everything in Film Room, plus:",
+      "Everything included with Film Room + Ask the QB",
+      "Full Playbook access",
       "Downloadable templates and checklists",
+      "Presentation and outreach resources",
       "One 30-minute virtual strategy session each month",
       "Practical guidance on positioning and advancing a deal",
     ],
@@ -84,12 +89,13 @@ export const MEMBERSHIPS: readonly MembershipPlan[] = [
     name: "The Huddle",
     price: 795,
     period: "/month",
+    positioning: "Bring experience into the game.",
     tagline:
-      "Designed for developers who want consistent strategic access and more hands-on monthly guidance.",
+      "For developers who want consistent strategic access and more hands-on monthly guidance.",
     description:
-      "Designed for developers who want consistent strategic access and more hands-on monthly guidance.",
+      "For developers who want consistent strategic access and more hands-on monthly guidance.",
     includes: [
-      "Everything in The Playbook, plus:",
+      "Everything included with The Playbook",
       "Up to four private deal questions per month",
       "Two 45-minute virtual strategy sessions each month",
       "One monthly deal or presentation review",

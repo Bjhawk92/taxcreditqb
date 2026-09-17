@@ -24,7 +24,7 @@ function HqBilling() {
           methods are not collected on this page.
         </p>
         <Button asChild className="mt-8">
-          <Link to="/access">Membership inquiry</Link>
+          <Link to="/game-plans">View Game Plans</Link>
         </Button>
       </HqMain>
     </main>

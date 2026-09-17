@@ -16,13 +16,13 @@ export function EmailCapture({
         Get on the field.
       </p>
       <p className={cn("mt-2 text-ink/75", compact ? "text-sm" : "text-lede max-w-md")}>
-        Create a free account to access public resources, explore the Film Room, and
-        see which level of support fits your next deal.
+        Compare Game Plans to see pricing and benefits, then choose the level
+        of support that fits your next deal.
       </p>
       <Button asChild variant="cta" className="mt-4" size={compact ? "md" : "lg"}>
-        <Link to="/register">
+        <Link to="/game-plans">
           <BookOpen className="size-4" aria-hidden="true" />
-          Get the Playbook
+          View Game Plans
         </Link>
       </Button>
     </div>

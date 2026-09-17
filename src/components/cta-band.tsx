@@ -16,6 +16,7 @@ type To =
   | "/register"
   | "/videos"
   | "/tools"
+  | "/game-plans"
   | "/for-partners";
 
 export function CtaBand({
@@ -24,7 +25,7 @@ export function CtaBand({
   line,
   close,
   tone = "ink",
-  primary = { label: "Get the Playbook", to: "/register" },
+  primary = { label: "View Game Plans", to: "/game-plans" },
   secondary = { label: "Call the next play", to: "/inquiry" },
 }: {
   eyebrow?: string;

@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/page-hero";
-import { MembershipPricing } from "@/components/membership-pricing";
 import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
 
@@ -61,10 +60,15 @@ function Huddle() {
             Additional sessions can be scheduled separately.
           </p>
         </div>
+        <div id="schedule" className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Button asChild size="lg">
+            <Link to="/game-plans">View Game Plans</Link>
+          </Button>
+          <Button asChild variant="secondary" size="lg">
+            <Link to="/inquiry">Call the next play</Link>
+          </Button>
+        </div>
       </section>
-      <div id="schedule" className="scroll-mt-40">
-        <MembershipPricing />
-      </div>
     </main>
   );
 }

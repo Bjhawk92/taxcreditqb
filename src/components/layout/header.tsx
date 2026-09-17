@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BinderTabStrip } from "@/components/binder-tabs";
 import { BrandLockup } from "@/components/brand-lockup";
@@ -80,19 +80,13 @@ export function Header() {
             </Button>
           </SignedOut>
           <Button asChild variant="cta">
-            <Link to="/register">
-              <BookOpen className="size-4" aria-hidden="true" />
-              Get the Playbook
-            </Link>
+            <Link to="/game-plans">View Game Plans</Link>
           </Button>
         </div>
 
         <div className="col-start-3 row-start-1 flex items-center gap-2 lg:hidden">
           <Button asChild size="md" variant="cta" className="px-2.5 sm:px-3">
-            <Link to="/register">
-              <BookOpen className="hidden size-4 min-[400px]:block" aria-hidden="true" />
-              Get the Playbook
-            </Link>
+            <Link to="/game-plans">View Game Plans</Link>
           </Button>
           <button
             type="button"
@@ -150,11 +144,11 @@ export function Header() {
             </Link>
           ))}
           <Link
-            to="/register"
+            to="/game-plans"
             onClick={() => setOpen(false)}
             className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-steel"
           >
-            Get the Playbook
+            View Game Plans
           </Link>
           <SignedOut>
             <Link

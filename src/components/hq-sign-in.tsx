@@ -307,10 +307,10 @@ export function HqSignIn({
         <p className="mt-10 text-ink/80">
           Not a member yet?{" "}
           <Link
-            to="/access"
+            to="/game-plans"
             className="font-display font-semibold uppercase tracking-nav text-steel hover:text-ink"
           >
-            Inquire about membership
+            View Game Plans
           </Link>
         </p>
         )}

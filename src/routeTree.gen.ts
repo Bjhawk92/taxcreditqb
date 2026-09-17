@@ -16,12 +16,14 @@ import { Route as AdvisoryRouteImport } from './routes/advisory'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeskRouteImport } from './routes/desk'
 import { Route as ForPartnersRouteImport } from './routes/for-partners'
+import { Route as GamePlansRouteImport } from './routes/game-plans'
 import { Route as HqRouteImport } from './routes/hq'
 import { Route as HuddleRouteImport } from './routes/huddle'
 import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PlaybookRouteImport } from './routes/playbook'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as VideosRouteImport } from './routes/videos'
@@ -81,6 +83,11 @@ const ForPartnersRoute = ForPartnersRouteImport.update({
   path: '/for-partners',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GamePlansRoute = GamePlansRouteImport.update({
+  id: '/game-plans',
+  path: '/game-plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HqRoute = HqRouteImport.update({
   id: '/hq',
   path: '/hq',
@@ -109,6 +116,11 @@ const LoginRoute = LoginRouteImport.update({
 const PlaybookRoute = PlaybookRouteImport.update({
   id: '/playbook',
   path: '/playbook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -235,12 +247,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/desk': typeof DeskRouteWithChildren
   '/for-partners': typeof ForPartnersRoute
+  '/game-plans': typeof GamePlansRoute
   '/hq': typeof HqRouteWithChildren
   '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
+  '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/tools': typeof ToolsRoute
   '/videos': typeof VideosRoute
@@ -272,10 +286,12 @@ export interface FileRoutesByTo {
   '/advisory': typeof AdvisoryRoute
   '/contact': typeof ContactRoute
   '/for-partners': typeof ForPartnersRoute
+  '/game-plans': typeof GamePlansRoute
   '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/tools': typeof ToolsRoute
   '/videos': typeof VideosRoute
@@ -309,12 +325,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/desk': typeof DeskRouteWithChildren
   '/for-partners': typeof ForPartnersRoute
+  '/game-plans': typeof GamePlansRoute
   '/hq': typeof HqRouteWithChildren
   '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
+  '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/tools': typeof ToolsRoute
   '/videos': typeof VideosRoute
@@ -349,12 +367,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/desk'
     | '/for-partners'
+    | '/game-plans'
     | '/hq'
     | '/huddle'
     | '/inquiry'
     | '/legal'
     | '/login'
     | '/playbook'
+    | '/pricing'
     | '/register'
     | '/tools'
     | '/videos'
@@ -386,10 +406,12 @@ export interface FileRouteTypes {
     | '/advisory'
     | '/contact'
     | '/for-partners'
+    | '/game-plans'
     | '/huddle'
     | '/inquiry'
     | '/legal'
     | '/login'
+    | '/pricing'
     | '/register'
     | '/tools'
     | '/videos'
@@ -422,12 +444,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/desk'
     | '/for-partners'
+    | '/game-plans'
     | '/hq'
     | '/huddle'
     | '/inquiry'
     | '/legal'
     | '/login'
     | '/playbook'
+    | '/pricing'
     | '/register'
     | '/tools'
     | '/videos'
@@ -461,12 +485,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DeskRoute: typeof DeskRouteWithChildren
   ForPartnersRoute: typeof ForPartnersRoute
+  GamePlansRoute: typeof GamePlansRoute
   HqRoute: typeof HqRouteWithChildren
   HuddleRoute: typeof HuddleRoute
   InquiryRoute: typeof InquiryRoute
   LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
   PlaybookRoute: typeof PlaybookRouteWithChildren
+  PricingRoute: typeof PricingRoute
   RegisterRoute: typeof RegisterRoute
   ToolsRoute: typeof ToolsRoute
   VideosRoute: typeof VideosRoute
@@ -524,6 +550,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForPartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/game-plans': {
+      id: '/game-plans'
+      path: '/game-plans'
+      fullPath: '/game-plans'
+      preLoaderRoute: typeof GamePlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hq': {
       id: '/hq'
       path: '/hq'
@@ -564,6 +597,13 @@ declare module '@tanstack/react-router' {
       path: '/playbook'
       fullPath: '/playbook'
       preLoaderRoute: typeof PlaybookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -802,12 +842,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DeskRoute: DeskRouteWithChildren,
   ForPartnersRoute: ForPartnersRoute,
+  GamePlansRoute: GamePlansRoute,
   HqRoute: HqRouteWithChildren,
   HuddleRoute: HuddleRoute,
   InquiryRoute: InquiryRoute,
   LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,
   PlaybookRoute: PlaybookRouteWithChildren,
+  PricingRoute: PricingRoute,
   RegisterRoute: RegisterRoute,
   ToolsRoute: ToolsRoute,
   VideosRoute: VideosRoute,

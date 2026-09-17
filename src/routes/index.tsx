@@ -3,21 +3,20 @@ import { BookOpen } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { DeckCard } from "@/components/deck-card";
 import { EmailCapture } from "@/components/email-capture";
-import { MembershipPricing } from "@/components/membership-pricing";
+import { GamePlanTeaser } from "@/components/membership-pricing";
 import { PlaybookBackdrop } from "@/components/playbook-backdrop";
 import { ProofBar } from "@/components/proof-bar";
 import { Quote } from "@/components/quote";
 import { Button } from "@/components/ui/button";
 import { DECKS } from "@/lib/playbook";
 import { seo } from "@/lib/seo";
-import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () =>
     seo({
       title: "Tax Credit QB | LIHTC Development Strategy + Execution",
       description:
-        "Your next play. Backed by experience. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case—from site control and financial modeling to public approvals.",
+        "Your next play. Backed by experience. Playbook, Equipment, Game Plans, and QB Access—from $29/month. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case.",
     }),
   component: Home,
 });
@@ -26,28 +25,28 @@ const WAYS = [
   {
     label: "Playbook",
     title: "Prepare.",
-    body: "Use templates, presentation frameworks, speaking guidance, outreach resources, and practical development strategies to prepare for important development situations.",
+    body: "Strategies, templates, presentations, outreach resources, and practical guidance for moving LIHTC deals forward.",
     to: "/playbook" as const,
     cta: "Explore the Playbook",
   },
   {
-    label: "Film Room",
-    title: "Study.",
-    body: "Learn from real development situations, difficult questions, presentation strategies, objections, and decisions that affect LIHTC deals.",
-    to: "/videos" as const,
-    cta: "Visit the Film Room",
-  },
-  {
     label: "Equipment",
     title: "Execute.",
-    body: "Use practical development resources, directories, calculators, references, and research sources to help execute the work.",
+    body: "Practical development resources, directories, references, calculators, and research.",
     to: "/tools" as const,
     cta: "Explore the Equipment",
   },
   {
+    label: "Game Plans",
+    title: "Choose your level of support.",
+    body: "Compare memberships, pricing, benefits, and access.",
+    to: "/game-plans" as const,
+    cta: "View Game Plans",
+  },
+  {
     label: "QB Access",
     title: "Bring in experience.",
-    body: "Access Brett Johnson and Tax Credit QB directly when the team needs experience, strategy, presentation assistance, meeting participation, or help determining the next play.",
+    body: "Get direct strategic assistance when the situation requires more than self-service resources.",
     to: "/access" as const,
     cta: "Bring in the QB",
   },
@@ -81,13 +80,13 @@ function Home() {
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" variant="cta">
-              <Link to="/register">
+              <Link to="/playbook">
                 <BookOpen className="size-4" aria-hidden="true" />
                 Get the Playbook
               </Link>
             </Button>
             <Button asChild variant="secondary" size="lg">
-              <Link to="/inquiry">Call the next play</Link>
+              <Link to="/game-plans">View Game Plans</Link>
             </Button>
           </div>
           <p className="mt-8 max-w-2xl text-lede text-ink/80">
@@ -96,15 +95,36 @@ function Home() {
             Tax Credit QB helps your team understand the field and
             execute the next play.
           </p>
-          <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Use the Playbook to prepare, the Film Room to study, Equipment to
-            execute, or bring in the QB when the assignment needs experience
-            on the field.
-          </p>
         </div>
       </section>
 
       <ProofBar />
+
+      <section className="border-b border-line bg-paper-dim">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+          <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+            How Tax Credit QB helps
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {WAYS.map((way) => (
+              <article key={way.label} className="flex flex-col border border-line bg-paper p-6">
+                <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+                  {way.label}
+                </p>
+                <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+                  {way.title}
+                </h3>
+                <p className="mt-3 flex-1 text-ink/75">{way.body}</p>
+                <Button asChild variant="secondary" className="mt-6 self-start">
+                  <Link to={way.to}>{way.cta}</Link>
+                </Button>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <GamePlanTeaser />
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
@@ -132,30 +152,6 @@ function Home() {
           <Button asChild variant="secondary">
             <Link to="/playbook/outreach">Outreach Playbook</Link>
           </Button>
-        </div>
-      </section>
-
-      <section className="border-y border-line bg-paper-dim">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            How Tax Credit QB helps
-          </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {WAYS.map((way) => (
-              <article key={way.label} className="flex flex-col border border-line bg-paper p-6">
-                <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-                  {way.label}
-                </p>
-                <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
-                  {way.title}
-                </h3>
-                <p className="mt-3 flex-1 text-ink/75">{way.body}</p>
-                <Button asChild variant="secondary" className="mt-6 self-start">
-                  <Link to={way.to}>{way.cta}</Link>
-                </Button>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -223,8 +219,6 @@ function Home() {
         </div>
       </section>
 
-      <MembershipPricing />
-
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
         <EmailCapture />
       </section>
@@ -232,8 +226,8 @@ function Home() {
       <CtaBand
         eyebrow="Your winning edge"
         title="Your deal. A stronger game plan."
-        line="Get the Playbook and direct advice to lead confidently—or bring in the QB when the assignment needs it."
-        primary={{ label: "Get the Playbook", to: "/register" }}
+        line="Compare Game Plans, get the Playbook, or bring in the QB when the assignment needs it."
+        primary={{ label: "View Game Plans", to: "/game-plans" }}
         secondary={{ label: "Call the next play", to: "/inquiry" }}
       />
     </main>
