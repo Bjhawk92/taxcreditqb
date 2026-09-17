@@ -37,6 +37,8 @@ export const SITE = {
     "Tax Credit QB is not a law firm, not a syndicator, not your co-GP, and not a substitute for local land-use counsel. Meeting support is not lobbying unless a separate engagement says so. Deck templates are educational and must be adapted to the site, the QAP, and the jurisdiction. Financial models are prepared by Alkaline Advisors unless otherwise stated. Tax Credit QB does not guarantee approvals, tax-credit awards, financing, or project outcomes. You remain the developer and owner of your opportunity.",
 } as const;
 
+export const WORK_LABEL = "On the Field" as const;
+
 export const NAV = [
   {
     label: "Playbook",
@@ -57,9 +59,9 @@ export const NAV = [
     tab: "tools",
   },
   {
-    label: "Work With Us",
+    label: WORK_LABEL,
     to: "/access",
-    blurb: "Questions, huddles, meeting support, and project advisory.",
+    blurb: "Bring the QB onto the field — questions, huddles, meeting support, and advisory.",
     tab: "gold",
   },
   {

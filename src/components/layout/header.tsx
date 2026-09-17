@@ -5,7 +5,7 @@ import { BinderTabStrip } from "@/components/binder-tabs";
 import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut } from "@/lib/auth/gates";
-import { NAV, WORK_NAV } from "@/lib/site";
+import { NAV, WORK_LABEL, WORK_NAV } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const TAB = {
@@ -58,7 +58,7 @@ export function Header() {
               className="inline-flex min-h-11 items-center gap-1 px-2 font-display text-sm font-semibold uppercase tracking-nav text-ink hover:text-steel"
               aria-expanded={workOpen}
             >
-              Work With Us
+              {WORK_LABEL}
               <ChevronDown className="size-3.5" />
             </button>
             {workOpen ? (
@@ -129,7 +129,7 @@ export function Header() {
         )}
       >
         <nav className="mx-auto flex max-w-6xl flex-col px-5 py-4" aria-label="Mobile">
-          {NAV.filter((item) => item.label !== "Work With Us").map((item) => (
+          {NAV.filter((item) => item.label !== WORK_LABEL).map((item) => (
             <Link
               key={item.to}
               to={item.to}
@@ -146,7 +146,7 @@ export function Header() {
             </Link>
           ))}
           <p className="mt-4 font-display text-sm font-semibold uppercase tracking-mark text-muted">
-            Work With Us
+            {WORK_LABEL}
           </p>
           {WORK_NAV.map((item) => (
             <Link

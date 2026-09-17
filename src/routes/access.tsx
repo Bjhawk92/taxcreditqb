@@ -37,7 +37,7 @@ function Access() {
       </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <h2 className="font-display text-section font-semibold leading-section">
-          What a session can cover
+          What a huddle can cover
         </h2>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {TOPICS.map((item) => (
