@@ -38,8 +38,18 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
         <circle key={i} cx={x} cy={y} r="13" fill="none" stroke="#1e3356" strokeWidth="2.2" opacity="0.28" />
       ))}
       {/* QB */}
-      <circle cx="550" cy="510" r="15" fill="none" stroke="#1e3356" strokeWidth="2.6" opacity="0.38" />
-      <text x="550" y="516" textAnchor="middle" fontSize="11" fontFamily="Barlow Condensed, sans-serif" fill="#1e3356" opacity="0.4">
+      <circle cx="550" cy="510" r="24" fill="none" stroke="#1e3356" strokeWidth="2.8" opacity="0.45" />
+      <text
+        x="550"
+        y="510"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="22"
+        fontFamily={PENCIL}
+        fill="#1e3356"
+        opacity="0.55"
+        letterSpacing="0.04em"
+      >
         QB
       </text>
       {/* RB */}
