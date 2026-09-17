@@ -79,6 +79,8 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       {[
         [220, 430],
         [300, 450],
+        [718, 430],
+        [800, 450],
         [880, 430],
         [980, 450],
       ].map(([x, y], i) => (
@@ -138,6 +140,16 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
         <polygon points="880,150 872,164 888,164" />
         <polygon points="1040,300 1028,290 1028,310" />
         <polygon points="740,70 732,84 748,84" />
+      </g>
+
+      {/* Blocks — T at the defender */}
+      <g fill="none" stroke="#1e3356" strokeWidth="1.9" strokeLinecap="round" opacity="0.36">
+        {/* TE on NIMBY */}
+        <path d="M718 418 L760 312" />
+        <path d="M753 309 L767 315" />
+        {/* Slot WR on FINANCING */}
+        <path d="M800 438 L656 302" />
+        <path d="M649 296 L663 308" />
       </g>
 
       {/* second play, lighter, shifted */}
