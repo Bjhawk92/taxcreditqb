@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/page-hero";
-import { PricingCard } from "@/components/pricing-card";
+import { MembershipPricing } from "@/components/membership-pricing";
 import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
 import { SITE } from "@/lib/site";
@@ -58,10 +58,10 @@ function Access() {
             Additional sessions can be scheduled separately.
           </p>
         </div>
-        <div id="schedule" className="mt-12 max-w-xl scroll-mt-40">
-          <PricingCard />
-        </div>
       </section>
+      <div id="schedule" className="scroll-mt-40">
+        <MembershipPricing />
+      </div>
     </main>
   );
 }

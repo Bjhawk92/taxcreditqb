@@ -3,6 +3,7 @@ import { BookOpen } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { DeckCard } from "@/components/deck-card";
 import { EmailCapture } from "@/components/email-capture";
+import { MembershipPricing } from "@/components/membership-pricing";
 import { PlaybookBackdrop } from "@/components/playbook-backdrop";
 import { ProofBar } from "@/components/proof-bar";
 import { Quote } from "@/components/quote";
@@ -203,6 +204,8 @@ function Home() {
           </Button>
         </div>
       </section>
+
+      <MembershipPricing />
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
         <EmailCapture />
