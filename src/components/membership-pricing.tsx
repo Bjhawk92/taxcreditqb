@@ -29,15 +29,15 @@ const CREDENTIAL = {
   playbook: {
     access: "Locker Room Access",
     number: "TCQB-PB-2026-0088",
-    lanyard: "#c49a3c",
-    lanyardEdge: "#8c6a22",
+    lanyard: "#2d6a4f",
+    lanyardEdge: "#1d4634",
     header: "bg-ink text-paper",
-    band: "bg-[#c49a3c] text-ink",
-    name: "text-[#e8c56a]",
+    band: "bg-[#2d6a4f] text-paper",
+    name: "text-[#8fd4b0]",
     price: "text-paper",
-    barcode: "text-[#e8c56a]",
-    frame: "border-[#c49a3c] shadow-[0_22px_44px_rgb(30_51_86/0.28)]",
-    inner: "ring-1 ring-inset ring-[#c49a3c]/55",
+    barcode: "text-[#8fd4b0]",
+    frame: "border-[#2d6a4f] shadow-[0_22px_44px_rgb(45_106_79/0.28)]",
+    inner: "ring-1 ring-inset ring-[#2d6a4f]/55",
   },
   huddle: {
     access: "All Access",
@@ -189,7 +189,7 @@ export function MembershipPricing({
                     </div>
                     <div className="relative px-5 pb-5 pt-3">
                       {featured ? (
-                        <p className="text-center font-display text-xs font-extrabold uppercase tracking-[0.18em] text-[#e8c56a]">
+                        <p className="text-center font-display text-xs font-extrabold uppercase tracking-[0.18em] text-[#8fd4b0]">
                           Most popular
                         </p>
                       ) : null}
