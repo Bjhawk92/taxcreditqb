@@ -86,6 +86,8 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
             key={spot.label}
             x={spot.lx}
             y={spot.ly}
+            fontSize={spot.fontSize}
+            letterSpacing={spot.tracking}
             textAnchor={spot.anchor ?? "start"}
             transform={spot.tilt ? `rotate(${spot.tilt} ${spot.lx} ${spot.ly})` : undefined}
           >
@@ -141,6 +143,8 @@ type DefenseSpot = {
   anchor?: "start" | "middle" | "end";
   tilt?: number;
   hideMark?: boolean;
+  fontSize?: number;
+  tracking?: string;
 };
 
 const DEFENSE: DefenseSpot[] = [
@@ -149,10 +153,10 @@ const DEFENSE: DefenseSpot[] = [
   { x: 470, y: 290, label: "ZONING", lx: 470, ly: 272, anchor: "middle", tilt: -2 },
   { x: 560, y: 270, label: "SITE", lx: 560, ly: 252, anchor: "middle", tilt: 1 },
   { x: 650, y: 290, label: "FINANCING", lx: 650, ly: 324, anchor: "middle", tilt: 1 },
-  { x: 460, y: 385, label: "COMPETITOR", lx: 460, ly: 352, anchor: "middle", tilt: -2 },
-  { x: 520, y: 385, label: "DEADLINE", lx: 520, ly: 367, anchor: "middle", tilt: 1 },
-  { x: 580, y: 385, label: "UNDERWRITER", lx: 580, ly: 352, anchor: "middle", tilt: -1 },
-  { x: 640, y: 385, label: "SCORING", lx: 640, ly: 367, anchor: "middle", tilt: 2 },
+  { x: 460, y: 385, label: "COMPETITOR", lx: 460, ly: 372, anchor: "middle", tilt: -1, fontSize: 11, tracking: "0.02em" },
+  { x: 520, y: 385, label: "DEADLINE", lx: 520, ly: 372, anchor: "middle", tilt: 1, fontSize: 11, tracking: "0.02em" },
+  { x: 580, y: 385, label: "UNDERWRITER", lx: 580, ly: 372, anchor: "middle", tilt: -1, fontSize: 11, tracking: "0.02em" },
+  { x: 640, y: 385, label: "SCORING", lx: 640, ly: 372, anchor: "middle", tilt: 1, fontSize: 11, tracking: "0.02em" },
   { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
   { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
   { x: 320, y: 180 },
