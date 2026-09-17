@@ -148,7 +148,7 @@ const DEFENSE: DefenseSpot[] = [
   { x: 360, y: 300 },
   { x: 470, y: 290, label: "ZONING", lx: 470, ly: 272, anchor: "middle", tilt: -2 },
   { x: 560, y: 270 },
-  { x: 650, y: 290, label: "SITE", lx: 616, ly: 278, anchor: "end", tilt: 2 },
+  { x: 650, y: 290, label: "SITE", lx: 650, ly: 272, anchor: "middle", tilt: 1 },
   { x: 650, y: 290, label: "FINANCING", lx: 650, ly: 324, anchor: "middle", tilt: 1, hideMark: true },
   { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
   { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
