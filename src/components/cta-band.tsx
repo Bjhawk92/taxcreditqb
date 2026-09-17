@@ -17,6 +17,7 @@ type To =
   | "/videos"
   | "/tools"
   | "/game-plans"
+  | "/hq"
   | "/for-partners";
 
 export function CtaBand({

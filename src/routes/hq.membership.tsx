@@ -24,7 +24,7 @@ function HqMembership() {
   return (
     <main id="main">
       <HqHeader
-        title="My membership"
+        title="My Game Plan"
         sub="What is included, what is not, and how much consulting remains."
       />
       <HqMain>

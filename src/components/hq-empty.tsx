@@ -5,7 +5,7 @@ export function HqHeader({ title, sub }: { title: string; sub?: string }) {
     <header className="border-b border-line bg-paper">
       <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-12">
         <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-          Team HQ
+          My Locker
         </p>
         <h1 className="mt-3 max-w-4xl font-display text-display font-semibold leading-display tracking-display">
           {title}

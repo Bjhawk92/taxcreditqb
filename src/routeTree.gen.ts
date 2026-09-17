@@ -21,6 +21,7 @@ import { Route as HqRouteImport } from './routes/hq'
 import { Route as HuddleRouteImport } from './routes/huddle'
 import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as LockerRouteImport } from './routes/locker'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PlaybookRouteImport } from './routes/playbook'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -30,14 +31,21 @@ import { Route as VideosRouteImport } from './routes/videos'
 import { Route as DeskIndexRouteImport } from './routes/desk.index'
 import { Route as DeskModelingRouteImport } from './routes/desk.modeling'
 import { Route as HqIndexRouteImport } from './routes/hq.index'
+import { Route as HqAccountRouteImport } from './routes/hq.account'
 import { Route as HqAdminRouteImport } from './routes/hq.admin'
 import { Route as HqBillingRouteImport } from './routes/hq.billing'
+import { Route as HqDealsRouteImport } from './routes/hq.deals'
+import { Route as HqDocumentsRouteImport } from './routes/hq.documents'
+import { Route as HqEquipmentRouteImport } from './routes/hq.equipment'
 import { Route as HqFilesRouteImport } from './routes/hq.files'
 import { Route as HqFilmRouteImport } from './routes/hq.film'
 import { Route as HqHuddleRouteImport } from './routes/hq.huddle'
+import { Route as HqLettersRouteImport } from './routes/hq.letters'
 import { Route as HqMeetingsRouteImport } from './routes/hq.meetings'
 import { Route as HqMembershipRouteImport } from './routes/hq.membership'
 import { Route as HqMessagesRouteImport } from './routes/hq.messages'
+import { Route as HqModelingRouteImport } from './routes/hq.modeling'
+import { Route as HqOnboardingRouteImport } from './routes/hq.onboarding'
 import { Route as HqPlaybookRouteImport } from './routes/hq.playbook'
 import { Route as HqProjectsRouteImport } from './routes/hq.projects'
 import { Route as PlaybookIndexRouteImport } from './routes/playbook.index'
@@ -46,7 +54,9 @@ import { Route as PlaybookHearingRouteImport } from './routes/playbook.hearing'
 import { Route as PlaybookNeighborhoodRouteImport } from './routes/playbook.neighborhood'
 import { Route as PlaybookOutreachRouteImport } from './routes/playbook.outreach'
 import { Route as PlaybookPrivateIntroRouteImport } from './routes/playbook.private-intro'
+import { Route as ToolsModelingRouteImport } from './routes/tools.modeling'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as HqDealDealIdRouteImport } from './routes/hq.deal.$dealId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -108,6 +118,11 @@ const LegalRoute = LegalRouteImport.update({
   path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LockerRoute = LockerRouteImport.update({
+  id: '/locker',
+  path: '/locker',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -153,6 +168,11 @@ const HqIndexRoute = HqIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HqRoute,
 } as any)
+const HqAccountRoute = HqAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => HqRoute,
+} as any)
 const HqAdminRoute = HqAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -161,6 +181,21 @@ const HqAdminRoute = HqAdminRouteImport.update({
 const HqBillingRoute = HqBillingRouteImport.update({
   id: '/billing',
   path: '/billing',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqDealsRoute = HqDealsRouteImport.update({
+  id: '/deals',
+  path: '/deals',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqDocumentsRoute = HqDocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqEquipmentRoute = HqEquipmentRouteImport.update({
+  id: '/equipment',
+  path: '/equipment',
   getParentRoute: () => HqRoute,
 } as any)
 const HqFilesRoute = HqFilesRouteImport.update({
@@ -178,6 +213,11 @@ const HqHuddleRoute = HqHuddleRouteImport.update({
   path: '/huddle',
   getParentRoute: () => HqRoute,
 } as any)
+const HqLettersRoute = HqLettersRouteImport.update({
+  id: '/letters',
+  path: '/letters',
+  getParentRoute: () => HqRoute,
+} as any)
 const HqMeetingsRoute = HqMeetingsRouteImport.update({
   id: '/meetings',
   path: '/meetings',
@@ -191,6 +231,16 @@ const HqMembershipRoute = HqMembershipRouteImport.update({
 const HqMessagesRoute = HqMessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqModelingRoute = HqModelingRouteImport.update({
+  id: '/modeling',
+  path: '/modeling',
+  getParentRoute: () => HqRoute,
+} as any)
+const HqOnboardingRoute = HqOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => HqRoute,
 } as any)
 const HqPlaybookRoute = HqPlaybookRouteImport.update({
@@ -233,10 +283,20 @@ const PlaybookPrivateIntroRoute = PlaybookPrivateIntroRouteImport.update({
   path: '/private-intro',
   getParentRoute: () => PlaybookRoute,
 } as any)
+const ToolsModelingRoute = ToolsModelingRouteImport.update({
+  id: '/modeling',
+  path: '/modeling',
+  getParentRoute: () => ToolsRoute,
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
+} as any)
+const HqDealDealIdRoute = HqDealDealIdRouteImport.update({
+  id: '/deal/$dealId',
+  path: '/deal/$dealId',
+  getParentRoute: () => HqRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -252,21 +312,29 @@ export interface FileRoutesByFullPath {
   '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
+  '/locker': typeof LockerRoute
   '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
-  '/tools': typeof ToolsRoute
+  '/tools': typeof ToolsRouteWithChildren
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
+  '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
   '/hq/billing': typeof HqBillingRoute
+  '/hq/deals': typeof HqDealsRoute
+  '/hq/documents': typeof HqDocumentsRoute
+  '/hq/equipment': typeof HqEquipmentRoute
   '/hq/files': typeof HqFilesRoute
   '/hq/film': typeof HqFilmRoute
   '/hq/huddle': typeof HqHuddleRoute
+  '/hq/letters': typeof HqLettersRoute
   '/hq/meetings': typeof HqMeetingsRoute
   '/hq/membership': typeof HqMembershipRoute
   '/hq/messages': typeof HqMessagesRoute
+  '/hq/modeling': typeof HqModelingRoute
+  '/hq/onboarding': typeof HqOnboardingRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
   '/playbook/builder': typeof PlaybookBuilderRoute
@@ -274,10 +342,12 @@ export interface FileRoutesByFullPath {
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/outreach': typeof PlaybookOutreachRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
+  '/tools/modeling': typeof ToolsModelingRoute
   '/desk/': typeof DeskIndexRoute
   '/hq/': typeof HqIndexRoute
   '/playbook/': typeof PlaybookIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/hq/deal/$dealId': typeof HqDealDealIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -290,20 +360,28 @@ export interface FileRoutesByTo {
   '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
+  '/locker': typeof LockerRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
-  '/tools': typeof ToolsRoute
+  '/tools': typeof ToolsRouteWithChildren
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
+  '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
   '/hq/billing': typeof HqBillingRoute
+  '/hq/deals': typeof HqDealsRoute
+  '/hq/documents': typeof HqDocumentsRoute
+  '/hq/equipment': typeof HqEquipmentRoute
   '/hq/files': typeof HqFilesRoute
   '/hq/film': typeof HqFilmRoute
   '/hq/huddle': typeof HqHuddleRoute
+  '/hq/letters': typeof HqLettersRoute
   '/hq/meetings': typeof HqMeetingsRoute
   '/hq/membership': typeof HqMembershipRoute
   '/hq/messages': typeof HqMessagesRoute
+  '/hq/modeling': typeof HqModelingRoute
+  '/hq/onboarding': typeof HqOnboardingRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
   '/playbook/builder': typeof PlaybookBuilderRoute
@@ -311,10 +389,12 @@ export interface FileRoutesByTo {
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/outreach': typeof PlaybookOutreachRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
+  '/tools/modeling': typeof ToolsModelingRoute
   '/desk': typeof DeskIndexRoute
   '/hq': typeof HqIndexRoute
   '/playbook': typeof PlaybookIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/hq/deal/$dealId': typeof HqDealDealIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -330,21 +410,29 @@ export interface FileRoutesById {
   '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
+  '/locker': typeof LockerRoute
   '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
-  '/tools': typeof ToolsRoute
+  '/tools': typeof ToolsRouteWithChildren
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
+  '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
   '/hq/billing': typeof HqBillingRoute
+  '/hq/deals': typeof HqDealsRoute
+  '/hq/documents': typeof HqDocumentsRoute
+  '/hq/equipment': typeof HqEquipmentRoute
   '/hq/files': typeof HqFilesRoute
   '/hq/film': typeof HqFilmRoute
   '/hq/huddle': typeof HqHuddleRoute
+  '/hq/letters': typeof HqLettersRoute
   '/hq/meetings': typeof HqMeetingsRoute
   '/hq/membership': typeof HqMembershipRoute
   '/hq/messages': typeof HqMessagesRoute
+  '/hq/modeling': typeof HqModelingRoute
+  '/hq/onboarding': typeof HqOnboardingRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
   '/playbook/builder': typeof PlaybookBuilderRoute
@@ -352,10 +440,12 @@ export interface FileRoutesById {
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/outreach': typeof PlaybookOutreachRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
+  '/tools/modeling': typeof ToolsModelingRoute
   '/desk/': typeof DeskIndexRoute
   '/hq/': typeof HqIndexRoute
   '/playbook/': typeof PlaybookIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/hq/deal/$dealId': typeof HqDealDealIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -372,6 +462,7 @@ export interface FileRouteTypes {
     | '/huddle'
     | '/inquiry'
     | '/legal'
+    | '/locker'
     | '/login'
     | '/playbook'
     | '/pricing'
@@ -379,14 +470,21 @@ export interface FileRouteTypes {
     | '/tools'
     | '/videos'
     | '/desk/modeling'
+    | '/hq/account'
     | '/hq/admin'
     | '/hq/billing'
+    | '/hq/deals'
+    | '/hq/documents'
+    | '/hq/equipment'
     | '/hq/files'
     | '/hq/film'
     | '/hq/huddle'
+    | '/hq/letters'
     | '/hq/meetings'
     | '/hq/membership'
     | '/hq/messages'
+    | '/hq/modeling'
+    | '/hq/onboarding'
     | '/hq/playbook'
     | '/hq/projects'
     | '/playbook/builder'
@@ -394,10 +492,12 @@ export interface FileRouteTypes {
     | '/playbook/neighborhood'
     | '/playbook/outreach'
     | '/playbook/private-intro'
+    | '/tools/modeling'
     | '/desk/'
     | '/hq/'
     | '/playbook/'
     | '/api/auth/$'
+    | '/hq/deal/$dealId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -410,20 +510,28 @@ export interface FileRouteTypes {
     | '/huddle'
     | '/inquiry'
     | '/legal'
+    | '/locker'
     | '/login'
     | '/pricing'
     | '/register'
     | '/tools'
     | '/videos'
     | '/desk/modeling'
+    | '/hq/account'
     | '/hq/admin'
     | '/hq/billing'
+    | '/hq/deals'
+    | '/hq/documents'
+    | '/hq/equipment'
     | '/hq/files'
     | '/hq/film'
     | '/hq/huddle'
+    | '/hq/letters'
     | '/hq/meetings'
     | '/hq/membership'
     | '/hq/messages'
+    | '/hq/modeling'
+    | '/hq/onboarding'
     | '/hq/playbook'
     | '/hq/projects'
     | '/playbook/builder'
@@ -431,10 +539,12 @@ export interface FileRouteTypes {
     | '/playbook/neighborhood'
     | '/playbook/outreach'
     | '/playbook/private-intro'
+    | '/tools/modeling'
     | '/desk'
     | '/hq'
     | '/playbook'
     | '/api/auth/$'
+    | '/hq/deal/$dealId'
   id:
     | '__root__'
     | '/'
@@ -449,6 +559,7 @@ export interface FileRouteTypes {
     | '/huddle'
     | '/inquiry'
     | '/legal'
+    | '/locker'
     | '/login'
     | '/playbook'
     | '/pricing'
@@ -456,14 +567,21 @@ export interface FileRouteTypes {
     | '/tools'
     | '/videos'
     | '/desk/modeling'
+    | '/hq/account'
     | '/hq/admin'
     | '/hq/billing'
+    | '/hq/deals'
+    | '/hq/documents'
+    | '/hq/equipment'
     | '/hq/files'
     | '/hq/film'
     | '/hq/huddle'
+    | '/hq/letters'
     | '/hq/meetings'
     | '/hq/membership'
     | '/hq/messages'
+    | '/hq/modeling'
+    | '/hq/onboarding'
     | '/hq/playbook'
     | '/hq/projects'
     | '/playbook/builder'
@@ -471,10 +589,12 @@ export interface FileRouteTypes {
     | '/playbook/neighborhood'
     | '/playbook/outreach'
     | '/playbook/private-intro'
+    | '/tools/modeling'
     | '/desk/'
     | '/hq/'
     | '/playbook/'
     | '/api/auth/$'
+    | '/hq/deal/$dealId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -490,11 +610,12 @@ export interface RootRouteChildren {
   HuddleRoute: typeof HuddleRoute
   InquiryRoute: typeof InquiryRoute
   LegalRoute: typeof LegalRoute
+  LockerRoute: typeof LockerRoute
   LoginRoute: typeof LoginRoute
   PlaybookRoute: typeof PlaybookRouteWithChildren
   PricingRoute: typeof PricingRoute
   RegisterRoute: typeof RegisterRoute
-  ToolsRoute: typeof ToolsRoute
+  ToolsRoute: typeof ToolsRouteWithChildren
   VideosRoute: typeof VideosRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -585,6 +706,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/locker': {
+      id: '/locker'
+      path: '/locker'
+      fullPath: '/locker'
+      preLoaderRoute: typeof LockerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -648,6 +776,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HqIndexRouteImport
       parentRoute: typeof HqRoute
     }
+    '/hq/account': {
+      id: '/hq/account'
+      path: '/account'
+      fullPath: '/hq/account'
+      preLoaderRoute: typeof HqAccountRouteImport
+      parentRoute: typeof HqRoute
+    }
     '/hq/admin': {
       id: '/hq/admin'
       path: '/admin'
@@ -660,6 +795,27 @@ declare module '@tanstack/react-router' {
       path: '/billing'
       fullPath: '/hq/billing'
       preLoaderRoute: typeof HqBillingRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/deals': {
+      id: '/hq/deals'
+      path: '/deals'
+      fullPath: '/hq/deals'
+      preLoaderRoute: typeof HqDealsRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/documents': {
+      id: '/hq/documents'
+      path: '/documents'
+      fullPath: '/hq/documents'
+      preLoaderRoute: typeof HqDocumentsRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/equipment': {
+      id: '/hq/equipment'
+      path: '/equipment'
+      fullPath: '/hq/equipment'
+      preLoaderRoute: typeof HqEquipmentRouteImport
       parentRoute: typeof HqRoute
     }
     '/hq/files': {
@@ -683,6 +839,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HqHuddleRouteImport
       parentRoute: typeof HqRoute
     }
+    '/hq/letters': {
+      id: '/hq/letters'
+      path: '/letters'
+      fullPath: '/hq/letters'
+      preLoaderRoute: typeof HqLettersRouteImport
+      parentRoute: typeof HqRoute
+    }
     '/hq/meetings': {
       id: '/hq/meetings'
       path: '/meetings'
@@ -702,6 +865,20 @@ declare module '@tanstack/react-router' {
       path: '/messages'
       fullPath: '/hq/messages'
       preLoaderRoute: typeof HqMessagesRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/modeling': {
+      id: '/hq/modeling'
+      path: '/modeling'
+      fullPath: '/hq/modeling'
+      preLoaderRoute: typeof HqModelingRouteImport
+      parentRoute: typeof HqRoute
+    }
+    '/hq/onboarding': {
+      id: '/hq/onboarding'
+      path: '/onboarding'
+      fullPath: '/hq/onboarding'
+      preLoaderRoute: typeof HqOnboardingRouteImport
       parentRoute: typeof HqRoute
     }
     '/hq/playbook': {
@@ -760,12 +937,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybookPrivateIntroRouteImport
       parentRoute: typeof PlaybookRoute
     }
+    '/tools/modeling': {
+      id: '/tools/modeling'
+      path: '/modeling'
+      fullPath: '/tools/modeling'
+      preLoaderRoute: typeof ToolsModelingRouteImport
+      parentRoute: typeof ToolsRoute
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
       fullPath: '/api/auth/$'
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/hq/deal/$dealId': {
+      id: '/hq/deal/$dealId'
+      path: '/deal/$dealId'
+      fullPath: '/hq/deal/$dealId'
+      preLoaderRoute: typeof HqDealDealIdRouteImport
+      parentRoute: typeof HqRoute
     }
   }
 }
@@ -783,31 +974,47 @@ const DeskRouteChildren: DeskRouteChildren = {
 const DeskRouteWithChildren = DeskRoute._addFileChildren(DeskRouteChildren)
 
 interface HqRouteChildren {
+  HqAccountRoute: typeof HqAccountRoute
   HqAdminRoute: typeof HqAdminRoute
   HqBillingRoute: typeof HqBillingRoute
+  HqDealsRoute: typeof HqDealsRoute
+  HqDocumentsRoute: typeof HqDocumentsRoute
+  HqEquipmentRoute: typeof HqEquipmentRoute
   HqFilesRoute: typeof HqFilesRoute
   HqFilmRoute: typeof HqFilmRoute
   HqHuddleRoute: typeof HqHuddleRoute
+  HqLettersRoute: typeof HqLettersRoute
   HqMeetingsRoute: typeof HqMeetingsRoute
   HqMembershipRoute: typeof HqMembershipRoute
   HqMessagesRoute: typeof HqMessagesRoute
+  HqModelingRoute: typeof HqModelingRoute
+  HqOnboardingRoute: typeof HqOnboardingRoute
   HqPlaybookRoute: typeof HqPlaybookRoute
   HqProjectsRoute: typeof HqProjectsRoute
   HqIndexRoute: typeof HqIndexRoute
+  HqDealDealIdRoute: typeof HqDealDealIdRoute
 }
 
 const HqRouteChildren: HqRouteChildren = {
+  HqAccountRoute: HqAccountRoute,
   HqAdminRoute: HqAdminRoute,
   HqBillingRoute: HqBillingRoute,
+  HqDealsRoute: HqDealsRoute,
+  HqDocumentsRoute: HqDocumentsRoute,
+  HqEquipmentRoute: HqEquipmentRoute,
   HqFilesRoute: HqFilesRoute,
   HqFilmRoute: HqFilmRoute,
   HqHuddleRoute: HqHuddleRoute,
+  HqLettersRoute: HqLettersRoute,
   HqMeetingsRoute: HqMeetingsRoute,
   HqMembershipRoute: HqMembershipRoute,
   HqMessagesRoute: HqMessagesRoute,
+  HqModelingRoute: HqModelingRoute,
+  HqOnboardingRoute: HqOnboardingRoute,
   HqPlaybookRoute: HqPlaybookRoute,
   HqProjectsRoute: HqProjectsRoute,
   HqIndexRoute: HqIndexRoute,
+  HqDealDealIdRoute: HqDealDealIdRoute,
 }
 
 const HqRouteWithChildren = HqRoute._addFileChildren(HqRouteChildren)
@@ -834,6 +1041,16 @@ const PlaybookRouteWithChildren = PlaybookRoute._addFileChildren(
   PlaybookRouteChildren,
 )
 
+interface ToolsRouteChildren {
+  ToolsModelingRoute: typeof ToolsModelingRoute
+}
+
+const ToolsRouteChildren: ToolsRouteChildren = {
+  ToolsModelingRoute: ToolsModelingRoute,
+}
+
+const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -847,11 +1064,12 @@ const rootRouteChildren: RootRouteChildren = {
   HuddleRoute: HuddleRoute,
   InquiryRoute: InquiryRoute,
   LegalRoute: LegalRoute,
+  LockerRoute: LockerRoute,
   LoginRoute: LoginRoute,
   PlaybookRoute: PlaybookRouteWithChildren,
   PricingRoute: PricingRoute,
   RegisterRoute: RegisterRoute,
-  ToolsRoute: ToolsRoute,
+  ToolsRoute: ToolsRouteWithChildren,
   VideosRoute: VideosRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

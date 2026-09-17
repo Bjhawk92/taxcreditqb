@@ -55,7 +55,7 @@ async function emailAuth(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify({ ...payload, callbackURL: "/hq" }),
+    body: JSON.stringify({ ...payload, callbackURL: "/hq/onboarding" }),
   });
   const text = await res.text();
   let body: Record<string, unknown> = {};
@@ -119,16 +119,28 @@ export function HqSignIn({
     const form = new FormData(e.currentTarget);
     const email = String(form.get("email") ?? "").trim();
     const password = String(form.get("password") ?? "");
-    const name = String(form.get("name") ?? "").trim();
+    const confirm = String(form.get("confirm") ?? "");
+    const first = String(form.get("firstName") ?? "").trim();
+    const last = String(form.get("lastName") ?? "").trim();
+    const name = [first, last].filter(Boolean).join(" ");
+    const terms = form.get("terms");
     setBusy(true);
     setError(null);
     try {
+      if (mode === "up") {
+        if (password !== confirm) {
+          throw new Error("Passwords do not match.");
+        }
+        if (!terms) {
+          throw new Error("Please agree to the Terms of Use and Privacy Policy.");
+        }
+      }
       await emailAuth(mode, {
         email,
         password,
         name: name || email,
       });
-      window.location.href = "/hq";
+      window.location.href = mode === "up" ? "/hq/onboarding" : "/hq";
     } catch (err) {
       setError(
         explainAuthError(err instanceof Error ? err.message : "", mode),
@@ -184,14 +196,19 @@ export function HqSignIn({
             <p className="text-sm text-ink/75">
               {mode === "in"
                 ? "Sign in with the email and password for your Tax Credit QB account."
-                : "Use any email you already have. Nothing is sent to that address — it is only your login."}
+                : "Create an account with your name, email, and password. You can browse Tax Credit QB without an account; sign up when you want to save work, purchase, or use private Equipment."}
             </p>
 
             <form onSubmit={onEmail} className="space-y-4">
               {mode === "up" ? (
-                <Field label="Name" htmlFor="hq-name">
-                  <Input id="hq-name" name="name" autoComplete="name" />
-                </Field>
+                <>
+                  <Field label="First name" htmlFor="hq-first">
+                    <Input id="hq-first" name="firstName" autoComplete="given-name" required />
+                  </Field>
+                  <Field label="Last name" htmlFor="hq-last">
+                    <Input id="hq-last" name="lastName" autoComplete="family-name" required />
+                  </Field>
+                </>
               ) : null}
               <Field label="Email" htmlFor="hq-email">
                 <Input
@@ -217,6 +234,34 @@ export function HqSignIn({
                   minLength={8}
                 />
               </Field>
+              {mode === "up" ? (
+                <>
+                  <Field label="Confirm password" htmlFor="hq-confirm">
+                    <Input
+                      id="hq-confirm"
+                      name="confirm"
+                      type="password"
+                      required
+                      autoComplete="new-password"
+                      minLength={8}
+                    />
+                  </Field>
+                  <label className="flex items-start gap-3 text-sm text-ink/80">
+                    <input type="checkbox" name="terms" className="mt-1" required />
+                    <span>
+                      I agree to the{" "}
+                      <Link to="/legal" className="underline">
+                        Terms of Use
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/legal" className="underline">
+                        Privacy Policy
+                      </Link>
+                      , and to applicable membership terms if I subscribe.
+                    </span>
+                  </label>
+                </>
+              ) : null}
               {error ? (
                 <p className="border border-ink bg-paper-dim px-4 py-3 text-sm text-ink">
                   {error}
@@ -275,7 +320,7 @@ export function HqSignIn({
                       type="button"
                       variant="secondary"
                       onClick={() =>
-                        void signIn(p.providerId, { callbackURL: "/hq" }).catch(
+                        void signIn(p.providerId, { callbackURL: "/hq/onboarding" }).catch(
                           (err: unknown) =>
                             setError(
                               err instanceof Error

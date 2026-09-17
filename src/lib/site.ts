@@ -133,6 +133,7 @@ export const FOOTER_NAV = [
   { label: "Game Plans", to: "/game-plans" },
   { label: "QB Access", to: "/access" },
   { label: "About", to: "/about" },
+  { label: "My Locker", to: "/hq" },
   { label: "Film Room", to: "/videos" },
   { label: "Presentation Builder", to: "/playbook/builder" },
   { label: "Ask the QB", to: "/register" },

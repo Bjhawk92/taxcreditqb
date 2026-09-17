@@ -4,6 +4,7 @@ import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { QapDirectory } from "@/components/qap-directory";
 import { Button } from "@/components/ui/button";
+import { EQUIPMENT_PACKAGES } from "@/lib/equipment-catalog";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/tools")({
@@ -24,6 +25,28 @@ function Equipment() {
         title="The right equipment for the next play."
         sub="Practical resources for developers working through real LIHTC deals. Find the information, references, calculators, directories, and development resources your team needs to evaluate the field, understand the requirements, prepare the game plan, and move the deal forward."
       />
+
+      <section className="mx-auto max-w-6xl px-5 pt-14 md:px-8 md:pt-20">
+        <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+          Equipment packages
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {EQUIPMENT_PACKAGES.map((item) => (
+            <article key={item.slug} className="flex flex-col border border-line bg-paper p-6">
+              <p className="font-display text-xs font-semibold uppercase tracking-nav text-steel">
+                {item.accessLabel}
+              </p>
+              <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+                {item.name}
+              </h2>
+              <p className="mt-3 flex-1 text-ink/80">{item.blurb}</p>
+              <Button asChild className="mt-6 self-start" variant="secondary">
+                <a href={item.href}>{item.interactive ? "Open" : "View"}</a>
+              </Button>
+            </article>
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto max-w-6xl px-5 pt-14 md:px-8 md:pt-20">
         <article className="border border-line bg-paper p-6 md:p-8">

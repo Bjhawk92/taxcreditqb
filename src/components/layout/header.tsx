@@ -69,7 +69,7 @@ export function Header() {
           </div>
           <SignedIn>
             <Button asChild variant="ghost" className="px-2">
-              <Link to="/hq">Team HQ</Link>
+              <Link to="/hq">My Locker</Link>
             </Button>
           </SignedIn>
           <SignedOut>
@@ -166,7 +166,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
             >
-              Team HQ
+              My Locker
             </Link>
           </SignedIn>
           <Link
