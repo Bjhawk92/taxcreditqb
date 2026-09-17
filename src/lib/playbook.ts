@@ -119,3 +119,111 @@ export const OBJECTIONS = [
     never: "‘This is a formality.’",
   },
 ] as const;
+
+export const OUTREACH_EMAILS = [
+  {
+    name: "Municipal Introduction",
+    body: "An initial introduction to city managers, planning staff, housing officials, economic-development representatives, and elected officials.",
+  },
+  {
+    name: "Nonprofit Partner Introduction",
+    body: "Outreach to local nonprofit organizations whose mission, community knowledge, or services may align with the proposed development.",
+  },
+  {
+    name: "Community Organization Introduction",
+    body: "An introduction to neighborhood associations, chambers of commerce, civic organizations, faith-based groups, and other community stakeholders.",
+  },
+  {
+    name: "Service-Provider Outreach",
+    body: "Initial communication with organizations that may provide resident services, referrals, programming, or other support.",
+  },
+  {
+    name: "Employer and Institutional Outreach",
+    body: "Outreach to major employers, school districts, healthcare systems, colleges, and other institutions that understand local workforce and housing needs.",
+  },
+  {
+    name: "Financial and Development Partner Introduction",
+    body: "Professional introductions to lenders, syndicators, architects, contractors, consultants, and other potential members of the development team.",
+  },
+  {
+    name: "Meeting Follow-Up",
+    body: "Post-meeting emails that confirm what was discussed, document commitments, answer outstanding questions, and establish the next step.",
+  },
+] as const;
+
+export const OUTREACH_LETTERS = [
+  {
+    name: "Municipal Letter of Support",
+    body: "Support from a mayor, city administrator, council member, planning official, housing department, or other local-government representative.",
+  },
+  {
+    name: "Housing Authority Letter of Support",
+    body: "Support addressing local housing needs, waiting lists, affordability gaps, or the proposed development’s role in the community.",
+  },
+  {
+    name: "Economic-Development Letter of Support",
+    body: "Support explaining how the development advances workforce housing, investment, redevelopment, or broader community objectives.",
+  },
+  {
+    name: "Nonprofit Letter of Support",
+    body: "Support from a local nonprofit based on community needs, the population it serves, or the development’s alignment with its mission.",
+  },
+  {
+    name: "Resident-Service Partner Letter",
+    body: "Support from an organization expected to provide services, education, health resources, transportation assistance, workforce programming, or resident referrals.",
+  },
+  {
+    name: "Neighborhood or Community Association Letter",
+    body: "Support from an organized neighborhood, homeowners association, civic group, or other community-based organization.",
+  },
+  {
+    name: "Chamber or Business Organization Letter",
+    body: "Support connecting the development to workforce recruitment, employee retention, economic growth, or local housing demand.",
+  },
+  {
+    name: "Major Employer Letter",
+    body: "Support describing the need for quality housing that is affordable to employees working in the market.",
+  },
+  {
+    name: "Healthcare or Educational Institution Letter",
+    body: "Support from hospitals, health systems, school districts, colleges, or universities identifying local housing needs among employees, students, families, or the broader community.",
+  },
+  {
+    name: "Faith-Based Organization Letter",
+    body: "Support from a church or faith-based organization familiar with local families, housing pressures, and community needs.",
+  },
+  {
+    name: "Social-Service Organization Letter",
+    body: "Support from organizations serving seniors, veterans, people with disabilities, families, or other populations relevant to the development.",
+  },
+  {
+    name: "Continuum of Care or Supportive-Housing Letter",
+    body: "Support for developments serving people experiencing homelessness or residents requiring coordinated services.",
+  },
+  {
+    name: "Development-Team Letter",
+    body: "Support from experienced architects, contractors, property managers, consultants, or financial partners confirming the team’s capacity and readiness.",
+  },
+  {
+    name: "General Community Letter of Support",
+    body: "A flexible framework for stakeholders who support the development but do not fit one of the more specialized categories.",
+  },
+] as const;
+
+export const OUTREACH_GROUPS = [
+  {
+    id: "emails",
+    name: "Introduction and Outreach Emails",
+    items: OUTREACH_EMAILS,
+  },
+  {
+    id: "letters",
+    name: "Letters of Support",
+    items: OUTREACH_LETTERS,
+  },
+] as const;
+
+export const OUTREACH_INTRO = {
+  title: "Get the right people behind the deal.",
+  body: "Strong community support rarely begins with a formal request. The Outreach Playbook will help developers introduce a project, engage potential partners, and request credible letters of support from the people and organizations whose voices matter.",
+} as const;

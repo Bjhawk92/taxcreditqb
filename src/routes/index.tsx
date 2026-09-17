@@ -113,9 +113,14 @@ function Home() {
             <DeckCard key={deck.slug} deck={deck} />
           ))}
         </div>
-        <Button asChild className="mt-8">
-          <Link to="/playbook">See the three presentation tools</Link>
-        </Button>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button asChild>
+            <Link to="/playbook">See the three presentation tools</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link to="/playbook/outreach">Outreach Playbook</Link>
+          </Button>
+        </div>
       </section>
 
       <section className="border-y border-line bg-paper-dim">

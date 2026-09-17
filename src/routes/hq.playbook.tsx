@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HqHeader, HqMain } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
-import { DECKS } from "@/lib/playbook";
+import { DECKS, OUTREACH_GROUPS } from "@/lib/playbook";
 
 export const Route = createFileRoute("/hq/playbook")({
   component: HqPlaybook,
@@ -52,9 +52,40 @@ function HqPlaybook() {
           Reusable templates stay with the member and are not for resale.
           Site-specific decks are custom work, billed separately.
         </p>
-        <Button asChild className="mt-6">
-          <Link to="/inquiry">Bring in the QB</Link>
-        </Button>
+        <h2 className="mt-14 font-display text-section font-semibold leading-section">
+          Outreach Playbook
+        </h2>
+        <p className="mt-4 max-w-2xl text-ink/80">
+          Introduction emails and letters of support for municipal, community,
+          and partner outreach. Browse the catalog, then request project-specific
+          language when the assignment calls for it.
+        </p>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {OUTREACH_GROUPS.map((group) => (
+            <article key={group.id} className="border border-line bg-paper p-6">
+              <p className="font-display text-xs font-semibold uppercase tracking-mark text-steel">
+                Coming to the Playbook
+              </p>
+              <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+                {group.name}
+              </h3>
+              <ul className="mt-4 space-y-2 text-sm text-ink/75">
+                {group.items.map((item) => (
+                  <li key={item.name}>{item.name}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild>
+            <Link to="/playbook/outreach">View the Outreach Playbook</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link to="/inquiry">Bring in the QB</Link>
+          </Button>
+        </div>
       </HqMain>
     </main>
   );

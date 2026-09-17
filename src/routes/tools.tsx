@@ -58,7 +58,8 @@ function Tools() {
             </h2>
             <p className="mt-3 text-ink/80">
               Presentation frameworks for city introductions, public hearings,
-              and neighborhood meetings.
+              and neighborhood meetings — plus the Outreach Playbook for
+              introductions and letters of support.
             </p>
             <Button asChild className="mt-6">
               <Link to="/playbook">Explore the Playbook</Link>

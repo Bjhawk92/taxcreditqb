@@ -41,7 +41,7 @@ export const NAV = [
   {
     label: "Playbook",
     to: "/playbook",
-    blurb: "Templates, checklists, and presentation resources.",
+    blurb: "Presentation templates, outreach resources, and meeting tools.",
     tab: "navy",
   },
   {

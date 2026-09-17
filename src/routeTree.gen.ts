@@ -40,6 +40,7 @@ import { Route as HqProjectsRouteImport } from './routes/hq.projects'
 import { Route as PlaybookIndexRouteImport } from './routes/playbook.index'
 import { Route as PlaybookHearingRouteImport } from './routes/playbook.hearing'
 import { Route as PlaybookNeighborhoodRouteImport } from './routes/playbook.neighborhood'
+import { Route as PlaybookOutreachRouteImport } from './routes/playbook.outreach'
 import { Route as PlaybookPrivateIntroRouteImport } from './routes/playbook.private-intro'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
@@ -198,6 +199,11 @@ const PlaybookNeighborhoodRoute = PlaybookNeighborhoodRouteImport.update({
   path: '/neighborhood',
   getParentRoute: () => PlaybookRoute,
 } as any)
+const PlaybookOutreachRoute = PlaybookOutreachRouteImport.update({
+  id: '/outreach',
+  path: '/outreach',
+  getParentRoute: () => PlaybookRoute,
+} as any)
 const PlaybookPrivateIntroRoute = PlaybookPrivateIntroRouteImport.update({
   id: '/private-intro',
   path: '/private-intro',
@@ -238,6 +244,7 @@ export interface FileRoutesByFullPath {
   '/hq/projects': typeof HqProjectsRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
+  '/playbook/outreach': typeof PlaybookOutreachRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
   '/desk/': typeof DeskIndexRoute
   '/hq/': typeof HqIndexRoute
@@ -270,6 +277,7 @@ export interface FileRoutesByTo {
   '/hq/projects': typeof HqProjectsRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
+  '/playbook/outreach': typeof PlaybookOutreachRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
   '/desk': typeof DeskIndexRoute
   '/hq': typeof HqIndexRoute
@@ -306,6 +314,7 @@ export interface FileRoutesById {
   '/hq/projects': typeof HqProjectsRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
+  '/playbook/outreach': typeof PlaybookOutreachRoute
   '/playbook/private-intro': typeof PlaybookPrivateIntroRoute
   '/desk/': typeof DeskIndexRoute
   '/hq/': typeof HqIndexRoute
@@ -343,6 +352,7 @@ export interface FileRouteTypes {
     | '/hq/projects'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
+    | '/playbook/outreach'
     | '/playbook/private-intro'
     | '/desk/'
     | '/hq/'
@@ -375,6 +385,7 @@ export interface FileRouteTypes {
     | '/hq/projects'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
+    | '/playbook/outreach'
     | '/playbook/private-intro'
     | '/desk'
     | '/hq'
@@ -410,6 +421,7 @@ export interface FileRouteTypes {
     | '/hq/projects'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
+    | '/playbook/outreach'
     | '/playbook/private-intro'
     | '/desk/'
     | '/hq/'
@@ -655,6 +667,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybookNeighborhoodRouteImport
       parentRoute: typeof PlaybookRoute
     }
+    '/playbook/outreach': {
+      id: '/playbook/outreach'
+      path: '/outreach'
+      fullPath: '/playbook/outreach'
+      preLoaderRoute: typeof PlaybookOutreachRouteImport
+      parentRoute: typeof PlaybookRoute
+    }
     '/playbook/private-intro': {
       id: '/playbook/private-intro'
       path: '/private-intro'
@@ -717,6 +736,7 @@ const HqRouteWithChildren = HqRoute._addFileChildren(HqRouteChildren)
 interface PlaybookRouteChildren {
   PlaybookHearingRoute: typeof PlaybookHearingRoute
   PlaybookNeighborhoodRoute: typeof PlaybookNeighborhoodRoute
+  PlaybookOutreachRoute: typeof PlaybookOutreachRoute
   PlaybookPrivateIntroRoute: typeof PlaybookPrivateIntroRoute
   PlaybookIndexRoute: typeof PlaybookIndexRoute
 }
@@ -724,6 +744,7 @@ interface PlaybookRouteChildren {
 const PlaybookRouteChildren: PlaybookRouteChildren = {
   PlaybookHearingRoute: PlaybookHearingRoute,
   PlaybookNeighborhoodRoute: PlaybookNeighborhoodRoute,
+  PlaybookOutreachRoute: PlaybookOutreachRoute,
   PlaybookPrivateIntroRoute: PlaybookPrivateIntroRoute,
   PlaybookIndexRoute: PlaybookIndexRoute,
 }

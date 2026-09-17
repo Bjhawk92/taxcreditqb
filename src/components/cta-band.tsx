@@ -8,6 +8,7 @@ type To =
   | "/inquiry"
   | "/about"
   | "/playbook"
+  | "/playbook/outreach"
   | "/advisory"
   | "/desk"
   | "/register"
