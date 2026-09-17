@@ -35,7 +35,7 @@ export const Route = createRootRoute({
       {
         property: "og:description",
         content:
-          "Your next play. Backed by experience. Meeting decks, advice, and an experienced operator for the rooms that decide LIHTC deals.",
+          "Your next play. Backed by experience. Playbook, Film Room, and an experienced quarterback to help your team read the field and make the case.",
       },
       { property: "og:url", content: "https://taxcreditqb.com" },
       {

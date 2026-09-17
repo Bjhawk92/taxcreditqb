@@ -5,13 +5,12 @@ import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { DECKS } from "@/lib/playbook";
 import { seo } from "@/lib/seo";
-
 export const Route = createFileRoute("/playbook/")({
   head: () =>
     seo({
-      title: "Meeting Playbook | Tax Credit QB",
+      title: "Playbook | Tax Credit QB",
       description:
-        "Walk into the room prepared. Editable decks, speaking notes, Q&A guidance, and outreach resources for municipal introductions, public hearings, neighborhood meetings, and letters of support.",
+        "Take the field prepared. Editable presentations, speaking guidance, and practical Q&A strategies that help your team read the defense, prepare the response, and make the strongest case.",
     }),
   component: PlaybookIndex,
 });
@@ -21,8 +20,8 @@ function PlaybookIndex() {
     <main id="main">
       <PageHero
         eyebrow="Playbook"
-        title="Walk into the room prepared."
-        sub="Build a stronger presentation with editable decks, speaking notes and practical Q&A guidance drawn from real development experience. Each tool serves a different audience and stage of your deal."
+        title="Take the field prepared."
+        sub="Every important development will be tested. Equip your team with editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook helps you read the defense, prepare the response, and make the strongest case for your deal."
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
@@ -41,7 +40,7 @@ function PlaybookIndex() {
           Presentation resources
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          Three rooms. Three decks.
+          Three defenses. Three game plans.
         </h2>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {DECKS.map((deck) => (
@@ -57,8 +56,8 @@ function PlaybookIndex() {
           </h3>
           <p className="mt-4 max-w-3xl text-ink/80">
             Organize the facts, images, documents, audience information, and
-            deal strategy Tax Credit QB needs to build a presentation around
-            your project.
+            deal strategy Tax Credit QB needs to understand the field and
+            build the strongest case around your project.
           </p>
           <Button asChild className="mt-6">
             <Link to="/playbook/builder">Explore the Builder</Link>
@@ -68,7 +67,7 @@ function PlaybookIndex() {
           <p>
             Complete templates require a Playbook membership. Members get the
             three presentation tools, speaking guidance and Q&A strategies for
-            the rooms that decide a deal.
+            the matchups that decide a deal.
           </p>
           <p>
             Custom-built presentations are available separately, with hourly

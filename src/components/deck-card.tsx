@@ -17,7 +17,7 @@ export function DeckCard({ deck }: { deck: (typeof DECKS)[number] }) {
       <p className="mt-2 text-sm font-medium text-ink/80">{deck.room}</p>
       <p className="mt-4 flex-1 text-ink/70">{deck.job}</p>
       <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-nav text-ink">
-        Open the deck
+        See the game plan
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </span>
     </Link>

@@ -48,10 +48,10 @@ export function MembershipPricing() {
           Membership
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          Call the play that fits.
+          Choose the game plan that fits.
         </h2>
         <p className="mt-5 max-w-2xl text-lede text-ink/80">
-          Three monthly options. Same field. Different levels of access to
+          Three monthly options. Different levels of tools, access, and
           experienced development strategy.
         </p>
 
@@ -111,7 +111,7 @@ export function MembershipPricing() {
 
         <div className="mt-14 max-w-2xl">
           <h3 className="font-display text-3xl font-semibold tracking-tight text-ink">
-            Not sure which play to call?
+            Not sure which game plan fits?
           </h3>
           <p className="mt-3 text-lede text-ink/80">
             Tell us where your deal stands, and we’ll help you choose the right

@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-NZYk81nU.js";import{t}from"./page-hero-qztdGnop.js";import{o as n}from"./playbook-DgIwY1Je.js";import{t as r}from"./outreach-catalog-CF9O28yn.js";var i=e();function a(){return(0,i.jsxs)(`main`,{id:`main`,children:[(0,i.jsx)(t,{eyebrow:`Outreach Playbook`,title:n.title,sub:n.body}),(0,i.jsx)(r,{showIntro:!1})]})}export{a as component};

@@ -66,7 +66,7 @@ function Contact() {
       <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
         {status === "success" ? (
           <FormSuccess title="Message received.">
-            <p>We’ll get back to you. For a live room, use inquiry so it is routed.</p>
+            <p>We’ll get back to you. For a live assignment, call the next play so it is routed.</p>
           </FormSuccess>
         ) : (
           <form onSubmit={onSubmit} className="space-y-5">

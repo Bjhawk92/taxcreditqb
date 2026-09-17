@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
     seo({
       title: "Tax Credit QB | LIHTC Development Strategy + Execution",
       description:
-        "Your next play. Backed by experience. Tax Credit QB brings seasoned development experience to your team—from land negotiations and financial modeling to public hearings.",
+        "Your next play. Backed by experience. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case—from site control and financial modeling to public approvals.",
     }),
   component: Home,
 });
@@ -25,26 +25,26 @@ export const Route = createFileRoute("/")({
 const STEPS = [
   {
     n: "01",
-    title: "Read the defense",
-    body: "Private intro. Public hearing. Neighborhood. Three rooms. Choose the presentation that fits the audience.",
+    title: "Read the field",
+    body: "Municipal introduction. Neighborhood meeting. Public hearing. Three defenses. Three game plans. Choose the one that fits the situation.",
   },
   {
     n: "02",
-    title: "Install the play",
+    title: "Build the game plan",
     body: "Playbook members get the three-deck system. Need more than a template? We can build a presentation around your sponsor, site, audience, and approval strategy.",
   },
   {
     n: "03",
     title: "Huddle — or bring in the QB",
-    body: "Playbook includes one 30-minute virtual session each month. Huddle members get two 45-minute sessions and a monthly review. In-person meeting support is a separate assignment.",
+    body: "Playbook includes one 30-minute virtual session each month. Huddle members get two 45-minute sessions and a monthly review. Meeting support on the field is a separate assignment.",
   },
 ];
 
 const DESK = [
   { title: "Model", body: "LIHTC proforma by Alkaline Advisors. Named. Not in-house." },
-  { title: "Render", body: "Drawings and architectural introduction when the room needs to see it." },
+  { title: "Render", body: "Drawings and architectural introduction when the matchup needs to see it." },
   { title: "GC", body: "Contractor relationships when the sponsor is thin on the build side." },
-  { title: "Syndicator", body: "Introductions. You keep the relationship. We QB the rooms before equity prices." },
+  { title: "Syndicator", body: "Introductions. You keep the relationship. We QB the field before equity prices." },
 ];
 
 function Home() {
@@ -62,7 +62,8 @@ function Home() {
           </h1>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
             Practical LIHTC development strategy from someone who has built,
-            financed, and defended real deals—from site control and financial
+            financed, and defended real deals. Read the field, prepare your
+            team, and make the strongest case—from site control and financial
             modeling to neighborhood meetings and public approvals.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -77,17 +78,14 @@ function Home() {
             </Button>
           </div>
           <p className="mt-8 max-w-2xl text-lede text-ink/80">
-            Some deals need a second perspective. Others need someone who can
-            step into the room and help move things forward.
-          </p>
-          <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Tax Credit QB brings seasoned development experience to your
-            team—from land negotiations and financial modeling to building
-            local support and making your case at a public hearing.
+            Whether you are evaluating a site, preparing for defensive
+            pressure, pursuing an approval, or positioning the deal for
+            financing, Tax Credit QB helps your team understand the field and
+            execute the next play.
           </p>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
             Use the Playbook to prepare your team, huddle with an experienced
-            developer, or bring the QB into the room when the outcome matters.
+            developer, or bring in the QB when the outcome matters.
           </p>
         </div>
       </section>
@@ -99,14 +97,14 @@ function Home() {
           The playbook
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          Walk into the room prepared.
+          Take the field prepared.
         </h2>
         <p className="mt-5 max-w-2xl text-lede text-ink/80">
           Your first city meeting, neighborhood introduction and public
           hearing each call for a different approach. Get editable
           presentation decks, speaking guidance and practical Q&A
-          strategies that help your team establish credibility, uncover
-          concerns and make a stronger case.
+          strategies that help your team read the field, prepare the
+          response, and make a stronger case.
         </p>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {DECKS.map((deck) => (
@@ -115,7 +113,7 @@ function Home() {
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link to="/playbook">See the three presentation tools</Link>
+            <Link to="/playbook">Explore the Playbook</Link>
           </Button>
           <Button asChild variant="secondary">
             <Link to="/playbook/outreach">Outreach Playbook</Link>
@@ -217,9 +215,9 @@ function Home() {
       <CtaBand
         eyebrow="Your winning edge"
         title="Your deal. A stronger game plan."
-        line="Get the presentation tools and direct advice to lead confidently—or bring an experienced QB into the room."
+        line="Get the presentation tools and direct advice to lead confidently—or bring in the QB when the assignment needs it."
         primary={{ label: "Get the Playbook", to: "/register" }}
-        secondary={{ label: "Bring in the QB", to: "/inquiry" }}
+        secondary={{ label: "Call the next play", to: "/inquiry" }}
       />
     </main>
   );

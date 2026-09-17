@@ -3,31 +3,31 @@ export const DECKS = [
     slug: "private-intro",
     n: "01",
     name: "Municipal Introduction",
-    call: "City staff",
+    call: "Read the field",
     room: "City managers, planning directors, and council members",
     when: "Exploring a market. You need a read on support, location, and incentives — before a public process.",
-    job: "Introduce your company, establish credibility and explore a new market. Present your track record while learning about local housing priorities, potential sites, governmental support and incentive opportunities.",
+    job: "Understand the municipality’s priorities, demonstrate your credibility, and identify potential obstacles before asking for a formal decision.",
     href: "/playbook/private-intro" as const,
   },
   {
-    slug: "hearing",
+    slug: "neighborhood",
     n: "02",
-    name: "Public Hearing",
-    call: "Hearing room",
-    room: "Planning commission, council, and residents in the chamber",
-    when: "A specific site is in the public process. The record is the product.",
-    job: "Make a clear, site-specific case for your development. Present the plans, explain how LIHTC works and address common misconceptions with evidence and project-specific information. Prepare for questions from officials and residents before taking the podium.",
-    href: "/playbook/hearing" as const,
+    name: "Neighborhood Meeting",
+    call: "Read the defense",
+    room: "Adjacent owners, associations, and community audiences",
+    when: "The people who live there will decide the temperature of the hearing.",
+    job: "Uncover the concerns, misconceptions, and arguments creating resistance. Determine what evidence the team needs and prepare credible responses before those issues reach the formal approval process.",
+    href: "/playbook/neighborhood" as const,
   },
   {
-    slug: "neighborhood",
+    slug: "hearing",
     n: "03",
-    name: "Neighborhood Meeting",
-    call: "Neighbors",
-    room: "Adjacent owners, associations, community rooms",
-    when: "The people who live there will decide the temperature of the hearing.",
-    job: "Introduce your team and comparable developments, then use a structured Q&A process to uncover the neighborhood’s concerns. Document objections, answer questions and identify the arguments likely to emerge at approval hearings.",
-    href: "/playbook/neighborhood" as const,
+    name: "Public Hearing",
+    call: "Make the winning case",
+    room: "Planning commission, council, and residents",
+    when: "A specific site is in the public process. The record is the product.",
+    job: "Bring the facts, preparation, and development story together. Address the defense’s strongest arguments and give decision-makers credible reasons to support the project.",
+    href: "/playbook/hearing" as const,
   },
 ] as const;
 
@@ -147,7 +147,7 @@ export const OUTREACH_EMAILS = [
   },
   {
     name: "Meeting Follow-Up",
-    body: "Post-meeting emails that confirm what was discussed, document commitments, answer outstanding questions, and establish the next step.",
+    body: "Post-meeting emails that confirm what was discussed, document commitments, answer outstanding questions, and establish the next play.",
   },
 ] as const;
 
@@ -224,6 +224,6 @@ export const OUTREACH_GROUPS = [
 ] as const;
 
 export const OUTREACH_INTRO = {
-  title: "Get the right people behind the deal.",
-  body: "Strong community support rarely begins with a formal request. The Outreach Playbook will help developers introduce a project, engage potential partners, and request credible letters of support from the people and organizations whose voices matter.",
+  title: "Build support before the opening whistle.",
+  body: "The strongest development strategies begin before the formal matchup. Introduce the project, identify potential allies, build credible community support, and make it easier for the right voices to stand behind the deal.",
 } as const;

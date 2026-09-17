@@ -7,7 +7,7 @@ export const Route = createFileRoute("/playbook/builder")({
     seo({
       title: "Presentation Builder | Tax Credit QB",
       description:
-        "Bring us the deal. We’ll build the case. A guided workspace for the project facts, audience, images, and documents Tax Credit QB needs to develop your presentation.",
+        "Bring us the deal. We’ll build the game plan. A guided workspace for the facts, audience, images, and documents Tax Credit QB needs to make the strongest case.",
     }),
   component: PresentationBuilderPage,
 });

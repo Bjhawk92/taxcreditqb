@@ -147,10 +147,10 @@ export const SERVICE_GROUPS: readonly ServiceGroup[] = [
         description:
           "A focused, 60-minute virtual conversation about your deal, challenge, or next decision.",
         extras: [
-          "Includes a short intake and a concise written summary of recommended next steps.",
+          "Includes a short intake and a concise written summary of the recommended next play.",
           "Extensive advance review is quoted separately.",
         ],
-        cta: "Book a Strategy Session",
+        cta: "Call the next play",
         intent: "strategy-session",
       },
       {
@@ -163,7 +163,7 @@ export const SERVICE_GROUPS: readonly ServiceGroup[] = [
         extras: [
           "Base scope: client-supplied facts and assets, up to 20 slides, and two consolidated revision rounds.",
         ],
-        cta: "Discuss Your Presentation",
+        cta: "Call the next play",
         intent: "presentation-customization",
       },
       {
@@ -178,7 +178,7 @@ export const SERVICE_GROUPS: readonly ServiceGroup[] = [
           "Includes a strategy discussion, custom narrative and design, and a preparation call.",
           "Slide count and revision rounds are defined in the proposal.",
         ],
-        cta: "Build My Presentation",
+        cta: "Bring in the QB",
         intent: "custom-presentation",
       },
     ],
@@ -298,7 +298,7 @@ export const SERVICE_GROUPS: readonly ServiceGroup[] = [
           "May include preparation and participation in a municipal, neighborhood, landowner, or project-team meeting.",
           "The quote specifies preparation time, meeting duration, and Brett’s role.",
         ],
-        cta: "Bring Us Into the Meeting",
+        cta: "Bring in the QB",
         intent: "virtual-meeting",
       },
       {
@@ -307,12 +307,12 @@ export const SERVICE_GROUPS: readonly ServiceGroup[] = [
         priceLabel: "Starting at $2,500 per meeting day",
         kind: "starting",
         description:
-          "An experienced voice beside your team when the room matters.",
+          "An experienced voice beside your team when the assignment needs it.",
         extras: [
           "May include public speaking, presentations, Q&A, negotiations, and project-team support.",
           "Preparation, travel time, travel expenses, and additional meetings are specified separately.",
         ],
-        cta: "Discuss In-Person Support",
+        cta: "Bring in the QB",
         intent: "in-person-meeting",
       },
       {
@@ -327,7 +327,7 @@ export const SERVICE_GROUPS: readonly ServiceGroup[] = [
           "Scope, fees, deliverables, and the responsible provider are identified in the proposal.",
           "Memberships do not include modeling.",
         ],
-        cta: "Discuss Modeling Support",
+        cta: "Call the next play",
         intent: "modeling",
       },
     ],
@@ -354,7 +354,7 @@ export const RETAINERS = [
 ] as const;
 
 export const SPEAKING_CALLOUT =
-  "More than 20 years of experience speaking before city officials, neighborhood groups, and public audiences—including challenging rooms. Brett brings a developer’s understanding of the project and works alongside your legal and technical team.";
+  "More than 20 years of experience presenting before city officials, neighborhood groups, and public audiences—including high-stakes hearings. Brett brings a developer’s understanding of the project and works alongside your legal and technical team.";
 
 export const PRICING_FAQ = [
   {

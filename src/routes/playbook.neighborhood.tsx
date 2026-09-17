@@ -8,9 +8,9 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/playbook/neighborhood")({
   head: () =>
     seo({
-      title: "Neighborhood Meeting Deck | Tax Credit QB",
+      title: "Neighborhood Meeting | Read the Defense | Tax Credit QB",
       description:
-        "Know the questions before they are asked. Neighborhood meeting deck: company intro, track record, planned Q&A. Opposition has a playbook; you should have one too.",
+        "Read the defense. Prepare the response. Uncover the concerns, misconceptions, and arguments driving resistance before they reach the public-hearing stage.",
     }),
   component: Neighborhood,
 });
@@ -20,26 +20,28 @@ function Neighborhood() {
     <main id="main">
       <PageHero
         eyebrow="Neighborhood Meeting"
-        title="Uncover the concerns. Answer them."
-        sub="Introduce your team and comparable developments, then use a structured Q&A process to uncover the neighborhood’s concerns. Document objections, answer questions and identify the arguments likely to emerge at approval hearings."
+        title="Read the defense. Prepare the response."
+        sub="Introduce the development and your team, then uncover the concerns, misconceptions, and arguments driving resistance. Document the defensive positions, understand which issues are gaining traction, and prepare clear, credible responses before the development reaches the public-hearing stage."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="max-w-2xl text-lede text-ink/80">
           Intro. Track record. What this site is. Open the floor in a planned
-          order. Answer — don’t debate. Leave a one-pager. Opposition has a
-          playbook; you should have one too.
+          order. Answer — don’t debate. Leave a one-pager. The defense is the
+          objections and arguments the development must address—not the
+          residents themselves. The defense has a playbook; you should have
+          one too.
         </p>
         <h2 className="mt-12 font-display text-section font-semibold">
-          Objection map
+          Defensive alignment
         </h2>
         <div className="mt-6 overflow-x-auto border border-line">
           <table className="w-full min-w-xl text-left text-sm">
             <thead className="bg-paper-dim font-display text-xs font-semibold uppercase tracking-nav">
               <tr>
                 <th className="px-4 py-3">Concern</th>
-                <th className="px-4 py-3">What they mean</th>
-                <th className="px-4 py-3">What you show</th>
-                <th className="px-4 py-3">What you never say</th>
+                <th className="px-4 py-3">What is behind it</th>
+                <th className="px-4 py-3">What your team should show</th>
+                <th className="px-4 py-3">What your team should avoid</th>
               </tr>
             </thead>
             <tbody>
@@ -57,7 +59,7 @@ function Neighborhood() {
         <div className="mt-14">
           <EmailGate
             source="neighborhood"
-            title="Neighborhood — objection map sample"
+            title="Neighborhood — defensive alignment sample"
             unlocked={
               <div className="border border-line bg-paper-dim p-6 md:p-8">
                 <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/desk/")({
     seo({
       title: "Meeting Support | Tax Credit QB",
       description:
-        "Bring experience into the room. Preparation, a supporting voice, or an active presentation role—agreed in advance. Travel extra.",
+        "Bring the QB onto the field. Preparation, speaker coaching, supporting participation, or an active presentation role—agreed in advance.",
     }),
   component: DeskIndex,
 });
@@ -24,15 +24,23 @@ const ROOMS = [
 const ROLES = [
   {
     title: "Behind-the-scenes preparation",
-    body: "Shape the approach, prep speakers, and work the Q&A before anyone sits down.",
+    body: "Shape the game plan, prep speakers, and work the Q&A before anyone sits down.",
   },
   {
-    title: "A supporting voice",
-    body: "In the room with your team. You lead. Tax Credit QB backs the points that need a second voice.",
+    title: "Speaker and presentation preparation",
+    body: "Prepare your team to make the case: sequence, evidence, and the questions that will land.",
   },
   {
-    title: "An active presentation role",
+    title: "Supporting participation",
+    body: "On the field with your team. You lead. Tax Credit QB backs the points that need a second voice.",
+  },
+  {
+    title: "Active presentation role",
     body: "When the assignment is to present. The role is written down before the meeting.",
+  },
+  {
+    title: "Post-meeting strategy",
+    body: "After the matchup, adjust the game plan and call the next play.",
   },
 ];
 
@@ -41,8 +49,8 @@ function DeskIndex() {
     <main id="main">
       <PageHero
         eyebrow="Meeting Support"
-        title="Bring experience into the room."
-        sub="When the meeting calls for more than preparation, bring Tax Credit QB alongside your team. Brett can help shape the approach, prepare speakers, participate in the discussion and work through the next steps afterward."
+        title="Bring the QB onto the field."
+        sub="When preparation alone is not enough, bring Tax Credit QB alongside your team. Brett can help read the defense, shape the game plan, prepare speakers, participate in the discussion, and adjust the strategy as the situation develops."
       >
         <Button asChild className="mt-8" size="lg">
           <Link to="/inquiry">Bring in the QB</Link>
@@ -62,7 +70,7 @@ function DeskIndex() {
         <h2 className="mt-14 font-display text-section font-semibold leading-section">
           The role is agreed in advance
         </h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {ROLES.map((role) => (
             <div key={role.title} className="border border-line bg-paper p-6">
               <h3 className="font-display text-xl font-semibold tracking-tight">

@@ -12,11 +12,13 @@ import { SITE } from "@/lib/site";
  * Leave `videoSrc` empty to keep the card in Coming Soon (no play button).
  */
 export type FilmFormat =
-  | "QB Breakdown"
-  | "Deck Walkthrough"
+  | "Game Breakdown"
   | "Presentation Breakdown"
-  | "Marketing Demo"
-  | "Deal Breakdown";
+  | "Deal Breakdown"
+  | "Read the Defense"
+  | "Tough Questions"
+  | "Field Position"
+  | "Next-Play Strategy";
 
 export type FilmTopic =
   | "questions"
@@ -50,10 +52,10 @@ export const FILM_CLIPS: FilmClip[] = [
   {
     id: "tough-questions",
     topic: "questions",
-    format: "QB Breakdown",
+    format: "Read the Defense",
     title: "Handling the Tough Questions",
     description:
-      "Property values. Traffic. Who will live here? See how to address common neighborhood objections with clear answers and credible project information.",
+      "Property values. Traffic. Who will live here? See how to read the defense and prepare the response with clear answers and credible project information.",
     thumbnail: {
       src: "/film-room/tough-questions.jpg",
       alt: "Brett Johnson beside the question: Will this hurt property values?",
@@ -67,10 +69,10 @@ export const FILM_CLIPS: FilmClip[] = [
   {
     id: "city-meeting",
     topic: "city",
-    format: "Deck Walkthrough",
+    format: "Presentation Breakdown",
     title: "Your First Meeting with the City",
     description:
-      "Make your first introduction count. See how to present your track record, explore local housing needs, and gauge support before committing to a market or site.",
+      "Make your first introduction count. See how to present your track record, explore local housing needs, and read the field before committing to a market or site.",
     thumbnail: {
       src: "/film-room/city-meeting.jpg",
       alt: "Municipal Introduction deck cover with two supporting slides behind it.",
@@ -87,7 +89,7 @@ export const FILM_CLIPS: FilmClip[] = [
     format: "Presentation Breakdown",
     title: "Before the Public Hearing",
     description:
-      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and addresses the questions your audience is likely to bring.",
+      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and answers the defense’s strongest arguments.",
     thumbnail: {
       src: "/film-room/public-hearing.jpg",
       alt: "Abstract site plan beside a neighborhood Q&A slide.",
@@ -101,7 +103,7 @@ export const FILM_CLIPS: FilmClip[] = [
   {
     id: "ai-story",
     topic: "marketing",
-    format: "Marketing Demo",
+    format: "Field Position",
     title: "AI That Helps Tell Your Story",
     description:
       "See how we use AI alongside development experience to create clearer neighborhood flyers, brochures, and project information.",
@@ -121,7 +123,7 @@ export const FILM_CLIPS: FilmClip[] = [
     format: "Deal Breakdown",
     title: "From Site to Strategy",
     description:
-      "A promising site is only the beginning. Learn what to ask about land terms, local approvals, and timing before moving further into a deal.",
+      "A promising site is only the beginning. Learn what to ask about land terms, local approvals, and timing before moving the deal downfield.",
     thumbnail: {
       src: "/film-room/site-strategy.jpg",
       alt: "Marked-up parcel map with restrained annotations for site control, access, and zoning.",
@@ -135,9 +137,9 @@ export const FILM_CLIPS: FilmClip[] = [
   {
     id: "right-people",
     topic: "team",
-    format: "QB Breakdown",
+    format: "Next-Play Strategy",
     title: "The Right People. The Right Play.",
-    description: `Some deals need another specialist at the table. See how we help connect the development strategy with the people who can execute it. When the work needs a model, ${SITE.alkaline.name} is the named modeling partner.`,
+    description: `Some deals need another specialist on the field. See how we help connect the development strategy with the people who can execute it. When the work needs a model, ${SITE.alkaline.name} is the named modeling partner.`,
     thumbnail: {
       src: "/film-room/right-people.jpg",
       alt: "Playbook diagram with Brett Johnson at the QB node, connected to architect, contractor, syndicator, and modeling.",

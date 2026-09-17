@@ -10,7 +10,7 @@ export const Route = createFileRoute("/tools")({
     seo({
       title: "Tools | State QAP Directory | Tax Credit QB",
       description:
-        "Find state Qualified Allocation Plans and housing agency resources in one place. A free LIHTC QAP directory for all 50 states, Washington, D.C., and Puerto Rico.",
+        "The right tools for the next play. Find practical resources that help your team evaluate the field, understand the requirements, prepare the strategy, and move the deal forward.",
     }),
   component: Tools,
 });
@@ -20,8 +20,8 @@ function Tools() {
     <main id="main">
       <PageHero
         eyebrow="Tools"
-        title="The right resources. Before your next move."
-        sub="Find state Qualified Allocation Plans and housing agency resources in one place. Start your research here, then bring your deal-specific questions to Tax Credit QB."
+        title="The right tools for the next play."
+        sub="Find practical resources that help your team evaluate the field, understand the requirements, prepare the strategy, and move the deal forward."
       />
 
       <section className="mx-auto max-w-6xl px-5 pt-14 md:px-8 md:pt-20">
@@ -75,9 +75,9 @@ function Tools() {
               The Playbook
             </h2>
             <p className="mt-3 text-ink/80">
-              Presentation frameworks for city introductions, public hearings,
-              and neighborhood meetings — plus the Outreach Playbook for
-              introductions and letters of support.
+              Presentation frameworks for municipal introductions, public
+              hearings, and neighborhood meetings — plus the Outreach Playbook
+              for introductions and letters of support.
             </p>
             <Button asChild className="mt-6">
               <Link to="/playbook">Explore the Playbook</Link>
@@ -92,7 +92,7 @@ function Tools() {
             </h2>
             <p className="mt-3 text-ink/80">
               Practical breakdowns of development strategy, marketing, and the
-              conversations that move deals forward.
+              decisions that move deals downfield.
             </p>
             <Button asChild className="mt-6">
               <Link to="/videos">Visit the Film Room</Link>
@@ -102,7 +102,7 @@ function Tools() {
       </section>
 
       <CtaBand
-        title="Found the requirements. Have a question about your next move?"
+        title="Found the requirements. Ready for the next play?"
         line="Bring your deal-specific question to Ask the QB for practical guidance grounded in development experience."
         primary={{ label: "Get the Playbook", to: "/register" }}
         secondary={{ label: "Call the next play", to: "/inquiry" }}

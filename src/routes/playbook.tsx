@@ -8,8 +8,8 @@ export const Route = createFileRoute("/playbook")({
 const LINKS = [
   { to: "/playbook", label: "All templates", exact: true },
   { to: "/playbook/private-intro", label: "Municipal Introduction", exact: false },
-  { to: "/playbook/hearing", label: "Public Hearing", exact: false },
   { to: "/playbook/neighborhood", label: "Neighborhood Meeting", exact: false },
+  { to: "/playbook/hearing", label: "Public Hearing", exact: false },
   { to: "/playbook/outreach", label: "Outreach Playbook", exact: false },
   { to: "/playbook/builder", label: "Presentation Builder", exact: false },
 ] as const;

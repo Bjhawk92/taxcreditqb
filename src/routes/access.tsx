@@ -9,7 +9,7 @@ export const Route = createFileRoute("/access")({
     seo({
       title: "Huddle | One-on-one advice | Tax Credit QB",
       description:
-        "Talk through the deal. Get clear on the next move. Private virtual sessions with Brett Johnson, according to your membership.",
+        "Read the defense. Call the next play. Private strategy sessions with Brett Johnson, according to your membership.",
     }),
   component: Access,
 });
@@ -18,8 +18,8 @@ const TOPICS = [
   "Market entry",
   "Land negotiations",
   "Team selection",
-  "Presentation strategy",
-  "Meeting preparation",
+  "Game plan",
+  "Matchup preparation",
   "Project positioning",
 ];
 
@@ -28,8 +28,8 @@ function Access() {
     <main id="main">
       <PageHero
         eyebrow="Huddle"
-        title="Talk through the deal. Get clear on the next move."
-        sub="Bring your questions, concerns or upcoming decisions to a private virtual session with Brett Johnson. Whether you want a second perspective or help working through a specific obstacle, the conversation centers on your deal and what to do next."
+        title="Read the defense. Call the next play."
+        sub="Bring the situation, obstacle, or upcoming decision to a private strategy session with Brett Johnson. Work through the defensive pressure facing the deal, evaluate the available options, and leave with a clearer game plan for what your team should do next."
       >
         <Button asChild className="mt-8" size="lg">
           <a href="#schedule">Schedule a huddle</a>

@@ -1,8 +1,8 @@
 export const BUILDER_INTRO = {
   eyebrow: "Presentation Builder",
-  title: "Bring us the deal. We’ll build the case.",
-  sub: "The Presentation Builder gives you one organized place to provide the project facts, audience details, images, documents, and supporting evidence Tax Credit QB needs to develop your presentation. Work through the guided process at your own pace, save your progress, and submit everything when the assignment is ready to be scoped.",
-  note: "The Presentation Builder organizes your materials and prepares the assignment for review. Completing the builder does not automatically order a finished presentation. Tax Credit QB will review the submission and confirm the scope, fee, schedule, and deliverables before work begins.",
+  title: "Bring us the deal. We’ll build the game plan.",
+  sub: "Organize the facts, images, documents, audience details, and supporting evidence Tax Credit QB needs to understand the field and build the strongest case for your development. Work through the guided process at your own pace, save your progress, and submit everything when the assignment is ready to be scoped.",
+  note: "The Presentation Builder organizes your materials and prepares the assignment for review. Completing the builder does not automatically order a finished presentation. Tax Credit QB reviews the information, establishes the strategy, confirms the scope, fee, schedule, and deliverables, and then develops the final presentation.",
 } as const;
 
 export const BUILDER_TYPES = [
@@ -43,43 +43,43 @@ export const BUILDER_TYPES = [
 export const BUILDER_STEPS = [
   {
     n: "01",
-    title: "Choose the Presentation",
-    body: "Select the type of presentation, meeting, and audience being addressed.",
+    title: "Choose the Matchup",
+    body: "Select the presentation, meeting, and audience.",
   },
   {
     n: "02",
     title: "Set the Game Situation",
-    body: "Identify the project stage, upcoming decision, meeting date, audience, and desired outcome.",
+    body: "Identify the project stage, upcoming decision, deadline, and desired outcome.",
   },
   {
     n: "03",
     title: "Tell the Development Story",
-    body: "Explain the opportunity, community need, site-selection rationale, principal benefits, and what the audience should remember.",
+    body: "Explain the opportunity, community need, site, benefits, and essential message.",
   },
   {
     n: "04",
     title: "Enter the Deal Facts",
-    body: "Provide structured information about the development program, unit mix, affordability, site, zoning, approvals, amenities, financing, and development team.",
+    body: "Provide the development program, approvals, financing, and team information.",
   },
   {
     n: "05",
-    title: "Upload the Assets",
-    body: "Organize site plans, renderings, maps, photographs, company information, team biographies, studies, letters of support, and other documents.",
+    title: "Assemble the Assets",
+    body: "Organize plans, renderings, maps, photographs, studies, and letters of support.",
   },
   {
     n: "06",
     title: "Read the Defense",
-    body: "Identify likely questions, known opposition, audience concerns, sensitive subjects, and the evidence available to support the response.",
+    body: "Identify anticipated objections, known resistance, sensitive subjects, competing arguments, and the evidence available to support the response.",
   },
   {
     n: "07",
-    title: "Define the Ask",
-    body: "Clarify what the presentation needs to accomplish, such as municipal direction, community support, approval, funding, investment, financing, or a follow-up meeting.",
+    title: "Define the Win",
+    body: "Clarify what the presentation must accomplish.",
   },
   {
     n: "08",
-    title: "Review the Brief",
-    body: "Review an organized summary of the project, audience, objectives, supporting assets, likely objections, missing information, and requested delivery schedule before submitting it to Tax Credit QB.",
+    title: "Review the Game Plan",
+    body: "Review the organized Presentation Brief before submitting the assignment.",
   },
 ] as const;
 
@@ -164,11 +164,21 @@ export const BUILDER_INFO = [
       "Purpose of the meeting",
       "Desired outcome",
       "Known supporters",
-      "Existing concerns",
-      "Likely objections",
-      "Sensitive subjects",
-      "Supporting evidence",
       "Subjects that should not be emphasized publicly",
+    ],
+  },
+  {
+    name: "The Defense",
+    items: [
+      "Known concerns",
+      "Existing resistance",
+      "Organized opposition",
+      "Common misconceptions",
+      "Likely objections",
+      "Competing arguments",
+      "Sensitive subjects",
+      "Available supporting evidence",
+      "Questions the team must be prepared to answer",
     ],
   },
   {
@@ -271,14 +281,14 @@ export const BUILDER_SERVICES = [
     name: "Customize a Playbook Template",
     price: "Starting at $1,500",
     body: "Adapt an existing Tax Credit QB presentation framework to the client’s company, project, site, audience, and supporting information.",
-    cta: "Request template customization",
+    cta: "Call the next play",
     intent: "presentation-customization",
   },
   {
     name: "Build a Custom Presentation",
     price: "Starting at $3,000",
     body: "Develop a presentation specifically around the assignment, including its audience, strategy, development facts, visual assets, and anticipated questions.",
-    cta: "Request a custom presentation",
+    cta: "Bring in the QB",
     intent: "custom-presentation",
   },
   {

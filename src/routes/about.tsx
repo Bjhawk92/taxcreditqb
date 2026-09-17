@@ -30,8 +30,8 @@ function About() {
     <main id="main">
       <PageHero
         eyebrow="About"
-        title="Proven experience. Your winning edge."
-        sub="Tax Credit QB brings Brett Johnson’s development experience to teams that need additional capacity—without taking over the deal."
+        title="Experience that changes the field."
+        sub="Tax Credit QB brings Brett Johnson’s development experience to teams that need additional perspective, capacity, or leadership without surrendering control of the deal."
       />
       <section className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-12 md:px-8 md:py-20">
         <div className="md:col-span-4">
@@ -55,10 +55,10 @@ function About() {
           </figure>
           <div className="mt-8 flex flex-col gap-3">
             <Button asChild>
-              <Link to="/access">Schedule a huddle</Link>
+              <Link to="/inquiry">Call the next play</Link>
             </Button>
             <Button asChild variant="secondary">
-              <Link to="/inquiry">Call the next play</Link>
+              <Link to="/access">Schedule a huddle</Link>
             </Button>
           </div>
         </div>

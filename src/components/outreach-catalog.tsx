@@ -58,7 +58,7 @@ export function OutreachCatalog({
           Need outreach built around your project?
         </h2>
         <p className="mt-5 text-lede text-ink/80">
-          Tax Credit QB can help identify the right voices, frame the request,
+          Tax Credit QB can help identify the right allies, frame the request,
           and develop project-specific outreach based on the community,
           audience, and goals of the deal.
         </p>

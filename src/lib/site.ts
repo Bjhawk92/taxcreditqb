@@ -41,13 +41,13 @@ export const NAV = [
   {
     label: "Playbook",
     to: "/playbook",
-    blurb: "Presentation templates, outreach resources, and the Presentation Builder.",
+    blurb: "Game plans, outreach resources, and the Presentation Builder.",
     tab: "navy",
   },
   {
     label: "Film Room",
     to: "/videos",
-    blurb: "Educational videos and deal breakdowns.",
+    blurb: "Study the field. Strengthen the next play.",
     tab: "blue",
   },
   {
@@ -71,11 +71,11 @@ export const NAV = [
 ] as const;
 
 export const WORK_NAV = [
-  { label: "Ask the QB", to: "/register", blurb: "Submit a private deal question." },
-  { label: "Huddle", to: "/access", blurb: "Live virtual strategy sessions." },
-  { label: "Meeting Support", to: "/desk", blurb: "Preparation and participation in the room." },
-  { label: "Project Advisory", to: "/advisory", blurb: "Strategy and hands-on support across a development." },
-  { label: "Partner Support", to: "/for-partners", blurb: "For syndicators and consultants." },
+  { label: "Ask the QB", to: "/register", blurb: "Bring a focused deal question." },
+  { label: "Huddle", to: "/access", blurb: "Private strategy sessions to align the next play." },
+  { label: "Meeting Support", to: "/desk", blurb: "Bring the QB onto the field." },
+  { label: "Project Advisory", to: "/advisory", blurb: "Keep the whole deal moving downfield." },
+  { label: "Partner Support", to: "/for-partners", blurb: "You keep the sponsor. We QB the field." },
 ] as const;
 
 export const FOOTER_NAV = [
@@ -104,13 +104,15 @@ export const NEEDS = [
   { value: "presentation-customization", label: "Customize a Playbook template (starting at $1,500)" },
   { value: "custom-presentation", label: "Build a custom presentation (starting at $3,000)" },
   { value: "presentation-campaign", label: "Complex assignment or meeting campaign" },
-  { value: "in-the-room", label: "Meeting participation or support" },
+  { value: "in-the-room", label: "Meeting preparation or participation" },
+  { value: "ask-the-qb", label: "Ask the QB" },
+  { value: "huddle", label: "Huddle" },
   { value: "modeling", label: "LIHTC modeling through Alkaline Advisors" },
   { value: "intro-architect", label: "Architectural support or introduction" },
   { value: "intro-gc", label: "Contractor support or introduction" },
   { value: "intro-syndicator", label: "Syndicator introduction" },
   { value: "advisory", label: "Project advisory" },
-  { value: "not-sure", label: "Not sure—I need help calling the next play" },
+  { value: "not-sure", label: "Not sure—I need help reading the defense and calling the next play" },
 ] as const;
 
 export const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as

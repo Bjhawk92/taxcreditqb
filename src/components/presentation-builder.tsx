@@ -63,15 +63,15 @@ export function PresentationBuilderPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-          Choose the presentation
+          Choose the matchup
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          One workspace. The presentation the room requires.
+          One workspace. The game plan the matchup requires.
         </h2>
         <p className="mt-5 max-w-2xl text-lede text-ink/80">
           These are the assignments the builder will support. Selection and
           intake are not live yet. Use Start a Presentation to tell us which
-          room you are preparing for.
+          matchup you are preparing for.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {BUILDER_TYPES.map((item) => (
@@ -217,13 +217,13 @@ export function PresentationBuilderPage() {
           <p className="mt-5 max-w-2xl text-lede text-ink/80">
             The Presentation Builder gives your team a structured process for
             assembling the information Tax Credit QB needs to understand the
-            project and prepare the presentation. Clear prompts help organize
+            field and prepare the game plan. Clear prompts help organize
             the development facts, audience, objectives, supporting documents,
             visual assets, anticipated concerns, and requested outcome.
           </p>
           <p className="mt-5 max-w-2xl text-lede text-ink/80">
             Tax Credit QB reviews the completed submission, identifies missing
-            information, determines the presentation strategy, and confirms the
+            information, establishes the game plan, and confirms the
             scope before production begins. Nothing is published, presented as
             fact, or included in a final presentation without professional
             review.
@@ -434,13 +434,13 @@ export function PresentationBuilderPage() {
       <section className="bg-ink px-5 py-16 text-paper md:px-8 md:py-24">
         <div className="mx-auto max-w-6xl">
           <h2 className="max-w-4xl font-display text-display font-semibold leading-display tracking-display">
-            Your information. Organized into a stronger case.
+            Your information. Organized into a stronger game plan.
           </h2>
           <p className="mt-5 max-w-xl text-lede text-paper/75">
             Stop assembling presentations through scattered emails, unlabeled
             images, and disconnected documents. The Presentation Builder gives
             your team a guided way to deliver the information Tax Credit QB
-            needs to understand the assignment and build the case.
+            needs to understand the assignment and build the game plan.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <InquiryLink intent="presentation-builder" variant="paper">

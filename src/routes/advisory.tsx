@@ -9,7 +9,7 @@ export const Route = createFileRoute("/advisory")({
     seo({
       title: "Project Advisory | Tax Credit QB",
       description:
-        "Keep the whole deal moving. Project-based and ongoing support for market strategy, land, meetings, modeling, and specialist introductions.",
+        "Keep the whole deal moving downfield. Project-based and ongoing support for market strategy, land, meetings, modeling, and specialist introductions.",
     }),
   component: Advisory,
 });
@@ -30,8 +30,8 @@ function Advisory() {
     <main id="main">
       <PageHero
         eyebrow="Project Advisory"
-        title="Keep the whole deal moving."
-        sub="Some assignments extend beyond a single question or meeting. Tax Credit QB works alongside your team to assess the situation, establish priorities, coordinate the right specialists and help execute the plan."
+        title="Keep the whole deal moving downfield."
+        sub="Some assignments extend beyond a single question, presentation, or meeting. Tax Credit QB works alongside your team to assess the field, understand the defensive pressure, establish priorities, coordinate the right specialists, and help execute the game plan."
       >
         <Button asChild className="mt-8" size="lg">
           <Link to="/inquiry">Bring in the QB</Link>

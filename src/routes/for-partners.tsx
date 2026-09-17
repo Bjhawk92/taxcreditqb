@@ -8,7 +8,7 @@ export const Route = createFileRoute("/for-partners")({
     seo({
       title: "For Syndicators & Consultants | Tax Credit QB",
       description:
-        "You keep the sponsor relationship. We QB the rooms your emerging developer is not ready to walk into alone.",
+        "You keep the sponsor. We QB the field. Help emerging sponsors carry strong deals through the municipal, community, and financial defenses that can determine whether a development moves forward.",
     }),
   component: Partners,
 });
@@ -18,17 +18,18 @@ function Partners() {
     <main id="main">
       <PageHero
         eyebrow="Partners"
-        title="You keep the sponsor. We QB the rooms."
-        sub="Help emerging sponsors carry a strong deal through the municipal and community conversations that can determine whether it moves forward."
+        title="You keep the sponsor. We QB the field."
+        sub="Help emerging sponsors carry strong deals through the municipal, community, and financial matchups that can determine whether a development moves forward."
       />
       <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
         <p className="text-lede text-ink/80">
-          Tax Credit QB works alongside the developer without taking the GP
-          role. We can prepare the team, strengthen the presentation strategy,
-          and participate in critical meetings when the assignment calls for
-          additional experience in the room. The service can be separately
-          scoped as a professional project cost while the syndicator or
-          consultant maintains its existing sponsor relationship.
+          Tax Credit QB helps sponsors prepare for the municipal, community,
+          and financial defenses that can determine whether a strong deal
+          moves forward. We help the team recognize the pressure, strengthen
+          the presentation strategy, and make the case without taking the GP
+          role. The service can be separately scoped as a professional
+          project cost while the syndicator or consultant maintains its
+          existing sponsor relationship.
         </p>
         <p className="mt-5 text-ink/80">
           Tax Credit QB is not the co-GP and does not replace the developer or

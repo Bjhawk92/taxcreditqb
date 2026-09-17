@@ -10,7 +10,7 @@ export const Route = createFileRoute("/playbook/hearing")({
     seo({
       title: "Public Hearing Deck | LIHTC Myths & Site Facts",
       description:
-        "Site-specific public hearing deck for LIHTC. Calm. Public record. Answer the objection before it lands — including the myths the room will hear.",
+        "The public hearing is where preparation, credibility, and execution come together. Present the development clearly and answer the defense’s strongest arguments with a case decision-makers can support.",
     }),
   component: Hearing,
 });
@@ -20,8 +20,8 @@ function Hearing() {
     <main id="main">
       <PageHero
         eyebrow="Public Hearing"
-        title="Make the site-specific case."
-        sub="Make a clear, site-specific case for your development. Present the plans, explain how LIHTC works and address common misconceptions with evidence and project-specific information. Prepare for questions from officials and residents before taking the podium."
+        title="Make the winning case."
+        sub="The public hearing is where preparation, credibility, and execution come together. Present the development clearly, establish the relevant facts, read the defense in real time, and answer its strongest arguments with a case decision-makers can confidently support."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="max-w-2xl text-lede text-ink/80">

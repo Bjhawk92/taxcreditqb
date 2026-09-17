@@ -9,9 +9,9 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/playbook/private-intro")({
   head: () =>
     seo({
-      title: "Private Introduction Deck | City, P&Z, Council",
+      title: "Municipal Introduction | Read the Field | Tax Credit QB",
       description:
-        "A private intro deck for City Managers, P&Z directors, and council. Credibility first. Staff time is scarce. Not site-deep.",
+        "Read the field. Establish your position. Introduce your company, demonstrate your track record, and understand the municipality’s priorities before asking for a formal decision.",
     }),
   component: PrivateIntro,
 });
@@ -21,17 +21,19 @@ function PrivateIntro() {
     <main id="main">
       <PageHero
         eyebrow="Municipal Introduction"
-        title="Introduce the company. Read the market."
-        sub="Introduce your company, establish credibility and explore a new market with city managers, planning directors and council members. Present your track record while learning about local housing priorities, potential sites, governmental support and incentive opportunities."
+        title="Read the field. Establish your position."
+        sub="Introduce your company, demonstrate your track record, and understand the municipality’s priorities before the development reaches a formal decision. Identify the conditions, potential support, and defensive pressure that could influence the project’s path forward."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
             <p className="text-lede text-ink/80">
-              For City Manager, Planning & Zoning, council, economic
-              development. When you are exploring a market or site and need a
-              read on governmental support, location, and incentives — before a
-              public fight.
+              For City Manager, Planning & Zoning, council, and economic
+              development. When you are exploring a market or site, read the
+              field on governmental support, location, and incentives before
+              the development reaches a formal decision. The objective is to
+              establish credibility, understand the conditions, and determine
+              the strongest path forward.
             </p>
             <ol className="mt-10 space-y-6">
               {INTRO_OUTLINE.map((item) => (
