@@ -20,12 +20,31 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
         </pattern>
       </defs>
       <rect width="1200" height="640" fill="url(#pb-lines)" />
-      {/* hash marks */}
+      {/* hash marks — stop at the goal line */}
       {Array.from({ length: 14 }).map((_, i) => (
         <g key={i} opacity="0.12" stroke="#1e3356" strokeWidth="1">
-          <line x1={80 + i * 80} y1="40" x2={80 + i * 80} y2="600" />
+          <line x1={80 + i * 80} y1="70" x2={80 + i * 80} y2="600" />
         </g>
       ))}
+
+      {/* End zone */}
+      <g opacity="0.34" stroke="#1e3356" fill="none">
+        <rect x="80" y="8" width="1040" height="60" strokeWidth="1.8" />
+        <line x1="80" y1="68" x2="1120" y2="68" strokeWidth="2.4" />
+      </g>
+      <text
+        x="600"
+        y="48"
+        textAnchor="middle"
+        textLength="900"
+        lengthAdjust="spacing"
+        fontFamily={PENCIL}
+        fontSize="36"
+        fill="#1e3356"
+        opacity="0.4"
+      >
+        AWARD
+      </text>
 
       {/* OL — O's */}
       {[
@@ -160,5 +179,5 @@ const DEFENSE: DefenseSpot[] = [
   { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
   { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
   { x: 550, y: 160, label: "CITY COUNCIL", lx: 568, ly: 148, tilt: -2 },
-  { x: 480, y: 120, label: "AWARD", lx: 480, ly: 102, anchor: "middle", tilt: -1 },
+  { x: 480, y: 120, label: "CONSTRUCTION", lx: 480, ly: 102, anchor: "middle", tilt: -1 },
 ];
