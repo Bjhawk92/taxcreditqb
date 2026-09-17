@@ -67,7 +67,7 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       <g
         fill="#1e3356"
         fontFamily={PENCIL}
-        fontSize="15"
+        fontSize="22.5"
         letterSpacing="0.08em"
         opacity="0.42"
       >
