@@ -12,7 +12,7 @@ export type QapEntry = {
   lastChecked?: string;
 };
 
-/** Starting QAP directory. URLs are the supplied set — not independently verified. */
+/** Starting QAP directory. Fifteen HFA links verified 2026-09-17 against official sources. */
 export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Alabama",
@@ -29,8 +29,10 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Arizona",
     agency: "ADOH",
-    url: "https://housing.az.gov/documents-links/forms/rental-development-lihtc",
+    url: "https://housing.az.gov/programs/rental-development",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Arkansas",
@@ -47,8 +49,10 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Colorado",
     agency: "CHFA",
-    url: "https://www.chfainfo.com/rental-housing/housing-credit",
+    url: "https://www.chfainfo.com/rental-housing/housing-credit/qualified-allocation-plan",
     resourceType: "QAP / Program Resources",
+    documentYear: 2025,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Connecticut",
@@ -89,26 +93,34 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Idaho",
     agency: "IHFA",
-    url: "https://www.idahohousing.com/multifamily-financing/federal-programs/lihtc/",
+    url: "https://www.idahohousing.com/partners/project-financing/developers/low-income-housing-tax-credits/",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Illinois",
     agency: "IHDA",
-    url: "https://www.ihda.org/wp-content/uploads/2025/07/2026-Qualified-Allocation-Plan_7.1.2025.pdf",
-    resourceType: "QAP PDF",
+    url: "https://www.ihda.org/developers/qap/",
+    resourceType: "QAP / Program Resources",
+    documentYear: 2027,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Indiana",
     agency: "IHCDA",
-    url: "https://www.in.gov/ihcda/files/2026-2027-QAP-FINAL.pdf",
+    url: "https://www.in.gov/ihcda/files/2026-2027-QAP-FINAL-v.3.pdf",
     resourceType: "QAP PDF",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Iowa",
     agency: "IFA",
-    url: "https://www.iowafinance.com/programs-for-property-developers/housing-tax-credit-program/",
+    url: "https://opportunityiowa.gov/housing/rental-programs/programs-developers-communities-and-property-owners/housing-tax-credit-program/resources",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Kansas",
@@ -137,8 +149,10 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Maryland",
     agency: "DHCD",
-    url: "https://dhcd.maryland.gov/HousingDevelopment/Pages/MFLibrary.aspx",
+    url: "https://dhcd.maryland.gov/housing/multifamily-document-library",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Massachusetts",
@@ -167,14 +181,18 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Missouri",
     agency: "MHDC",
-    url: "https://mhdc.com/media/wrin1f5m/qualified-allocation-plan_2026.pdf",
+    url: "https://mhdc.com/media/juielxo4/2027-qualified-allocation-plan.pdf",
     resourceType: "QAP PDF",
+    documentYear: 2027,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Montana",
     agency: "MBOH",
-    url: "https://housing.mt.gov/Multifamily-Development/Housing-Credit",
+    url: "https://commerce.mt.gov/Housing/Developers/Housing-Credit/Qualified-Allocation-Plan",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Nebraska",
@@ -185,8 +203,10 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Nevada",
     agency: "NHD",
-    url: "https://housing.nv.gov/programs/LIHTC/",
+    url: "https://housing.nv.gov/Programs/LIT/QAP/Qualified_Allocation_Plan/",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "New Hampshire",
@@ -199,12 +219,16 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
     agency: "NJHMFA",
     url: "https://www.nj.gov/dca/hmfa/developers/lihtc/qap/",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "New Mexico",
     agency: "MFA",
-    url: "https://housingnm.org/developers/lihtc",
+    url: "https://housingnm.org/developers/lihtc/current-and-prior-tax-credit-rounds",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "New York",
@@ -263,8 +287,10 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "South Carolina",
     agency: "SC Housing",
-    url: "https://www.schousing.com/Home/HousingTaxCreditProgram",
+    url: "https://schousing.sc.gov/development/housing-tax-credit-lihtc",
     resourceType: "QAP / Program Resources",
+    documentYear: 2026,
+    lastChecked: "2026-09-17",
   },
   {
     state: "South Dakota",
@@ -287,14 +313,18 @@ export const QAP_DIRECTORY: readonly QapEntry[] = [
   {
     state: "Utah",
     agency: "UHC",
-    url: "https://utahhousingcorp.org/multifamily/applicationinfo/",
-    resourceType: "QAP / Program Resources",
+    url: "https://utahhousingcorp.org/pdf/2027_QAP_Governor_Approved.pdf",
+    resourceType: "QAP PDF",
+    documentYear: 2027,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Vermont",
     agency: "VHFA",
-    url: "https://www.vhfa.org/rentalhousing/developers/lihtc",
+    url: "https://www.vhfa.org/developers/lihtc/qap",
     resourceType: "QAP / Program Resources",
+    documentYear: 2024,
+    lastChecked: "2026-09-17",
   },
   {
     state: "Virginia",
