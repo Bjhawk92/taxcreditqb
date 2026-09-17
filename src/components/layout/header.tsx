@@ -32,7 +32,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 px-4 py-2.5 md:px-8 md:py-3">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 overflow-visible px-4 py-2.5 md:px-8 md:py-3">
         <BrandLockup />
 
         <div className="col-start-3 row-start-1 hidden shrink-0 items-center gap-2 lg:flex">

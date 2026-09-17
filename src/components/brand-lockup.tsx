@@ -7,15 +7,18 @@ export function BrandLockup() {
     <Link
       to="/"
       aria-label="Tax Credit QB home"
-      className="col-span-3 row-start-2 flex min-w-0 items-center gap-x-2.5 self-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:gap-x-3"
+      className="col-span-3 row-start-2 flex min-w-0 items-center gap-x-3 self-center overflow-visible focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:gap-x-4"
     >
-      <ShieldMark className="h-16 w-auto object-contain object-left sm:h-28 md:h-32 lg:h-36 xl:h-40" />
+      <ShieldMark
+        wrapperClassName="relative z-0 shrink-0 overflow-visible"
+        className="h-16 w-auto overflow-visible object-contain object-left sm:h-28 md:h-32 lg:h-36 xl:h-40"
+      />
       <img
         src={wordmark}
         alt=""
-        width={1297}
-        height={306}
-        className="h-16 w-auto min-w-0 max-w-full object-contain object-left sm:h-28 md:h-32 lg:h-36 xl:h-40"
+        width={1347}
+        height={338}
+        className="relative z-10 h-16 w-auto min-w-0 max-w-full overflow-visible object-contain object-left sm:h-28 md:h-32 lg:h-36 xl:h-40"
       />
     </Link>
   );
