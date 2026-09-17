@@ -37,18 +37,6 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       ].map(([x, y], i) => (
         <circle key={i} cx={x} cy={y} r="13" fill="none" stroke="#1e3356" strokeWidth="2.2" opacity="0.28" />
       ))}
-      {/* DL — 4 X's opposite the OL */}
-      {[
-        [460, 385],
-        [520, 385],
-        [580, 385],
-        [640, 385],
-      ].map(([x, y], i) => (
-        <g key={`dl-${i}`} opacity="0.26" stroke="#1e3356" strokeWidth="2.2">
-          <line x1={x - 9} y1={y - 9} x2={x + 9} y2={y + 9} />
-          <line x1={x + 9} y1={y - 9} x2={x - 9} y2={y + 9} />
-        </g>
-      ))}
       {/* QB */}
       <circle cx="550" cy="510" r="24" fill="none" stroke="#1e3356" strokeWidth="2.8" opacity="0.45" />
       <text
@@ -161,6 +149,10 @@ const DEFENSE: DefenseSpot[] = [
   { x: 470, y: 290, label: "ZONING", lx: 470, ly: 272, anchor: "middle", tilt: -2 },
   { x: 560, y: 270, label: "SITE", lx: 560, ly: 252, anchor: "middle", tilt: 1 },
   { x: 650, y: 290, label: "FINANCING", lx: 650, ly: 324, anchor: "middle", tilt: 1 },
+  { x: 460, y: 385, label: "COMPETITOR", lx: 460, ly: 352, anchor: "middle", tilt: -2 },
+  { x: 520, y: 385, label: "DEADLINE", lx: 520, ly: 367, anchor: "middle", tilt: 1 },
+  { x: 580, y: 385, label: "UNDERWRITER", lx: 580, ly: 352, anchor: "middle", tilt: -1 },
+  { x: 640, y: 385, label: "SCORING", lx: 640, ly: 367, anchor: "middle", tilt: 2 },
   { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
   { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
   { x: 320, y: 180 },
