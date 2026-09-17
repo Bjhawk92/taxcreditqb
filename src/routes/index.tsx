@@ -26,17 +26,17 @@ const STEPS = [
   {
     n: "01",
     title: "Read the defense",
-    body: "Private intro. Public hearing. Neighborhood. Three rooms. Pick the play that fits the coverage.",
+    body: "Private intro. Public hearing. Neighborhood. Three rooms. Choose the presentation that fits the audience.",
   },
   {
     n: "02",
     title: "Install the play",
-    body: "Playbook members get the three-deck system. Custom decks are this sponsor, this site, this snap — we script it.",
+    body: "Playbook members get the three-deck system. Need more than a template? We can build a presentation around your sponsor, site, audience, and approval strategy.",
   },
   {
     n: "03",
-    title: "Huddle — or put the QB in the game",
-    body: "Thirty-minute huddle is in the membership. Game day in person is a reduced member rate. Travel extra.",
+    title: "Huddle — or bring in the QB",
+    body: "Playbook includes one 30-minute virtual session each month. Huddle members get two 45-minute sessions and a monthly review. In-person meeting support is a separate assignment.",
   },
 ];
 
@@ -61,8 +61,9 @@ function Home() {
             <span className="block text-steel">Backed by experience.</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Proven development experience for your next decision, difficult
-            meeting or complex deal.
+            Practical LIHTC development strategy from someone who has built,
+            financed, and defended real deals—from site control and financial
+            modeling to neighborhood meetings and public approvals.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" variant="cta">
@@ -72,10 +73,7 @@ function Home() {
               </Link>
             </Button>
             <Button asChild variant="secondary" size="lg">
-              <Link to="/inquiry">Talk about your deal</Link>
-            </Button>
-            <Button asChild variant="secondary" size="lg">
-              <Link to="/playbook">Explore the playbook</Link>
+              <Link to="/inquiry">Call the next play</Link>
             </Button>
           </div>
           <p className="mt-8 max-w-2xl text-lede text-ink/80">
@@ -88,8 +86,8 @@ function Home() {
             local support and making your case at a public hearing.
           </p>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Use our presentation playbook, get direct advice, or bring us in
-            for the assignment.
+            Use the Playbook to prepare your team, huddle with an experienced
+            developer, or bring the QB into the room when the outcome matters.
           </p>
         </div>
       </section>
@@ -184,7 +182,7 @@ function Home() {
       <section className="border-y border-line bg-paper-dim">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            Deal Desk · Sideline
+            Deal Desk
           </p>
           <h2 className="mt-3 max-w-2xl font-display text-section font-semibold leading-section">
             The model is not the meeting. You still need both.
@@ -200,7 +198,7 @@ function Home() {
             ))}
           </div>
           <Button asChild variant="secondary" className="mt-8">
-            <Link to="/desk">The sideline</Link>
+            <Link to="/desk">Meeting support</Link>
           </Button>
         </div>
       </section>
@@ -215,7 +213,7 @@ function Home() {
         eyebrow="Your winning edge"
         title="Your deal. A stronger game plan."
         line="Get the presentation tools and direct advice to lead confidently—or bring an experienced QB into the room."
-        primary={{ label: "Explore the playbook", to: "/playbook" }}
+        primary={{ label: "Get the Playbook", to: "/register" }}
         secondary={{ label: "Bring in the QB", to: "/inquiry" }}
       />
     </main>

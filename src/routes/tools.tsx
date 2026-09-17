@@ -85,8 +85,8 @@ function Tools() {
       <CtaBand
         title="Found the requirements. Have a question about your next move?"
         line="Bring your deal-specific question to Ask the QB for practical guidance grounded in development experience."
-        primary={{ label: "Explore Ask the QB", to: "/access" }}
-        secondary={{ label: "Discuss Your Deal", to: "/inquiry" }}
+        primary={{ label: "Get the Playbook", to: "/register" }}
+        secondary={{ label: "Call the next play", to: "/inquiry" }}
       />
     </main>
   );

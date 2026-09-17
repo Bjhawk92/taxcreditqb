@@ -32,7 +32,7 @@ function HqMembership() {
           <div>
             <HqEmpty
               title="No membership on file"
-              body="This account does not have an active Playbook membership. Price is not published as a live Stripe plan yet. Inquire to be set up — we will not invent unlimited access or rollovers."
+              body="This account does not have an active membership. Choose a plan to add Film Room, Playbook, or Huddle access."
             />
             <Button asChild className="mt-6">
               <Link to="/access">Inquire about membership</Link>
@@ -51,8 +51,8 @@ function HqMembership() {
                 Consulting remaining
               </dt>
               <dd className="mt-1 text-xl font-semibold">
-                {m?.consultRemaining} of {m?.consultAllowance} ({SITE.access.consult}{" "}
-                sessions)
+                {m?.consultRemaining} of {m?.consultAllowance} sessions
+                remaining this period
               </dd>
             </div>
             <div className="border border-line p-5">
@@ -75,10 +75,11 @@ function HqMembership() {
         )}
         <div className="mt-10 max-w-2xl space-y-4 text-ink/80">
           <p>
-            Included with Playbook membership when assigned: the three presentation
-            templates, Film Room access, and one {SITE.access.consult} per
-            membership period — not unlimited, and unused time does not roll over
-            unless your written plan says so.
+            Included when assigned: Film Room access on every plan. Playbook
+            members also receive the presentation templates and one 30-minute
+            virtual strategy session each month. Huddle members receive two
+            45-minute sessions and one monthly deal or presentation review.
+            Unused time does not roll over unless your written plan says so.
           </p>
           <p>
             Custom decks, in-person meeting attendance, modeling, and retainers are
@@ -86,8 +87,8 @@ function HqMembership() {
             assigned plan.
           </p>
           <p>
-            Subscription changes go through the payment provider once Stripe is
-            connected. Until then, write {SITE.emails.info}.
+            Subscription changes go through the payment provider. For billing
+            questions, write {SITE.emails.info}.
           </p>
         </div>
         <div className="mt-8 flex flex-wrap gap-3">

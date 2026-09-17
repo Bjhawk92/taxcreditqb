@@ -11,5 +11,5 @@ export const Route = createFileRoute("/login")({
 });
 
 function Login() {
-  return <Navigate to="/register" />;
+  return <Navigate to="/register" search={{ mode: "in" }} />;
 }

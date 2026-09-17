@@ -9,7 +9,10 @@ type To =
   | "/about"
   | "/playbook"
   | "/advisory"
-  | "/desk";
+  | "/desk"
+  | "/register"
+  | "/videos"
+  | "/for-partners";
 
 export function CtaBand({
   eyebrow,
@@ -17,8 +20,8 @@ export function CtaBand({
   line,
   close,
   tone = "ink",
-  primary = { label: "Ask the QB", to: "/access" },
-  secondary = { label: "Call in the play", to: "/inquiry" },
+  primary = { label: "Get the Playbook", to: "/register" },
+  secondary = { label: "Call the next play", to: "/inquiry" },
 }: {
   eyebrow?: string;
   title: string;

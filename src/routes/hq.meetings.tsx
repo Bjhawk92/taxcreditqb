@@ -37,7 +37,7 @@ function HqMeetings() {
     }).catch(() => ({
       ok: false as const,
       error:
-        "The portal is in preview. Use Call in the Play to request meeting support.",
+        "Could not send that request. Email info@taxcreditqb.com or use Call the next play.",
     }));
     if (!res.ok) {
       setMsg(res.error);

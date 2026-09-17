@@ -84,7 +84,7 @@ export function MembershipPricing() {
                 </p>
                 <p className="mt-4 text-ink/80">{plan.tagline}</p>
                 <p className="mt-6 font-display text-xs font-semibold uppercase tracking-mark text-muted">
-                  Include
+                  What’s included
                 </p>
                 <ul className="mt-3 flex-1 space-y-3">
                   {plan.includes.map((item) => (
@@ -118,7 +118,7 @@ export function MembershipPricing() {
             level of support.
           </p>
           <Button asChild className="mt-6" size="lg">
-            <Link to="/inquiry">Talk to the QB</Link>
+            <Link to="/inquiry">Call the next play</Link>
           </Button>
         </div>
       </div>

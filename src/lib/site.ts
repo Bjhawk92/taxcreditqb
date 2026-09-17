@@ -12,13 +12,14 @@ export const SITE = {
   access: {
     price: "TBD",
     cadence: "/mo",
-    consult: "30-minute huddle",
+    consult: "virtual strategy session",
     launchLabel: "Playbook membership",
   },
   cta: {
     ask: "Ask the QB",
-    play: "Call in the play",
+    play: "Call the next play",
     playbook: "Get the Playbook",
+    bring: "Bring in the QB",
   },
   proof: [
     { value: "70", label: "Communities" },
@@ -31,11 +32,7 @@ export const SITE = {
     name: "Alkaline Advisors",
     href: "https://www.alkaline-advisors.com",
   },
-  social: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
-    { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "YouTube", href: "https://www.youtube.com/" },
-  ],
+  social: [] as { label: string; href: string }[],
   disclaimer:
     "Tax Credit QB is not a law firm, not a syndicator, not your co-GP, and not a substitute for local land-use counsel. Meeting support is not lobbying unless a separate engagement says so. Deck templates are educational and must be adapted to the site, the QAP, and the jurisdiction. Financial models are prepared by Alkaline Advisors unless otherwise stated. Tax Credit QB does not guarantee approvals, tax-credit awards, financing, or project outcomes. You remain the developer and owner of your opportunity.",
 } as const;
@@ -44,13 +41,13 @@ export const NAV = [
   {
     label: "Playbook",
     to: "/playbook",
-    blurb: "Presentation templates and tools for the meetings that matter.",
+    blurb: "Templates, checklists, and presentation resources.",
     tab: "navy",
   },
   {
     label: "Film Room",
     to: "/videos",
-    blurb: "Short clips. Real examples. Practical insight for the next deal.",
+    blurb: "Educational videos and deal breakdowns.",
     tab: "blue",
   },
   {
@@ -60,22 +57,10 @@ export const NAV = [
     tab: "tools",
   },
   {
-    label: "Huddle",
+    label: "Work With Us",
     to: "/access",
-    blurb: "One-on-one advice for your next decision.",
+    blurb: "Questions, huddles, meeting support, and project advisory.",
     tab: "gold",
-  },
-  {
-    label: "Sideline",
-    to: "/desk",
-    blurb: "Experienced support before, during and after your meeting.",
-    tab: "green",
-  },
-  {
-    label: "Advisory",
-    to: "/advisory",
-    blurb: "Strategy and hands-on support across your development.",
-    tab: "burgundy",
   },
   {
     label: "About",
@@ -83,41 +68,44 @@ export const NAV = [
     blurb: "Meet Brett Johnson and the experience behind Tax Credit QB.",
     tab: "slate",
   },
-  {
-    label: "Team HQ",
-    to: "/hq",
-    blurb: "Client portal for membership, files and project work.",
-    tab: "hq",
-  },
+] as const;
+
+export const WORK_NAV = [
+  { label: "Ask the QB", to: "/register", blurb: "Submit a private deal question." },
+  { label: "Huddle", to: "/access", blurb: "Live virtual strategy sessions." },
+  { label: "Meeting Support", to: "/desk", blurb: "Preparation and participation in the room." },
+  { label: "Project Advisory", to: "/advisory", blurb: "Strategy and hands-on support across a development." },
+  { label: "Partner Support", to: "/for-partners", blurb: "For syndicators and consultants." },
 ] as const;
 
 export const FOOTER_NAV = [
   { label: "Playbook", to: "/playbook" },
   { label: "Film Room", to: "/videos" },
   { label: "Tools", to: "/tools" },
+  { label: "Ask the QB", to: "/register" },
   { label: "Huddle", to: "/access" },
-  { label: "Sideline", to: "/desk" },
-  { label: "Advisory", to: "/advisory" },
+  { label: "Meeting Support", to: "/desk" },
+  { label: "Project Advisory", to: "/advisory" },
+  { label: "Partner Support", to: "/for-partners" },
   { label: "About", to: "/about" },
-  { label: "Team HQ", to: "/hq" },
-  { label: "For Partners", to: "/for-partners" },
   { label: "Get the Playbook", to: "/register" },
-  { label: "Call in the play", to: "/inquiry" },
+  { label: "Call the next play", to: "/inquiry" },
   { label: "Contact", to: "/contact" },
   { label: "Legal", to: "/legal" },
 ] as const;
 
 export const NEEDS = [
-  { value: "private-intro", label: "Opening drive — private intro deck" },
-  { value: "hearing", label: "Game day — public hearing deck" },
-  { value: "neighborhood", label: "Walkthrough — neighborhood deck" },
-  { value: "three-pack", label: "Full three-play package" },
-  { value: "in-the-room", label: "Put the QB in the game" },
-  { value: "modeling", label: "LIHTC modeling (Alkaline Advisors)" },
-  { value: "intro-architect", label: "Architect — add a blocker" },
-  { value: "intro-gc", label: "Contractor — add a blocker" },
+  { value: "private-intro", label: "Municipal introduction and city strategy" },
+  { value: "hearing", label: "Public-hearing presentation" },
+  { value: "neighborhood", label: "Neighborhood-meeting presentation" },
+  { value: "three-pack", label: "Complete three-presentation package" },
+  { value: "in-the-room", label: "Meeting participation or support" },
+  { value: "modeling", label: "LIHTC modeling through Alkaline Advisors" },
+  { value: "intro-architect", label: "Architectural support or introduction" },
+  { value: "intro-gc", label: "Contractor support or introduction" },
   { value: "intro-syndicator", label: "Syndicator introduction" },
-  { value: "not-sure", label: "Not sure — huddle with us" },
+  { value: "advisory", label: "Project advisory" },
+  { value: "not-sure", label: "Not sure—I need help calling the next play" },
 ] as const;
 
 export const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as

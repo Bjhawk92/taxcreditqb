@@ -24,16 +24,14 @@ function HqFiles() {
       />
       <HqMain>
         <p className="max-w-2xl text-ink/80">
-          Uploads and downloads are not live. A successful transfer will not be
-          simulated. Send files to {SITE.emails.info} until object storage is
-          attached. Logged deliverables — including prior versions — appear below
-          when Tax Credit QB records them.
+          Send files to {SITE.emails.info}. Recorded deliverables — including
+          prior versions — appear below.
         </p>
         {rows.length === 0 ? (
           <div className="mt-8">
             <HqEmpty
-              title="Storage is not connected"
-              body="No files are on record for this account. Current deliverable and prior versions will list here once storage or a logged handoff exists."
+              title="No files on record"
+              body="Deliverables recorded for this account will appear here."
             />
           </div>
         ) : (
@@ -47,7 +45,8 @@ function HqFiles() {
                   {f.version ? `· ${f.version}` : ""}
                 </p>
                 <p className="mt-2 text-sm text-muted">
-                  Download is not available until storage is connected.
+                  Request a copy from {SITE.emails.info} if you need the current
+                  file.
                 </p>
               </li>
             ))}

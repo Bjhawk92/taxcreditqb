@@ -19,22 +19,23 @@ function Partners() {
       <PageHero
         eyebrow="Partners"
         title="You keep the sponsor. We QB the rooms."
-        sub="For syndicators and consultants whose emerging GP can win a site and still lose city hall. Put a QB on their sideline."
+        sub="Help emerging sponsors carry a strong deal through the municipal and community conversations that can determine whether it moves forward."
       />
       <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
         <p className="text-lede text-ink/80">
-          Put a quarterback next to your developer without taking the GP seat.
-          Opening drive, game day, walkthrough — scripted and, when needed,
-          the QB takes the snap. Soft-cost line item. You stay in the equity
-          seat.
+          Tax Credit QB works alongside the developer without taking the GP
+          role. We can prepare the team, strengthen the presentation strategy,
+          and participate in critical meetings when the assignment calls for
+          additional experience in the room. The service can be separately
+          scoped as a professional project cost while the syndicator or
+          consultant maintains its existing sponsor relationship.
         </p>
         <p className="mt-5 text-ink/80">
-          This is not co-GP. This is not community-engagement consulting. This
-          is whether the deal survives the rooms that decide it before you
-          price credits.
+          Tax Credit QB is not the co-GP and does not replace the developer or
+          its other professional advisers.
         </p>
         <Button asChild className="mt-8" size="lg">
-          <Link to="/inquiry">Call in the play</Link>
+          <Link to="/inquiry">Bring in the QB</Link>
         </Button>
       </section>
     </main>

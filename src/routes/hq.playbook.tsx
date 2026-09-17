@@ -40,8 +40,7 @@ function HqPlaybook() {
                 ))}
               </ul>
               <p className="mt-4 text-sm text-muted">
-                Files attach when your membership is entitled. Updated dates appear
-                here once a file is loaded — none are attached yet.
+                Files attach when your membership includes them.
               </p>
               <Button asChild variant="secondary" className="mt-6">
                 <Link to={deck.href}>Open public outline</Link>
@@ -54,7 +53,7 @@ function HqPlaybook() {
           Site-specific decks are custom work, billed separately.
         </p>
         <Button asChild className="mt-6">
-          <Link to="/inquiry">Request a custom deck</Link>
+          <Link to="/inquiry">Bring in the QB</Link>
         </Button>
       </HqMain>
     </main>

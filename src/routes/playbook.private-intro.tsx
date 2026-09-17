@@ -52,7 +52,7 @@ function PrivateIntro() {
               aspect="wide"
               texture="/textures/deck-markup.jpg"
               kicker="Marked-up deck"
-              caption="Sample slide texture — replace with the member PDF."
+              caption="Sample slide texture from a municipal introduction deck."
             />
           </div>
         </div>
@@ -66,11 +66,11 @@ function PrivateIntro() {
                   Unlocked
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-semibold">
-                  Sample outline PDF placeholder
+                  Sample outline
                 </h2>
                 <p className="mt-3 text-ink/75">
-                  Watermarked download will sit here. Until then, the outline
-                  on this page is the sample.
+                  The outline on this page is the sample. A complete, editable
+                  template is part of Playbook membership.
                 </p>
               </div>
             }
@@ -78,10 +78,10 @@ function PrivateIntro() {
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link to="/access">Ask the QB</Link>
+            <Link to="/register">Get the Playbook</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/inquiry">Call in the play</Link>
+            <Link to="/inquiry">Call the next play</Link>
           </Button>
         </div>
       </section>

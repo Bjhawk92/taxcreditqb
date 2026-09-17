@@ -38,8 +38,8 @@ function PlaybookIndex() {
         </div>
         <div className="mt-12 max-w-2xl space-y-4 text-ink/80">
           <p>
-            Complete templates require a subscription. Members get the three
-            presentation tools, speaking guidance and Q&A strategies for
+            Complete templates require a Playbook membership. Members get the
+            three presentation tools, speaking guidance and Q&A strategies for
             the rooms that decide a deal.
           </p>
           <p>
@@ -49,10 +49,10 @@ function PlaybookIndex() {
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link to="/access">Subscribe</Link>
+            <Link to="/register">Get the Playbook</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/inquiry">Talk about a custom deck</Link>
+            <Link to="/inquiry">Bring in the QB</Link>
           </Button>
         </div>
       </section>

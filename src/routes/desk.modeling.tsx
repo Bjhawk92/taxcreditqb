@@ -44,7 +44,7 @@ function Modeling() {
         </ul>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link to="/inquiry">Call in the play</Link>
+            <Link to="/inquiry">Call the next play</Link>
           </Button>
           <Button asChild variant="secondary">
             <Link to="/desk">Back to the desk</Link>

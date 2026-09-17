@@ -17,7 +17,7 @@ export const Route = createFileRoute("/contact")({
     seo({
       title: "Contact Tax Credit QB",
       description:
-        "Contact Tax Credit QB. Prefer a huddle? Ask the QB. Prefer game day? Call in the play.",
+        "Contact Tax Credit QB. For a project, call the next play. For membership, get the Playbook.",
     }),
   component: Contact,
 });

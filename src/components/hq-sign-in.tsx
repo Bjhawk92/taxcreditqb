@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
 import { getHqAuthStatus } from "@/lib/hq-auth-status";
+import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const BEARER_KEY = "grok-auth.bearer-token";
@@ -26,14 +27,7 @@ function isLiveHost() {
 
 function explainAuthError(raw: string, mode: "in" | "up") {
   const msg = raw.toLowerCase();
-  if (msg.includes("invalid origin") || msg.includes("http 403")) {
-    return "This page cannot create a session from this address. Open taxcreditqb.com/hq (not www) and try again.";
-  }
-  if (
-    msg.includes("already exists") ||
-    msg.includes("user already") ||
-    msg.includes("unique")
-  ) {
+  if (msg.includes("already exists") || msg.includes("user already") || msg.includes("unique")) {
     return "An account with that email already exists. Switch to Sign in.";
   }
   if (msg.includes("password") && (msg.includes("8") || msg.includes("short") || msg.includes("least"))) {
@@ -48,15 +42,7 @@ function explainAuthError(raw: string, mode: "in" | "up") {
   ) {
     return "No account for that email, or the password is wrong. If this is your first visit, create an account first.";
   }
-  if (
-    msg.includes("http 5") ||
-    msg.includes("database") ||
-    msg.includes("econnrefused") ||
-    msg.includes("pglite")
-  ) {
-    return "The portal database is not connected on the live site yet. In Vercel, add a Neon database, then add BETTER_AUTH_URL and BETTER_AUTH_SECRET, and Redeploy.";
-  }
-  return raw || "Could not create the account. The live site still needs a Neon database connected in Vercel.";
+  return "We could not complete that request. Check your details and try again, or email info@taxcreditqb.com.";
 }
 
 async function emailAuth(
@@ -102,17 +88,18 @@ export function HqSignIn({
   sub = "Your resources, conversations and project work—all in one place.",
   signupLabel = "Create account",
   playbook = false,
+  initialMode = "up",
 }: {
   eyebrow?: string;
   title?: string;
   sub?: string;
   signupLabel?: string;
   playbook?: boolean;
+  initialMode?: "in" | "up";
 }) {
-  const [mode, setMode] = useState<"in" | "up">("up");
+  const [mode, setMode] = useState<"in" | "up">(initialMode);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const [resetOpen, setResetOpen] = useState(false);
   const [status, setStatus] = useState<{
     database: "neon" | "pglite";
     social: boolean;
@@ -163,16 +150,6 @@ export function HqSignIn({
           <p className="text-muted">Sign-in is not enabled on this environment.</p>
         ) : (
           <div className="space-y-6">
-            {dbMissing ? (
-              <p className="border border-ink bg-paper-dim px-4 py-3 text-sm text-ink">
-                Team HQ cannot store accounts on this live site yet. In the
-                Vercel project, open Storage, create a Neon Postgres database,
-                add <span className="font-semibold">BETTER_AUTH_URL</span> and{" "}
-                <span className="font-semibold">BETTER_AUTH_SECRET</span>, then
-                Redeploy. Google sign-in is not connected here.
-              </p>
-            ) : null}
-
             {playbook ? null : (
             <div className="flex rounded-sm border border-line">
               <button
@@ -303,7 +280,7 @@ export function HqSignIn({
                             setError(
                               err instanceof Error
                                 ? err.message
-                                : "Google sign-in did not start.",
+                                : "Sign-in did not start.",
                             ),
                         )
                       }
@@ -313,27 +290,15 @@ export function HqSignIn({
                   ))}
                 </div>
               </>
-            ) : (
-              <p className="text-sm text-muted">
-                Continue with Google is not connected on this domain. Use email
-                and password after the database is attached.
-              </p>
-            )}
+            ) : null}
 
             <div>
-              <button
-                type="button"
+              <a
+                href={`mailto:${SITE.emails.info}?subject=Password%20help`}
                 className="text-sm underline-offset-4 hover:underline"
-                onClick={() => setResetOpen((v) => !v)}
               >
                 Forgot password?
-              </button>
-              {resetOpen ? (
-                <p className="mt-3 text-sm text-muted">
-                  Password reset mail is not connected. Until the domain inbox
-                  is set up, create a new account with a different email.
-                </p>
-              ) : null}
+              </a>
             </div>
           </div>
         )}

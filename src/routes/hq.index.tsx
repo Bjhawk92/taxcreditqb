@@ -13,7 +13,7 @@ function HqHome() {
       <PageHero
         eyebrow="Team HQ"
         title="Welcome to Team HQ."
-        sub="Membership, playbook files, huddles and project work — in one place. This is the portal layout. Live client accounts will fill these boards."
+        sub="Membership, playbook files, huddles, and project work — in one place."
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild>
@@ -23,7 +23,7 @@ function HqHome() {
             <Link to="/hq/huddle">Schedule a huddle</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/inquiry">Talk about your deal</Link>
+            <Link to="/inquiry">Call the next play</Link>
           </Button>
         </div>
       </PageHero>
@@ -69,7 +69,7 @@ function HqHome() {
             <div className="mt-4">
               <HqEmpty
                 title="No file updates"
-                body="Secure uploads are not live yet. Logged deliverables will appear here once storage is connected."
+                body="Deliverables recorded for your account will appear here."
               />
             </div>
           </section>

@@ -35,7 +35,7 @@ function HqHuddle() {
     }).catch(() => ({
       ok: false as const,
       error:
-        "The portal is in preview. Use Call in the Play to send a huddle request.",
+        "Could not send that request. Email info@taxcreditqb.com or use Call the next play.",
     }));
     if (!res.ok) {
       setMsg(res.error);
@@ -56,12 +56,12 @@ function HqHuddle() {
     <main id="main">
       <HqHeader
         title="Huddle"
-        sub={`Request a private session under your membership. A booking request is not a confirmed meeting. Allowance is one ${SITE.access.consult} per period when a plan is assigned — not unlimited.`}
+        sub="Request a private session under your membership. A booking request is not a confirmed meeting. Session length and frequency follow your plan."
       />
       <HqMain>
         <p className="max-w-2xl text-ink/80">
           {hasPlan
-            ? `${m?.consultRemaining} of ${m?.consultAllowance} ${SITE.access.consult} sessions remaining this period.`
+            ? `${m?.consultRemaining} of ${m?.consultAllowance} sessions remaining this period.`
             : "No membership on file, so no huddle allowance is assigned yet. You may still send a request."}
         </p>
         <form onSubmit={onSubmit} className="mt-8 max-w-xl space-y-4">
@@ -75,8 +75,7 @@ function HqHuddle() {
             <Input id="deadline" name="deadline" />
           </Field>
           <p className="text-sm text-muted">
-            Supporting documents: file exchange is not connected. Email attachments
-            to {SITE.emails.info} with this request.
+            Email supporting documents to {SITE.emails.info} with this request.
           </p>
           <Button type="submit">Submit huddle request</Button>
           {msg ? <p className="text-sm">{msg}</p> : null}

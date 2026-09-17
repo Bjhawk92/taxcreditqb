@@ -15,7 +15,7 @@ export const Route = createFileRoute("/legal")({
 function Legal() {
   return (
     <main id="main">
-      <PageHero eyebrow="Legal" title="How to read this shop." />
+      <PageHero eyebrow="Legal" title="The role we play." />
       <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
         <p className="text-lede text-ink/80">{SITE.disclaimer}</p>
         <p className="mt-6 text-ink/75">

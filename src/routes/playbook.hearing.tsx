@@ -56,7 +56,7 @@ function Hearing() {
                   Unlocked
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-semibold">
-                  Sample outline PDF placeholder
+                  Sample outline
                 </h2>
                 <p className="mt-3 text-ink/75">
                   The myth set on this page is the sample. Site-specific facts
@@ -68,10 +68,10 @@ function Hearing() {
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link to="/access">Ask the QB</Link>
+            <Link to="/register">Get the Playbook</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/inquiry">Call in the play</Link>
+            <Link to="/inquiry">Call the next play</Link>
           </Button>
         </div>
       </section>

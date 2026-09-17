@@ -1,16 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/page-hero";
 import { MembershipPricing } from "@/components/membership-pricing";
 import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
-import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/access")({
   head: () =>
     seo({
       title: "Huddle | One-on-one advice | Tax Credit QB",
       description:
-        "Talk through the deal. Get clear on the next move. Private virtual sessions with Brett Johnson—minimum 30 minutes, per membership allowance.",
+        "Talk through the deal. Get clear on the next move. Private virtual sessions with Brett Johnson, according to your membership.",
     }),
   component: Access,
 });
@@ -48,10 +47,14 @@ function Access() {
           ))}
         </ul>
         <div className="mt-10 max-w-2xl space-y-4 text-ink/80">
+          <h2 className="font-display text-section font-semibold leading-section">
+            Direct access that matches your membership.
+          </h2>
           <p>
-            Memberships include scheduled one-on-one consulting in sessions of
-            at least 30 minutes. The current allowance is one{" "}
-            {SITE.access.consult} per membership period — not unlimited access.
+            Film Room members can submit private questions without scheduled
+            calls. Playbook members receive one 30-minute virtual strategy
+            session each month. Huddle members receive two 45-minute sessions
+            each month, along with one monthly deal or presentation review.
           </p>
           <p>
             Document review and additional work depend on the agreed scope.

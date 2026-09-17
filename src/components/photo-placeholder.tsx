@@ -35,12 +35,9 @@ export function PhotoPlaceholder({
           alt=""
           className="absolute inset-0 size-full object-cover opacity-50 mix-blend-multiply"
         />
-        <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-5">
+        <div className="absolute inset-0 flex flex-col p-4 md:p-5">
           <p className="font-display text-xs font-semibold uppercase tracking-mark text-steel">
             {kicker}
-          </p>
-          <p className="max-w-xs font-display text-lg font-semibold leading-snug tracking-tight text-ink md:text-xl">
-            Photo placeholder
           </p>
         </div>
       </div>

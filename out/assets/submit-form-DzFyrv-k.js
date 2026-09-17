@@ -1,0 +1,1 @@
+async function e(e,t){await new Promise(e=>setTimeout(e,450))}export{e as t};

@@ -11,14 +11,14 @@ export function NotFound() {
         This page is not on the map.
       </h1>
       <p className="mt-4 max-w-md text-lede text-ink/75">
-        The route does not exist. Head home, or call in the play.
+        The route does not exist. Head home, or call the next play.
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Button asChild>
           <Link to="/">Home</Link>
         </Button>
         <Button asChild variant="secondary">
-          <Link to="/inquiry">Call in the play</Link>
+          <Link to="/inquiry">Call the next play</Link>
         </Button>
       </div>
     </main>

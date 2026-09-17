@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, Menu, X } from "lucide-react";
+import { BookOpen, ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BinderTabStrip } from "@/components/binder-tabs";
 import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
-import { NAV } from "@/lib/site";
+import { SignedIn, SignedOut } from "@/lib/auth/gates";
+import { NAV, WORK_NAV } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const TAB = {
@@ -20,6 +21,7 @@ const TAB = {
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [workOpen, setWorkOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -46,9 +48,49 @@ export function Header() {
         </div>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
-          <Button asChild variant="ghost" className="px-2">
-            <Link to="/inquiry">Call in the play</Link>
-          </Button>
+          <div
+            className="relative"
+            onMouseEnter={() => setWorkOpen(true)}
+            onMouseLeave={() => setWorkOpen(false)}
+          >
+            <button
+              type="button"
+              className="inline-flex min-h-11 items-center gap-1 px-2 font-display text-sm font-semibold uppercase tracking-nav text-ink hover:text-steel"
+              aria-expanded={workOpen}
+            >
+              Work With Us
+              <ChevronDown className="size-3.5" />
+            </button>
+            {workOpen ? (
+              <div className="absolute right-0 top-full z-50 w-80 border border-line bg-paper p-2 shadow-[0_12px_28px_rgb(30_51_86/0.12)]">
+                {WORK_NAV.map((item) => (
+                  <Link
+                    key={item.to + item.label}
+                    to={item.to}
+                    className="flex flex-col px-3 py-2.5 hover:bg-paper-dim"
+                    onClick={() => setWorkOpen(false)}
+                  >
+                    <span className="font-display text-sm font-semibold uppercase tracking-nav text-ink">
+                      {item.label}
+                    </span>
+                    <span className="mt-0.5 text-sm text-muted">{item.blurb}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+          <SignedIn>
+            <Button asChild variant="ghost" className="px-2">
+              <Link to="/hq">Team HQ</Link>
+            </Button>
+          </SignedIn>
+          <SignedOut>
+            <Button asChild variant="ghost" className="px-2">
+              <Link to="/register" search={{ mode: "in" }}>
+                Sign in
+              </Link>
+            </Button>
+          </SignedOut>
           <Button asChild variant="cta">
             <Link to="/register">
               <BookOpen className="size-4" aria-hidden="true" />
@@ -87,7 +129,7 @@ export function Header() {
         )}
       >
         <nav className="mx-auto flex max-w-6xl flex-col px-5 py-4" aria-label="Mobile">
-          {NAV.map((item) => (
+          {NAV.filter((item) => item.label !== "Work With Us").map((item) => (
             <Link
               key={item.to}
               to={item.to}
@@ -103,6 +145,22 @@ export function Header() {
               </span>
             </Link>
           ))}
+          <p className="mt-4 font-display text-sm font-semibold uppercase tracking-mark text-muted">
+            Work With Us
+          </p>
+          {WORK_NAV.map((item) => (
+            <Link
+              key={item.to + item.label}
+              to={item.to}
+              onClick={() => setOpen(false)}
+              className="border-b border-line py-3"
+            >
+              <span className="font-display text-lg font-semibold uppercase tracking-nav text-ink">
+                {item.label}
+              </span>
+              <span className="mt-1 block text-sm text-muted">{item.blurb}</span>
+            </Link>
+          ))}
           <Link
             to="/register"
             onClick={() => setOpen(false)}
@@ -110,19 +168,31 @@ export function Header() {
           >
             Get the Playbook
           </Link>
+          <SignedOut>
+            <Link
+              to="/register"
+              search={{ mode: "in" }}
+              onClick={() => setOpen(false)}
+              className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+            >
+              Sign in
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <Link
+              to="/hq"
+              onClick={() => setOpen(false)}
+              className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+            >
+              Team HQ
+            </Link>
+          </SignedIn>
           <Link
             to="/inquiry"
             onClick={() => setOpen(false)}
             className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
           >
-            Call in the play
-          </Link>
-          <Link
-            to="/access"
-            onClick={() => setOpen(false)}
-            className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
-          >
-            Ask the QB
+            Call the next play
           </Link>
         </nav>
       </div>

@@ -7,7 +7,7 @@ import { SITE } from "@/lib/site";
 export const Route = createFileRoute("/advisory")({
   head: () =>
     seo({
-      title: "Advisory | Tax Credit QB",
+      title: "Project Advisory | Tax Credit QB",
       description:
         "Keep the whole deal moving. Project-based and ongoing support for market strategy, land, meetings, modeling, and specialist introductions.",
     }),
@@ -29,12 +29,12 @@ function Advisory() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Advisory"
+        eyebrow="Project Advisory"
         title="Keep the whole deal moving."
         sub="Some assignments extend beyond a single question or meeting. Tax Credit QB works alongside your team to assess the situation, establish priorities, coordinate the right specialists and help execute the plan."
       >
         <Button asChild className="mt-8" size="lg">
-          <Link to="/inquiry">Discuss your project</Link>
+          <Link to="/inquiry">Bring in the QB</Link>
         </Button>
       </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
@@ -70,7 +70,7 @@ function Advisory() {
         </div>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
-            <Link to="/inquiry">Discuss your project</Link>
+            <Link to="/inquiry">Bring in the QB</Link>
           </Button>
           <Button asChild variant="secondary" size="lg">
             <Link to="/desk/modeling">Modeling with Alkaline</Link>

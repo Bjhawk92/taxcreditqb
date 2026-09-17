@@ -57,8 +57,7 @@ export const FILM_CLIPS: FilmClip[] = [
     thumbnail: {
       src: "/film-room/tough-questions.jpg",
       alt: "Brett Johnson beside the question: Will this hurt property values?",
-      caption:
-        "Photo: Brett on camera — replace with authentic clip still.",
+      caption: "",
     },
     runtime: "",
     videoSrc: "",
@@ -75,8 +74,7 @@ export const FILM_CLIPS: FilmClip[] = [
     thumbnail: {
       src: "/film-room/city-meeting.jpg",
       alt: "Municipal Introduction deck cover with two supporting slides behind it.",
-      caption:
-        "Placeholder still: introductory deck cover — replace with recorded walkthrough.",
+      caption: "",
     },
     runtime: "",
     videoSrc: "",
@@ -93,8 +91,7 @@ export const FILM_CLIPS: FilmClip[] = [
     thumbnail: {
       src: "/film-room/public-hearing.jpg",
       alt: "Abstract site plan beside a neighborhood Q&A slide.",
-      caption:
-        "Placeholder still: site plan and neighborhood Q&A — replace with recorded walkthrough.",
+      caption: "",
     },
     runtime: "",
     videoSrc: "",
@@ -111,8 +108,7 @@ export const FILM_CLIPS: FilmClip[] = [
     thumbnail: {
       src: "/film-room/ai-story.jpg",
       alt: "Before-and-after: rough project notes next to a finished community flyer.",
-      caption:
-        "Placeholder still: project facts to community flyer — replace with recorded demo.",
+      caption: "",
     },
     runtime: "",
     videoSrc: "",
@@ -129,8 +125,7 @@ export const FILM_CLIPS: FilmClip[] = [
     thumbnail: {
       src: "/film-room/site-strategy.jpg",
       alt: "Marked-up parcel map with restrained annotations for site control, access, and zoning.",
-      caption:
-        "Placeholder still: annotated parcel — replace with recorded walkthrough.",
+      caption: "",
     },
     runtime: "",
     videoSrc: "",
@@ -146,8 +141,7 @@ export const FILM_CLIPS: FilmClip[] = [
     thumbnail: {
       src: "/film-room/right-people.jpg",
       alt: "Playbook diagram with Brett Johnson at the QB node, connected to architect, contractor, syndicator, and modeling.",
-      caption:
-        "Photo: Brett as the QB node — replace with authentic clip still.",
+      caption: "",
     },
     runtime: "",
     videoSrc: "",

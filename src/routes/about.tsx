@@ -58,7 +58,7 @@ function About() {
               <Link to="/access">Schedule a huddle</Link>
             </Button>
             <Button asChild variant="secondary">
-              <Link to="/inquiry">Talk about your deal</Link>
+              <Link to="/inquiry">Call the next play</Link>
             </Button>
           </div>
         </div>

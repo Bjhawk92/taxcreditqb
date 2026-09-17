@@ -6,7 +6,7 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/desk/")({
   head: () =>
     seo({
-      title: "Sideline | Meeting support | Tax Credit QB",
+      title: "Meeting Support | Tax Credit QB",
       description:
         "Bring experience into the room. Preparation, a supporting voice, or an active presentation role—agreed in advance. Travel extra.",
     }),
@@ -40,12 +40,12 @@ function DeskIndex() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Sideline"
+        eyebrow="Meeting Support"
         title="Bring experience into the room."
         sub="When the meeting calls for more than preparation, bring Tax Credit QB alongside your team. Brett can help shape the approach, prepare speakers, participate in the discussion and work through the next steps afterward."
       >
         <Button asChild className="mt-8" size="lg">
-          <Link to="/inquiry">Discuss meeting support</Link>
+          <Link to="/inquiry">Bring in the QB</Link>
         </Button>
       </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
@@ -74,7 +74,7 @@ function DeskIndex() {
         </div>
         <div className="mt-10 max-w-2xl space-y-4 text-ink/80">
           <p>
-            Premium members receive reduced professional attendance fees under
+            Huddle members receive reduced professional attendance fees under
             their membership terms. Attendance is subject to availability and a
             separate scope.
           </p>
@@ -83,7 +83,7 @@ function DeskIndex() {
           </p>
         </div>
         <Button asChild className="mt-10" size="lg">
-          <Link to="/inquiry">Discuss meeting support</Link>
+          <Link to="/inquiry">Bring in the QB</Link>
         </Button>
       </section>
     </main>

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/inquiry")({
     seo({
       title: "Project Inquiry | Tax Credit QB",
       description:
-        "Call in the play. Custom deck, put the QB in the game, modeling, or an introduction. Confidential. You remain the developer.",
+        "Tell us what you are working on and where the deal stands. Confidential. You remain the developer.",
     }),
   component: Inquiry,
 });
@@ -50,9 +50,9 @@ function Inquiry() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Call in the play"
-        title="What's the game situation?"
-        sub="Scripted deck, game day in person, modeling, intro. Confidential. No pressure pitch."
+        eyebrow="Call the next play"
+        title="What’s the game situation?"
+        sub="Tell us what you are working on and where the deal stands. Complete as much or as little as you know today. The conversation is confidential, and there is no pressure pitch."
       />
       <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
         {status === "success" ? (
@@ -106,7 +106,7 @@ function Inquiry() {
               <p className="text-sm text-muted">Couldn’t send. Email {SITE.emails.info}.</p>
             ) : null}
             <Button type="submit" size="lg" disabled={status === "submitting"}>
-              {status === "submitting" ? "Sending…" : "Call in the play"}
+              {status === "submitting" ? "Sending…" : "Call the next play"}
             </Button>
           </form>
         )}

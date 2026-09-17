@@ -40,7 +40,7 @@ export const INTRO_OUTLINE = [
   {
     n: "02",
     title: "Product quality",
-    body: "Construction, management, residents. Photo slots labeled for authentic project photography — not stock.",
+    body: "Construction, management, residents. Include authentic project photography — not stock.",
   },
   {
     n: "03",

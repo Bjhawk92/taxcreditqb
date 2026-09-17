@@ -16,8 +16,8 @@ function HqBilling() {
       />
       <HqMain>
         <HqEmpty
-          title="Stripe is not connected"
-          body={`Invoices and a customer portal will appear here after Stripe is live. Until then, billing questions go to ${SITE.emails.info}. Company seats and roles will follow the plan that is actually sold.`}
+          title="No invoices yet"
+          body={`Invoices, receipts, and a billing portal will appear here once a membership is active. Questions go to ${SITE.emails.info}.`}
         />
         <p className="mt-6 max-w-2xl text-ink/80">
           Account settings (name and email) follow the sign-in provider. Payment

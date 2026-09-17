@@ -51,7 +51,9 @@ export function FilmCard({
         {clip.title}
       </h2>
       <p className="mt-2 text-ink/75">{clip.description}</p>
-      <p className="mt-3 text-sm text-muted">{clip.thumbnail.caption}</p>
+      {clip.thumbnail.caption ? (
+        <p className="mt-3 text-sm text-muted">{clip.thumbnail.caption}</p>
+      ) : null}
     </article>
   );
 }

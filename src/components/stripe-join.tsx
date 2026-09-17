@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { SITE, STRIPE_PAYMENT_LINK } from "@/lib/site";
 
 export function StripeJoinButton({
-  label = "Ask the QB",
+  label = "Get the Playbook",
 }: {
   label?: string;
 }) {
@@ -31,15 +31,14 @@ export function StripeJoinButton({
           aria-labelledby="stripe-title"
         >
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            Stripe checkout placeholder
+            Membership
           </p>
           <h2 id="stripe-title" className="mt-2 font-display text-xl font-semibold text-ink">
-            Ask the QB
+            Enroll by email
           </h2>
           <p className="mt-3 text-sm text-ink/75">
-            Stripe membership link not configured. Set VITE_STRIPE_PAYMENT_LINK.
-            Until it does, email to join. Price {SITE.access.price}
-            {SITE.access.cadence}. Includes {SITE.access.consult}.
+            Email us to enroll. We’ll send a secure payment link and confirm the
+            plan that fits your deal.
           </p>
           <div className="mt-4 flex flex-col gap-2">
             <Button asChild>

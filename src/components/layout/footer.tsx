@@ -22,7 +22,7 @@ export function Footer() {
           </p>
           <ul className="mt-4 space-y-2">
             {FOOTER_NAV.map((item) => (
-              <li key={item.to}>
+              <li key={item.to + item.label}>
                 <Link
                   to={item.to}
                   className="text-ink/80 transition-colors duration-150 hover:text-ink"
@@ -36,6 +36,7 @@ export function Footer() {
 
         <div className="md:col-span-4">
           <EmailCapture compact />
+          {SITE.social.length > 0 ? (
           <div className="mt-8">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-muted">
               Social
@@ -54,8 +55,8 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="mt-2 text-xs text-dim">Profile URLs to be added.</p>
           </div>
+          ) : null}
         </div>
       </div>
 

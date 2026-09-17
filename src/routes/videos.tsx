@@ -32,7 +32,7 @@ function Videos() {
       <CtaBand
         title="Have a situation we should break down?"
         line="Bring us your question, your presentation, or the meeting you’re preparing for."
-        primary={{ label: "Talk About Your Deal", to: "/inquiry" }}
+        primary={{ label: "Call the next play", to: "/inquiry" }}
         secondary={null}
       />
     </main>

@@ -21,7 +21,7 @@ export function VideoPlaceholder({
             <Play className="size-5 translate-x-0.5" fill="currentColor" />
           </span>
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-paper">
-            Video: replace with recorded clip
+            Coming Soon
           </p>
         </div>
       </div>

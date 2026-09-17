@@ -2,24 +2,31 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HqSignIn } from "@/components/hq-sign-in";
 import { seo } from "@/lib/seo";
 
+type RegisterSearch = { mode?: "in" };
+
 export const Route = createFileRoute("/register")({
+  validateSearch: (search: Record<string, unknown>): RegisterSearch => ({
+    mode: search.mode === "in" ? "in" : undefined,
+  }),
   head: () =>
     seo({
       title: "Get the Playbook | Tax Credit QB",
       description:
-        "Create your free Tax Credit QB account to unlock practical tools, expert insights, and winning strategies for your next LIHTC deal.",
+        "Create your free Tax Credit QB account to explore the platform, access free resources, and choose the level of support that fits your deal.",
     }),
   component: Register,
 });
 
 function Register() {
+  const { mode } = Route.useSearch();
   return (
     <HqSignIn
       playbook
-      eyebrow="Playbook access"
+      eyebrow="Account"
       title="Get the Playbook"
-      sub="Create your free Tax Credit QB account to unlock practical tools, expert insights, and winning strategies that help you evaluate opportunities, strengthen your deals, and confidently call the next play."
-      signupLabel="Create my free account"
+      sub="Create your free Tax Credit QB account to explore the platform, access free resources, and choose the level of support that fits your deal."
+      signupLabel="Create my account"
+      initialMode={mode === "in" ? "in" : "up"}
     />
   );
 }

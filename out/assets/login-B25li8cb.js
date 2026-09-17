@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-NZYk81nU.js";import{t}from"./useNavigate-uKvkA2JW.js";var n=e();function r(){return(0,n.jsx)(t,{to:`/register`,search:{mode:`in`}})}export{r as component};
