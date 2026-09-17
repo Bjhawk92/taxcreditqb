@@ -4,12 +4,12 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/login")({
   head: () =>
     seo({
-      title: "Team HQ | Tax Credit QB",
-      description: "The Tax Credit QB client portal.",
+      title: "Get the Playbook | Tax Credit QB",
+      description: "Create your free Tax Credit QB account.",
     }),
   component: Login,
 });
 
 function Login() {
-  return <Navigate to="/hq" />;
+  return <Navigate to="/register" />;
 }

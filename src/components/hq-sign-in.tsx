@@ -96,7 +96,19 @@ async function emailAuth(
   persistSessionToken(typeof body.token === "string" ? body.token : null);
 }
 
-export function HqSignIn() {
+export function HqSignIn({
+  eyebrow = "Team HQ",
+  title = "Welcome to Team HQ.",
+  sub = "Your resources, conversations and project work—all in one place.",
+  signupLabel = "Create account",
+  playbook = false,
+}: {
+  eyebrow?: string;
+  title?: string;
+  sub?: string;
+  signupLabel?: string;
+  playbook?: boolean;
+}) {
   const [mode, setMode] = useState<"in" | "up">("up");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -142,9 +154,9 @@ export function HqSignIn() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Team HQ"
-        title="Welcome to Team HQ."
-        sub="Your resources, conversations and project work—all in one place."
+        eyebrow={eyebrow}
+        title={title}
+        sub={sub}
       />
       <div className="mx-auto max-w-lg px-5 py-12 md:px-8 md:py-16">
         {!authEnabled ? (
@@ -161,6 +173,7 @@ export function HqSignIn() {
               </p>
             ) : null}
 
+            {playbook ? null : (
             <div className="flex rounded-sm border border-line">
               <button
                 type="button"
@@ -189,10 +202,12 @@ export function HqSignIn() {
                 Sign in
               </button>
             </div>
+            )}
 
             <p className="text-sm text-ink/75">
-              Use any Gmail or personal email you already have. Nothing is sent
-              to that address — it is only your login.
+              {mode === "in"
+                ? "Sign in with the email and password for your Tax Credit QB account."
+                : "Use any email you already have. Nothing is sent to that address — it is only your login."}
             </p>
 
             <form onSubmit={onEmail} className="space-y-4">
@@ -230,14 +245,48 @@ export function HqSignIn() {
                   {error}
                 </p>
               ) : null}
-              <Button type="submit" disabled={busy || dbMissing} className="w-full">
+              <Button type="submit" disabled={busy || dbMissing} className="w-full" variant="cta">
                 {busy
                   ? "Please wait…"
                   : mode === "up"
-                    ? "Create account"
+                    ? signupLabel
                     : "Sign in"}
               </Button>
             </form>
+
+            {playbook ? (
+              <p className="text-center text-sm text-ink/80">
+                {mode === "up" ? (
+                  <>
+                    Already have an account?{" "}
+                    <button
+                      type="button"
+                      className="font-display font-semibold uppercase tracking-nav text-steel hover:text-ink"
+                      onClick={() => {
+                        setMode("in");
+                        setError(null);
+                      }}
+                    >
+                      Sign in
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    Need an account?{" "}
+                    <button
+                      type="button"
+                      className="font-display font-semibold uppercase tracking-nav text-steel hover:text-ink"
+                      onClick={() => {
+                        setMode("up");
+                        setError(null);
+                      }}
+                    >
+                      Get the Playbook
+                    </button>
+                  </>
+                )}
+              </p>
+            ) : null}
 
             {showSocial ? (
               <>
@@ -289,6 +338,7 @@ export function HqSignIn() {
           </div>
         )}
 
+        {playbook ? null : (
         <p className="mt-10 text-ink/80">
           Not a member yet?{" "}
           <Link
@@ -298,6 +348,7 @@ export function HqSignIn() {
             Inquire about membership
           </Link>
         </p>
+        )}
       </div>
     </main>
   );

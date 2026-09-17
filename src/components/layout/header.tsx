@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { BookOpen, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BinderTabStrip } from "@/components/binder-tabs";
 import { Wordmark } from "@/components/wordmark";
@@ -49,14 +49,20 @@ export function Header() {
           <Button asChild variant="ghost" className="px-2">
             <Link to="/inquiry">Call in the play</Link>
           </Button>
-          <Button asChild>
-            <Link to="/access">Ask the QB</Link>
+          <Button asChild variant="cta">
+            <Link to="/register">
+              <BookOpen className="size-4" aria-hidden="true" />
+              Get the Playbook
+            </Link>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <Button asChild size="md" className="px-3.5">
-            <Link to="/access">Ask the QB</Link>
+          <Button asChild size="md" variant="cta" className="px-3">
+            <Link to="/register">
+              <BookOpen className="size-4" aria-hidden="true" />
+              Get the Playbook
+            </Link>
           </Button>
           <button
             type="button"
@@ -98,11 +104,25 @@ export function Header() {
             </Link>
           ))}
           <Link
-            to="/inquiry"
+            to="/register"
             onClick={() => setOpen(false)}
             className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-steel"
           >
+            Get the Playbook
+          </Link>
+          <Link
+            to="/inquiry"
+            onClick={() => setOpen(false)}
+            className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+          >
             Call in the play
+          </Link>
+          <Link
+            to="/access"
+            onClick={() => setOpen(false)}
+            className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+          >
+            Ask the QB
           </Link>
         </nav>
       </div>

@@ -18,7 +18,7 @@ export const SITE = {
   cta: {
     ask: "Ask the QB",
     play: "Call in the play",
-    playbook: "Open the playbook",
+    playbook: "Get the Playbook",
   },
   proof: [
     { value: "70", label: "Communities" },
@@ -101,6 +101,7 @@ export const FOOTER_NAV = [
   { label: "About", to: "/about" },
   { label: "Team HQ", to: "/hq" },
   { label: "For Partners", to: "/for-partners" },
+  { label: "Get the Playbook", to: "/register" },
   { label: "Call in the play", to: "/inquiry" },
   { label: "Contact", to: "/contact" },
   { label: "Legal", to: "/legal" },

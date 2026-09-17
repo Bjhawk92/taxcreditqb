@@ -9,6 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-ink text-paper hover:bg-ink-2",
+        cta: "bg-[linear-gradient(105deg,#1e3356_0%,#245ea3_48%,#3a7ec4_100%)] text-paper shadow-[0_8px_20px_rgb(30_51_86/0.22)] hover:bg-[linear-gradient(105deg,#17304f_0%,#2f6fb8_55%,#4a8ed4_100%)]",
         secondary:
           "border border-rule bg-transparent text-ink hover:border-ink hover:bg-paper-dim",
         paper: "bg-paper text-ink hover:bg-paper-dim",

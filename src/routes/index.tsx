@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BookOpen } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { DeckCard } from "@/components/deck-card";
 import { EmailCapture } from "@/components/email-capture";
@@ -63,7 +64,13 @@ function Home() {
             meeting or complex deal.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="cta">
+              <Link to="/register">
+                <BookOpen className="size-4" aria-hidden="true" />
+                Get the Playbook
+              </Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg">
               <Link to="/inquiry">Talk about your deal</Link>
             </Button>
             <Button asChild variant="secondary" size="lg">

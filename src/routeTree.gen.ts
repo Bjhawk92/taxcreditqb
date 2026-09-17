@@ -21,6 +21,8 @@ import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PlaybookRouteImport } from './routes/playbook'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as VideosRouteImport } from './routes/videos'
 import { Route as DeskIndexRouteImport } from './routes/desk.index'
 import { Route as DeskModelingRouteImport } from './routes/desk.modeling'
@@ -99,6 +101,16 @@ const LoginRoute = LoginRouteImport.update({
 const PlaybookRoute = PlaybookRouteImport.update({
   id: '/playbook',
   path: '/playbook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VideosRoute = VideosRouteImport.update({
@@ -210,6 +222,8 @@ export interface FileRoutesByFullPath {
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
+  '/register': typeof RegisterRoute
+  '/tools': typeof ToolsRoute
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/admin': typeof HqAdminRoute
@@ -240,6 +254,8 @@ export interface FileRoutesByTo {
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/tools': typeof ToolsRoute
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/admin': typeof HqAdminRoute
@@ -274,6 +290,8 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/playbook': typeof PlaybookRouteWithChildren
+  '/register': typeof RegisterRoute
+  '/tools': typeof ToolsRoute
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/admin': typeof HqAdminRoute
@@ -309,6 +327,8 @@ export interface FileRouteTypes {
     | '/legal'
     | '/login'
     | '/playbook'
+    | '/register'
+    | '/tools'
     | '/videos'
     | '/desk/modeling'
     | '/hq/admin'
@@ -339,6 +359,8 @@ export interface FileRouteTypes {
     | '/inquiry'
     | '/legal'
     | '/login'
+    | '/register'
+    | '/tools'
     | '/videos'
     | '/desk/modeling'
     | '/hq/admin'
@@ -372,6 +394,8 @@ export interface FileRouteTypes {
     | '/legal'
     | '/login'
     | '/playbook'
+    | '/register'
+    | '/tools'
     | '/videos'
     | '/desk/modeling'
     | '/hq/admin'
@@ -406,6 +430,8 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
   PlaybookRoute: typeof PlaybookRouteWithChildren
+  RegisterRoute: typeof RegisterRoute
+  ToolsRoute: typeof ToolsRoute
   VideosRoute: typeof VideosRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -494,6 +520,20 @@ declare module '@tanstack/react-router' {
       path: '/playbook'
       fullPath: '/playbook'
       preLoaderRoute: typeof PlaybookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/videos': {
@@ -705,6 +745,8 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,
   PlaybookRoute: PlaybookRouteWithChildren,
+  RegisterRoute: RegisterRoute,
+  ToolsRoute: ToolsRoute,
   VideosRoute: VideosRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
