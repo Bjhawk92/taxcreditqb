@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { BookOpen, ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BinderTabStrip } from "@/components/binder-tabs";
-import { Wordmark } from "@/components/wordmark";
+import { BrandLockup } from "@/components/brand-lockup";
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut } from "@/lib/auth/gates";
 import { NAV, WORK_LABEL, WORK_NAV } from "@/lib/site";
@@ -32,22 +32,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
-      <div className="relative mx-auto flex h-28 w-full max-w-7xl items-center justify-between gap-3 px-4 md:h-32 md:px-8">
-        <Wordmark compact />
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 px-4 py-2.5 md:px-8 md:py-3">
+        <BrandLockup className="col-start-1 row-start-1" />
 
-        <div className="pointer-events-none absolute inset-0 hidden items-center justify-center px-36 lg:flex xl:px-40">
-          <p className="max-w-3xl text-center">
-            <span className="block font-display text-[1.6875rem] font-semibold uppercase leading-none tracking-nav xl:text-[1.875rem]">
-              <span className="text-ink">Proven experience. </span>
-              <span className="text-steel">Your winning edge.</span>
-            </span>
-            <span className="mt-2 hidden font-display text-lg font-semibold uppercase tracking-mark text-ink/65 xl:block">
-              LIHTC Development Strategy + Execution
-            </span>
-          </p>
-        </div>
-
-        <div className="hidden shrink-0 items-center gap-2 lg:flex">
+        <div className="col-start-3 row-start-1 hidden shrink-0 items-center gap-2 lg:flex">
           <div
             className="relative"
             onMouseEnter={() => setWorkOpen(true)}
@@ -99,10 +87,10 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
-          <Button asChild size="md" variant="cta" className="px-3">
+        <div className="col-start-3 row-start-1 flex items-center gap-2 lg:hidden">
+          <Button asChild size="md" variant="cta" className="px-2.5 sm:px-3">
             <Link to="/register">
-              <BookOpen className="size-4" aria-hidden="true" />
+              <BookOpen className="hidden size-4 min-[400px]:block" aria-hidden="true" />
               Get the Playbook
             </Link>
           </Button>

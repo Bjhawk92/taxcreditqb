@@ -32,13 +32,18 @@
   --text-display: clamp(2.05rem, 5vw, 4.15rem);
   --text-section: clamp(1.7rem, 3.2vw, 2.85rem);
   --text-lede: clamp(1.05rem, 1.2vw + 0.85rem, 1.25rem);
+  --text-lockup: clamp(1.02rem, 0.5rem + 1.75vw, 2.05rem);
+  --text-lockup-sub: clamp(0.5625rem, 0.4rem + 0.45vw, 0.8125rem);
 
   --tracking-display: -0.025em;
   --tracking-tight: -0.02em;
   --tracking-mark: 0.14em;
   --tracking-nav: 0.08em;
+  --tracking-lockup: 0.05em;
 
   --leading-display: 0.9;
+  --leading-lockup: 0.88;
+
   --leading-section: 1.05;
   --leading-body: 1.55;
 
