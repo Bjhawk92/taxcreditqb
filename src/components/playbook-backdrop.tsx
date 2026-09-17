@@ -128,8 +128,8 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
         <path d="M980 438 C980 360 980 300 1040 300" />
         {/* checkdown */}
         <path d="M490 518 C430 500 380 490 340 500" strokeDasharray="6 5" />
-        {/* boot */}
-        <path d="M550 495 C620 500 700 470 740 420" strokeDasharray="5 4" />
+        {/* QB — straight up to the end zone */}
+        <path d="M550 482 V72" strokeDasharray="5 4" />
       </g>
       {/* arrows */}
       <g fill="#1e3356" opacity="0.32">
@@ -137,6 +137,7 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
         <polygon points="460,300 448,312 468,308" />
         <polygon points="880,150 872,164 888,164" />
         <polygon points="1040,300 1028,290 1028,310" />
+        <polygon points="550,70 542,84 558,84" />
       </g>
 
       {/* second play, lighter, shifted */}
