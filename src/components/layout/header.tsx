@@ -110,24 +110,24 @@ export function Header() {
           open ? "block" : "hidden",
         )}
       >
-        <nav className="mx-auto flex max-w-6xl flex-col px-5 py-4" aria-label="Mobile">
+        <nav className="mx-auto flex max-w-6xl flex-col px-5 py-5" aria-label="Mobile">
           {NAV.filter((item) => item.label !== WORK_LABEL).map((item) => (
             <Link
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="flex gap-3 border-b border-line py-3"
+              className="flex gap-3 border-b border-line py-4"
             >
-              <span className={cn("mt-1 h-10 w-1.5 shrink-0 rounded-sm", TAB[item.tab])} />
+              <span className={cn("mt-1.5 h-11 w-1.5 shrink-0 rounded-sm", TAB[item.tab])} />
               <span className="flex flex-col">
-                <span className="font-display text-lg font-semibold uppercase tracking-nav text-ink">
+                <span className="font-display text-xl font-semibold uppercase tracking-nav text-ink">
                   {item.label}
                 </span>
-                <span className="mt-1 text-sm leading-snug text-muted">{item.blurb}</span>
+                <span className="mt-1 text-base leading-snug text-muted">{item.blurb}</span>
               </span>
             </Link>
           ))}
-          <p className="mt-4 font-display text-sm font-semibold uppercase tracking-mark text-muted">
+          <p className="mt-5 font-display text-base font-semibold uppercase tracking-mark text-muted">
             {WORK_LABEL}
           </p>
           {WORK_NAV.map((item) => (
@@ -135,18 +135,18 @@ export function Header() {
               key={item.to + item.label}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="border-b border-line py-3"
+              className="border-b border-line py-4"
             >
-              <span className="font-display text-lg font-semibold uppercase tracking-nav text-ink">
+              <span className="font-display text-xl font-semibold uppercase tracking-nav text-ink">
                 {item.label}
               </span>
-              <span className="mt-1 block text-sm text-muted">{item.blurb}</span>
+              <span className="mt-1 block text-base text-muted">{item.blurb}</span>
             </Link>
           ))}
           <Link
             to="/game-plans"
             onClick={() => setOpen(false)}
-            className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-steel"
+            className="flex min-h-14 items-center font-display text-xl font-semibold uppercase tracking-nav text-steel"
           >
             View Game Plans
           </Link>
@@ -155,7 +155,7 @@ export function Header() {
               to="/register"
               search={{ mode: "in" }}
               onClick={() => setOpen(false)}
-              className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+              className="flex min-h-14 items-center font-display text-xl font-semibold uppercase tracking-nav text-ink"
             >
               Sign in
             </Link>
@@ -164,7 +164,7 @@ export function Header() {
             <Link
               to="/hq"
               onClick={() => setOpen(false)}
-              className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+              className="flex min-h-14 items-center font-display text-xl font-semibold uppercase tracking-nav text-ink"
             >
               Locker Room
             </Link>
@@ -172,7 +172,7 @@ export function Header() {
           <Link
             to="/inquiry"
             onClick={() => setOpen(false)}
-            className="flex min-h-12 items-center font-display text-lg font-semibold uppercase tracking-nav text-ink"
+            className="flex min-h-14 items-center font-display text-xl font-semibold uppercase tracking-nav text-ink"
           >
             Call the next play
           </Link>

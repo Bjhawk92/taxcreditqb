@@ -47,14 +47,14 @@ export function BinderTabStrip() {
   return (
     <nav
       aria-label="Playbook tabs"
-      className="flex flex-wrap gap-1 border-b border-line bg-paper px-2 py-1.5 md:gap-1.5 md:px-3 md:py-2.5 lg:hidden"
+      className="flex flex-wrap gap-1.5 border-b border-line bg-paper px-2 py-2 sm:gap-2 sm:px-3 md:gap-1.5 md:px-3 md:py-2.5 lg:hidden"
     >
       {NAV.map((item) => (
         <Link
           key={item.to}
           to={item.to}
           className={cn(
-            "inline-flex min-h-8 flex-1 basis-[22%] items-center justify-center rounded-sm px-1 font-display text-[10px] font-semibold uppercase tracking-nav sm:basis-[18%] sm:px-1.5 sm:text-[11px] md:min-h-12 md:px-2.5 md:text-lg",
+            "inline-flex min-h-12 flex-1 basis-[46%] items-center justify-center rounded-sm px-2 text-center font-display text-base font-semibold uppercase tracking-[0.04em] sm:min-h-12 sm:basis-[30%] sm:text-lg sm:tracking-nav md:min-h-12 md:basis-[22%] md:px-2.5 md:text-lg",
             TAB[item.tab],
             "opacity-95 [&.active]:opacity-100 [&.active]:ring-2 [&.active]:ring-ink [&.active]:ring-offset-1 [&.active]:ring-offset-paper",
           )}
