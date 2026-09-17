@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 
+const PENCIL = "Architects Daughter, Bradley Hand, Segoe Print, cursive";
+
 /** Faint coach's-whiteboard: X's, O's, drawn routes. Decorative. */
 export function PlaybookBackdrop({ className }: { className?: string }) {
   return (
@@ -54,24 +56,33 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       ))}
 
       {/* Defense X's */}
-      {[
-        [250, 280],
-        [360, 300],
-        [470, 290],
-        [560, 270],
-        [650, 290],
-        [760, 300],
-        [870, 280],
-        [320, 180],
-        [550, 160],
-        [800, 180],
-        [480, 120],
-      ].map(([x, y], i) => (
-        <g key={`x${i}`} opacity="0.26" stroke="#1e3356" strokeWidth="2.2">
-          <line x1={x - 9} y1={y - 9} x2={x + 9} y2={y + 9} />
-          <line x1={x + 9} y1={y - 9} x2={x - 9} y2={y + 9} />
+      {DEFENSE.map((spot) => (
+        <g key={`x-${spot.x}-${spot.y}`} opacity="0.26" stroke="#1e3356" strokeWidth="2.2">
+          <line x1={spot.x - 9} y1={spot.y - 9} x2={spot.x + 9} y2={spot.y + 9} />
+          <line x1={spot.x + 9} y1={spot.y - 9} x2={spot.x - 9} y2={spot.y + 9} />
         </g>
       ))}
+
+      {/* Defense labels — same pencil stroke, faint */}
+      <g
+        fill="#1e3356"
+        fontFamily={PENCIL}
+        fontSize="15"
+        letterSpacing="0.08em"
+        opacity="0.42"
+      >
+        {DEFENSE.filter((spot) => spot.label && spot.lx != null && spot.ly != null).map((spot) => (
+          <text
+            key={spot.label}
+            x={spot.lx}
+            y={spot.ly}
+            textAnchor={spot.anchor ?? "start"}
+            transform={spot.tilt ? `rotate(${spot.tilt} ${spot.lx} ${spot.ly})` : undefined}
+          >
+            {spot.label}
+          </text>
+        ))}
+      </g>
 
       {/* Routes */}
       <g fill="none" stroke="#1e3356" strokeWidth="1.8" strokeLinecap="round" opacity="0.32">
@@ -110,3 +121,27 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
     </svg>
   );
 }
+
+type DefenseSpot = {
+  x: number;
+  y: number;
+  label?: string;
+  lx?: number;
+  ly?: number;
+  anchor?: "start" | "middle" | "end";
+  tilt?: number;
+};
+
+const DEFENSE: DefenseSpot[] = [
+  { x: 250, y: 280 },
+  { x: 360, y: 300 },
+  { x: 470, y: 290, label: "ZONING", lx: 418, ly: 278, anchor: "end", tilt: -3 },
+  { x: 560, y: 270 },
+  { x: 650, y: 290, label: "SITE", lx: 616, ly: 278, anchor: "end", tilt: 2 },
+  { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
+  { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
+  { x: 320, y: 180 },
+  { x: 550, y: 160, label: "CITY COUNCIL", lx: 568, ly: 148, tilt: -2 },
+  { x: 800, y: 180, label: "CONSTRUCTION", lx: 676, ly: 172, tilt: 1 },
+  { x: 480, y: 120 },
+];
