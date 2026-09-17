@@ -44,13 +44,13 @@ const CREDENTIAL = {
     number: "TCQB-HD-2026-0031",
     lanyard: "#8b3a3a",
     lanyardEdge: "#5c2222",
-    header: "bg-ink-2 text-paper",
+    header: "bg-[#c49a3c] text-ink",
     band: "bg-[#8b3a3a] text-paper",
-    name: "text-paper",
-    price: "text-paper",
-    barcode: "text-[#e8b4b4]",
-    frame: "border-[#8b3a3a] shadow-[0_16px_36px_rgb(139_58_58/0.22)]",
-    inner: "ring-1 ring-inset ring-[#8b3a3a]/50",
+    name: "text-ink",
+    price: "text-ink",
+    barcode: "text-ink",
+    frame: "border-[#c49a3c] shadow-[0_16px_36px_rgb(196_154_60/0.28)]",
+    inner: "ring-1 ring-inset ring-[#8c6a22]/50",
   },
 } as const;
 
@@ -220,7 +220,7 @@ export function MembershipPricing({
                         wrapperClassName="mx-auto mt-2"
                         className={cn(
                           "h-14 w-auto object-contain",
-                          plan.id === "film" ? "" : "brightness-110",
+                          plan.id === "playbook" && "brightness-110",
                         )}
                       />
                       <h3
