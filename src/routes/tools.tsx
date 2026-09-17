@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ChevronDown } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { QapDirectory } from "@/components/qap-directory";
@@ -46,23 +47,41 @@ function Tools() {
         className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20"
         aria-labelledby="qap-heading"
       >
-        <h2
-          id="qap-heading"
-          className="font-display text-section font-semibold leading-section"
+        <details
+          id="qap"
+          className="group border border-line bg-paper open:bg-paper"
         >
-          All 50 States’ QAPs
-        </h2>
-        <p className="mt-3 font-display text-lg font-semibold uppercase tracking-nav text-steel">
-          Plus Washington, D.C. and Puerto Rico
-        </p>
-        <p className="mt-5 max-w-3xl text-lede text-ink/80">
-          Explore official housing agency resources for Section 42 Low-Income
-          Housing Tax Credit Qualified Allocation Plans, allocation
-          requirements, and application information.
-        </p>
-        <div className="mt-10">
-          <QapDirectory />
-        </div>
+          <summary className="cursor-pointer list-none px-6 py-6 marker:content-none md:px-8 md:py-8 [&::-webkit-details-marker]:hidden">
+            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Tool
+            </p>
+            <h2
+              id="qap-heading"
+              className="mt-3 font-display text-section font-semibold leading-section"
+            >
+              All 50 States’ QAPs
+            </h2>
+            <p className="mt-3 font-display text-lg font-semibold uppercase tracking-nav text-steel">
+              Plus Washington, D.C. and Puerto Rico
+            </p>
+            <p className="mt-5 max-w-3xl text-lede text-ink/80">
+              Explore official housing agency resources for Section 42
+              Low-Income Housing Tax Credit Qualified Allocation Plans,
+              allocation requirements, and application information.
+            </p>
+            <span className="mt-6 inline-flex min-h-11 items-center gap-2 border border-ink bg-ink px-5 font-display text-sm font-semibold uppercase tracking-nav text-paper group-open:border-rule group-open:bg-transparent group-open:text-ink">
+              <span className="group-open:hidden">View the directory</span>
+              <span className="hidden group-open:inline">Hide the directory</span>
+              <ChevronDown
+                className="size-4 transition-transform duration-150 group-open:rotate-180"
+                aria-hidden="true"
+              />
+            </span>
+          </summary>
+          <div className="border-t border-line px-6 py-8 md:px-8">
+            <QapDirectory />
+          </div>
+        </details>
       </section>
 
       <section className="border-t border-line bg-paper-dim px-5 py-14 md:px-8 md:py-20">
