@@ -113,7 +113,11 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
             textAnchor={spot.anchor ?? "start"}
             transform={spot.tilt ? `rotate(${spot.tilt} ${spot.lx} ${spot.ly})` : undefined}
           >
-            {spot.label}
+            {spot.label.split("\n").map((line, i) => (
+              <tspan key={line} x={spot.lx} dy={i === 0 ? 0 : "1.05em"}>
+                {line}
+              </tspan>
+            ))}
           </text>
         ))}
       </g>
@@ -184,7 +188,7 @@ const DEFENSE: DefenseSpot[] = [
   { x: 250, y: 280 },
   { x: 360, y: 300 },
   { x: 470, y: 290, label: "ZONING", lx: 470, ly: 272, anchor: "middle", tilt: -2 },
-  { x: 560, y: 270, label: "SITE", lx: 560, ly: 252, anchor: "middle", tilt: 1 },
+  { x: 560, y: 270, label: "SITE\nCONTROL", lx: 560, ly: 228, anchor: "middle", tilt: 1 },
   { x: 650, y: 290, label: "FINANCING", lx: 650, ly: 324, anchor: "middle", tilt: 1 },
   { x: 460, y: 385, label: "COMPETITOR", lx: 460, ly: 348, anchor: "middle", tilt: -1, fontSize: 16, tracking: "0.04em" },
   { x: 520, y: 385, label: "DEADLINE", lx: 520, ly: 372, anchor: "middle", tilt: 1, fontSize: 16, tracking: "0.04em" },
