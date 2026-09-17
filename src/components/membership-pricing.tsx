@@ -85,7 +85,15 @@ function PlanCta({
   );
 }
 
-function Lanyard({ color, edge }: { color: string; edge: string }) {
+function Lanyard({
+  color,
+  edge,
+  compact,
+}: {
+  color: string;
+  edge: string;
+  compact?: boolean;
+}) {
   const strap = {
     background: `linear-gradient(90deg, ${edge} 0%, ${color} 22%, ${color} 78%, ${edge} 100%)`,
     boxShadow:
@@ -94,7 +102,10 @@ function Lanyard({ color, edge }: { color: string; edge: string }) {
 
   return (
     <div
-      className="relative z-20 mx-auto flex h-28 w-[4.25rem] flex-col items-center md:h-36"
+      className={cn(
+        "relative z-20 mx-auto flex w-[4.25rem] flex-col items-center",
+        compact ? "h-[5.75rem] md:h-[7.75rem]" : "h-28 md:h-36",
+      )}
       aria-hidden="true"
     >
       <div className="flex w-full flex-1 justify-center gap-[5px]">
@@ -170,13 +181,12 @@ export function MembershipPricing({
                 id={`plan-${plan.id}`}
                 className={cn("relative flex h-full flex-col")}
               >
-                <Lanyard color={cred.lanyard} edge={cred.lanyardEdge} />
+                <Lanyard color={cred.lanyard} edge={cred.lanyardEdge} compact={featured} />
                 <div
                   className={cn(
                     "relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.15rem] border-[3px] bg-paper",
                     cred.frame,
                     cred.inner,
-                    featured && "lg:-mt-5",
                   )}
                 >
                   <div
