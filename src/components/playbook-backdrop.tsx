@@ -28,20 +28,21 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       ))}
 
       {/* End zone */}
-      <g opacity="0.34" stroke="#1e3356" fill="none">
-        <rect x="80" y="8" width="1040" height="60" strokeWidth="1.8" />
-        <line x1="80" y1="68" x2="1120" y2="68" strokeWidth="2.4" />
+      <g opacity="0.36" stroke="#1e3356" fill="none">
+        <rect x="80" y="6" width="1040" height="64" strokeWidth="1.8" />
+        <line x1="80" y1="70" x2="1120" y2="70" strokeWidth="2.6" />
       </g>
       <text
-        x="600"
-        y="48"
+        x="550"
+        y="39"
         textAnchor="middle"
-        textLength="900"
-        lengthAdjust="spacing"
-        fontFamily={PENCIL}
-        fontSize="36"
+        dominantBaseline="middle"
+        fontFamily="Barlow Condensed, Impact, sans-serif"
+        fontWeight="800"
+        fontSize="52"
+        letterSpacing="0.14em"
         fill="#1e3356"
-        opacity="0.4"
+        opacity="0.52"
       >
         AWARD
       </text>
