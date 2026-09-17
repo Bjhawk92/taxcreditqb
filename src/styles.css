@@ -126,13 +126,13 @@
   .page-turn-stage {
     position: relative;
     overflow: visible;
-    perspective: 2400px;
-    perspective-origin: 92% 6%;
+    perspective: 2200px;
+    perspective-origin: 6% 50%;
   }
 
   .page-turn-leaf {
     position: relative;
-    animation: page-settle 0.95s ease-out;
+    animation: page-settle 0.85s ease-out;
   }
 
   .page-turn-flip {
@@ -140,15 +140,13 @@
     position: absolute;
     inset: 0;
     z-index: 5;
-    transform-origin: 100% 0%;
+    transform-origin: 0% 50%;
     transform-style: preserve-3d;
-    background:
-      linear-gradient(225deg, rgb(255 252 246 / 0.55) 0 10%, transparent 26%),
-      var(--color-paper);
+    background: var(--color-paper);
     box-shadow:
-      -10px 16px 28px rgb(0 0 0 / 0.16),
-      inset -1px 0 0 rgb(140 132 120 / 0.35);
-    animation: page-curl-turn 0.95s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      12px 8px 28px rgb(0 0 0 / 0.18),
+      inset -2px 0 0 rgb(140 132 120 / 0.45);
+    animation: page-rtl-turn 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
     backface-visibility: hidden;
   }
 
@@ -156,76 +154,57 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      225deg,
-      rgb(30 51 86 / 0.1) 0%,
-      rgb(90 80 70 / 0.16) 18%,
-      transparent 42%
+      90deg,
+      transparent 0%,
+      rgb(30 51 86 / 0.04) 55%,
+      rgb(90 80 70 / 0.12) 82%,
+      rgb(255 252 246 / 0.35) 100%
     );
-    mix-blend-mode: multiply;
   }
 
   .page-turn-curl {
     position: absolute;
-    top: -1.5%;
-    right: -1.5%;
-    width: min(42%, 22rem);
-    height: min(48%, 26rem);
-    transform-origin: 100% 0%;
-    border-bottom-left-radius: 85% 75%;
-    background:
-      radial-gradient(
-        120% 90% at 100% 0%,
-        #fffaf2 0%,
-        #efe8db 22%,
-        #d8d0c2 46%,
-        #b7ae9f 62%,
-        rgb(30 51 86 / 0.22) 78%,
-        transparent 100%
-      );
+    top: 0;
+    right: 0;
+    width: min(18%, 9rem);
+    height: 100%;
+    transform-origin: 0% 50%;
+    background: linear-gradient(
+      90deg,
+      rgb(30 51 86 / 0.08),
+      #efe8db 38%,
+      #fffaf2 72%,
+      #d8d0c2 100%
+    );
     box-shadow:
-      -18px 24px 32px rgb(0 0 0 / 0.22),
-      inset 8px -10px 18px rgb(255 255 255 / 0.35);
-    animation: page-curl-roll 0.95s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      10px 0 22px rgb(0 0 0 / 0.18),
+      inset -6px 0 10px rgb(255 255 255 / 0.35);
+    animation: page-rtl-curl 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
 
-  @keyframes page-curl-turn {
+  @keyframes page-rtl-turn {
     0% {
-      transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transform: rotateY(0deg);
       opacity: 1;
     }
-    22% {
-      transform: rotateY(-18deg) rotateX(8deg) rotateZ(-6deg);
-      clip-path: polygon(0 0, 86% 0, 100% 16%, 100% 100%, 0 100%);
-    }
-    55% {
-      transform: rotateY(-58deg) rotateX(16deg) rotateZ(-12deg);
-      clip-path: polygon(0 0, 42% 0, 100% 58%, 100% 100%, 0 100%);
+    42% {
+      transform: rotateY(-62deg);
       opacity: 1;
     }
     100% {
-      transform: rotateY(-128deg) rotateX(24deg) rotateZ(-18deg);
-      clip-path: polygon(0 0, 0 0, 18% 100%, 0 100%);
+      transform: rotateY(-168deg);
       opacity: 0;
     }
   }
 
-  @keyframes page-curl-roll {
+  @keyframes page-rtl-curl {
     0% {
-      opacity: 0.2;
-      transform: scale(0.12) rotate(0deg);
-    }
-    18% {
-      opacity: 1;
-      transform: scale(0.42) rotate(-8deg);
-    }
-    58% {
-      opacity: 1;
-      transform: scale(1.05, 1.2) rotate(-16deg);
+      opacity: 0.85;
+      transform: translateX(0);
     }
     100% {
       opacity: 0;
-      transform: scale(1.55, 1.85) rotate(-28deg) translate(-28%, 12%);
+      transform: translateX(-70%) rotateY(-25deg);
     }
   }
 
