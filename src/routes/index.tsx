@@ -101,9 +101,6 @@ function Home() {
               execute the next play.
             </p>
           </div>
-          <div className="pointer-events-auto mt-8 lg:hidden">
-            <HeroPlayDiagram density="simple" />
-          </div>
         </div>
       </section>
 
