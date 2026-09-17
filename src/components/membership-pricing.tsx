@@ -51,7 +51,7 @@ export function MembershipPricing() {
           Choose the game plan that fits.
         </h2>
         <p className="mt-5 max-w-2xl text-lede text-ink/80">
-          Three monthly options. Different levels of tools, access, and
+          Three monthly options. Different levels of resources, access, and
           experienced development strategy.
         </p>
 

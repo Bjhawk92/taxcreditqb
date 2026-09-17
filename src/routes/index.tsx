@@ -22,21 +22,34 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const STEPS = [
+const WAYS = [
   {
-    n: "01",
-    title: "Read the field",
-    body: "Municipal introduction. Neighborhood meeting. Public hearing. Three opponents. Three game plans. Choose the one that fits the situation.",
+    label: "Playbook",
+    title: "Prepare.",
+    body: "Use templates, presentation frameworks, speaking guidance, outreach resources, and practical development strategies to prepare for important development situations.",
+    to: "/playbook" as const,
+    cta: "Explore the Playbook",
   },
   {
-    n: "02",
-    title: "Build the game plan",
-    body: "Playbook members get the three-deck system. Need more than a template? We can build a presentation around your sponsor, site, audience, and approval strategy.",
+    label: "Film Room",
+    title: "Study.",
+    body: "Learn from real development situations, difficult questions, presentation strategies, objections, and decisions that affect LIHTC deals.",
+    to: "/videos" as const,
+    cta: "Visit the Film Room",
   },
   {
-    n: "03",
-    title: "Huddle — or bring in the QB",
-    body: "Playbook includes one 30-minute virtual session each month. Huddle members get two 45-minute sessions and a monthly review. Meeting support on the field is a separate assignment.",
+    label: "Equipment",
+    title: "Execute.",
+    body: "Use practical development resources, directories, calculators, references, and research sources to help execute the work.",
+    to: "/tools" as const,
+    cta: "Explore the Equipment",
+  },
+  {
+    label: "QB Access",
+    title: "Bring in experience.",
+    body: "Access Brett Johnson and Tax Credit QB directly when the team needs experience, strategy, presentation assistance, meeting participation, or help determining the next play.",
+    to: "/access" as const,
+    cta: "Bring in the QB",
   },
 ];
 
@@ -84,8 +97,9 @@ function Home() {
             execute the next play.
           </p>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
-            Use the Playbook to prepare your team, huddle with an experienced
-            developer, or bring in the QB when the outcome matters.
+            Use the Playbook to prepare, the Film Room to study, Equipment to
+            execute, or bring in the QB when the assignment needs experience
+            on the field.
           </p>
         </div>
       </section>
@@ -103,7 +117,7 @@ function Home() {
           Your first city meeting, neighborhood introduction and public
           hearing each call for a different approach. Get editable
           presentation decks, speaking guidance and practical Q&A
-          strategies that help your team read the field, prepare the
+          strategies that help your team read the defense, prepare the
           response, and make a stronger case.
         </p>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -124,19 +138,22 @@ function Home() {
       <section className="border-y border-line bg-paper-dim">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            How it works
+            How Tax Credit QB helps
           </p>
-          <div className="mt-8 grid gap-8 md:grid-cols-3">
-            {STEPS.map((step) => (
-              <div key={step.n}>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {WAYS.map((way) => (
+              <article key={way.label} className="flex flex-col border border-line bg-paper p-6">
                 <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-                  {step.n}
+                  {way.label}
                 </p>
                 <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
-                  {step.title}
+                  {way.title}
                 </h3>
-                <p className="mt-3 text-ink/75">{step.body}</p>
-              </div>
+                <p className="mt-3 flex-1 text-ink/75">{way.body}</p>
+                <Button asChild variant="secondary" className="mt-6 self-start">
+                  <Link to={way.to}>{way.cta}</Link>
+                </Button>
+              </article>
             ))}
           </div>
         </div>
@@ -215,7 +232,7 @@ function Home() {
       <CtaBand
         eyebrow="Your winning edge"
         title="Your deal. A stronger game plan."
-        line="Get the presentation tools and direct advice to lead confidently—or bring in the QB when the assignment needs it."
+        line="Get the Playbook and direct advice to lead confidently—or bring in the QB when the assignment needs it."
         primary={{ label: "Get the Playbook", to: "/register" }}
         secondary={{ label: "Call the next play", to: "/inquiry" }}
       />

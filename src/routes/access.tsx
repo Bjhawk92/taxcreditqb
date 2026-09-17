@@ -9,26 +9,26 @@ import { SIGN_SERVICES, SITE } from "@/lib/site";
 export const Route = createFileRoute("/access")({
   head: () =>
     seo({
-      title: "Sign the QB | Tax Credit QB",
+      title: "QB Access | Tax Credit QB",
       description:
-        "Add an experienced QB to your team. Get a second perspective, work through the next decision, or bring Tax Credit QB onto the field—while you remain the developer.",
+        "Bring in the QB. Access Brett Johnson and Tax Credit QB directly when the team needs experience, strategy, presentation assistance, meeting participation, project advisory, or help determining the next play.",
     }),
-  component: SignTheQb,
+  component: QbAccess,
 });
 
-function SignTheQb() {
+function QbAccess() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Sign the QB"
-        title="Add an experienced QB to your team."
-        sub="Get a second perspective, work through the next decision, build the presentation, or bring Tax Credit QB onto the field for an assignment that matters. Choose the level of support that fits the game situation while you remain the developer and decision-maker."
+        eyebrow="QB Access"
+        title="Bring in the QB."
+        sub="Access Brett Johnson and Tax Credit QB directly when the team needs experience, strategy, presentation assistance, meeting participation, project advisory, or help determining the next play. Choose the level of support that fits the game situation while you remain the developer and decision-maker."
       >
         <Quote className="mt-8">{SITE.tagline}</Quote>
       </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-          How to add a QB
+          QB Access
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
           Choose the support that fits the game situation.
@@ -54,7 +54,7 @@ function SignTheQb() {
         </div>
       </section>
       <CtaBand
-        title="Ready to add a QB to the roster?"
+        title="Need the QB on the field?"
         line="Tell us what you are facing, what the deal needs, and where you want additional experience on the field. We will help identify the right service and next play."
         primary={{ label: "Call the next play", to: "/inquiry" }}
         secondary={{ label: "Get the Playbook", to: "/register" }}

@@ -9,26 +9,26 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/tools")({
   head: () =>
     seo({
-      title: "Tools | State QAP Directory | Tax Credit QB",
+      title: "Equipment | State QAP Directory | Tax Credit QB",
       description:
-        "The right tools for the next play. Find practical resources that help your team evaluate the field, understand the requirements, prepare the strategy, and move the deal forward.",
+        "The right equipment for the next play. Practical resources for developers working through real LIHTC deals—directories, references, and development resources to evaluate the field and move the deal forward.",
     }),
-  component: Tools,
+  component: Equipment,
 });
 
-function Tools() {
+function Equipment() {
   return (
     <main id="main">
       <PageHero
-        eyebrow="Tools"
-        title="The right tools for the next play."
-        sub="Find practical resources that help your team evaluate the field, understand the requirements, prepare the strategy, and move the deal forward."
+        eyebrow="Equipment"
+        title="The right equipment for the next play."
+        sub="Practical resources for developers working through real LIHTC deals. Find the information, references, calculators, directories, and development resources your team needs to evaluate the field, understand the requirements, prepare the game plan, and move the deal forward."
       />
 
       <section className="mx-auto max-w-6xl px-5 pt-14 md:px-8 md:pt-20">
         <article className="border border-line bg-paper p-6 md:p-8">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            Tool
+            Resource
           </p>
           <h2 className="mt-3 font-display text-section font-semibold leading-section">
             Presentation Builder
@@ -53,7 +53,7 @@ function Tools() {
         >
           <summary className="cursor-pointer list-none px-6 py-6 marker:content-none md:px-8 md:py-8 [&::-webkit-details-marker]:hidden">
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              Tool
+              Resource
             </p>
             <h2
               id="qap-heading"

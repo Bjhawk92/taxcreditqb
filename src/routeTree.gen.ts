@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeskRouteImport } from './routes/desk'
 import { Route as ForPartnersRouteImport } from './routes/for-partners'
 import { Route as HqRouteImport } from './routes/hq'
+import { Route as HuddleRouteImport } from './routes/huddle'
 import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as LoginRouteImport } from './routes/login'
@@ -83,6 +84,11 @@ const ForPartnersRoute = ForPartnersRouteImport.update({
 const HqRoute = HqRouteImport.update({
   id: '/hq',
   path: '/hq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HuddleRoute = HuddleRouteImport.update({
+  id: '/huddle',
+  path: '/huddle',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InquiryRoute = InquiryRouteImport.update({
@@ -230,6 +236,7 @@ export interface FileRoutesByFullPath {
   '/desk': typeof DeskRouteWithChildren
   '/for-partners': typeof ForPartnersRoute
   '/hq': typeof HqRouteWithChildren
+  '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
@@ -265,6 +272,7 @@ export interface FileRoutesByTo {
   '/advisory': typeof AdvisoryRoute
   '/contact': typeof ContactRoute
   '/for-partners': typeof ForPartnersRoute
+  '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
@@ -302,6 +310,7 @@ export interface FileRoutesById {
   '/desk': typeof DeskRouteWithChildren
   '/for-partners': typeof ForPartnersRoute
   '/hq': typeof HqRouteWithChildren
+  '/huddle': typeof HuddleRoute
   '/inquiry': typeof InquiryRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
@@ -341,6 +350,7 @@ export interface FileRouteTypes {
     | '/desk'
     | '/for-partners'
     | '/hq'
+    | '/huddle'
     | '/inquiry'
     | '/legal'
     | '/login'
@@ -376,6 +386,7 @@ export interface FileRouteTypes {
     | '/advisory'
     | '/contact'
     | '/for-partners'
+    | '/huddle'
     | '/inquiry'
     | '/legal'
     | '/login'
@@ -412,6 +423,7 @@ export interface FileRouteTypes {
     | '/desk'
     | '/for-partners'
     | '/hq'
+    | '/huddle'
     | '/inquiry'
     | '/legal'
     | '/login'
@@ -450,6 +462,7 @@ export interface RootRouteChildren {
   DeskRoute: typeof DeskRouteWithChildren
   ForPartnersRoute: typeof ForPartnersRoute
   HqRoute: typeof HqRouteWithChildren
+  HuddleRoute: typeof HuddleRoute
   InquiryRoute: typeof InquiryRoute
   LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
@@ -516,6 +529,13 @@ declare module '@tanstack/react-router' {
       path: '/hq'
       fullPath: '/hq'
       preLoaderRoute: typeof HqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/huddle': {
+      id: '/huddle'
+      path: '/huddle'
+      fullPath: '/huddle'
+      preLoaderRoute: typeof HuddleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inquiry': {
@@ -783,6 +803,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeskRoute: DeskRouteWithChildren,
   ForPartnersRoute: ForPartnersRoute,
   HqRoute: HqRouteWithChildren,
+  HuddleRoute: HuddleRoute,
   InquiryRoute: InquiryRoute,
   LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,

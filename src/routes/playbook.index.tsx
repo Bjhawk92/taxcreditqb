@@ -10,7 +10,7 @@ export const Route = createFileRoute("/playbook/")({
     seo({
       title: "Playbook | Tax Credit QB",
       description:
-        "Take the field prepared. Editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook prepares you for a different opponent, stage, and challenge your deal will face.",
+        "Take the field prepared. Editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook helps you read the defense, prepare the response, and make the strongest case for your deal.",
     }),
   component: PlaybookIndex,
 });
@@ -21,7 +21,7 @@ function PlaybookIndex() {
       <PageHero
         eyebrow="Playbook"
         title="Take the field prepared."
-        sub="Every important development will be tested. Equip your team with editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook prepares you for a different opponent, stage, and challenge your deal will face."
+        sub="Every important development will be tested. Equip your team with editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook helps you read the defense, prepare the response, and make the strongest case for your deal."
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
@@ -40,7 +40,7 @@ function PlaybookIndex() {
           Presentation resources
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          Three opponents. Three game plans.
+          Three defenses. Three game plans.
         </h2>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {DECKS.map((deck) => (
@@ -49,7 +49,7 @@ function PlaybookIndex() {
         </div>
         <article className="mt-6 border border-line bg-paper p-6 md:p-8">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            Tool
+            Resource
           </p>
           <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink md:text-3xl">
             Presentation Builder
@@ -66,8 +66,8 @@ function PlaybookIndex() {
         <div className="mt-12 max-w-2xl space-y-4 text-ink/80">
           <p>
             Complete templates require a Playbook membership. Members get the
-            three presentation tools, speaking guidance and Q&A strategies for
-            the matchups that decide a deal.
+            three presentation frameworks, speaking guidance and Q&A strategies
+            for the matchups that decide a deal.
           </p>
           <p>
             Custom-built presentations are available separately, with hourly

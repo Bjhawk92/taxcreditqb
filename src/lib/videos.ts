@@ -88,7 +88,7 @@ export const FILM_CLIPS: FilmClip[] = [
     format: "Presentation Breakdown",
     title: "Before the Public Hearing",
     description:
-      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and answers the opposition’s strongest arguments.",
+      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and addresses the strongest objections and competing arguments.",
     thumbnail: {
       src: "/film-room/public-hearing.jpg",
       alt: "Abstract site plan beside a neighborhood Q&A slide.",

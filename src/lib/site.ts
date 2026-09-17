@@ -37,7 +37,7 @@ export const SITE = {
     "Tax Credit QB is not a law firm, not a syndicator, not your co-GP, and not a substitute for local land-use counsel. Meeting support is not lobbying unless a separate engagement says so. Deck templates are educational and must be adapted to the site, the QAP, and the jurisdiction. Financial models are prepared by Alkaline Advisors unless otherwise stated. Tax Credit QB does not guarantee approvals, tax-credit awards, financing, or project outcomes. You remain the developer and owner of your opportunity.",
 } as const;
 
-export const WORK_LABEL = "Sign the QB" as const;
+export const WORK_LABEL = "QB Access" as const;
 
 export const NAV = [
   {
@@ -49,19 +49,19 @@ export const NAV = [
   {
     label: "Film Room",
     to: "/videos",
-    blurb: "Study the field. Strengthen the next play.",
+    blurb: "Study the field. Read the defense.",
     tab: "blue",
   },
   {
-    label: "Tools",
+    label: "Equipment",
     to: "/tools",
-    blurb: "State QAP links, Presentation Builder, and housing-agency resources.",
+    blurb: "Practical resources, QAP directory, and development references.",
     tab: "tools",
   },
   {
     label: WORK_LABEL,
     to: "/access",
-    blurb: "Add an experienced QB to your team — questions, huddles, presentations, and field support.",
+    blurb: "Ask the QB, huddles, presentations, meeting support, and advisory.",
     tab: "gold",
   },
   {
@@ -131,8 +131,8 @@ export const FOOTER_NAV = [
   { label: "Playbook", to: "/playbook" },
   { label: "Presentation Builder", to: "/playbook/builder" },
   { label: "Film Room", to: "/videos" },
-  { label: "Tools", to: "/tools" },
-  { label: "Sign the QB", to: "/access" },
+  { label: "Equipment", to: "/tools" },
+  { label: "QB Access", to: "/access" },
   { label: "Ask the QB", to: "/register" },
   { label: "Schedule a Huddle", to: "/huddle" },
   { label: "Meeting Support", to: "/desk" },

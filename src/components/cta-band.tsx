@@ -15,6 +15,7 @@ type To =
   | "/desk"
   | "/register"
   | "/videos"
+  | "/tools"
   | "/for-partners";
 
 export function CtaBand({

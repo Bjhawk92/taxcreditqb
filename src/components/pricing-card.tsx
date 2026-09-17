@@ -19,7 +19,7 @@ export function PricingCard() {
         Playbook membership
       </p>
       <p className="mt-3 text-ink/75">
-        Presentation tools, the Film Room, and monthly access that matches your
+        Playbook resources, the Film Room, and monthly access that matches your
         plan. Not unlimited consulting.
       </p>
       <ul className="mt-6 space-y-3">
