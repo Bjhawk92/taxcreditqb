@@ -74,7 +74,7 @@ export const NAV = [
     label: "Locker Room",
     to: "/hq",
     blurb: "Secure member dashboard for deals, Field Pass, Equipment, and billing.",
-    tab: "hq",
+    tab: "green",
   },
 ] as const;
 
