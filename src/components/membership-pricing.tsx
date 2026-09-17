@@ -86,21 +86,28 @@ function PlanCta({
 }
 
 function Lanyard({ color, edge }: { color: string; edge: string }) {
+  const strap = {
+    background: `linear-gradient(90deg, ${edge} 0%, ${color} 22%, ${color} 78%, ${edge} 100%)`,
+    boxShadow:
+      "inset 1px 0 0 rgb(255 255 255 / 0.22), inset -1px 0 0 rgb(0 0 0 / 0.18)",
+  } as const;
+
   return (
-    <svg
-      viewBox="0 0 100 100"
-      className="relative z-20 mx-auto -mb-3 block h-[5.75rem] w-[5.75rem]"
+    <div
+      className="relative z-20 mx-auto flex h-28 w-[4.25rem] flex-col items-center md:h-36"
       aria-hidden="true"
     >
-      <path d="M37 0 C35 38 33 62 41 82 L50 88 L47 0 Z" fill={color} />
-      <path d="M63 0 C65 38 67 62 59 82 L50 88 L53 0 Z" fill={color} />
-      <path d="M45 0 L47 84 M55 0 L53 84" stroke={edge} strokeWidth="1.1" opacity="0.55" />
-      <path d="M40 6 L44 82 M60 6 L56 82" stroke="#fff" strokeWidth="0.7" opacity="0.22" />
-      <rect x="41" y="80" width="18" height="12" rx="1.6" fill="#d5d8de" stroke="#8a9099" strokeWidth="0.8" />
-      <rect x="44.5" y="82.5" width="11" height="7" rx="0.9" fill="#9aa1aa" />
-      <path d="M50 92 v6.5" stroke="#c5c8ce" strokeWidth="2.6" strokeLinecap="round" />
-      <ellipse cx="50" cy="99" rx="3.4" ry="1.5" fill="#b8bec6" />
-    </svg>
+      <div className="flex w-full flex-1 justify-center gap-[5px]">
+        <span className="h-full w-[12px]" style={strap} />
+        <span className="h-full w-[12px]" style={strap} />
+      </div>
+      <svg viewBox="0 0 40 28" className="-mb-2 h-7 w-10 shrink-0">
+        <rect x="11" y="1" width="18" height="12" rx="1.6" fill="#d5d8de" stroke="#8a9099" strokeWidth="0.8" />
+        <rect x="14.5" y="3.5" width="11" height="7" rx="0.9" fill="#9aa1aa" />
+        <path d="M20 13 v9" stroke="#c5c8ce" strokeWidth="2.6" strokeLinecap="round" />
+        <ellipse cx="20" cy="23" rx="3.4" ry="1.5" fill="#b8bec6" />
+      </svg>
+    </div>
   );
 }
 
@@ -126,7 +133,12 @@ export function MembershipPricing({
 }) {
   return (
     <section id="pricing" className="border-y border-line bg-paper">
-      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+      <div
+        className={cn(
+          "mx-auto max-w-6xl px-5 md:px-8",
+          showIntro ? "py-16 md:py-24" : "pb-16 pt-0 md:pb-24",
+        )}
+      >
         {showIntro ? (
           <>
             <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
@@ -146,7 +158,7 @@ export function MembershipPricing({
         <div
           className={cn(
             "grid items-stretch gap-8 lg:grid-cols-3 lg:items-stretch lg:gap-6",
-            showIntro ? "mt-12" : "mt-2",
+            showIntro ? "mt-12" : "mt-0",
           )}
         >
           {MEMBERSHIPS.map((plan) => {
@@ -156,10 +168,7 @@ export function MembershipPricing({
               <article
                 key={plan.id}
                 id={`plan-${plan.id}`}
-                className={cn(
-                  "relative flex h-full flex-col",
-                  featured && "lg:-translate-y-5",
-                )}
+                className={cn("relative flex h-full flex-col")}
               >
                 <Lanyard color={cred.lanyard} edge={cred.lanyardEdge} />
                 <div
@@ -167,6 +176,7 @@ export function MembershipPricing({
                     "relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.15rem] border-[3px] bg-paper",
                     cred.frame,
                     cred.inner,
+                    featured && "lg:-mt-5",
                   )}
                 >
                   <div
