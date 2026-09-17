@@ -10,7 +10,7 @@ export const Route = createFileRoute("/playbook/")({
     seo({
       title: "Playbook | Tax Credit QB",
       description:
-        "Take the field prepared. Editable presentations, speaking guidance, and practical Q&A strategies that help your team read the defense, prepare the response, and make the strongest case.",
+        "Take the field prepared. Editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook prepares you for a different opponent, stage, and challenge your deal will face.",
     }),
   component: PlaybookIndex,
 });
@@ -21,7 +21,7 @@ function PlaybookIndex() {
       <PageHero
         eyebrow="Playbook"
         title="Take the field prepared."
-        sub="Every important development will be tested. Equip your team with editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook helps you read the defense, prepare the response, and make the strongest case for your deal."
+        sub="Every important development will be tested. Equip your team with editable presentations, speaking guidance, and practical Q&A strategies drawn from real development experience. Each playbook prepares you for a different opponent, stage, and challenge your deal will face."
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
@@ -40,7 +40,7 @@ function PlaybookIndex() {
           Presentation resources
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-section font-semibold leading-section">
-          Three defenses. Three game plans.
+          Three opponents. Three game plans.
         </h2>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {DECKS.map((deck) => (
@@ -55,9 +55,9 @@ function PlaybookIndex() {
             Presentation Builder
           </h3>
           <p className="mt-4 max-w-3xl text-ink/80">
-            Organize the facts, images, documents, audience information, and
-            deal strategy Tax Credit QB needs to understand the field and
-            build the strongest case around your project.
+            Organize the facts, images, documents, audience details, and
+            supporting evidence Tax Credit QB needs to understand the field
+            and build the strongest case for your development.
           </p>
           <Button asChild className="mt-6">
             <Link to="/playbook/builder">Explore the Builder</Link>

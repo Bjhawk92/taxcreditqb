@@ -68,8 +68,8 @@ export const BUILDER_STEPS = [
   },
   {
     n: "06",
-    title: "Read the Defense",
-    body: "Identify anticipated objections, known resistance, sensitive subjects, competing arguments, and the evidence available to support the response.",
+    title: "Read the Opposition",
+    body: "Identify likely objections, known resistance, sensitive subjects, and competing arguments.",
   },
   {
     n: "07",
@@ -168,7 +168,7 @@ export const BUILDER_INFO = [
     ],
   },
   {
-    name: "The Defense",
+    name: "The Opposition",
     items: [
       "Known concerns",
       "Existing resistance",

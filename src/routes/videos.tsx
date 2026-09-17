@@ -10,7 +10,7 @@ export const Route = createFileRoute("/videos")({
     seo({
       title: "The Film Room | Tax Credit QB",
       description:
-        "Study the field. Read the defense. Real development situations, presentation strategies, and the decisions that move LIHTC deals forward.",
+        "Study the field. Strengthen the next play. Real development situations, presentation strategies, and the decisions that move LIHTC deals forward.",
     }),
   component: Videos,
 });
@@ -20,8 +20,8 @@ function Videos() {
     <main id="main">
       <PageHero
         eyebrow="The Film Room"
-        title="Study the field. Read the defense."
-        sub="Review real development situations, presentation strategies, difficult questions, and the decisions that move LIHTC deals forward. Each breakdown helps your team recognize the defensive alignment, anticipate pressure, and prepare the next play."
+        title="Study the field. Strengthen the next play."
+        sub="Review real development situations, presentation strategies, difficult questions, and the decisions that move LIHTC deals forward. Each breakdown helps your team recognize the coverage, anticipate resistance, and prepare the response."
       />
       <section
         className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20"

@@ -26,7 +26,7 @@ const STEPS = [
   {
     n: "01",
     title: "Read the field",
-    body: "Municipal introduction. Neighborhood meeting. Public hearing. Three defenses. Three game plans. Choose the one that fits the situation.",
+    body: "Municipal introduction. Neighborhood meeting. Public hearing. Three opponents. Three game plans. Choose the one that fits the situation.",
   },
   {
     n: "02",
@@ -78,9 +78,9 @@ function Home() {
             </Button>
           </div>
           <p className="mt-8 max-w-2xl text-lede text-ink/80">
-            Whether you are evaluating a site, preparing for defensive
-            pressure, pursuing an approval, or positioning the deal for
-            financing, Tax Credit QB helps your team understand the field and
+            Whether you are evaluating a site, preparing for opposition,
+            pursuing an approval, or positioning the deal for financing,
+            Tax Credit QB helps your team understand the field and
             execute the next play.
           </p>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">

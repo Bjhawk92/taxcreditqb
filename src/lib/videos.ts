@@ -15,7 +15,6 @@ export type FilmFormat =
   | "Game Breakdown"
   | "Presentation Breakdown"
   | "Deal Breakdown"
-  | "Read the Defense"
   | "Tough Questions"
   | "Field Position"
   | "Next-Play Strategy";
@@ -52,10 +51,10 @@ export const FILM_CLIPS: FilmClip[] = [
   {
     id: "tough-questions",
     topic: "questions",
-    format: "Read the Defense",
+    format: "Tough Questions",
     title: "Handling the Tough Questions",
     description:
-      "Property values. Traffic. Who will live here? See how to read the defense and prepare the response with clear answers and credible project information.",
+      "Property values. Traffic. Who will live here? See how to anticipate resistance and prepare the response with clear answers and credible project information.",
     thumbnail: {
       src: "/film-room/tough-questions.jpg",
       alt: "Brett Johnson beside the question: Will this hurt property values?",
@@ -89,7 +88,7 @@ export const FILM_CLIPS: FilmClip[] = [
     format: "Presentation Breakdown",
     title: "Before the Public Hearing",
     description:
-      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and answers the defense’s strongest arguments.",
+      "Walk through a site-specific presentation that explains your development, makes LIHTC understandable, and answers the opposition’s strongest arguments.",
     thumbnail: {
       src: "/film-room/public-hearing.jpg",
       alt: "Abstract site plan beside a neighborhood Q&A slide.",

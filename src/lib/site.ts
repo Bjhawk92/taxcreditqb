@@ -114,7 +114,7 @@ export const NEEDS = [
   { value: "intro-gc", label: "Contractor support or introduction" },
   { value: "intro-syndicator", label: "Syndicator introduction" },
   { value: "advisory", label: "Project advisory" },
-  { value: "not-sure", label: "Not sure—I need help reading the defense and calling the next play" },
+  { value: "not-sure", label: "Not sure—I need help calling the next play" },
 ] as const;
 
 export const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as

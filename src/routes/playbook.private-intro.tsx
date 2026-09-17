@@ -9,9 +9,9 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/playbook/private-intro")({
   head: () =>
     seo({
-      title: "Municipal Introduction | Read the Field | Tax Credit QB",
+      title: "Municipal Introduction | Establish Your Position | Tax Credit QB",
       description:
-        "Read the field. Establish your position. Introduce your company, demonstrate your track record, and understand the municipality’s priorities before asking for a formal decision.",
+        "Establish your position. Read the field. Introduce your company, demonstrate your track record, and understand the municipality’s priorities before asking for a formal decision.",
     }),
   component: PrivateIntro,
 });
@@ -21,8 +21,8 @@ function PrivateIntro() {
     <main id="main">
       <PageHero
         eyebrow="Municipal Introduction"
-        title="Read the field. Establish your position."
-        sub="Introduce your company, demonstrate your track record, and understand the municipality’s priorities before the development reaches a formal decision. Identify the conditions, potential support, and defensive pressure that could influence the project’s path forward."
+        title="Establish your position. Read the field."
+        sub="Introduce your company, demonstrate your track record, and understand the municipality’s priorities before the development reaches a formal decision. Learn how city staff and officials view the market, site, housing needs, governmental support, and potential incentives."
       />
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-10 md:grid-cols-12">

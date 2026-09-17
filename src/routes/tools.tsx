@@ -102,8 +102,8 @@ function Tools() {
       </section>
 
       <CtaBand
-        title="Found the requirements. Ready for the next play?"
-        line="Bring your deal-specific question to Ask the QB for practical guidance grounded in development experience."
+        title="Bring the question. Call the next play."
+        line="Submit a focused question about the development, strategy, obstacle, or decision in front of you. Tax Credit QB will review the situation and provide practical guidance grounded in real development experience."
         primary={{ label: "Get the Playbook", to: "/register" }}
         secondary={{ label: "Call the next play", to: "/inquiry" }}
       />

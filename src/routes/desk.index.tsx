@@ -50,7 +50,7 @@ function DeskIndex() {
       <PageHero
         eyebrow="Meeting Support"
         title="Bring the QB onto the field."
-        sub="When preparation alone is not enough, bring Tax Credit QB alongside your team. Brett can help read the defense, shape the game plan, prepare speakers, participate in the discussion, and adjust the strategy as the situation develops."
+        sub="When preparation alone is not enough, bring Tax Credit QB alongside your team. Brett can help shape the game plan, prepare speakers, participate in the discussion, reinforce the strongest points, and help determine the next play."
       >
         <Button asChild className="mt-8" size="lg">
           <Link to="/inquiry">Bring in the QB</Link>
