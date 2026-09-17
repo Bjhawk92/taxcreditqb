@@ -159,8 +159,6 @@ const DEFENSE: DefenseSpot[] = [
   { x: 640, y: 385, label: "SCORING", lx: 640, ly: 372, anchor: "middle", tilt: 1, fontSize: 16, tracking: "0.04em" },
   { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
   { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
-  { x: 320, y: 180 },
   { x: 550, y: 160, label: "CITY COUNCIL", lx: 568, ly: 148, tilt: -2 },
-  { x: 800, y: 180, label: "CONSTRUCTION", lx: 676, ly: 172, tilt: 1 },
   { x: 480, y: 120, label: "AWARD", lx: 480, ly: 102, anchor: "middle", tilt: -1 },
 ];
