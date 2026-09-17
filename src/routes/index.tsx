@@ -64,7 +64,7 @@ function Home() {
     <main id="main">
       <section className="relative overflow-hidden border-b border-line">
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] md:block">
-          <PlaybookBackdrop className="opacity-[0.24] [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_88%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_88%,transparent_100%)]" />
+          <PlaybookBackdrop className="opacity-[0.288] [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_88%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_88%,transparent_100%)]" />
         </div>
         <div className="relative mx-auto max-w-6xl px-5 py-7 md:px-8 md:py-10">
           <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
