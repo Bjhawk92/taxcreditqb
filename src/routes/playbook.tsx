@@ -11,6 +11,7 @@ const LINKS = [
   { to: "/playbook/hearing", label: "Public Hearing", exact: false },
   { to: "/playbook/neighborhood", label: "Neighborhood Meeting", exact: false },
   { to: "/playbook/outreach", label: "Outreach Playbook", exact: false },
+  { to: "/playbook/builder", label: "Presentation Builder", exact: false },
 ] as const;
 
 function PlaybookLayout() {

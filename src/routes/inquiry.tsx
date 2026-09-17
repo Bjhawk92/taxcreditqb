@@ -44,8 +44,7 @@ function Inquiry() {
     }
   }
 
-  const defaultNeed =
-    intent === "in-the-room" ? "in-the-room" : intent === "modeling" ? "modeling" : "";
+  const defaultNeed = NEEDS.some((n) => n.value === intent) ? intent : "";
 
   return (
     <main id="main">

@@ -41,7 +41,7 @@ export const NAV = [
   {
     label: "Playbook",
     to: "/playbook",
-    blurb: "Presentation templates, outreach resources, and meeting tools.",
+    blurb: "Presentation templates, outreach resources, and the Presentation Builder.",
     tab: "navy",
   },
   {
@@ -53,7 +53,7 @@ export const NAV = [
   {
     label: "Tools",
     to: "/tools",
-    blurb: "State QAP links and housing-agency resources.",
+    blurb: "State QAP links, Presentation Builder, and housing-agency resources.",
     tab: "tools",
   },
   {
@@ -80,6 +80,7 @@ export const WORK_NAV = [
 
 export const FOOTER_NAV = [
   { label: "Playbook", to: "/playbook" },
+  { label: "Presentation Builder", to: "/playbook/builder" },
   { label: "Film Room", to: "/videos" },
   { label: "Tools", to: "/tools" },
   { label: "Ask the QB", to: "/register" },
@@ -99,6 +100,10 @@ export const NEEDS = [
   { value: "hearing", label: "Public-hearing presentation" },
   { value: "neighborhood", label: "Neighborhood-meeting presentation" },
   { value: "three-pack", label: "Complete three-presentation package" },
+  { value: "presentation-builder", label: "Presentation Builder" },
+  { value: "presentation-customization", label: "Customize a Playbook template (starting at $1,500)" },
+  { value: "custom-presentation", label: "Build a custom presentation (starting at $3,000)" },
+  { value: "presentation-campaign", label: "Complex assignment or meeting campaign" },
   { value: "in-the-room", label: "Meeting participation or support" },
   { value: "modeling", label: "LIHTC modeling through Alkaline Advisors" },
   { value: "intro-architect", label: "Architectural support or introduction" },

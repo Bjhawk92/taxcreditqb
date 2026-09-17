@@ -38,6 +38,7 @@ import { Route as HqMessagesRouteImport } from './routes/hq.messages'
 import { Route as HqPlaybookRouteImport } from './routes/hq.playbook'
 import { Route as HqProjectsRouteImport } from './routes/hq.projects'
 import { Route as PlaybookIndexRouteImport } from './routes/playbook.index'
+import { Route as PlaybookBuilderRouteImport } from './routes/playbook.builder'
 import { Route as PlaybookHearingRouteImport } from './routes/playbook.hearing'
 import { Route as PlaybookNeighborhoodRouteImport } from './routes/playbook.neighborhood'
 import { Route as PlaybookOutreachRouteImport } from './routes/playbook.outreach'
@@ -189,6 +190,11 @@ const PlaybookIndexRoute = PlaybookIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PlaybookRoute,
 } as any)
+const PlaybookBuilderRoute = PlaybookBuilderRouteImport.update({
+  id: '/builder',
+  path: '/builder',
+  getParentRoute: () => PlaybookRoute,
+} as any)
 const PlaybookHearingRoute = PlaybookHearingRouteImport.update({
   id: '/hearing',
   path: '/hearing',
@@ -242,6 +248,7 @@ export interface FileRoutesByFullPath {
   '/hq/messages': typeof HqMessagesRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
+  '/playbook/builder': typeof PlaybookBuilderRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/outreach': typeof PlaybookOutreachRoute
@@ -275,6 +282,7 @@ export interface FileRoutesByTo {
   '/hq/messages': typeof HqMessagesRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
+  '/playbook/builder': typeof PlaybookBuilderRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/outreach': typeof PlaybookOutreachRoute
@@ -312,6 +320,7 @@ export interface FileRoutesById {
   '/hq/messages': typeof HqMessagesRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
+  '/playbook/builder': typeof PlaybookBuilderRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
   '/playbook/outreach': typeof PlaybookOutreachRoute
@@ -350,6 +359,7 @@ export interface FileRouteTypes {
     | '/hq/messages'
     | '/hq/playbook'
     | '/hq/projects'
+    | '/playbook/builder'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
     | '/playbook/outreach'
@@ -383,6 +393,7 @@ export interface FileRouteTypes {
     | '/hq/messages'
     | '/hq/playbook'
     | '/hq/projects'
+    | '/playbook/builder'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
     | '/playbook/outreach'
@@ -419,6 +430,7 @@ export interface FileRouteTypes {
     | '/hq/messages'
     | '/hq/playbook'
     | '/hq/projects'
+    | '/playbook/builder'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
     | '/playbook/outreach'
@@ -653,6 +665,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybookIndexRouteImport
       parentRoute: typeof PlaybookRoute
     }
+    '/playbook/builder': {
+      id: '/playbook/builder'
+      path: '/builder'
+      fullPath: '/playbook/builder'
+      preLoaderRoute: typeof PlaybookBuilderRouteImport
+      parentRoute: typeof PlaybookRoute
+    }
     '/playbook/hearing': {
       id: '/playbook/hearing'
       path: '/hearing'
@@ -734,6 +753,7 @@ const HqRouteChildren: HqRouteChildren = {
 const HqRouteWithChildren = HqRoute._addFileChildren(HqRouteChildren)
 
 interface PlaybookRouteChildren {
+  PlaybookBuilderRoute: typeof PlaybookBuilderRoute
   PlaybookHearingRoute: typeof PlaybookHearingRoute
   PlaybookNeighborhoodRoute: typeof PlaybookNeighborhoodRoute
   PlaybookOutreachRoute: typeof PlaybookOutreachRoute
@@ -742,6 +762,7 @@ interface PlaybookRouteChildren {
 }
 
 const PlaybookRouteChildren: PlaybookRouteChildren = {
+  PlaybookBuilderRoute: PlaybookBuilderRoute,
   PlaybookHearingRoute: PlaybookHearingRoute,
   PlaybookNeighborhoodRoute: PlaybookNeighborhoodRoute,
   PlaybookOutreachRoute: PlaybookOutreachRoute,

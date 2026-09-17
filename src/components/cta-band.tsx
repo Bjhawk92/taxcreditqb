@@ -9,6 +9,7 @@ type To =
   | "/about"
   | "/playbook"
   | "/playbook/outreach"
+  | "/playbook/builder"
   | "/advisory"
   | "/desk"
   | "/register"

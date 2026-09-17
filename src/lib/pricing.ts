@@ -423,6 +423,8 @@ export const SERVICE_NEEDS = [
   { value: "strategy-session", label: "Deal Strategy Session ($350)" },
   { value: "presentation-customization", label: "Presentation Customization (starting at $1,500)" },
   { value: "custom-presentation", label: "Custom Presentation (starting at $3,000)" },
+  { value: "presentation-builder", label: "Presentation Builder" },
+  { value: "presentation-campaign", label: "Complex assignment or meeting campaign" },
   { value: "company-brand", label: "Company positioning & logo" },
   { value: "marketing-plan", label: "Marketing plan" },
   { value: "social-launch", label: "Social media launch" },

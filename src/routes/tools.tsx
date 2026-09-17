@@ -24,6 +24,24 @@ function Tools() {
         sub="Find state Qualified Allocation Plans and housing agency resources in one place. Start your research here, then bring your deal-specific questions to Tax Credit QB."
       />
 
+      <section className="mx-auto max-w-6xl px-5 pt-14 md:px-8 md:pt-20">
+        <article className="border border-line bg-paper p-6 md:p-8">
+          <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+            Tool
+          </p>
+          <h2 className="mt-3 font-display text-section font-semibold leading-section">
+            Presentation Builder
+          </h2>
+          <p className="mt-4 max-w-3xl text-lede text-ink/80">
+            A guided workspace for assembling the project information and
+            assets required for a custom presentation.
+          </p>
+          <Button asChild className="mt-6">
+            <Link to="/playbook/builder">Explore the Builder</Link>
+          </Button>
+        </article>
+      </section>
+
       <section
         className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20"
         aria-labelledby="qap-heading"
