@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
     seo({
       title: "Tax Credit QB | LIHTC Development Strategy + Execution",
       description:
-        "Your WINNING play. Backed by experience. Playbook, Equipment, Game Plans, and QB Access—from $29/month. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case.",
+        "Your WINNING PLAYBOOK. Backed by EXPERIENCE. Playbook, Equipment, Game Plans, and QB Access—from $29/month. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case.",
     }),
   component: Home,
 });
@@ -71,8 +71,8 @@ function Home() {
             LIHTC development strategy + execution
           </p>
           <h1 className="mt-3 max-w-3xl font-display text-[clamp(2.15rem,5.6vw,4.35rem)] font-semibold leading-[0.95] tracking-display text-ink">
-            <span className="block">Your WINNING play.</span>
-            <span className="block text-steel">Backed by experience.</span>
+            <span className="block">Your WINNING PLAYBOOK.</span>
+            <span className="block text-steel">Backed by EXPERIENCE.</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lede text-ink/80">
             Practical LIHTC development strategy from someone who has built,
