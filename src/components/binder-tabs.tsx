@@ -32,7 +32,7 @@ export function BinderTabs() {
                 "hover:translate-x-1 [&.active]:translate-x-1 [&.active]:brightness-110",
               )}
             >
-              <span className="font-display text-xs font-semibold uppercase tracking-nav">
+              <span className="whitespace-nowrap font-display text-xs font-semibold uppercase tracking-nav">
                 {item.label}
               </span>
             </Link>
@@ -54,7 +54,7 @@ export function BinderTabStrip() {
           key={item.to}
           to={item.to}
           className={cn(
-            "inline-flex min-h-8 flex-1 basis-[22%] items-center justify-center rounded-sm px-1.5 font-display text-[10px] font-semibold uppercase tracking-nav sm:basis-[18%] sm:text-[11px]",
+            "inline-flex min-h-8 flex-1 basis-[22%] items-center justify-center rounded-sm px-1 font-display text-[10px] font-semibold uppercase tracking-nav sm:basis-[18%] sm:px-1.5 sm:text-[11px]",
             TAB[item.tab],
             "opacity-95 [&.active]:opacity-100 [&.active]:ring-2 [&.active]:ring-ink [&.active]:ring-offset-1 [&.active]:ring-offset-paper",
           )}

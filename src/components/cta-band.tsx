@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 type To =
   | "/"
   | "/access"
+  | "/huddle"
   | "/inquiry"
   | "/about"
   | "/playbook"

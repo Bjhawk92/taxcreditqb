@@ -37,7 +37,7 @@ export const SITE = {
     "Tax Credit QB is not a law firm, not a syndicator, not your co-GP, and not a substitute for local land-use counsel. Meeting support is not lobbying unless a separate engagement says so. Deck templates are educational and must be adapted to the site, the QAP, and the jurisdiction. Financial models are prepared by Alkaline Advisors unless otherwise stated. Tax Credit QB does not guarantee approvals, tax-credit awards, financing, or project outcomes. You remain the developer and owner of your opportunity.",
 } as const;
 
-export const WORK_LABEL = "On the Field" as const;
+export const WORK_LABEL = "Sign the QB" as const;
 
 export const NAV = [
   {
@@ -61,7 +61,7 @@ export const NAV = [
   {
     label: WORK_LABEL,
     to: "/access",
-    blurb: "Bring the QB onto the field — questions, huddles, meeting support, and advisory.",
+    blurb: "Add an experienced QB to your team — questions, huddles, presentations, and field support.",
     tab: "gold",
   },
   {
@@ -72,12 +72,59 @@ export const NAV = [
   },
 ] as const;
 
+export const SIGN_SERVICES = [
+  {
+    label: "Ask the QB",
+    to: "/register" as const,
+    blurb: "Get a direct answer to a focused deal question.",
+    body: "Submit a specific development question and receive practical guidance grounded in real LIHTC development experience.",
+    cta: "Ask the QB",
+  },
+  {
+    label: "Schedule a Huddle",
+    to: "/huddle" as const,
+    blurb: "Read the defense. Call the next play.",
+    body: "Bring your questions, concerns, or upcoming decisions to a private strategy session with Brett Johnson.",
+    cta: "Schedule a huddle",
+  },
+  {
+    label: "Presentation Builder",
+    to: "/playbook/builder" as const,
+    blurb: "Bring us the deal. We’ll build the game plan.",
+    body: "Organize the project facts, images, documents, audience details, and supporting evidence Tax Credit QB needs to scope and develop your presentation.",
+    cta: "Explore the Builder",
+  },
+  {
+    label: "Meeting Support",
+    to: "/desk" as const,
+    blurb: "Bring the QB onto the field.",
+    body: "Prepare the speakers, strengthen the game plan, and add experienced support for a municipal meeting, neighborhood meeting, public hearing, negotiation, or financial discussion.",
+    cta: "Explore meeting support",
+  },
+  {
+    label: "Project Advisory",
+    to: "/advisory" as const,
+    blurb: "Keep the whole deal moving downfield.",
+    body: "Bring Tax Credit QB alongside your team for assignments that extend beyond one question, presentation, or meeting.",
+    cta: "Explore project advisory",
+  },
+  {
+    label: "Partner Support",
+    to: "/for-partners" as const,
+    blurb: "You keep the sponsor. We QB the field.",
+    body: "Support emerging developers through the municipal, community, presentation, and execution challenges that can determine whether a strong deal moves forward.",
+    cta: "Explore partner support",
+  },
+] as const;
+
 export const WORK_NAV = [
-  { label: "Ask the QB", to: "/register", blurb: "Bring a focused deal question." },
-  { label: "Huddle", to: "/access", blurb: "Private strategy sessions to align the next play." },
+  { label: "Ask the QB", to: "/register", blurb: "Get a direct answer to a focused deal question." },
+  { label: "Schedule a Huddle", to: "/huddle", blurb: "Read the defense. Call the next play." },
+  { label: "Presentation Builder", to: "/playbook/builder", blurb: "Bring us the deal. We’ll build the game plan." },
   { label: "Meeting Support", to: "/desk", blurb: "Bring the QB onto the field." },
   { label: "Project Advisory", to: "/advisory", blurb: "Keep the whole deal moving downfield." },
   { label: "Partner Support", to: "/for-partners", blurb: "You keep the sponsor. We QB the field." },
+  { label: "Call the next play", to: "/inquiry", blurb: "Tell us what the deal needs and we’ll help call the next play." },
 ] as const;
 
 export const FOOTER_NAV = [
@@ -85,8 +132,9 @@ export const FOOTER_NAV = [
   { label: "Presentation Builder", to: "/playbook/builder" },
   { label: "Film Room", to: "/videos" },
   { label: "Tools", to: "/tools" },
+  { label: "Sign the QB", to: "/access" },
   { label: "Ask the QB", to: "/register" },
-  { label: "Huddle", to: "/access" },
+  { label: "Schedule a Huddle", to: "/huddle" },
   { label: "Meeting Support", to: "/desk" },
   { label: "Project Advisory", to: "/advisory" },
   { label: "Partner Support", to: "/for-partners" },
@@ -96,6 +144,7 @@ export const FOOTER_NAV = [
   { label: "Contact", to: "/contact" },
   { label: "Legal", to: "/legal" },
 ] as const;
+
 
 export const NEEDS = [
   { value: "private-intro", label: "Municipal introduction and city strategy" },
