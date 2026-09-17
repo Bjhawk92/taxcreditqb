@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { HqEmpty, HqHeader, HqMain } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
-import { archiveDocument, listDocuments } from "@/lib/locker";
+import { archiveDocument, duplicateDocument, listDocuments } from "@/lib/locker";
+import { escapeHtml } from "@/lib/utils";
 
 export const Route = createFileRoute("/hq/documents")({
   component: DocumentsPage,
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/hq/documents")({
 function DocumentsPage() {
   const [rows, setRows] = useState<Awaited<ReturnType<typeof listDocuments>>>([]);
   const [filter, setFilter] = useState("all");
+  const [openId, setOpenId] = useState<number | null>(null);
 
   function load() {
     listDocuments()
@@ -20,13 +22,18 @@ function DocumentsPage() {
   useEffect(load, []);
 
   const shown = rows.filter((r) => (filter === "all" ? true : r.doc_type === filter));
+  const open = shown.find((d) => d.id === openId);
 
-  function download(name: string, body: string | null) {
-    const blob = new Blob([body ?? ""], { type: "text/plain" });
+  function download(name: string, body: string | null, format: string | null) {
+    const isDoc = format === "doc";
+    const blob = new Blob(
+      [isDoc ? `<html><body><pre>${escapeHtml(body ?? "")}</pre></body></html>` : (body ?? "")],
+      { type: isDoc ? "application/msword" : "text/plain" },
+    );
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${name}.txt`;
+    a.download = `${name}.${isDoc ? "doc" : "txt"}`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -47,6 +54,10 @@ function DocumentsPage() {
           >
             <option value="all">All</option>
             <option value="letter">Letters</option>
+            <option value="presentation">Presentations</option>
+            <option value="site_control">Site control</option>
+            <option value="checklist">Checklists / reports</option>
+            <option value="financial_model">Financial models</option>
             <option value="other">Other</option>
           </select>
         </label>
@@ -67,16 +78,38 @@ function DocumentsPage() {
                 <div>
                   <p className="font-semibold">{doc.name}</p>
                   <p className="text-sm text-muted">
-                    {doc.doc_type} · {new Date(doc.created_at).toLocaleDateString()}
+                    {doc.doc_type}
+                    {doc.deal_name ? ` · ${doc.deal_name}` : ""} ·{" "}
+                    {new Date(doc.created_at).toLocaleDateString()}
+                    {doc.format ? ` · ${doc.format}` : ""}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
+                  <Button type="button" variant="secondary" onClick={() => setOpenId(doc.id)}>
+                    Open
+                  </Button>
                   <Button
                     type="button"
                     variant="secondary"
-                    onClick={() => download(doc.name, doc.body)}
+                    onClick={() => download(doc.name, doc.body, doc.format)}
                   >
                     Download
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    onClick={() => window.print()}
+                  >
+                    Print
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    onClick={() => {
+                      void duplicateDocument({ data: { id: doc.id } }).then(load);
+                    }}
+                  >
+                    Duplicate
                   </Button>
                   <Button
                     type="button"
@@ -92,6 +125,12 @@ function DocumentsPage() {
             ))}
           </ul>
         )}
+        {open?.body ? (
+          <section className="mt-10 border border-line p-6">
+            <h2 className="font-display text-xl font-semibold">{open.name}</h2>
+            <pre className="mt-4 whitespace-pre-wrap font-sans text-sm">{open.body}</pre>
+          </section>
+        ) : null}
       </HqMain>
     </main>
   );

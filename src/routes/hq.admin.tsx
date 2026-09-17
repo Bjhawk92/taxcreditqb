@@ -13,6 +13,12 @@ import {
   setHqMeetingStatus,
   setHqQuestionStatus,
 } from "@/lib/hq";
+import {
+  deliverModelRecord,
+  listAdminModelRequests,
+  setModelRequestStatus,
+} from "@/lib/locker";
+import { MODEL_STATUSES, formatModelStatus } from "@/lib/deal-fields";
 
 export const Route = createFileRoute("/hq/admin")({
   component: HqAdmin,
@@ -22,12 +28,18 @@ function HqAdmin() {
   const [data, setData] = useState<Awaited<ReturnType<typeof getHqAdmin>> | null>(
     null,
   );
+  const [models, setModels] = useState<Awaited<ReturnType<typeof listAdminModelRequests>> | null>(
+    null,
+  );
   const [note, setNote] = useState<string | null>(null);
 
   function load() {
     getHqAdmin()
       .then(setData)
       .catch(() => setData({ admin: false }));
+    listAdminModelRequests()
+      .then(setModels)
+      .catch(() => setModels({ admin: false, rows: [] }));
   }
   useEffect(load, []);
 
@@ -154,12 +166,111 @@ function HqAdmin() {
           )}
         </section>
 
+        {models?.admin ? (
+          <section className="mt-12">
+            <h2 className="font-display text-2xl font-semibold">Custom model requests</h2>
+            <p className="mt-2 text-sm text-muted">
+              Internal notes stay off the client view. Deliverable records log
+              metadata only — no file bytes are stored here.
+            </p>
+            {models.rows.length === 0 ? (
+              <p className="mt-3 text-muted">No model requests yet.</p>
+            ) : (
+              <ul className="mt-4 space-y-4">
+                {models.rows.map((r) => (
+                  <li key={r.id} className="border border-line p-4 text-sm">
+                    <p className="font-semibold">
+                      #{r.id} · {r.deal_name || "No deal"} · {r.email || r.user_id}
+                    </p>
+                    <p className="mt-1 text-muted">{formatModelStatus(r.status)}</p>
+                    {r.provider_notes_internal ? (
+                      <p className="mt-2 border border-dashed border-line p-2 text-muted">
+                        Internal: {r.provider_notes_internal}
+                      </p>
+                    ) : null}
+                    <form
+                      className="mt-3 grid gap-3 md:grid-cols-2"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        const form = new FormData(e.currentTarget);
+                        void setModelRequestStatus({
+                          data: {
+                            id: r.id,
+                            status: String(form.get("status") ?? r.status),
+                            customerVisibleNotes: String(
+                              form.get("customerVisibleNotes") ?? "",
+                            ),
+                            internalNotes: String(form.get("internalNotes") ?? ""),
+                          },
+                        }).then((res) => {
+                          setNote(res.ok ? "Model status updated." : res.error);
+                          if (res.ok) load();
+                        });
+                      }}
+                    >
+                      <Field label="Status" htmlFor={`ms-${r.id}`}>
+                        <Select id={`ms-${r.id}`} name="status" defaultValue={r.status}>
+                          {MODEL_STATUSES.map((s) => (
+                            <option key={s} value={s}>
+                              {formatModelStatus(s)}
+                            </option>
+                          ))}
+                        </Select>
+                      </Field>
+                      <Field label="Note to customer" htmlFor={`cn-${r.id}`}>
+                        <Input id={`cn-${r.id}`} name="customerVisibleNotes" />
+                      </Field>
+                      <Field label="Internal note" htmlFor={`in-${r.id}`}>
+                        <Input id={`in-${r.id}`} name="internalNotes" />
+                      </Field>
+                      <div className="flex items-end">
+                        <Button type="submit">Update request</Button>
+                      </div>
+                    </form>
+                    <form
+                      className="mt-3 flex flex-col gap-3 sm:flex-row"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        const form = new FormData(e.currentTarget);
+                        void deliverModelRecord({
+                          data: {
+                            requestId: r.id,
+                            name: String(form.get("name") ?? ""),
+                            fileType: String(form.get("fileType") ?? ""),
+                          },
+                        }).then((res) => {
+                          setNote(
+                            res.ok
+                              ? `Deliverable v${res.version} recorded. Prior versions kept.`
+                              : res.error,
+                          );
+                          if (res.ok) load();
+                        });
+                      }}
+                    >
+                      <Input name="name" placeholder="Deliverable file name" required />
+                      <Input name="fileType" placeholder="xlsx / pdf" />
+                      <Button type="submit" variant="secondary">
+                        Record delivery
+                      </Button>
+                    </form>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ) : null}
+
         <section className="mt-12 grid gap-10 lg:grid-cols-2">
           <form onSubmit={onPlan} className="space-y-3">
             <h2 className="font-display text-2xl font-semibold">Assign membership</h2>
             <MemberSelect members={members} name="targetUserId" id="plan-client" />
             <Field label="Plan name" htmlFor="plan">
-              <Input id="plan" name="plan" placeholder="Playbook membership" />
+              <Select id="plan" name="plan" defaultValue="The Playbook">
+                <option value="Film Room + Ask the QB">Film Room + Ask the QB</option>
+                <option value="The Playbook">The Playbook</option>
+                <option value="The Huddle">The Huddle</option>
+              </Select>
             </Field>
             <Field label="Huddle allowance" htmlFor="allow">
               <Input

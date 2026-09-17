@@ -57,6 +57,26 @@ export const EQUIPMENT_PACKAGES: readonly EquipmentItem[] = [
     interactive: true,
   },
   {
+    slug: "deal-checklist",
+    name: "Deal Checklist",
+    blurb:
+      "Keep core Deal Profile facts and dates current so other Equipment can reuse them.",
+    access: "playbook",
+    accessLabel: "Playbook member",
+    href: "/hq/equipment?resource=deal",
+    interactive: true,
+  },
+  {
+    slug: "site-control",
+    name: "Site Control Checklist",
+    blurb:
+      "Document control and obvious diligence items. Confirm requirements with counsel and the applicable QAP.",
+    access: "playbook",
+    accessLabel: "Playbook member",
+    href: "/hq/equipment?resource=site-control",
+    interactive: true,
+  },
+  {
     slug: "letter-builder",
     name: "Letter Builder",
     blurb:

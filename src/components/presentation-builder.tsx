@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Check, Folder } from "lucide-react";
 import type { ReactNode } from "react";
+import { BuilderDealBand } from "@/components/builder-deal-band";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import {
@@ -42,7 +43,7 @@ function InquiryLink({
   );
 }
 
-export function PresentationBuilderPage() {
+export function PresentationBuilderPage({ initialDeal }: { initialDeal?: string }) {
   return (
     <main id="main">
       <PageHero
@@ -60,6 +61,8 @@ export function PresentationBuilderPage() {
           </Button>
         </div>
       </PageHero>
+
+      <BuilderDealBand initialDeal={initialDeal} />
 
       <section className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">

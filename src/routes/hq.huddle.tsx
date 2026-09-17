@@ -1,36 +1,62 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
+import { DealPicker } from "@/components/deal-picker";
 import { HqEmpty, HqHeader, HqMain, HqStatus } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
 import { Field, Input, Textarea } from "@/components/ui/field";
 import { getHqHome, submitHqHuddle } from "@/lib/hq";
+import { getLockerHome, listDeals } from "@/lib/locker";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/hq/huddle")({
+  validateSearch: (s: Record<string, unknown>) => ({
+    deal: typeof s.deal === "string" ? s.deal : undefined,
+  }),
   component: HqHuddle,
 });
 
 function HqHuddle() {
+  const search = Route.useSearch();
   const [data, setData] = useState<Awaited<ReturnType<typeof getHqHome>> | null>(
     null,
   );
+  const [home, setHome] = useState<Awaited<ReturnType<typeof getLockerHome>> | null>(
+    null,
+  );
+  const [deals, setDeals] = useState<Awaited<ReturnType<typeof listDeals>>>([]);
+  const [dealId, setDealId] = useState(search.deal ?? "");
   const [msg, setMsg] = useState<string | null>(null);
 
   function load() {
     getHqHome()
       .then(setData)
       .catch(() => setData(null));
+    getLockerHome()
+      .then(setHome)
+      .catch(() => setHome(null));
   }
-  useEffect(load, []);
+  useEffect(() => {
+    load();
+    listDeals()
+      .then((rows) => {
+        setDeals(rows);
+        if (!search.deal && rows.length === 1) setDealId(String(rows[0].id));
+      })
+      .catch(() => setDeals([]));
+  }, [search.deal]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const deal = deals.find((d) => String(d.id) === dealId);
     const res = await submitHqHuddle({
       data: {
         question: String(form.get("question") ?? ""),
-        projectInfo: String(form.get("projectInfo") ?? ""),
+        projectInfo: deal
+          ? `${deal.name}${deal.city ? ` — ${deal.city}, ${deal.state ?? ""}` : ""}`
+          : String(form.get("projectInfo") ?? ""),
         deadline: String(form.get("deadline") ?? ""),
+        dealId: dealId ? Number(dealId) : undefined,
       },
     }).catch(() => ({
       ok: false as const,
@@ -49,37 +75,47 @@ function HqHuddle() {
   }
 
   const rows = data?.huddles ?? [];
-  const m = data?.membership;
-  const hasPlan = Boolean(m?.plan);
+  const included = Boolean(home?.entitlements.huddleSessionsPerMonth);
+  const remaining = home?.usage.huddlesRemaining ?? 0;
 
   return (
     <main id="main">
       <HqHeader
-        title="Huddle"
+        title="My Huddles"
         sub="Request a private session under your membership. A booking request is not a confirmed meeting. Session length and frequency follow your plan."
       />
       <HqMain>
-        <p className="max-w-2xl text-ink/80">
-          {hasPlan
-            ? `${m?.consultRemaining} of ${m?.consultAllowance} sessions remaining this period.`
-            : "No membership on file, so no huddle allowance is assigned yet. You may still send a request."}
-        </p>
-        <form onSubmit={onSubmit} className="mt-8 max-w-xl space-y-4">
-          <Field label="Question or decision" htmlFor="q">
-            <Textarea id="q" name="question" required rows={4} />
-          </Field>
-          <Field label="Relevant project information" htmlFor="info">
-            <Textarea id="info" name="projectInfo" rows={3} />
-          </Field>
-          <Field label="Upcoming deadline" htmlFor="deadline">
-            <Input id="deadline" name="deadline" />
-          </Field>
-          <p className="text-sm text-muted">
-            Email supporting documents to {SITE.emails.info} with this request.
+        {included ? (
+          <p className="max-w-2xl text-ink/80">
+            {remaining} of {home?.entitlements.huddleSessionsPerMonth} included
+            sessions remaining this period.
           </p>
-          <Button type="submit">Submit huddle request</Button>
-          {msg ? <p className="text-sm">{msg}</p> : null}
-        </form>
+        ) : (
+          <p className="max-w-2xl text-ink/80">
+            Live huddles are included with The Playbook and The Huddle.{" "}
+            <Link to="/game-plans" className="font-semibold text-steel">
+              View Game Plans
+            </Link>
+          </p>
+        )}
+        {included && remaining <= 0 ? (
+          <p className="mt-4 text-ink/80">No huddle sessions remaining this period.</p>
+        ) : included ? (
+          <form onSubmit={onSubmit} className="mt-8 max-w-xl space-y-4">
+            <DealPicker deals={deals} value={dealId} onChange={setDealId} />
+            <Field label="Question or decision" htmlFor="q">
+              <Textarea id="q" name="question" required rows={4} />
+            </Field>
+            <Field label="Upcoming deadline" htmlFor="deadline" hint="Optional">
+              <Input id="deadline" name="deadline" />
+            </Field>
+            <p className="text-sm text-muted">
+              Email supporting documents to {SITE.emails.info} with this request.
+            </p>
+            <Button type="submit">Submit huddle request</Button>
+            {msg ? <p className="text-sm">{msg}</p> : null}
+          </form>
+        ) : null}
         <h2 className="mt-12 font-display text-2xl font-semibold">Your requests</h2>
         {rows.length === 0 ? (
           <div className="mt-4">

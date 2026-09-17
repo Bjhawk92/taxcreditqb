@@ -1,4 +1,5 @@
 import { MEMBERSHIPS } from "@/lib/pricing";
+import type { AccessKind } from "@/lib/equipment-catalog";
 
 export type PlanId = "film" | "playbook" | "huddle" | "none";
 
@@ -84,6 +85,21 @@ export function entitlementsFor(plan: string | null | undefined): Entitlements {
 
 export function remaining(used: number, allowance: number) {
   return Math.max(0, allowance - Math.max(0, used));
+}
+
+export function equipmentAllowed(access: AccessKind, plan: PlanId): boolean {
+  if (access === "free" || access === "account" || access === "purchase" || access === "custom") {
+    return true;
+  }
+  if (access === "playbook") return plan === "playbook" || plan === "huddle";
+  if (access === "huddle") return plan === "huddle";
+  return false;
+}
+
+export function equipmentGateLabel(access: AccessKind): string | null {
+  if (access === "playbook") return "The Playbook";
+  if (access === "huddle") return "The Huddle";
+  return null;
 }
 
 export { MEMBERSHIPS };

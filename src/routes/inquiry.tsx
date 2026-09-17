@@ -8,11 +8,14 @@ import { seo } from "@/lib/seo";
 import { NEEDS, SITE } from "@/lib/site";
 import { submitForm } from "@/lib/submit-form";
 
-type InquirySearch = { intent?: string };
+type InquirySearch = { intent?: string; project?: string; market?: string; site?: string };
 
 export const Route = createFileRoute("/inquiry")({
   validateSearch: (search: Record<string, unknown>): InquirySearch => ({
     intent: typeof search.intent === "string" ? search.intent : undefined,
+    project: typeof search.project === "string" ? search.project : undefined,
+    market: typeof search.market === "string" ? search.market : undefined,
+    site: typeof search.site === "string" ? search.site : undefined,
   }),
   head: () =>
     seo({
@@ -24,7 +27,7 @@ export const Route = createFileRoute("/inquiry")({
 });
 
 function Inquiry() {
-  const { intent } = useSearch({ from: "/inquiry" });
+  const { intent, project, market, site } = useSearch({ from: "/inquiry" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
   );
@@ -77,7 +80,7 @@ function Inquiry() {
               <Input id="phone" name="phone" type="tel" autoComplete="tel" />
             </Field>
             <Field label="City / state" htmlFor="market">
-              <Input id="market" name="market" required />
+              <Input id="market" name="market" required defaultValue={market ?? ""} />
             </Field>
             <Field label="What you need" htmlFor="need">
               <Select id="need" name="need" required defaultValue={defaultNeed}>
@@ -92,13 +95,18 @@ function Inquiry() {
               </Select>
             </Field>
             <Field label="Site address (optional)" htmlFor="site">
-              <Input id="site" name="site" />
+              <Input id="site" name="site" defaultValue={site ?? ""} />
             </Field>
             <Field label="Timing" htmlFor="timing">
               <Input id="timing" name="timing" placeholder="Hearing date, staff meeting, etc." />
             </Field>
             <Field label="Notes" htmlFor="notes">
-              <Textarea id="notes" name="notes" rows={5} />
+              <Textarea
+                id="notes"
+                name="notes"
+                rows={5}
+                defaultValue={project ? `Deal Profile: ${project}` : undefined}
+              />
             </Field>
             <p className="text-sm text-muted">{SITE.disclaimer}</p>
             {status === "error" ? (

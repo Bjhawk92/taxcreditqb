@@ -3,7 +3,6 @@ import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
 import { SITE } from "@/lib/site";
-import { SignedIn, SignedOut } from "@/lib/auth/gates";
 
 export const Route = createFileRoute("/tools/modeling")({
   head: () =>
@@ -37,24 +36,50 @@ function ModelingProduct() {
           turnaround, and revision allowance are confirmed in writing for each
           assignment. They are not published here until approved.
         </p>
-        <ul className="mt-8 space-y-2 text-ink/80">
-          <li>Select or create a Deal Profile so known facts carry forward.</li>
-          <li>Complete the intake you can; save and continue later.</li>
-          <li>Authorized Tax Credit QB / Alkaline personnel receive the request in a private workflow.</li>
-        </ul>
+        <dl className="mt-10 grid gap-4 border border-line p-6 sm:grid-cols-2">
+          <div>
+            <dt className="font-display text-sm font-semibold uppercase tracking-nav text-muted">
+              Price
+            </dt>
+            <dd className="mt-1">To be published</dd>
+          </div>
+          <div>
+            <dt className="font-display text-sm font-semibold uppercase tracking-nav text-muted">
+              Member price
+            </dt>
+            <dd className="mt-1">To be published</dd>
+          </div>
+          <div>
+            <dt className="font-display text-sm font-semibold uppercase tracking-nav text-muted">
+              Deliverables
+            </dt>
+            <dd className="mt-1">To be published</dd>
+          </div>
+          <div>
+            <dt className="font-display text-sm font-semibold uppercase tracking-nav text-muted">
+              Turnaround
+            </dt>
+            <dd className="mt-1">To be published</dd>
+          </div>
+          <div>
+            <dt className="font-display text-sm font-semibold uppercase tracking-nav text-muted">
+              Revision allowance
+            </dt>
+            <dd className="mt-1">To be published</dd>
+          </div>
+          <div>
+            <dt className="font-display text-sm font-semibold uppercase tracking-nav text-muted">
+              Required inputs
+            </dt>
+            <dd className="mt-1">Confirmed with Alkaline Advisors per assignment</dd>
+          </div>
+        </dl>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <SignedIn>
-            <Button asChild size="lg">
-              <Link to="/hq/modeling" search={{ deal: undefined }}>
-                Build my model
-              </Link>
-            </Button>
-          </SignedIn>
-          <SignedOut>
-            <Button asChild size="lg">
-              <Link to="/register">Create account to continue</Link>
-            </Button>
-          </SignedOut>
+          <Button asChild size="lg">
+            <Link to="/hq/modeling" search={{ deal: undefined }}>
+              Build my model
+            </Link>
+          </Button>
           <Button asChild variant="secondary" size="lg">
             <Link to="/desk/modeling">About Alkaline Advisors</Link>
           </Button>

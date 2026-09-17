@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
 import { getHqAuthStatus } from "@/lib/hq-auth-status";
+import { persistSignupName } from "@/lib/locker";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -140,6 +141,20 @@ export function HqSignIn({
         password,
         name: name || email,
       });
+      if (mode === "up") {
+        try {
+          window.sessionStorage.setItem(
+            "locker.signup",
+            JSON.stringify({ firstName: first, lastName: last, email }),
+          );
+        } catch {
+          /* storage unavailable */
+        }
+        await new Promise((r) => setTimeout(r, 150));
+        await persistSignupName({
+          data: { firstName: first, lastName: last },
+        }).catch(() => null);
+      }
       window.location.href = mode === "up" ? "/hq/onboarding" : "/hq";
     } catch (err) {
       setError(

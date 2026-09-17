@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { HqEmpty, HqMain } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
-import { getLockerHome } from "@/lib/locker";
+import { getLockerHome, markNotificationRead } from "@/lib/locker";
 import { signOut } from "@/lib/auth/client";
 
 export const Route = createFileRoute("/hq/")({
@@ -19,7 +19,8 @@ function LockerHome() {
       .catch(() => setData(null));
   }, []);
 
-  const next = nextPlay(data);
+  const next = data?.nextPlay;
+  const unread = data?.notifications.filter((n) => !n.read_at) ?? [];
 
   return (
     <main id="main">
@@ -38,22 +39,60 @@ function LockerHome() {
         </div>
       </header>
       <HqMain>
-        <section className="border border-line bg-paper p-6 md:p-8">
-          <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-            Next play
-          </p>
-          <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight">
-            {next.title}
-          </h2>
-          <p className="mt-2 max-w-2xl text-ink/75">{next.body}</p>
-          <p className="mt-3 text-sm text-muted">
-            Confirm current requirements against the applicable QAP, HFA
-            guidance, lender, investor, and counsel requirements.
-          </p>
-          <Button asChild className="mt-6">
-            <a href={next.to}>{next.cta}</a>
-          </Button>
-        </section>
+        {next ? (
+          <section className="border border-line bg-paper p-6 md:p-8">
+            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Next play
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight">
+              {next.title}
+            </h2>
+            <p className="mt-2 max-w-2xl text-ink/75">{next.body}</p>
+            <p className="mt-3 text-sm text-muted">
+              Confirm current requirements against the applicable QAP, HFA
+              guidance, lender, investor, and counsel requirements.
+            </p>
+            <Button asChild className="mt-6">
+              <a href={next.to}>{next.cta}</a>
+            </Button>
+          </section>
+        ) : null}
+
+        {unread.length ? (
+          <section className="mt-8 border border-line p-6">
+            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Notices
+            </p>
+            <ul className="mt-4 space-y-3">
+              {unread.slice(0, 4).map((n) => (
+                <li key={n.id} className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="font-semibold">{n.title}</p>
+                    {n.body ? <p className="text-sm text-ink/75">{n.body}</p> : null}
+                  </div>
+                  <div className="flex gap-2">
+                    {n.href ? (
+                      <Button asChild variant="secondary">
+                        <a href={n.href}>Open</a>
+                      </Button>
+                    ) : null}
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() =>
+                        void markNotificationRead({ data: { id: n.id } }).then(() =>
+                          getLockerHome().then(setData),
+                        )
+                      }
+                    >
+                      Dismiss
+                    </Button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <article className="flex flex-col border border-line p-6">
@@ -74,6 +113,7 @@ function LockerHome() {
                     <p className="text-sm text-muted">
                       {[d.city, d.state].filter(Boolean).join(", ") || "Location TBD"}{" "}
                       · {d.stage}
+                      {typeof d.progress === "number" ? ` · ${d.progress}% checklist` : ""}
                     </p>
                   </li>
                 ))}
@@ -110,9 +150,15 @@ function LockerHome() {
             ) : (
               <p className="mt-1 text-ink/75">No membership assigned yet.</p>
             )}
+            {data?.usage.renewalDate ? (
+              <p className="mt-2 text-sm text-muted">Renewal {data.usage.renewalDate}</p>
+            ) : null}
             <p className="mt-4 text-sm text-ink/75">
               Ask the QB: {data?.usage.questionsRemaining ?? 0} remaining this
-              month. Huddles: {data?.usage.huddlesRemaining ?? 0} remaining.
+              month
+              {data?.entitlements.huddleSessionsPerMonth
+                ? `. Huddles: ${data.usage.huddlesRemaining} remaining.`
+                : "."}
             </p>
             <Button asChild className="mt-6 self-start" variant="secondary">
               <Link to="/hq/membership">Manage Game Plan</Link>
@@ -131,8 +177,14 @@ function LockerHome() {
             ) : (
               <p className="mt-3 text-ink/75">No questions submitted this period.</p>
             )}
+            <p className="mt-2 text-sm text-muted">
+              {data?.usage.questionsUsed ?? 0} used · {data?.usage.questionsRemaining ?? 0}{" "}
+              remaining of {data?.entitlements.askQuestionsPerMonth ?? 0} this month.
+            </p>
             <Button asChild className="mt-6 self-start">
-              <Link to="/hq/messages">Ask the QB</Link>
+              <Link to="/hq/messages" search={{ deal: undefined }}>
+                Ask the QB
+              </Link>
             </Button>
           </article>
 
@@ -161,7 +213,9 @@ function LockerHome() {
               </p>
             )}
             <Button asChild className="mt-6 self-start" variant="secondary">
-              <Link to="/hq/huddle">Schedule a huddle</Link>
+              <Link to="/hq/huddle" search={{ deal: undefined }}>
+                Schedule a huddle
+              </Link>
             </Button>
           </article>
 
@@ -215,38 +269,4 @@ function LockerHome() {
       </HqMain>
     </main>
   );
-}
-
-function nextPlay(data: Awaited<ReturnType<typeof getLockerHome>> | null) {
-  if (!data?.onboardingComplete) {
-    return {
-      title: "Build your developer profile.",
-      body: "A short profile makes Equipment, letters, and QB Access more useful. You can skip optional fields.",
-      cta: "Open profile",
-      to: "/hq/onboarding" as const,
-    };
-  }
-  if (!data.deals.length) {
-    return {
-      title: "Add your first deal.",
-      body: "Deal Profiles are the connective tissue. Enter what you know; leave the rest blank.",
-      cta: "Add a deal",
-      to: "/hq/deals" as const,
-    };
-  }
-  const awarded = data.deals.find((d) => d.stage === "Awarded");
-  if (awarded) {
-    return {
-      title: "Open the Post-Award Checklist.",
-      body: `${awarded.name} is marked Awarded. Track closing and compliance items against the applicable QAP and counsel.`,
-      cta: "Open next play",
-      to: "/hq/equipment" as const,
-    };
-  }
-  return {
-    title: "Keep the deal moving.",
-    body: `Work ${data.deals[0].name} through the pre-application checklist, Letter Builder, or Ask the QB.`,
-    cta: "Open next play",
-    to: "/hq/equipment" as const,
-  };
 }

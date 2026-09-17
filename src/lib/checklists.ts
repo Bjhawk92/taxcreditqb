@@ -75,4 +75,50 @@ export const CHECKLISTS: readonly ChecklistTemplate[] = [
       },
     ],
   },
+  {
+    slug: "deal",
+    title: "Deal Checklist",
+    nextPlay: "Close outstanding items on the Deal Checklist.",
+    sections: [
+      {
+        name: "Core",
+        items: [
+          { key: "name", label: "Project name and location confirmed" },
+          { key: "type", label: "Deal type recorded" },
+          { key: "units", label: "Unit count recorded" },
+          { key: "stage", label: "Current stage kept current" },
+        ],
+      },
+      {
+        name: "Dates",
+        items: [
+          { key: "app-due", label: "Application due date (if applicable)" },
+          { key: "closing", label: "Expected closing (if applicable)" },
+          { key: "pis", label: "Placed-in-service target (if applicable)" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "site-control",
+    title: "Site Control Checklist",
+    nextPlay: "Document site control before application submission.",
+    sections: [
+      {
+        name: "Control",
+        items: [
+          { key: "psa", label: "Purchase agreement, option, or ground lease" },
+          { key: "term", label: "Control term covers the application window" },
+          { key: "title", label: "Title path identified" },
+        ],
+      },
+      {
+        name: "Diligence",
+        items: [
+          { key: "env-phase1", label: "Phase I environmental (if applicable)" },
+          { key: "survey", label: "Survey ordered or in hand" },
+        ],
+      },
+    ],
+  },
 ];

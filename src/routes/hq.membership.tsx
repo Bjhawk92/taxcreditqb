@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { HqEmpty, HqHeader, HqMain } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
-import { getHqHome } from "@/lib/hq";
+import { getLockerHome } from "@/lib/locker";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/hq/membership")({
@@ -10,16 +10,16 @@ export const Route = createFileRoute("/hq/membership")({
 });
 
 function HqMembership() {
-  const [data, setData] = useState<Awaited<ReturnType<typeof getHqHome>> | null>(
+  const [data, setData] = useState<Awaited<ReturnType<typeof getLockerHome>> | null>(
     null,
   );
   useEffect(() => {
-    getHqHome()
+    getLockerHome()
       .then(setData)
       .catch(() => setData(null));
   }, []);
-  const m = data?.membership;
-  const hasPlan = Boolean(m?.plan);
+  const e = data?.entitlements;
+  const hasPlan = e && e.planId !== "none";
 
   return (
     <main id="main">
@@ -44,42 +44,61 @@ function HqMembership() {
               <dt className="font-display text-sm uppercase tracking-nav text-muted">
                 Plan
               </dt>
-              <dd className="mt-1 text-xl font-semibold">{m?.plan}</dd>
+              <dd className="mt-1 text-xl font-semibold">{e.planName}</dd>
+              {e.price ? (
+                <p className="mt-1 text-sm text-ink/75">${e.price}/month</p>
+              ) : null}
             </div>
             <div className="border border-line p-5">
               <dt className="font-display text-sm uppercase tracking-nav text-muted">
-                Consulting remaining
+                Status
               </dt>
-              <dd className="mt-1 text-xl font-semibold">
-                {m?.consultRemaining} of {m?.consultAllowance} sessions
-                remaining this period
-              </dd>
+              <dd className="mt-1 text-xl font-semibold">Active</dd>
+              <p className="mt-1 text-sm text-ink/75">
+                Renewal {data?.usage.renewalDate ?? "not set"}
+              </p>
             </div>
             <div className="border border-line p-5">
               <dt className="font-display text-sm uppercase tracking-nav text-muted">
-                Renewal
+                Ask the QB
               </dt>
               <dd className="mt-1 text-xl font-semibold">
-                {m?.renewalDate ?? "Not set"}
+                {data?.usage.questionsRemaining} of {e.askQuestionsPerMonth} remaining
               </dd>
             </div>
-            {m?.company ? (
+            {e.huddleSessionsPerMonth ? (
               <div className="border border-line p-5">
                 <dt className="font-display text-sm uppercase tracking-nav text-muted">
-                  Company
+                  Huddles
                 </dt>
-                <dd className="mt-1 text-xl font-semibold">{m.company}</dd>
+                <dd className="mt-1 text-xl font-semibold">
+                  {data?.usage.huddlesRemaining} of {e.huddleSessionsPerMonth} remaining
+                </dd>
               </div>
             ) : null}
           </dl>
         )}
+        {hasPlan ? (
+          <ul className="mt-8 max-w-2xl space-y-2 text-ink/80">
+            <li>Film Room: {e.filmRoom ? "included" : "not included"}</li>
+            <li>Playbook resources: {e.playbook ? "included" : "not included"}</li>
+            <li>
+              Premium Equipment: {e.premiumEquipment ? "included" : "not included"}
+            </li>
+            <li>
+              Member discount on separately scoped work:{" "}
+              {e.memberDiscount ? `${e.memberDiscount}%` : "none published"}
+            </li>
+            <li>
+              Monthly deal or presentation review:{" "}
+              {e.monthlyReview ? "included with The Huddle" : "not included"}
+            </li>
+          </ul>
+        ) : null}
         <div className="mt-10 max-w-2xl space-y-4 text-ink/80">
           <p>
-            Included when assigned: Film Room access on every plan. Playbook
-            members also receive the presentation templates and one 30-minute
-            virtual strategy session each month. Huddle members receive two
-            45-minute sessions and one monthly deal or presentation review.
-            Unused time does not roll over unless your written plan says so.
+            Included benefits follow the published Game Plans. Unused huddle time
+            does not roll over unless your written plan says so.
           </p>
           <p>
             Custom decks, in-person meeting attendance, modeling, and retainers are
@@ -92,6 +111,9 @@ function HqMembership() {
           </p>
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild variant="secondary">
+            <Link to="/game-plans">Compare Game Plans</Link>
+          </Button>
           <Button asChild variant="secondary">
             <Link to="/hq/billing">Manage billing</Link>
           </Button>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { HqHeader, HqMain } from "@/components/hq-empty";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/lib/auth/client";
-import { getAccountProfile } from "@/lib/locker";
+import { getAccountProfile, saveAccountPrefs } from "@/lib/locker";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/hq/account")({
@@ -14,6 +14,7 @@ function AccountPage() {
   const [data, setData] = useState<Awaited<ReturnType<typeof getAccountProfile>> | null>(
     null,
   );
+  const [note, setNote] = useState<string | null>(null);
   useEffect(() => {
     getAccountProfile()
       .then(setData)
@@ -37,11 +38,42 @@ function AccountPage() {
             </p>
           </section>
           <section className="border border-line p-6">
-            <h2 className="font-display text-xl font-semibold">Company profile</h2>
+            <h2 className="font-display text-xl font-semibold">Email</h2>
+            <p className="mt-3 text-ink/75">
+              {data?.emailVerified
+                ? "This address is marked verified."
+                : "This address is not marked verified. A mailer is not connected, so automatic verification links are not sent. Tax Credit QB can confirm the address operationally if needed."}
+            </p>
+            <a
+              href={`mailto:${SITE.emails.info}?subject=Email%20verification`}
+              className="mt-4 inline-block font-display text-sm font-semibold uppercase tracking-nav text-steel"
+            >
+              Write about email
+            </a>
+          </section>
+          <section className="border border-line p-6">
+            <h2 className="font-display text-xl font-semibold">Developer / company profile</h2>
             <p className="mt-3">{data?.company?.name || data?.member?.company || "Not set"}</p>
             <p className="text-ink/75">
               {[data?.company?.city, data?.company?.state].filter(Boolean).join(", ")}
             </p>
+            <p className="mt-2 text-sm text-muted">
+              Experience: {data?.profile?.experience || "Not set"}
+            </p>
+            {data?.companyMembers?.length ? (
+              <ul className="mt-4 space-y-1 text-sm">
+                {data.companyMembers.map((m) => (
+                  <li key={m.user_id}>
+                    {m.name || m.email || m.user_id} · {m.role}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-4 text-sm text-muted">
+                Company teams can share deals later. This account currently
+                shows the owner only.
+              </p>
+            )}
             <Button asChild className="mt-6" variant="secondary">
               <Link to="/hq/onboarding">Update profile</Link>
             </Button>
@@ -66,6 +98,28 @@ function AccountPage() {
             >
               Request a reset
             </a>
+          </section>
+          <section className="border border-line p-6">
+            <h2 className="font-display text-xl font-semibold">Notifications</h2>
+            <p className="mt-3 text-ink/75">
+              Billing, verification, and model-status notices stay available.
+              Optional product notices can be turned off.
+            </p>
+            <label className="mt-4 flex min-h-11 items-center gap-3 text-sm">
+              <input
+                type="checkbox"
+                checked={data?.member?.notify_nonessential !== false}
+                onChange={(e) => {
+                  const on = e.target.checked;
+                  void saveAccountPrefs({ data: { notifyNonessential: on } }).then(() => {
+                    setNote(on ? "Optional notices on." : "Optional notices off.");
+                    getAccountProfile().then(setData);
+                  });
+                }}
+              />
+              Receive optional locker notices
+            </label>
+            {note ? <p className="mt-2 text-sm">{note}</p> : null}
           </section>
           <section className="border border-line p-6">
             <h2 className="font-display text-xl font-semibold">Billing</h2>

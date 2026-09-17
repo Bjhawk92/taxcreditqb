@@ -167,18 +167,19 @@ export const getHqHome = createServerFn({ method: "POST" })
 
 export const submitHqQuestion = createServerFn({ method: "POST" })
   .middleware([authMiddleware])
-  .validator((data: { body: string; projectName?: string }) => ({
+  .validator((data: { body: string; projectName?: string; dealId?: number }) => ({
     body: data.body.trim(),
     projectName: data.projectName?.trim() || null,
+    dealId: data.dealId ? Number(data.dealId) : null,
   }))
   .handler(async ({ context, data }) => {
     if (!data.body) return { ok: false as const, error: "Enter a question." };
     await ensureMember(context.userId);
     const sql = await getSql();
     await sql.query(
-      `insert into hq_questions (user_id, project_name, body, status)
-       values ($1, $2, $3, 'submitted')`,
-      [context.userId, data.projectName, data.body],
+      `insert into hq_questions (user_id, project_name, body, status, deal_id)
+       values ($1, $2, $3, 'submitted', $4)`,
+      [context.userId, data.projectName, data.body, data.dealId],
     );
     return { ok: true as const };
   });
@@ -190,10 +191,12 @@ export const submitHqHuddle = createServerFn({ method: "POST" })
       question: string;
       projectInfo?: string;
       deadline?: string;
+      dealId?: number;
     }) => ({
       question: data.question.trim(),
       projectInfo: data.projectInfo?.trim() || null,
       deadline: data.deadline?.trim() || null,
+      dealId: data.dealId ? Number(data.dealId) : null,
     }),
   )
   .handler(async ({ context, data }) => {
@@ -203,9 +206,9 @@ export const submitHqHuddle = createServerFn({ method: "POST" })
     await ensureMember(context.userId);
     const sql = await getSql();
     await sql.query(
-      `insert into hq_huddles (user_id, question, project_info, deadline, status)
-       values ($1, $2, $3, $4, 'submitted')`,
-      [context.userId, data.question, data.projectInfo, data.deadline],
+      `insert into hq_huddles (user_id, question, project_info, deadline, status, deal_id)
+       values ($1, $2, $3, $4, 'submitted', $5)`,
+      [context.userId, data.question, data.projectInfo, data.deadline, data.dealId],
     );
     return { ok: true as const };
   });

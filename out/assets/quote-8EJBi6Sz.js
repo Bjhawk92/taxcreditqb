@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-NZYk81nU.js";import{t}from"./utils-DojpP95n.js";var n=e();function r({children:e,className:r}){return(0,n.jsx)(`blockquote`,{className:t(`border-l-2 border-ink pl-5 md:pl-6`,r),children:(0,n.jsx)(`p`,{className:`font-display text-section font-semibold leading-section tracking-display text-ink`,children:e})})}export{r as t};

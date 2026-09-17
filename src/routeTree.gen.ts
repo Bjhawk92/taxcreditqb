@@ -48,12 +48,14 @@ import { Route as HqModelingRouteImport } from './routes/hq.modeling'
 import { Route as HqOnboardingRouteImport } from './routes/hq.onboarding'
 import { Route as HqPlaybookRouteImport } from './routes/hq.playbook'
 import { Route as HqProjectsRouteImport } from './routes/hq.projects'
+import { Route as HqVerifyRouteImport } from './routes/hq.verify'
 import { Route as PlaybookIndexRouteImport } from './routes/playbook.index'
 import { Route as PlaybookBuilderRouteImport } from './routes/playbook.builder'
 import { Route as PlaybookHearingRouteImport } from './routes/playbook.hearing'
 import { Route as PlaybookNeighborhoodRouteImport } from './routes/playbook.neighborhood'
 import { Route as PlaybookOutreachRouteImport } from './routes/playbook.outreach'
 import { Route as PlaybookPrivateIntroRouteImport } from './routes/playbook.private-intro'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
 import { Route as ToolsModelingRouteImport } from './routes/tools.modeling'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as HqDealDealIdRouteImport } from './routes/hq.deal.$dealId'
@@ -253,6 +255,11 @@ const HqProjectsRoute = HqProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => HqRoute,
 } as any)
+const HqVerifyRoute = HqVerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => HqRoute,
+} as any)
 const PlaybookIndexRoute = PlaybookIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -282,6 +289,11 @@ const PlaybookPrivateIntroRoute = PlaybookPrivateIntroRouteImport.update({
   id: '/private-intro',
   path: '/private-intro',
   getParentRoute: () => PlaybookRoute,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ToolsRoute,
 } as any)
 const ToolsModelingRoute = ToolsModelingRouteImport.update({
   id: '/modeling',
@@ -337,6 +349,7 @@ export interface FileRoutesByFullPath {
   '/hq/onboarding': typeof HqOnboardingRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
+  '/hq/verify': typeof HqVerifyRoute
   '/playbook/builder': typeof PlaybookBuilderRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
@@ -346,6 +359,7 @@ export interface FileRoutesByFullPath {
   '/desk/': typeof DeskIndexRoute
   '/hq/': typeof HqIndexRoute
   '/playbook/': typeof PlaybookIndexRoute
+  '/tools/': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/hq/deal/$dealId': typeof HqDealDealIdRoute
 }
@@ -364,7 +378,6 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
-  '/tools': typeof ToolsRouteWithChildren
   '/videos': typeof VideosRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
@@ -384,6 +397,7 @@ export interface FileRoutesByTo {
   '/hq/onboarding': typeof HqOnboardingRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
+  '/hq/verify': typeof HqVerifyRoute
   '/playbook/builder': typeof PlaybookBuilderRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
@@ -393,6 +407,7 @@ export interface FileRoutesByTo {
   '/desk': typeof DeskIndexRoute
   '/hq': typeof HqIndexRoute
   '/playbook': typeof PlaybookIndexRoute
+  '/tools': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/hq/deal/$dealId': typeof HqDealDealIdRoute
 }
@@ -435,6 +450,7 @@ export interface FileRoutesById {
   '/hq/onboarding': typeof HqOnboardingRoute
   '/hq/playbook': typeof HqPlaybookRoute
   '/hq/projects': typeof HqProjectsRoute
+  '/hq/verify': typeof HqVerifyRoute
   '/playbook/builder': typeof PlaybookBuilderRoute
   '/playbook/hearing': typeof PlaybookHearingRoute
   '/playbook/neighborhood': typeof PlaybookNeighborhoodRoute
@@ -444,6 +460,7 @@ export interface FileRoutesById {
   '/desk/': typeof DeskIndexRoute
   '/hq/': typeof HqIndexRoute
   '/playbook/': typeof PlaybookIndexRoute
+  '/tools/': typeof ToolsIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/hq/deal/$dealId': typeof HqDealDealIdRoute
 }
@@ -487,6 +504,7 @@ export interface FileRouteTypes {
     | '/hq/onboarding'
     | '/hq/playbook'
     | '/hq/projects'
+    | '/hq/verify'
     | '/playbook/builder'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
@@ -496,6 +514,7 @@ export interface FileRouteTypes {
     | '/desk/'
     | '/hq/'
     | '/playbook/'
+    | '/tools/'
     | '/api/auth/$'
     | '/hq/deal/$dealId'
   fileRoutesByTo: FileRoutesByTo
@@ -514,7 +533,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/pricing'
     | '/register'
-    | '/tools'
     | '/videos'
     | '/desk/modeling'
     | '/hq/account'
@@ -534,6 +552,7 @@ export interface FileRouteTypes {
     | '/hq/onboarding'
     | '/hq/playbook'
     | '/hq/projects'
+    | '/hq/verify'
     | '/playbook/builder'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
@@ -543,6 +562,7 @@ export interface FileRouteTypes {
     | '/desk'
     | '/hq'
     | '/playbook'
+    | '/tools'
     | '/api/auth/$'
     | '/hq/deal/$dealId'
   id:
@@ -584,6 +604,7 @@ export interface FileRouteTypes {
     | '/hq/onboarding'
     | '/hq/playbook'
     | '/hq/projects'
+    | '/hq/verify'
     | '/playbook/builder'
     | '/playbook/hearing'
     | '/playbook/neighborhood'
@@ -593,6 +614,7 @@ export interface FileRouteTypes {
     | '/desk/'
     | '/hq/'
     | '/playbook/'
+    | '/tools/'
     | '/api/auth/$'
     | '/hq/deal/$dealId'
   fileRoutesById: FileRoutesById
@@ -895,6 +917,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HqProjectsRouteImport
       parentRoute: typeof HqRoute
     }
+    '/hq/verify': {
+      id: '/hq/verify'
+      path: '/verify'
+      fullPath: '/hq/verify'
+      preLoaderRoute: typeof HqVerifyRouteImport
+      parentRoute: typeof HqRoute
+    }
     '/playbook/': {
       id: '/playbook/'
       path: '/'
@@ -936,6 +965,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/playbook/private-intro'
       preLoaderRoute: typeof PlaybookPrivateIntroRouteImport
       parentRoute: typeof PlaybookRoute
+    }
+    '/tools/': {
+      id: '/tools/'
+      path: '/'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof ToolsRoute
     }
     '/tools/modeling': {
       id: '/tools/modeling'
@@ -991,6 +1027,7 @@ interface HqRouteChildren {
   HqOnboardingRoute: typeof HqOnboardingRoute
   HqPlaybookRoute: typeof HqPlaybookRoute
   HqProjectsRoute: typeof HqProjectsRoute
+  HqVerifyRoute: typeof HqVerifyRoute
   HqIndexRoute: typeof HqIndexRoute
   HqDealDealIdRoute: typeof HqDealDealIdRoute
 }
@@ -1013,6 +1050,7 @@ const HqRouteChildren: HqRouteChildren = {
   HqOnboardingRoute: HqOnboardingRoute,
   HqPlaybookRoute: HqPlaybookRoute,
   HqProjectsRoute: HqProjectsRoute,
+  HqVerifyRoute: HqVerifyRoute,
   HqIndexRoute: HqIndexRoute,
   HqDealDealIdRoute: HqDealDealIdRoute,
 }
@@ -1043,10 +1081,12 @@ const PlaybookRouteWithChildren = PlaybookRoute._addFileChildren(
 
 interface ToolsRouteChildren {
   ToolsModelingRoute: typeof ToolsModelingRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 const ToolsRouteChildren: ToolsRouteChildren = {
   ToolsModelingRoute: ToolsModelingRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 
 const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
