@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import shield from "@/assets/tax-credit-qb-shield.png";
+import { ShieldMark } from "@/components/shield-mark";
 import wordmark from "@/assets/tax-credit-qb-wordmark.png";
 
 export function BrandLockup() {
@@ -9,13 +9,7 @@ export function BrandLockup() {
       aria-label="Tax Credit QB home"
       className="col-span-3 row-start-2 flex min-w-0 items-center gap-x-2.5 self-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:gap-x-3"
     >
-      <img
-        src={shield}
-        alt=""
-        width={1084}
-        height={1226}
-        className="h-16 w-auto shrink-0 object-contain object-left sm:h-28 md:h-32 lg:h-36 xl:h-40"
-      />
+      <ShieldMark className="h-16 w-auto object-contain object-left sm:h-28 md:h-32 lg:h-36 xl:h-40" />
       <img
         src={wordmark}
         alt=""

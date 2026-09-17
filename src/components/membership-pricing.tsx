@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import shield from "@/assets/tax-credit-qb-shield.png";
+import { ShieldMark } from "@/components/shield-mark";
 import { Button } from "@/components/ui/button";
 import {
   MEMBERSHIP_DETAILS,
@@ -193,15 +193,16 @@ export function MembershipPricing({
                           Most popular
                         </p>
                       ) : null}
-                      <img
-                        src={shield}
+                      <ShieldMark
                         alt=""
                         width={72}
                         height={82}
+                        wrapperClassName="mx-auto mt-2"
                         className={cn(
-                          "mx-auto mt-2 h-14 w-auto object-contain",
+                          "h-14 w-auto object-contain",
                           plan.id === "film" ? "" : "brightness-110",
                         )}
+                        tmClassName={plan.id === "film" ? "text-ink/70" : "text-paper/75"}
                       />
                       <h3
                         className={cn(
