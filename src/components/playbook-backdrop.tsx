@@ -66,8 +66,8 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       ))}
 
       {/* Defense X's */}
-      {DEFENSE.map((spot) => (
-        <g key={`x-${spot.x}-${spot.y}`} opacity="0.26" stroke="#1e3356" strokeWidth="2.2">
+      {DEFENSE.filter((spot) => !spot.hideMark).map((spot, i) => (
+        <g key={`x-${i}`} opacity="0.26" stroke="#1e3356" strokeWidth="2.2">
           <line x1={spot.x - 9} y1={spot.y - 9} x2={spot.x + 9} y2={spot.y + 9} />
           <line x1={spot.x + 9} y1={spot.y - 9} x2={spot.x - 9} y2={spot.y + 9} />
         </g>
@@ -140,14 +140,16 @@ type DefenseSpot = {
   ly?: number;
   anchor?: "start" | "middle" | "end";
   tilt?: number;
+  hideMark?: boolean;
 };
 
 const DEFENSE: DefenseSpot[] = [
   { x: 250, y: 280 },
   { x: 360, y: 300 },
   { x: 470, y: 290, label: "ZONING", lx: 418, ly: 278, anchor: "end", tilt: -3 },
-  { x: 560, y: 270, label: "FINANCING", lx: 560, ly: 302, anchor: "middle", tilt: 2 },
+  { x: 560, y: 270 },
   { x: 650, y: 290, label: "SITE", lx: 616, ly: 278, anchor: "end", tilt: 2 },
+  { x: 650, y: 290, label: "FINANCING", lx: 650, ly: 324, anchor: "middle", tilt: 1, hideMark: true },
   { x: 760, y: 300, label: "NIMBY", lx: 772, ly: 328, tilt: -2 },
   { x: 870, y: 280, label: "QAP", lx: 852, ly: 266, anchor: "end", tilt: 2 },
   { x: 320, y: 180 },
