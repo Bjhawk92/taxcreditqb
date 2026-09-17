@@ -28,6 +28,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as VideosRouteImport } from './routes/videos'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as DeskIndexRouteImport } from './routes/desk.index'
 import { Route as DeskModelingRouteImport } from './routes/desk.modeling'
 import { Route as HqIndexRouteImport } from './routes/hq.index'
@@ -155,6 +156,11 @@ const ToolsRoute = ToolsRouteImport.update({
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
   path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeskIndexRoute = DeskIndexRouteImport.update({
@@ -343,6 +349,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/tools': typeof ToolsRouteWithChildren
   '/videos': typeof VideosRoute
+  '/api/health': typeof ApiHealthRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
@@ -393,6 +400,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/register': typeof RegisterRoute
   '/videos': typeof VideosRoute
+  '/api/health': typeof ApiHealthRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
@@ -448,6 +456,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/tools': typeof ToolsRouteWithChildren
   '/videos': typeof VideosRoute
+  '/api/health': typeof ApiHealthRoute
   '/desk/modeling': typeof DeskModelingRoute
   '/hq/account': typeof HqAccountRoute
   '/hq/admin': typeof HqAdminRoute
@@ -504,6 +513,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/tools'
     | '/videos'
+    | '/api/health'
     | '/desk/modeling'
     | '/hq/account'
     | '/hq/admin'
@@ -554,6 +564,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/register'
     | '/videos'
+    | '/api/health'
     | '/desk/modeling'
     | '/hq/account'
     | '/hq/admin'
@@ -608,6 +619,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/tools'
     | '/videos'
+    | '/api/health'
     | '/desk/modeling'
     | '/hq/account'
     | '/hq/admin'
@@ -663,6 +675,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   ToolsRoute: typeof ToolsRouteWithChildren
   VideosRoute: typeof VideosRoute
+  ApiHealthRoute: typeof ApiHealthRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -799,6 +812,13 @@ declare module '@tanstack/react-router' {
       path: '/videos'
       fullPath: '/videos'
       preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/desk/': {
@@ -1153,6 +1173,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   ToolsRoute: ToolsRouteWithChildren,
   VideosRoute: VideosRoute,
+  ApiHealthRoute: ApiHealthRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
