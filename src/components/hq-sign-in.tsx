@@ -28,12 +28,6 @@ function isLiveHost() {
 
 function explainAuthError(raw: string, mode: "in" | "up") {
   const msg = raw.toLowerCase();
-  if (msg.includes("auth_api_missing") || msg.includes("http 404") || msg.includes("failed to fetch")) {
-    return "The account server is not connected on this site. Sign-in needs Neon plus the live application server — not a static page.";
-  }
-  if (msg.includes("invalid origin") || msg.includes("forbidden")) {
-    return "This domain is not trusted for sign-in yet. Confirm BETTER_AUTH_URL is https://taxcreditqb.com.";
-  }
   if (msg.includes("already exists") || msg.includes("user already") || msg.includes("unique")) {
     return "An account with that email already exists. Switch to Sign in.";
   }
@@ -65,9 +59,6 @@ async function emailAuth(
     body: JSON.stringify({ ...payload, callbackURL: "/hq/onboarding" }),
   });
   const text = await res.text();
-  if (res.status === 404 || text.trimStart().startsWith("<")) {
-    throw new Error("AUTH_API_MISSING");
-  }
   let body: Record<string, unknown> = {};
   try {
     body = JSON.parse(text) as Record<string, unknown>;
@@ -195,13 +186,6 @@ export function HqSignIn({
           </div>
         ) : (
           <div className="space-y-6">
-            {dbMissing ? (
-              <p className="border border-ink bg-paper-dim px-4 py-3 text-sm text-ink">
-                Neon is not connected on this live server, so accounts cannot be
-                created or signed in. Add DATABASE_URL, BETTER_AUTH_SECRET, and
-                BETTER_AUTH_URL to the Vercel project, then redeploy.
-              </p>
-            ) : null}
             {playbook ? null : (
             <div className="flex rounded-sm border border-line">
               <button
