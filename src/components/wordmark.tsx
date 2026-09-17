@@ -17,7 +17,7 @@ export function Wordmark({
     <Link
       to={to}
       className={cn(
-        "inline-flex shrink-0 items-center py-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink",
+        "inline-flex shrink-0 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink",
         className,
       )}
       aria-label="Tax Credit QB home"
@@ -27,7 +27,7 @@ export function Wordmark({
         alt="Tax Credit QB"
         className={cn(
           "w-auto",
-          compact ? "h-14 md:h-28" : "h-20 md:h-32",
+          compact ? "h-24 md:h-28" : "h-24 md:h-32",
           invert && "brightness-0 invert",
         )}
       />

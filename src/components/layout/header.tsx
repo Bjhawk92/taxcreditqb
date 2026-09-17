@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
-      <div className="relative mx-auto flex h-24 w-full max-w-7xl items-center justify-between gap-3 px-5 md:h-32 md:px-8">
+      <div className="relative mx-auto flex h-28 w-full max-w-7xl items-center justify-between gap-3 px-4 md:h-32 md:px-8">
         <Wordmark compact />
 
         <div className="pointer-events-none absolute inset-0 hidden items-center justify-center px-36 lg:flex xl:px-40">
