@@ -12,8 +12,8 @@ const PLAN_COPY: Record<
   { title: string; sub: string; signupLabel: string }
 > = {
   film: {
-    title: "Get started",
-    sub: "Create your Tax Credit QB account to subscribe to Film Room + Ask the QB.",
+    title: "Get Field Pass",
+    sub: "Create your Tax Credit QB account to subscribe to Field Pass. After signup, you will choose up to three states to monitor.",
     signupLabel: "Create my account",
   },
   playbook: {
@@ -37,9 +37,9 @@ export const Route = createFileRoute("/register")({
   }),
   head: () =>
     seo({
-      title: "Get the Playbook | Tax Credit QB",
+      title: "Get Field Pass | Tax Credit QB",
       description:
-        "Create your Tax Credit QB account after you choose a Game Plan. Compare memberships, pricing, and benefits first if you have not already.",
+        "Create your Tax Credit QB account after you choose a Game Plan. Field Pass, The Playbook, and The Huddle are compared on Game Plans first.",
     }),
   component: Register,
 });

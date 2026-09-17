@@ -267,7 +267,7 @@ function HqAdmin() {
             <MemberSelect members={members} name="targetUserId" id="plan-client" />
             <Field label="Plan name" htmlFor="plan">
               <Select id="plan" name="plan" defaultValue="The Playbook">
-                <option value="Film Room + Ask the QB">Film Room + Ask the QB</option>
+                <option value="Field Pass">Field Pass</option>
                 <option value="The Playbook">The Playbook</option>
                 <option value="The Huddle">The Huddle</option>
               </Select>

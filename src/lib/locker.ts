@@ -4,6 +4,7 @@ import { CHECKLISTS } from "@/lib/checklists";
 import { MODEL_STATUSES } from "@/lib/deal-fields";
 import { getSql } from "@/lib/db";
 import { entitlementsFor, remaining } from "@/lib/entitlements";
+import { parseFollowedStates, serializeFollowedStates } from "@/lib/followed-states";
 import { lockerNextPlay } from "@/lib/next-play";
 
 async function companyIdFor(userId: string) {
@@ -124,9 +125,11 @@ export const getLockerHome = createServerFn({ method: "POST" })
       first_name: string | null;
       last_name: string | null;
       notify_nonessential: boolean;
+      followed_states: string | null;
     }>(
       `select plan, consult_allowance, consult_used, questions_used, renewal_date, is_admin,
-              company, onboarding_complete, first_name, last_name, notify_nonessential
+              company, onboarding_complete, first_name, last_name, notify_nonessential,
+              followed_states
        from hq_members where user_id = $1`,
       [userId],
     );
@@ -142,7 +145,8 @@ export const getLockerHome = createServerFn({ method: "POST" })
       );
       const again = await sql.query<typeof member>(
         `select plan, consult_allowance, consult_used, questions_used, renewal_date, is_admin,
-                company, onboarding_complete, first_name, last_name, notify_nonessential
+                company, onboarding_complete, first_name, last_name, notify_nonessential,
+                followed_states
          from hq_members where user_id = $1`,
         [userId],
       );
@@ -340,8 +344,10 @@ export const getLockerHome = createServerFn({ method: "POST" })
       ...d,
       progress: progressByDeal[d.id] ?? null,
     }));
+    const followedStates = parseFollowedStates(member?.followed_states);
     const nextPlay = lockerNextPlay({
       onboardingComplete: Boolean(member?.onboarding_complete),
+      followedStates,
       deals: dealsWithProgress,
       checklists,
       outstanding,
@@ -351,6 +357,7 @@ export const getLockerHome = createServerFn({ method: "POST" })
       email: user?.email ?? null,
       emailVerified: Boolean(user?.emailVerified),
       onboardingComplete: Boolean(member?.onboarding_complete),
+      followedStates,
       isAdmin: Boolean(member?.is_admin),
       entitlements,
       usage: {
@@ -389,6 +396,7 @@ export const saveDeveloperProfile = createServerFn({ method: "POST" })
       developmentsCompleted?: string;
       unitsDeveloped?: string;
       experience?: string[];
+      followedStates?: string[];
       skip?: boolean;
     }) => data,
   )
@@ -396,13 +404,14 @@ export const saveDeveloperProfile = createServerFn({ method: "POST" })
     const sql = await getSql();
     const userId = context.userId;
     await sql.query(
-      `insert into hq_members (user_id, consult_allowance, first_name, last_name, phone, onboarding_complete, company)
-       values ($1, 0, $2, $3, $4, true, $5)
+      `insert into hq_members (user_id, consult_allowance, first_name, last_name, phone, onboarding_complete, company, followed_states)
+       values ($1, 0, $2, $3, $4, true, $5, $6)
        on conflict (user_id) do update set
          first_name = coalesce(excluded.first_name, hq_members.first_name),
          last_name = coalesce(excluded.last_name, hq_members.last_name),
          phone = coalesce(excluded.phone, hq_members.phone),
          company = coalesce(excluded.company, hq_members.company),
+         followed_states = coalesce(excluded.followed_states, hq_members.followed_states),
          onboarding_complete = true`,
       [
         userId,
@@ -410,6 +419,7 @@ export const saveDeveloperProfile = createServerFn({ method: "POST" })
         data.lastName?.trim() || null,
         data.phone?.trim() || null,
         data.companyName?.trim() || null,
+        data.followedStates ? serializeFollowedStates(data.followedStates) : null,
       ],
     );
     if (data.skip) return { ok: true as const };
@@ -1181,8 +1191,10 @@ export const getAccountProfile = createServerFn({ method: "POST" })
       company: string | null;
       plan: string | null;
       notify_nonessential: boolean;
+      followed_states: string | null;
     }>(
-      `select first_name, last_name, phone, company, plan, notify_nonessential from hq_members where user_id = $1`,
+      `select first_name, last_name, phone, company, plan, notify_nonessential, followed_states
+       from hq_members where user_id = $1`,
       [context.userId],
     );
     const profile = await sql.query<{
@@ -1237,7 +1249,12 @@ export const getAccountProfile = createServerFn({ method: "POST" })
         )
       : [];
     return {
-      member: member[0] ?? null,
+      member: member[0]
+        ? {
+            ...member[0],
+            followed_states: parseFollowedStates(member[0].followed_states),
+          }
+        : null,
       profile: profile[0] ?? null,
       company,
       companyMembers,
@@ -1245,6 +1262,23 @@ export const getAccountProfile = createServerFn({ method: "POST" })
       name: user[0]?.name ?? null,
       emailVerified: Boolean(user[0]?.emailVerified),
     };
+  });
+
+export const saveFollowedStates = createServerFn({ method: "POST" })
+  .middleware([authMiddleware])
+  .validator((data: { states: string[] }) => ({
+    states: Array.isArray(data.states) ? data.states : [],
+  }))
+  .handler(async ({ context, data }) => {
+    const sql = await getSql();
+    const stored = serializeFollowedStates(data.states);
+    await sql.query(
+      `insert into hq_members (user_id, consult_allowance, followed_states)
+       values ($1, 0, $2)
+       on conflict (user_id) do update set followed_states = excluded.followed_states`,
+      [context.userId, stored],
+    );
+    return { ok: true as const, states: parseFollowedStates(stored) };
   });
 
 export const persistSignupName = createServerFn({ method: "POST" })

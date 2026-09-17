@@ -9,7 +9,7 @@ export const Route = createFileRoute("/game-plans")({
     seo({
       title: "Game Plans | Membership & Pricing | Tax Credit QB",
       description:
-        "Choose your game plan. Film Room + Ask the QB at $29/month, The Playbook at $295/month, or The Huddle at $795/month. Compare memberships, benefits, and access—then bring in the QB when the assignment needs more.",
+        "Choose your game plan. Field Pass at $29/month, The Playbook at $295/month, or The Huddle at $795/month. Compare memberships, benefits, and access—then bring in the QB when the assignment needs more.",
     }),
   component: GamePlans,
 });
@@ -48,7 +48,7 @@ function GamePlans() {
       <PageHero
         eyebrow="Game Plans"
         title="Choose your game plan."
-        sub="Different deals need different levels of support. Start with the Film Room, add the Playbook and monthly strategy, or put an experienced QB in the Huddle with your team."
+        sub="Different deals need different levels of support. Start with Field Pass, add the Playbook and monthly strategy, or put an experienced QB in the Huddle with your team."
       >
         <p className="mt-6 max-w-2xl text-sm text-ink/70">
           Memberships are public. You can compare pricing and benefits before

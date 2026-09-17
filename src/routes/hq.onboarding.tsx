@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { HqHeader, HqMain } from "@/components/hq-empty";
+import { StateWatchPicker } from "@/components/state-watch-picker";
 import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { getAccountProfile, saveDeveloperProfile } from "@/lib/locker";
@@ -28,6 +29,7 @@ function Onboarding() {
   const navigate = useNavigate();
   const [busy, setBusy] = useState(false);
   const [picked, setPicked] = useState<string[]>([]);
+  const [followedStates, setFollowedStates] = useState<string[]>([]);
   const [ready, setReady] = useState(false);
   const [prefill, setPrefill] = useState({
     firstName: "",
@@ -81,6 +83,9 @@ function Onboarding() {
               .filter(Boolean),
           );
         }
+        if (p.member?.followed_states?.length) {
+          setFollowedStates(p.member.followed_states);
+        }
       })
       .catch(() => {
         setPrefill((cur) => ({
@@ -102,7 +107,7 @@ function Onboarding() {
     try {
       await saveDeveloperProfile({
         data: skip
-          ? { skip: true }
+          ? { skip: true, followedStates }
           : {
               firstName: get("firstName"),
               lastName: get("lastName"),
@@ -117,6 +122,7 @@ function Onboarding() {
               developmentsCompleted: get("developmentsCompleted"),
               unitsDeveloped: get("unitsDeveloped"),
               experience: picked,
+              followedStates,
             },
       });
       try {
@@ -134,10 +140,23 @@ function Onboarding() {
     <main id="main">
       <HqHeader
         title="Build your developer profile."
-        sub="Tell Tax Credit QB a little about your company and experience. We'll use this information to make your Equipment, documents, Deal Profiles, and QB Access more useful."
+        sub="Start by choosing up to three states for Field Pass to monitor. Then tell Tax Credit QB a little about your company and experience."
       />
       <HqMain>
         <form key={ready ? "ready" : "loading"} onSubmit={(e) => void finish(e)} className="max-w-3xl space-y-8">
+          <fieldset>
+            <legend className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+              Follow 3 States
+            </legend>
+            <p className="mt-2 max-w-2xl text-ink/80">
+              Field Pass watches material QAP, scoring, application, and deadline
+              changes for the states you select. You can change this later in
+              your account.
+            </p>
+            <div className="mt-4">
+              <StateWatchPicker value={followedStates} onChange={setFollowedStates} />
+            </div>
+          </fieldset>
           <fieldset className="grid gap-4 md:grid-cols-2">
             <legend className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
               Company

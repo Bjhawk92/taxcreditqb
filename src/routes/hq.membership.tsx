@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { HqEmpty, HqHeader, HqMain } from "@/components/hq-empty";
+import { StateWatchPicker } from "@/components/state-watch-picker";
 import { Button } from "@/components/ui/button";
-import { getLockerHome } from "@/lib/locker";
+import { getLockerHome, saveFollowedStates } from "@/lib/locker";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/hq/membership")({
@@ -13,9 +14,15 @@ function HqMembership() {
   const [data, setData] = useState<Awaited<ReturnType<typeof getLockerHome>> | null>(
     null,
   );
+  const [followedStates, setFollowedStates] = useState<string[]>([]);
+  const [stateNote, setStateNote] = useState<string | null>(null);
+  const [savingStates, setSavingStates] = useState(false);
   useEffect(() => {
     getLockerHome()
-      .then(setData)
+      .then((home) => {
+        setData(home);
+        setFollowedStates(home.followedStates ?? []);
+      })
       .catch(() => setData(null));
   }, []);
   const e = data?.entitlements;
@@ -32,7 +39,7 @@ function HqMembership() {
           <div>
             <HqEmpty
               title="No membership on file"
-              body="This account does not have an active membership. Choose a plan to add Film Room, Playbook, or Huddle access."
+              body="This account does not have an active membership. Choose a plan to add Field Pass, Playbook, or Huddle access."
             />
             <Button asChild className="mt-6">
               <Link to="/game-plans">View Game Plans</Link>
@@ -95,6 +102,41 @@ function HqMembership() {
             </li>
           </ul>
         ) : null}
+        <section className="mt-10 max-w-3xl border border-line p-6">
+          <h2 className="font-display text-xl font-semibold">Follow 3 States</h2>
+          <p className="mt-3 text-ink/75">
+            Save up to three states for QAP redlines, scoring intelligence, and
+            Field Report coverage.
+          </p>
+          <div className="mt-4">
+            <StateWatchPicker value={followedStates} onChange={setFollowedStates} />
+          </div>
+          <Button
+            type="button"
+            className="mt-6"
+            variant="secondary"
+            disabled={savingStates}
+            onClick={() => {
+              setSavingStates(true);
+              void saveFollowedStates({ data: { states: followedStates } })
+                .then((result) => {
+                  setFollowedStates(result.states);
+                  setStateNote(
+                    result.states.length
+                      ? `Monitoring ${result.states.join(", ")}.`
+                      : "No states selected.",
+                  );
+                })
+                .finally(() => setSavingStates(false));
+            }}
+          >
+            {savingStates ? "Saving…" : "Save states"}
+          </Button>
+          {stateNote ? <p className="mt-3 text-sm">{stateNote}</p> : null}
+          <Button asChild className="mt-6" variant="secondary">
+            <Link to="/hq/field-report">Open the Field Report</Link>
+          </Button>
+        </section>
         <div className="mt-10 max-w-2xl space-y-4 text-ink/80">
           <p>
             Included benefits follow the published Game Plans. Unused huddle time

@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { HqHeader, HqMain } from "@/components/hq-empty";
+import { StateWatchPicker } from "@/components/state-watch-picker";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/lib/auth/client";
-import { getAccountProfile, saveAccountPrefs } from "@/lib/locker";
+import { getAccountProfile, saveAccountPrefs, saveFollowedStates } from "@/lib/locker";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/hq/account")({
@@ -15,9 +16,14 @@ function AccountPage() {
     null,
   );
   const [note, setNote] = useState<string | null>(null);
+  const [followedStates, setFollowedStates] = useState<string[]>([]);
+  const [savingStates, setSavingStates] = useState(false);
   useEffect(() => {
     getAccountProfile()
-      .then(setData)
+      .then((profile) => {
+        setData(profile);
+        setFollowedStates(profile.member?.followed_states ?? []);
+      })
       .catch(() => setData(null));
   }, []);
 
@@ -83,6 +89,37 @@ function AccountPage() {
             <p className="mt-3">{data?.member?.plan || "No Game Plan assigned"}</p>
             <Button asChild className="mt-6" variant="secondary">
               <Link to="/hq/membership">Manage Game Plan</Link>
+            </Button>
+          </section>
+          <section className="border border-line p-6 md:col-span-2">
+            <h2 className="font-display text-xl font-semibold">Follow 3 States</h2>
+            <p className="mt-3 text-ink/75">
+              Field Pass monitors QAP, scoring, application, and deadline changes
+              for up to three states. These choices are saved to your account.
+            </p>
+            <div className="mt-4">
+              <StateWatchPicker value={followedStates} onChange={setFollowedStates} />
+            </div>
+            <Button
+              type="button"
+              className="mt-6"
+              variant="secondary"
+              disabled={savingStates}
+              onClick={() => {
+                setSavingStates(true);
+                void saveFollowedStates({ data: { states: followedStates } })
+                  .then((result) => {
+                    setFollowedStates(result.states);
+                    setNote(
+                      result.states.length
+                        ? `Monitoring ${result.states.join(", ")}.`
+                        : "No states selected.",
+                    );
+                  })
+                  .finally(() => setSavingStates(false));
+              }}
+            >
+              {savingStates ? "Saving…" : "Save states"}
             </Button>
           </section>
           <section className="border border-line p-6">

@@ -24,6 +24,8 @@ export const STRIPE_LINKS = {
 
 export type PriceKind = "fixed" | "starting" | "custom" | "monthly";
 
+export type MembershipInclude = string | { title: string; body: string };
+
 export type MembershipPlan = {
   id: "film" | "playbook" | "huddle";
   name: string;
@@ -32,7 +34,7 @@ export type MembershipPlan = {
   positioning: string;
   tagline: string;
   description: string;
-  includes: readonly string[];
+  includes: readonly MembershipInclude[];
   guidelines?: readonly string[];
   clarify?: readonly string[];
   cta: string;
@@ -43,22 +45,41 @@ export type MembershipPlan = {
 export const MEMBERSHIPS: readonly MembershipPlan[] = [
   {
     id: "film",
-    name: "Film Room + Ask the QB",
+    name: "Field Pass",
     price: 29,
     period: "/month",
-    positioning: "Study the field.",
+    positioning: "Stay current. Know the field.",
     tagline:
-      "For developers who want practical LIHTC education and the ability to ask focused development questions without scheduled consulting sessions.",
+      "For LIHTC developers and affordable housing professionals who want current QAP intelligence and a concise view of what’s changing across the industry.",
     description:
-      "For developers who want practical LIHTC education and the ability to ask focused development questions without scheduled consulting sessions.",
+      "For LIHTC developers and affordable housing professionals who want current QAP intelligence and a concise view of what’s changing across the industry.",
     includes: [
-      "Full Film Room access",
-      "Educational walkthroughs and real-world development examples",
-      "Up to three private deal questions per month",
-      "Brief written or recorded responses within three business days",
-      "No live consultation sessions",
+      {
+        title: "Follow 3 States",
+        body: "Member chooses up to three states to monitor.",
+      },
+      {
+        title: "QAP Redline + Change Updates",
+        body: "Notify members of material QAP, scoring, application and deadline changes for their selected states, including what changed and links to official sources.",
+      },
+      {
+        title: "QAP Scoring Intelligence",
+        body: "Access TCQB’s organized scoring information for supported states.",
+      },
+      {
+        title: "The Field Report",
+        body: "Monthly LIHTC intelligence newsletter covering important QAP activity, scoring changes, deadlines and industry developments.",
+      },
+      {
+        title: "Film Room Library",
+        body: "Access existing development walkthroughs and practical LIHTC content.",
+      },
+      {
+        title: "Ask the QB",
+        body: "One focused private development question per month.",
+      },
     ],
-    cta: "Get started",
+    cta: "Get Field Pass",
     intent: "membership-film",
     stripeKey: "film",
   },
@@ -73,7 +94,7 @@ export const MEMBERSHIPS: readonly MembershipPlan[] = [
     description:
       "For developers who want proven development resources plus direct monthly access to experienced LIHTC strategy.",
     includes: [
-      "Everything included with Film Room + Ask the QB",
+      "Everything included with Field Pass",
       "Full Playbook access",
       "Downloadable templates and checklists",
       "Presentation and outreach resources",
@@ -365,7 +386,7 @@ export const SPEAKING_CALLOUT =
 export const PRICING_FAQ = [
   {
     q: "Which membership is right for me?",
-    a: "Film Room + Ask the QB is for video breakdowns and written answers to specific deal questions. Playbook adds editable presentation templates and one 30-minute virtual session each month. Huddle is for active deals that need recurring conversations, more questions, a monthly review, and preferred pricing on extra work. Custom services and retainers are available whether or not you subscribe.",
+    a: "Field Pass is for current QAP intelligence, the Film Room library, and one focused Ask the QB question each month. Playbook adds editable presentation templates and one 30-minute virtual session each month. Huddle is for active deals that need recurring conversations, more questions, a monthly review, and preferred pricing on extra work. Custom services and retainers are available whether or not you subscribe.",
   },
   {
     q: "What counts as an Ask the QB question?",
@@ -423,7 +444,7 @@ export function stripeFor(plan: MembershipPlan) {
 }
 
 export const SERVICE_NEEDS = [
-  { value: "membership-film", label: "Membership — Film Room + Ask the QB ($29/mo)" },
+  { value: "membership-film", label: "Membership — Field Pass ($29/mo)" },
   { value: "membership-playbook", label: "Membership — Playbook ($295/mo)" },
   { value: "membership-huddle", label: "Membership — Huddle ($795/mo)" },
   { value: "strategy-session", label: "Deal Strategy Session ($350)" },

@@ -29,6 +29,7 @@ type ItemHint = {
 
 export function lockerNextPlay(input: {
   onboardingComplete: boolean;
+  followedStates?: string[];
   deals: DealHint[];
   checklists: ChecklistHint[];
   outstanding: ItemHint[];
@@ -38,6 +39,14 @@ export function lockerNextPlay(input: {
       title: "Build your developer profile.",
       body: "A short profile makes Equipment, letters, and QB Access more useful. You can skip optional fields.",
       cta: "Open profile",
+      to: "/hq/onboarding",
+    };
+  }
+  if (input.followedStates !== undefined && input.followedStates.length === 0) {
+    return {
+      title: "Choose the three states to monitor.",
+      body: "Field Pass watches QAP, scoring, application, and deadline changes for up to three states. Save those choices to your account.",
+      cta: "Choose states",
       to: "/hq/onboarding",
     };
   }

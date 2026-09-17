@@ -50,7 +50,7 @@ function Huddle() {
             Direct access that matches your membership.
           </h2>
           <p>
-            Film Room members can submit private questions without scheduled
+            Field Pass members can submit private questions without scheduled
             calls. Playbook members receive one 30-minute virtual strategy
             session each month. Huddle members receive two 45-minute sessions
             each month, along with one monthly deal or presentation review.

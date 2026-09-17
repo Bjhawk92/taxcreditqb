@@ -163,6 +163,9 @@ function LockerHome() {
             <Button asChild className="mt-6 self-start" variant="secondary">
               <Link to="/hq/membership">Manage Game Plan</Link>
             </Button>
+            <Button asChild className="mt-3 self-start" variant="secondary">
+              <Link to="/hq/field-report">The Field Report</Link>
+            </Button>
           </article>
 
           <article className="flex flex-col border border-line p-6">

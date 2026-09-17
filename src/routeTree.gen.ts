@@ -37,6 +37,7 @@ import { Route as HqBillingRouteImport } from './routes/hq.billing'
 import { Route as HqDealsRouteImport } from './routes/hq.deals'
 import { Route as HqDocumentsRouteImport } from './routes/hq.documents'
 import { Route as HqEquipmentRouteImport } from './routes/hq.equipment'
+import { Route as HqFieldReportRouteImport } from './routes/hq.field-report'
 import { Route as HqFilesRouteImport } from './routes/hq.files'
 import { Route as HqFilmRouteImport } from './routes/hq.film'
 import { Route as HqHuddleRouteImport } from './routes/hq.huddle'
@@ -200,6 +201,11 @@ const HqEquipmentRoute = HqEquipmentRouteImport.update({
   path: '/equipment',
   getParentRoute: () => HqRoute,
 } as any)
+const HqFieldReportRoute = HqFieldReportRouteImport.update({
+  id: '/field-report',
+  path: '/field-report',
+  getParentRoute: () => HqRoute,
+} as any)
 const HqFilesRoute = HqFilesRouteImport.update({
   id: '/files',
   path: '/files',
@@ -338,6 +344,7 @@ export interface FileRoutesByFullPath {
   '/hq/deals': typeof HqDealsRoute
   '/hq/documents': typeof HqDocumentsRoute
   '/hq/equipment': typeof HqEquipmentRoute
+  '/hq/field-report': typeof HqFieldReportRoute
   '/hq/files': typeof HqFilesRoute
   '/hq/film': typeof HqFilmRoute
   '/hq/huddle': typeof HqHuddleRoute
@@ -386,6 +393,7 @@ export interface FileRoutesByTo {
   '/hq/deals': typeof HqDealsRoute
   '/hq/documents': typeof HqDocumentsRoute
   '/hq/equipment': typeof HqEquipmentRoute
+  '/hq/field-report': typeof HqFieldReportRoute
   '/hq/files': typeof HqFilesRoute
   '/hq/film': typeof HqFilmRoute
   '/hq/huddle': typeof HqHuddleRoute
@@ -439,6 +447,7 @@ export interface FileRoutesById {
   '/hq/deals': typeof HqDealsRoute
   '/hq/documents': typeof HqDocumentsRoute
   '/hq/equipment': typeof HqEquipmentRoute
+  '/hq/field-report': typeof HqFieldReportRoute
   '/hq/files': typeof HqFilesRoute
   '/hq/film': typeof HqFilmRoute
   '/hq/huddle': typeof HqHuddleRoute
@@ -493,6 +502,7 @@ export interface FileRouteTypes {
     | '/hq/deals'
     | '/hq/documents'
     | '/hq/equipment'
+    | '/hq/field-report'
     | '/hq/files'
     | '/hq/film'
     | '/hq/huddle'
@@ -541,6 +551,7 @@ export interface FileRouteTypes {
     | '/hq/deals'
     | '/hq/documents'
     | '/hq/equipment'
+    | '/hq/field-report'
     | '/hq/files'
     | '/hq/film'
     | '/hq/huddle'
@@ -593,6 +604,7 @@ export interface FileRouteTypes {
     | '/hq/deals'
     | '/hq/documents'
     | '/hq/equipment'
+    | '/hq/field-report'
     | '/hq/files'
     | '/hq/film'
     | '/hq/huddle'
@@ -840,6 +852,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HqEquipmentRouteImport
       parentRoute: typeof HqRoute
     }
+    '/hq/field-report': {
+      id: '/hq/field-report'
+      path: '/field-report'
+      fullPath: '/hq/field-report'
+      preLoaderRoute: typeof HqFieldReportRouteImport
+      parentRoute: typeof HqRoute
+    }
     '/hq/files': {
       id: '/hq/files'
       path: '/files'
@@ -1016,6 +1035,7 @@ interface HqRouteChildren {
   HqDealsRoute: typeof HqDealsRoute
   HqDocumentsRoute: typeof HqDocumentsRoute
   HqEquipmentRoute: typeof HqEquipmentRoute
+  HqFieldReportRoute: typeof HqFieldReportRoute
   HqFilesRoute: typeof HqFilesRoute
   HqFilmRoute: typeof HqFilmRoute
   HqHuddleRoute: typeof HqHuddleRoute
@@ -1039,6 +1059,7 @@ const HqRouteChildren: HqRouteChildren = {
   HqDealsRoute: HqDealsRoute,
   HqDocumentsRoute: HqDocumentsRoute,
   HqEquipmentRoute: HqEquipmentRoute,
+  HqFieldReportRoute: HqFieldReportRoute,
   HqFilesRoute: HqFilesRoute,
   HqFilmRoute: HqFilmRoute,
   HqHuddleRoute: HqHuddleRoute,

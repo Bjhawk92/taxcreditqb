@@ -59,8 +59,8 @@ export function MembershipPricing({
               Choose your game plan.
             </h2>
             <p className="mt-5 max-w-2xl text-lede text-ink/80">
-              Different deals need different levels of support. Start with the
-              Film Room, add the Playbook and monthly strategy, or put an
+              Different deals need different levels of support. Start with Field
+              Pass, add the Playbook and monthly strategy, or put an
               experienced QB in the Huddle with your team.
             </p>
           </>
@@ -102,12 +102,23 @@ export function MembershipPricing({
                   What’s included
                 </p>
                 <ul className="mt-3 flex-1 space-y-3">
-                  {plan.includes.map((item) => (
-                    <li key={item} className="flex gap-3 text-ink">
-                      <Check className="mt-0.5 size-4 shrink-0 text-steel" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
+                  {plan.includes.map((item) => {
+                    const key = typeof item === "string" ? item : item.title;
+                    return (
+                      <li key={key} className="flex gap-3 text-ink">
+                        <Check className="mt-0.5 size-4 shrink-0 text-steel" />
+                        {typeof item === "string" ? (
+                          <span>{item}</span>
+                        ) : (
+                          <span>
+                            <span className="font-semibold">{item.title}</span>
+                            {" — "}
+                            {item.body}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
                 <PlanCta plan={plan} featured={featured} />
               </article>

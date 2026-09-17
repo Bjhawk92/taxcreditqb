@@ -3,7 +3,6 @@ import { BookOpen } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { DeckCard } from "@/components/deck-card";
 import { EmailCapture } from "@/components/email-capture";
-import { HeroPlayDiagram } from "@/components/hero-play-diagram";
 import { GamePlanTeaser } from "@/components/membership-pricing";
 import { PlaybookBackdrop } from "@/components/playbook-backdrop";
 import { ProofBar } from "@/components/proof-bar";
@@ -65,42 +64,37 @@ function Home() {
     <main id="main">
       <section className="relative overflow-hidden border-b border-line">
         <PlaybookBackdrop className="opacity-20 [mask-image:linear-gradient(to_right,black_38%,transparent_70%)] [-webkit-mask-image:linear-gradient(to_right,black_38%,transparent_70%)]" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[45%] lg:block">
-          <HeroPlayDiagram />
-        </div>
-        <div className="relative mx-auto max-w-6xl px-5 py-7 md:px-8 md:py-10 pointer-events-none">
-          <div className="pointer-events-auto">
-            <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
-              LIHTC development strategy + execution
-            </p>
-            <h1 className="mt-3 max-w-3xl font-display text-[clamp(2.15rem,5.6vw,4.35rem)] font-semibold leading-[0.95] tracking-display text-ink">
-              <span className="block">Your next play.</span>
-              <span className="block text-steel">Backed by experience.</span>
-            </h1>
-            <p className="mt-4 max-w-2xl text-lede text-ink/80">
-              Practical LIHTC development strategy from someone who has built,
-              financed, and defended real deals. Read the field, prepare your
-              team, and make the strongest case—from site control and financial
-              modeling to neighborhood meetings and public approvals.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" variant="cta">
-                <Link to="/playbook">
-                  <BookOpen className="size-4" aria-hidden="true" />
-                  Get the Playbook
-                </Link>
-              </Button>
-              <Button asChild variant="secondary" size="lg">
-                <Link to="/game-plans">View Game Plans</Link>
-              </Button>
-            </div>
-            <p className="mt-8 max-w-2xl text-lede text-ink/80">
-              Whether you are evaluating a site, preparing for opposition,
-              pursuing an approval, or positioning the deal for financing,
-              Tax Credit QB helps your team understand the field and
-              execute the next play.
-            </p>
+        <div className="relative mx-auto max-w-6xl px-5 py-7 md:px-8 md:py-10">
+          <p className="font-display text-sm font-semibold uppercase tracking-mark text-steel">
+            LIHTC development strategy + execution
+          </p>
+          <h1 className="mt-3 max-w-3xl font-display text-[clamp(2.15rem,5.6vw,4.35rem)] font-semibold leading-[0.95] tracking-display text-ink">
+            <span className="block">Your next play.</span>
+            <span className="block text-steel">Backed by experience.</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-lede text-ink/80">
+            Practical LIHTC development strategy from someone who has built,
+            financed, and defended real deals. Read the field, prepare your
+            team, and make the strongest case—from site control and financial
+            modeling to neighborhood meetings and public approvals.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg" variant="cta">
+              <Link to="/playbook">
+                <BookOpen className="size-4" aria-hidden="true" />
+                Get the Playbook
+              </Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg">
+              <Link to="/game-plans">View Game Plans</Link>
+            </Button>
           </div>
+          <p className="mt-8 max-w-2xl text-lede text-ink/80">
+            Whether you are evaluating a site, preparing for opposition,
+            pursuing an approval, or positioning the deal for financing,
+            Tax Credit QB helps your team understand the field and
+            execute the next play.
+          </p>
         </div>
       </section>
 

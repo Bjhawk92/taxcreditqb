@@ -7,6 +7,7 @@ const HQ_NAV = [
   { to: "/hq/equipment", label: "My Equipment", exact: false },
   { to: "/hq/documents", label: "My Documents", exact: false },
   { to: "/hq/membership", label: "My Game Plan", exact: false },
+  { to: "/hq/field-report", label: "Field Report", exact: false },
   { to: "/hq/messages", label: "Ask the QB", exact: false },
   { to: "/hq/huddle", label: "My Huddles", exact: false },
   { to: "/hq/account", label: "Account", exact: false },

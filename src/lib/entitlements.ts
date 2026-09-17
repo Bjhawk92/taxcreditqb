@@ -32,11 +32,11 @@ const NONE: Entitlements = {
 const BY_ID: Record<Exclude<PlanId, "none">, Entitlements> = {
   film: {
     planId: "film",
-    planName: "Film Room + Ask the QB",
+    planName: "Field Pass",
     price: 29,
     filmRoom: true,
     playbook: false,
-    askQuestionsPerMonth: 3,
+    askQuestionsPerMonth: 1,
     huddleSessionsPerMonth: 0,
     monthlyReview: false,
     memberDiscount: 0,
@@ -71,7 +71,9 @@ const BY_ID: Record<Exclude<PlanId, "none">, Entitlements> = {
 export function normalizePlanId(raw: string | null | undefined): PlanId {
   if (!raw) return "none";
   const v = raw.trim().toLowerCase();
-  if (v === "film" || v.includes("film")) return "film";
+  if (v === "film" || v.includes("film") || v.includes("field pass") || v.includes("field-pass")) {
+    return "film";
+  }
   if (v === "huddle" || v.includes("huddle")) return "huddle";
   if (v === "playbook" || v.includes("playbook")) return "playbook";
   return "none";
