@@ -37,6 +37,18 @@ export function PlaybookBackdrop({ className }: { className?: string }) {
       ].map(([x, y], i) => (
         <circle key={i} cx={x} cy={y} r="13" fill="none" stroke="#1e3356" strokeWidth="2.2" opacity="0.28" />
       ))}
+      {/* DL — 4 X's opposite the OL */}
+      {[
+        [460, 385],
+        [520, 385],
+        [580, 385],
+        [640, 385],
+      ].map(([x, y], i) => (
+        <g key={`dl-${i}`} opacity="0.26" stroke="#1e3356" strokeWidth="2.2">
+          <line x1={x - 9} y1={y - 9} x2={x + 9} y2={y + 9} />
+          <line x1={x + 9} y1={y - 9} x2={x - 9} y2={y + 9} />
+        </g>
+      ))}
       {/* QB */}
       <circle cx="550" cy="510" r="24" fill="none" stroke="#1e3356" strokeWidth="2.8" opacity="0.45" />
       <text
