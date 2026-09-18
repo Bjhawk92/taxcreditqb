@@ -50,7 +50,7 @@ export const NAV = [
     label: "Equipment",
     to: "/tools",
     blurb: "Practical resources, QAP directory, and development references.",
-    tab: "tools",
+    tab: "slate",
   },
   {
     label: "Game Plans",
@@ -68,7 +68,7 @@ export const NAV = [
     label: "About",
     to: "/about",
     blurb: "Meet Brett Johnson and the experience behind Tax Credit QB.",
-    tab: "slate",
+    tab: "orange",
   },
   {
     label: "Locker Room",

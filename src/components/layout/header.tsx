@@ -15,6 +15,7 @@ const TAB = {
   green: "binder-tab-green",
   burgundy: "binder-tab-burgundy",
   slate: "binder-tab-slate",
+  orange: "binder-tab-orange",
   hq: "binder-tab-hq",
   tools: "binder-tab-tools",
 } as const;
