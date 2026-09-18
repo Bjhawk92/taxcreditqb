@@ -33,7 +33,7 @@ const BY_ID: Record<Exclude<PlanId, "none">, Entitlements> = {
   film: {
     planId: "film",
     planName: "Field Pass",
-    price: 29,
+    price: 49,
     filmRoom: true,
     playbook: false,
     askQuestionsPerMonth: 1,

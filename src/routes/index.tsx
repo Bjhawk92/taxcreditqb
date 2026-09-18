@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
     seo({
       title: "Tax Credit QB | LIHTC Development Strategy + Execution",
       description:
-        "Your WINNING PLAYBOOK. Backed by EXPERIENCE. Playbook, Equipment, Game Plans, and QB Access—from $29/month. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case.",
+        "Your WINNING PLAYBOOK. Backed by EXPERIENCE. Playbook, Equipment, Game Plans, and QB Access—from $49/month. Tax Credit QB helps your team read the field, prepare the response, and make the strongest case.",
     }),
   component: Home,
 });

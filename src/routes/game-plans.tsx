@@ -9,7 +9,7 @@ export const Route = createFileRoute("/game-plans")({
     seo({
       title: "Game Plans | Membership & Pricing | Tax Credit QB",
       description:
-        "Choose your game plan. Field Pass at $29/month, The Playbook at $295/month, or The Huddle at $795/month. Compare memberships, benefits, and access—then bring in the QB when the assignment needs more.",
+        "Choose your game plan. Field Pass at $49/month, The Playbook at $295/month, or The Huddle at $795/month. Compare memberships, benefits, and access—then bring in the QB when the assignment needs more.",
     }),
   component: GamePlans,
 });

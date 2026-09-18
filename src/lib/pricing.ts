@@ -2,7 +2,7 @@ import { SITE } from "@/lib/site";
 
 /**
  * Pricing & membership source of truth.
- * Edit prices, allowances, copy, Stripe links, and the $29 enrollment cap here.
+ * Edit prices, allowances, copy, Stripe links, and the Field Pass enrollment cap here.
  */
 export const FILM_ENROLLMENT_CAP = {
   /** Owner switch. Leave false until a real cap is in force. */
@@ -46,7 +46,7 @@ export const MEMBERSHIPS: readonly MembershipPlan[] = [
   {
     id: "film",
     name: "Field Pass",
-    price: 29,
+    price: 49,
     period: "/month",
     positioning: "Stay current. Know the field.",
     tagline:
@@ -444,7 +444,7 @@ export function stripeFor(plan: MembershipPlan) {
 }
 
 export const SERVICE_NEEDS = [
-  { value: "membership-film", label: "Membership — Field Pass ($29/mo)" },
+  { value: "membership-film", label: "Membership — Field Pass ($49/mo)" },
   { value: "membership-playbook", label: "Membership — Playbook ($295/mo)" },
   { value: "membership-huddle", label: "Membership — Huddle ($795/mo)" },
   { value: "strategy-session", label: "Deal Strategy Session ($350)" },
